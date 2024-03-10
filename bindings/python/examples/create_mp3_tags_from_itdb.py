@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 # create_mp3_tags_from_itdb.py (Populate iPod's MP3 tags with data from iTunesDB)
 # Copyright (c) 20060423 Thomas Perl <thp at perli.net>
 #
@@ -27,51 +27,47 @@
 #  License along with this code; if not, write to the Free Software
 #  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 #
-
+import sys
 import gpod
 import mutagen.mp3
 
-# please specify your iPod mountpoint here..
-IPOD_MOUNT = '/mnt/ipod/'
+# Please specify your iPod mountpoint here..
+IPOD_MOUNT = '/media/john/iPod/'
 
-itdb = gpod.itdb_parse( IPOD_MOUNT, None)
+itdb = gpod.itdb_parse(IPOD_MOUNT, None)
 
 if not itdb:
-    print 'Cannot open iPod at %s' % ( IPOD_MOUNT )
-    sys.exit( 2)
+    print('Cannot open iPod at %s' % IPOD_MOUNT)
+    sys.exit(2)
 
-# just for some stats..
+# Just for some stats..
 counter_upd = 0
 counter_left = 0
 
-for track in gpod.sw_get_tracks( itdb):
+for track in gpod.sw_get_tracks(itdb):
     if track.artist is None or track.title is None or track.album is None:
-        # silently ignore
+        # Silently ignore
         continue
 
-    filename = gpod.itdb_filename_on_ipod( track)
+    filename = gpod.itdb_filename_on_ipod(track)
     try:
         mp3 = mutagen.mp3.MP3(filename)
         if not mp3.tags:
-            print ''
-            print '%s has no id3 tags' % ( filename )
-            print 'iTDB says: AR = %s, TI = %s, AL = %s' % ( track.artist, track.title, track.album )
-            mp3.add_tags() # create header
-            mp3.tags.add(mutagen.id3.TPE1(3,track.artist))
-            mp3.tags.add(mutagen.id3.TALB(3,track.album))
-            mp3.tags.add(mutagen.id3.TIT2(3,track.title))
-            mp3.tags.add(mutagen.id3.TXXX(3,"Taggger","tagged from itdb with libgpod"))
+            print('\n%s has no id3 tags' % filename)
+            print('iTDB says: AR = %s, TI = %s, AL = %s' % (track.artist, track.title, track.album))
+            mp3.add_tags()  # Create header
+            mp3.tags.add(mutagen.id3.TPE1(encoding=3, text=track.artist))
+            mp3.tags.add(mutagen.id3.TALB(encoding=3, text=track.album))
+            mp3.tags.add(mutagen.id3.TIT2(encoding=3, text=track.title))
+            mp3.tags.add(mutagen.id3.TXXX(encoding=3, desc="Tagger", text="tagged from itdb with libgpod"))
             mp3.save()
             counter_upd += 1
-            print 'wrote tags to: %s' % ( filename )
+            print('wrote tags to: %s' % filename)
         else:
-            counter_left += 1            
-    except Exception, e:
-        print 'informative debug output: something went wrong.. : %s' % e
-        counter_left = counter_left + 1
+            counter_left += 1
+    except Exception as e:
+        print('informative debug output: something went wrong.. : %s' % e)
+        counter_left += 1
 
-print ''
-print ' ++ results ++'
-print "updated: %d\nleft as-is: %d" % ( counter_upd, counter_left )
-print ''
-
+print('\n ++ results ++')
+print("updated: %d\nleft as-is: %d" % (counter_upd, counter_left))

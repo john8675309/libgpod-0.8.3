@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/env python3
 
 ##  Copyright (C) 2006 Nick Piper <nick-gtkpod at nickpiper co uk>
 ##  Part of the gtkpod project.
@@ -23,6 +23,7 @@
 
 import gpod
 import time
+import sys  # Added because sys.exit is used
 from optparse import OptionParser
 
 parser = OptionParser()
@@ -31,25 +32,24 @@ parser.add_option("-m", "--mountpoint", dest="mountpoint",
                   help="use iPod at MOUNTPOINT", metavar="MOUNTPOINT")
 (options, args) = parser.parse_args()
 
-
 itdb = gpod.itdb_parse(options.mountpoint, None)
 if not itdb:
-    print "Failed to read iPod at %s" % options.mountpoint
+    print("Failed to read iPod at %s" % options.mountpoint)
     sys.exit(2)
 itdb.mountpoint = options.mountpoint
 
 for playlist in gpod.sw_get_playlists(itdb):
-  if playlist.is_spl:
-      n = gpod.sw_get_list_len(playlist.splrules.rules)
-      splrules = [gpod.sw_get_rule(playlist.splrules.rules,i) for i in xrange(n)]
-      print "Playlist: %s" % playlist.name
-      for i in xrange(gpod.sw_get_list_len(playlist.splrules.rules)):
-          rule = gpod.sw_get_rule(playlist.splrules.rules, i)
-          print "|  field: %4d          action: %4d    |"  % (rule.field,rule.action)
-          print "|  string: %25s    |"                     % rule.string
-          print "|  fromvalue: %4d    fromdate: %4d    |"  % (rule.fromvalue,rule.fromdate)
-          print "|  fromunits: %4d                      |" % rule.fromunits
-      print "Contains:"
-      for track in gpod.sw_get_playlist_tracks(playlist):
-          print track.title, track.artist, time.strftime("%c",
-                                                         time.localtime(track.time_added - 2082844800))
+    if playlist.is_spl:
+        n = gpod.sw_get_list_len(playlist.splrules.rules)
+        splrules = [gpod.sw_get_rule(playlist.splrules.rules, i) for i in range(n)]  # xrange to range
+        print("Playlist: %s" % playlist.name)
+        for i in range(gpod.sw_get_list_len(playlist.splrules.rules)):  # xrange to range
+            rule = gpod.sw_get_rule(playlist.splrules.rules, i)
+            print("|  field: %4d          action: %4d    |" % (rule.field, rule.action))
+            print("|  string: %25s    |" % rule.string)
+            print("|  fromvalue: %4d    fromdate: %4d    |" % (rule.fromvalue, rule.fromdate))
+            print("|  fromunits: %4d                      |" % rule.fromunits)
+        print("Contains:")
+        for track in gpod.sw_get_playlist_tracks(playlist):
+            print(track.title, track.artist, time.strftime("%c",
+                                                           time.localtime(track.time_added - 2082844800)))

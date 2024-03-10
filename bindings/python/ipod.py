@@ -234,7 +234,7 @@ class Database:
 
         track = Track(**kwargs)
         self.add(track)
-        if kwargs.has_key('podcast') and kwargs['podcast'] == True:
+        if 'podcast' in kwargs and kwargs['podcast'] == True:
             self.Podcasts.add(track)
         else:
             self.Master.add(track)
@@ -340,13 +340,15 @@ class Track:
                 try:
                     value = audiofile[tag]
                     if isinstance(value,mutagen.id3.NumericPartTextFrame):
-                        parts = map(int,value.text[0].split("/"))
+                        #parts = map(int,value.text[0].split("/"))
+                        parts = list(map(int, value.text[0].split("/")))
                         if len(parts) == 2:
                             self[attrib[0]], self[attrib[1]] = parts
                         elif len(parts) == 1:
                             self[attrib[0]] = parts[0]
-                    elif isinstance(value,mutagen.id3.TextFrame):
-                        self[attrib] = value.text[0].encode('UTF-8','replace')
+                    elif isinstance(value, mutagen.id3.TextFrame) and value.text:
+                        self[attrib] = value.text[0].encode('UTF-8', 'replace')
+
                 except KeyError:
                     pass
             if self['title'] is None:
@@ -367,7 +369,8 @@ class Track:
     def _set_userdata_utf8(self, key, value):
         self['userdata']['%s_locale' % key] = value
         try:
-            self['userdata']['%s_utf8'   % key] = value.decode(self['userdata']['charset']).encode('UTF-8')
+            #self['userdata']['%s_utf8'   % key] = value.decode(self['userdata']['charset']).encode('UTF-8')
+            self['userdata']['%s_utf8' % key] = value.encode('UTF-8')
         except UnicodeDecodeError as e:
             # string clearly isn't advertised charset.  I prefer to
             # not add the _utf8 version as we can't actually generate
@@ -507,13 +510,15 @@ class Track:
                 return getattr(self._track, item)
         else:
             raise KeyError('No such key: %s' % item)
-
     def __setitem__(self, item, value):
         if item == "userdata":
             gpod.sw_set_track_userdata(self._track, value)
             return
-        if type(value) == types.UnicodeType:
-            value = value.encode('UTF-8','replace')
+        if isinstance(value, bytes):
+            value = value.decode('UTF-8')  # Decode bytes back to a string
+        elif isinstance(value, str):
+            # No need to encode to bytes; the library expects a string
+            pass  # This line is just to illustrate; you can remove it
         if item in self._proxied_attributes:
             return setattr(self._track, item, value)
         else:
@@ -560,7 +565,7 @@ class _Playlists:
         return True
 
     def __getitem__(self, index):
-        if type(index) == types.SliceType:
+        if isinstance(index, slice):
             return [self[i] for i in range(*index.indices(len(self)))]
         else:
             if index < 0:
@@ -734,7 +739,7 @@ class Playlist:
             len(self))
 
     def __getitem__(self, index):
-        if type(index) == types.SliceType:
+        if isinstance(index, slice):
             return [self[i] for i in range(*index.indices(len(self)))]
         else:
             if index < 0:

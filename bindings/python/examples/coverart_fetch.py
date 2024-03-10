@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/env python3
 
 ##  Copyright (C) 2005 Nick Piper <nick-gtkpod at nickpiper co uk>
 ##  Part of the gtkpod project.
@@ -22,13 +22,18 @@
 
 ##  $Id$
 
-import os, os.path
-import gpod
+import os
 import sys
-import amazon
-import urllib
-import gtk
+import urllib.request
 from optparse import OptionParser
+
+# Assuming `gpod` and a Python 3 compatible `amazon` module are available
+import gpod
+# Update amazon module import according to its Python 3 version
+import amazon
+
+# For GTK, PyGObject is the successor to PyGTK for Python 3
+from gi.repository import GdkPixbuf, GLib
 
 parser = OptionParser()
 parser.add_option("-m", "--mountpoint", dest="mountpoint",
@@ -38,67 +43,58 @@ parser.add_option("-m", "--mountpoint", dest="mountpoint",
 
 db = gpod.Database(options.mountpoint)
 
-# set your key here, or see amazon.py for a list of other places to
-# store it.
+# Set your key here, or see amazon.py for a list of other places to store it.
 amazon.setLicense('')
 
 images = {}
 
 for track in db:
     if track.get_coverart().thumbnails:
-        #print " Already has artwork, skipping."
-        # note we could remove it with track.set_coverart(None)
+        # Skipping tracks that already have artwork
         continue
 
-    print "%(artist)s, %(album)s, %(title)s" % track
+    print("%(artist)s, %(album)s, %(title)s" % track)
 
     if not (track['artist'] and track['album']):
-        print " Need an artist AND album name, skipping."       
+        print(" Need an artist AND album name, skipping.")       
         continue
     
-    # avoid fetching again if we already had a suitable image
-    if not images.has_key((track['album'],track['artist'])):
+    if (track['album'], track['artist']) not in images:
         query = "%(album)s + %(artist)s" % track
-        # nasty hacks to get better hits. Is there a library out there
-        # for this?  Note we take out double quotes too: Amazon place 
-        # this string literally into their XML response, so can end up 
-        # giving us back: <Arg value="search"term" 
-        # name="KeywordSearch"> which is not well formed :-( 
-        for term in ["Disk 1", "Disk 2", '12"', '12 "','"','&']: 
-            query = query.replace(term,"") 
-        print " Searching for %s: " % query
+        for term in ["Disk 1", "Disk 2", '12"', '12 "','"','&']:
+            query = query.replace(term,"")
+        print(" Searching for %s: " % query)
         try:
-            albums = amazon.searchByKeyword(query,
-                                            type="lite",
-                                            product_line="music")
-        except amazon.AmazonError, e:
-            print e
+            # Update the amazon search function call as needed for the Python 3 version of the API client
+            albums = amazon.searchByKeyword(query, type="lite", product_line="music")
+        except amazon.AmazonError as e:
+            print(e)
             albums = []
                 
-        if len(albums) == 0:
+        if not albums:
             continue
         album = albums[0]
 
         try:
-            image_data = urllib.urlopen(album.ImageUrlLarge).read()
-        except:
-            print " Failed to download from %s" % album.ImageUrlLarge
+            image_data = urllib.request.urlopen(album.ImageUrlLarge).read()
+        except Exception as e:
+            print(" Failed to download from %s" % album.ImageUrlLarge)
             continue
-        loader = gtk.gdk.PixbufLoader()
+        
+        loader = GdkPixbuf.PixbufLoader()
         loader.write(image_data)
         loader.close()
         pixbuf = loader.get_pixbuf()
-        if (pixbuf.get_width() > 10 or pixbuf.get_height() > 10):
-            print " Fetched image"
-            images[(track['album'],track['artist'])] = pixbuf
+        if pixbuf.get_width() > 10 or pixbuf.get_height() > 10:
+            print(" Fetched image")
+            images[(track['album'], track['artist'])] = pixbuf
 
     try:
-        track.set_coverart(images[(track['album'],track['artist'])])
-        print " Added thumbnails"
+        track.set_coverart(images[(track['album'], track['artist'])].save_to_buffer("png"))
+        print(" Added thumbnails")
     except KeyError:
-        print " No image available"
+        print(" No image available")
 
-
-print "Saving database"
+print("Saving database")
 db.close()
-print "Saved db"
+print("Saved db")

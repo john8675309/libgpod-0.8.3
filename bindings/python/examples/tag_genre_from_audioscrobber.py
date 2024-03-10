@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/env python3
 
 ##  Copyright (C) 2005 Nick Piper <nick-gtkpod at nickpiper co uk>
 ##  Part of the gtkpod project.
@@ -21,59 +21,51 @@
 ##  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 
 ##  $Id$
-
-
-import os, os.path
-import gpod
+import os
 import sys
-from xml import xpath
-from xml.dom import minidom
-from xml.parsers.expat import ExpatError
-import urllib2, urllib
+import gpod
+import urllib.request
+import urllib.parse
+import xml.etree.ElementTree as ET
 
 TRUST_LIMIT = 10
-dbname = os.path.join(os.environ['HOME'],".gtkpod/local_0.itdb")
-
+dbname = os.path.join(os.environ['HOME'], ".gtkpod/local_0.itdb")
 
 itdb = gpod.itdb_parse_file(dbname, None)
 if not itdb:
-    print "Failed to read %s" % dbname
+    print("Failed to read %s" % dbname)
     sys.exit(2)
     
-cache={}
+cache = {}
 for track in gpod.sw_get_tracks(itdb):
     if track.artist is None:
         continue
 
     key = track.artist.upper()
-    if not cache.has_key(key):
-        url = "http://ws.audioscrobbler.com/1.0/artist/%s/toptags.xml" % urllib.quote(track.artist)
+    if key not in cache:
+        url = "http://ws.audioscrobbler.com/1.0/artist/%s/toptags.xml" % urllib.parse.quote(track.artist)
         
         try:
-            reply    = urllib2.urlopen(url).read()
-            xmlreply = minidom.parseString(reply)
-            attlist  = xpath.Evaluate("//toptags/tag[1]/@name",xmlreply)
-            count    = xpath.Evaluate("//toptags/tag[1]/@count",xmlreply)
-            if attlist and count and int(count[0].value) > TRUST_LIMIT:
-                cache[key] = str(attlist[0].value.title()) # no unicode please :-)
-        except urllib2.HTTPError, e:
-            pass
-            #print "Urllib failed.", e
-        except ExpatError, e:
-            print "Failed to parse,", e
-            print reply
+            with urllib.request.urlopen(url) as response:
+                reply = response.read()
+            xmlreply = ET.fromstring(reply)
+            tags = xmlreply.findall('.//tag')
+            if tags:
+                top_tag = tags[0]
+                tag_name = top_tag.find('name').text
+                tag_count = int(top_tag.find('count').text)
+                if tag_name and tag_count > TRUST_LIMIT:
+                    cache[key] = tag_name.title()  # No unicode conversion needed in Python 3
+        except urllib.error.HTTPError as e:
+            pass  # Optionally print an error message
+        except ET.ParseError as e:
+            print("Failed to parse,", e)
+            print(reply)
 
-    if cache.has_key(key):
+    if key in cache:
         track.genre = cache[key]
-        print "%-25s %-20s %-20s --> %s" % (track.title,
-                                            track.album,
-                                            track.artist,
-                                            track.genre)
+        print("%-25s %-20s %-20s --> %s" % (track.title, track.album, track.artist, track.genre))
     else:
-        print "%-25s %-20s %-20s === %s" % (track.title,
-                                            track.album,
-                                            track.artist,
-                                            track.genre)
-        
+        print("%-25s %-20s %-20s === %s" % (track.title, track.album, track.artist, "Unknown"))
 
 gpod.itdb_write_file(itdb, dbname, None)

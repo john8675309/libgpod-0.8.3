@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/env python3
 """
 Fix iTunesDB tracks that have filename-like titles, but no artist
 -----------------------------------------------------------------
@@ -15,38 +15,37 @@ import os.path
 import sys
 
 if len(sys.argv) == 1:
-    print 'Usage: python %s /path/to/ipod' % os.path.basename(sys.argv[0])
-    print __doc__
+    print('Usage: python %s /path/to/ipod' % os.path.basename(sys.argv[0]))
+    print(__doc__)
     sys.exit(-1)
 else:
     mount_point = sys.argv[-1]
 
 try:
     db = gpod.Database(mount_point)
-except gpod.ipod.DatabaseException, dbe:
-    print 'Error opening your iPod database: %s' % dbe
+except gpod.ipod.DatabaseException as dbe:
+    print('Error opening your iPod database: %s' % dbe)
     sys.exit(-2)
 
-(updated, count) = (0, len(db))
+updated, count = 0, len(db)
 
-print 'Database opened: %d tracks to consider' % count
+print('Database opened: %d tracks to consider' % count)
 for track in db:
     # If the track has a ".mp3" title and no artist, try to fix it
     if track['title'].lower().endswith('.mp3') and track['artist'] is None:
         # Assume "Artist - Title.mp3" file names
         items = os.path.splitext(track['title'])[0].split(' - ')
         if len(items) == 2:
-            (artist, title) = items
-            print 'Correcting: %s' % track['title']
+            artist, title = items
+            print('Correcting: %s' % track['title'])
             track['artist'] = artist
-            track['title'] = artist
+            track['title'] = title  # Fixed to assign title correctly
             updated += 1
         else:
             # Doesn't look like "Artist - Title.mp3", leave untouched
-            print 'Leaving untouched: %s' % repr(items)
+            print('Leaving untouched: %s' % repr(items))
 
-print 'Saving iPod database...'
+print('Saving iPod database...')
 db.close()
 
-print 'Finished. %d tracks updated, %d tracks untouched' % (updated, count-updated)
-
+print('Finished. %d tracks updated, %d tracks untouched' % (updated, count - updated))

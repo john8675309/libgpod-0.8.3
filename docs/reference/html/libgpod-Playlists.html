@@ -1,0 +1,1053 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Playlists</title>
+<meta name="generator" content="DocBook XSL Stylesheets V1.78.1">
+<link rel="home" href="index.html" title="libgpod Reference Manual">
+<link rel="up" href="ch01.html" title="iPod database components">
+<link rel="prev" href="libgpod-Tracks.html" title="Tracks">
+<link rel="next" href="libgpod-Smart-Playlists.html" title="Smart Playlists">
+<meta name="generator" content="GTK-Doc V1.19 (XML mode)">
+<link rel="stylesheet" href="style.css" type="text/css">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<table class="navigation" id="top" width="100%" summary="Navigation header" cellpadding="2" cellspacing="2">
+<tr valign="middle">
+<td><a accesskey="p" href="libgpod-Tracks.html"><img src="left.png" width="24" height="24" border="0" alt="Prev"></a></td>
+<td><a accesskey="u" href="ch01.html"><img src="up.png" width="24" height="24" border="0" alt="Up"></a></td>
+<td><a accesskey="h" href="index.html"><img src="home.png" width="24" height="24" border="0" alt="Home"></a></td>
+<th width="100%" align="center">libgpod Reference Manual</th>
+<td><a accesskey="n" href="libgpod-Smart-Playlists.html"><img src="right.png" width="24" height="24" border="0" alt="Next"></a></td>
+</tr>
+<tr><td colspan="5" class="shortcuts">
+<a href="#libgpod-Playlists.synopsis" class="shortcut">Top</a>
+                   | 
+                  <a href="#libgpod-Playlists.description" class="shortcut">Description</a>
+</td></tr>
+</table>
+<div class="refentry">
+<a name="libgpod-Playlists"></a><div class="titlepage"></div>
+<div class="refnamediv"><table width="100%"><tr>
+<td valign="top">
+<h2><span class="refentrytitle"><a name="libgpod-Playlists.top_of_page"></a>Playlists</span></h2>
+<p>Playlists — Data structure to represent an iPod playlist</p>
+</td>
+<td valign="top" align="right"></td>
+</tr></table></div>
+<div class="refsynopsisdiv">
+<a name="libgpod-Playlists.synopsis"></a><h2>Synopsis</h2>
+<pre class="synopsis">struct              <a class="link" href="libgpod-Playlists.html#Itdb-Playlist" title="struct Itdb_Playlist">Itdb_Playlist</a>;
+                    <a class="link" href="libgpod-Playlists.html#Itdb-Playlist-Private" title="Itdb_Playlist_Private">Itdb_Playlist_Private</a>;
+enum                <a class="link" href="libgpod-Playlists.html#ItdbPlaylistSortOrder" title="enum ItdbPlaylistSortOrder">ItdbPlaylistSortOrder</a>;
+<a class="link" href="libgpod-Playlists.html#Itdb-Playlist" title="struct Itdb_Playlist"><span class="returnvalue">Itdb_Playlist</span></a> *     <a class="link" href="libgpod-Playlists.html#itdb-playlist-new" title="itdb_playlist_new ()">itdb_playlist_new</a>                   (<em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *title</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="type">gboolean</span></a> spl</code></em>);
+<span class="returnvalue">void</span>                <a class="link" href="libgpod-Playlists.html#itdb-playlist-free" title="itdb_playlist_free ()">itdb_playlist_free</a>                  (<em class="parameter"><code><a class="link" href="libgpod-Playlists.html#Itdb-Playlist" title="struct Itdb_Playlist"><span class="type">Itdb_Playlist</span></a> *pl</code></em>);
+<a class="link" href="libgpod-Playlists.html#Itdb-Playlist" title="struct Itdb_Playlist"><span class="returnvalue">Itdb_Playlist</span></a> *     <a class="link" href="libgpod-Playlists.html#itdb-playlist-duplicate" title="itdb_playlist_duplicate ()">itdb_playlist_duplicate</a>             (<em class="parameter"><code><a class="link" href="libgpod-Playlists.html#Itdb-Playlist" title="struct Itdb_Playlist"><span class="type">Itdb_Playlist</span></a> *pl</code></em>);
+<span class="returnvalue">void</span>                <a class="link" href="libgpod-Playlists.html#itdb-playlist-add" title="itdb_playlist_add ()">itdb_playlist_add</a>                   (<em class="parameter"><code><a class="link" href="libgpod-The-Itdb-iTunesDB-structure.html#Itdb-iTunesDB" title="struct Itdb_iTunesDB"><span class="type">Itdb_iTunesDB</span></a> *itdb</code></em>,
+                                                         <em class="parameter"><code><a class="link" href="libgpod-Playlists.html#Itdb-Playlist" title="struct Itdb_Playlist"><span class="type">Itdb_Playlist</span></a> *pl</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gint32"><span class="type">gint32</span></a> pos</code></em>);
+<span class="returnvalue">void</span>                <a class="link" href="libgpod-Playlists.html#itdb-playlist-move" title="itdb_playlist_move ()">itdb_playlist_move</a>                  (<em class="parameter"><code><a class="link" href="libgpod-Playlists.html#Itdb-Playlist" title="struct Itdb_Playlist"><span class="type">Itdb_Playlist</span></a> *pl</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gint32"><span class="type">gint32</span></a> pos</code></em>);
+<span class="returnvalue">void</span>                <a class="link" href="libgpod-Playlists.html#itdb-playlist-remove" title="itdb_playlist_remove ()">itdb_playlist_remove</a>                (<em class="parameter"><code><a class="link" href="libgpod-Playlists.html#Itdb-Playlist" title="struct Itdb_Playlist"><span class="type">Itdb_Playlist</span></a> *pl</code></em>);
+<span class="returnvalue">void</span>                <a class="link" href="libgpod-Playlists.html#itdb-playlist-unlink" title="itdb_playlist_unlink ()">itdb_playlist_unlink</a>                (<em class="parameter"><code><a class="link" href="libgpod-Playlists.html#Itdb-Playlist" title="struct Itdb_Playlist"><span class="type">Itdb_Playlist</span></a> *pl</code></em>);
+<span class="returnvalue">void</span>                <a class="link" href="libgpod-Playlists.html#itdb-playlist-add-track" title="itdb_playlist_add_track ()">itdb_playlist_add_track</a>             (<em class="parameter"><code><a class="link" href="libgpod-Playlists.html#Itdb-Playlist" title="struct Itdb_Playlist"><span class="type">Itdb_Playlist</span></a> *pl</code></em>,
+                                                         <em class="parameter"><code><a class="link" href="libgpod-Tracks.html#Itdb-Track" title="struct Itdb_Track"><span class="type">Itdb_Track</span></a> *track</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gint32"><span class="type">gint32</span></a> pos</code></em>);
+<span class="returnvalue">void</span>                <a class="link" href="libgpod-Playlists.html#itdb-playlist-remove-track" title="itdb_playlist_remove_track ()">itdb_playlist_remove_track</a>          (<em class="parameter"><code><a class="link" href="libgpod-Playlists.html#Itdb-Playlist" title="struct Itdb_Playlist"><span class="type">Itdb_Playlist</span></a> *pl</code></em>,
+                                                         <em class="parameter"><code><a class="link" href="libgpod-Tracks.html#Itdb-Track" title="struct Itdb_Track"><span class="type">Itdb_Track</span></a> *track</code></em>);
+<a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            <a class="link" href="libgpod-Playlists.html#itdb-playlist-contains-track" title="itdb_playlist_contains_track ()">itdb_playlist_contains_track</a>        (<em class="parameter"><code><a class="link" href="libgpod-Playlists.html#Itdb-Playlist" title="struct Itdb_Playlist"><span class="type">Itdb_Playlist</span></a> *pl</code></em>,
+                                                         <em class="parameter"><code><a class="link" href="libgpod-Tracks.html#Itdb-Track" title="struct Itdb_Track"><span class="type">Itdb_Track</span></a> *track</code></em>);
+<a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint32"><span class="returnvalue">guint32</span></a>             <a class="link" href="libgpod-Playlists.html#itdb-playlist-contain-track-number" title="itdb_playlist_contain_track_number ()">itdb_playlist_contain_track_number</a>  (<em class="parameter"><code><a class="link" href="libgpod-Tracks.html#Itdb-Track" title="struct Itdb_Track"><span class="type">Itdb_Track</span></a> *tr</code></em>);
+<a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint32"><span class="returnvalue">guint32</span></a>             <a class="link" href="libgpod-Playlists.html#itdb-playlist-tracks-number" title="itdb_playlist_tracks_number ()">itdb_playlist_tracks_number</a>         (<em class="parameter"><code><a class="link" href="libgpod-Playlists.html#Itdb-Playlist" title="struct Itdb_Playlist"><span class="type">Itdb_Playlist</span></a> *pl</code></em>);
+<a class="link" href="libgpod-Playlists.html#Itdb-Playlist" title="struct Itdb_Playlist"><span class="returnvalue">Itdb_Playlist</span></a> *     <a class="link" href="libgpod-Playlists.html#itdb-playlist-mpl" title="itdb_playlist_mpl ()">itdb_playlist_mpl</a>                   (<em class="parameter"><code><a class="link" href="libgpod-The-Itdb-iTunesDB-structure.html#Itdb-iTunesDB" title="struct Itdb_iTunesDB"><span class="type">Itdb_iTunesDB</span></a> *itdb</code></em>);
+<a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            <a class="link" href="libgpod-Playlists.html#itdb-playlist-is-mpl" title="itdb_playlist_is_mpl ()">itdb_playlist_is_mpl</a>                (<em class="parameter"><code><a class="link" href="libgpod-Playlists.html#Itdb-Playlist" title="struct Itdb_Playlist"><span class="type">Itdb_Playlist</span></a> *pl</code></em>);
+<span class="returnvalue">void</span>                <a class="link" href="libgpod-Playlists.html#itdb-playlist-set-mpl" title="itdb_playlist_set_mpl ()">itdb_playlist_set_mpl</a>               (<em class="parameter"><code><a class="link" href="libgpod-Playlists.html#Itdb-Playlist" title="struct Itdb_Playlist"><span class="type">Itdb_Playlist</span></a> *pl</code></em>);
+<a class="link" href="libgpod-Playlists.html#Itdb-Playlist" title="struct Itdb_Playlist"><span class="returnvalue">Itdb_Playlist</span></a> *     <a class="link" href="libgpod-Playlists.html#itdb-playlist-podcasts" title="itdb_playlist_podcasts ()">itdb_playlist_podcasts</a>              (<em class="parameter"><code><a class="link" href="libgpod-The-Itdb-iTunesDB-structure.html#Itdb-iTunesDB" title="struct Itdb_iTunesDB"><span class="type">Itdb_iTunesDB</span></a> *itdb</code></em>);
+<a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            <a class="link" href="libgpod-Playlists.html#itdb-playlist-is-podcasts" title="itdb_playlist_is_podcasts ()">itdb_playlist_is_podcasts</a>           (<em class="parameter"><code><a class="link" href="libgpod-Playlists.html#Itdb-Playlist" title="struct Itdb_Playlist"><span class="type">Itdb_Playlist</span></a> *pl</code></em>);
+<span class="returnvalue">void</span>                <a class="link" href="libgpod-Playlists.html#itdb-playlist-set-podcasts" title="itdb_playlist_set_podcasts ()">itdb_playlist_set_podcasts</a>          (<em class="parameter"><code><a class="link" href="libgpod-Playlists.html#Itdb-Playlist" title="struct Itdb_Playlist"><span class="type">Itdb_Playlist</span></a> *pl</code></em>);
+<a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            <a class="link" href="libgpod-Playlists.html#itdb-playlist-exists" title="itdb_playlist_exists ()">itdb_playlist_exists</a>                (<em class="parameter"><code><a class="link" href="libgpod-The-Itdb-iTunesDB-structure.html#Itdb-iTunesDB" title="struct Itdb_iTunesDB"><span class="type">Itdb_iTunesDB</span></a> *itdb</code></em>,
+                                                         <em class="parameter"><code><a class="link" href="libgpod-Playlists.html#Itdb-Playlist" title="struct Itdb_Playlist"><span class="type">Itdb_Playlist</span></a> *pl</code></em>);
+<a class="link" href="libgpod-Playlists.html#Itdb-Playlist" title="struct Itdb_Playlist"><span class="returnvalue">Itdb_Playlist</span></a> *     <a class="link" href="libgpod-Playlists.html#itdb-playlist-by-id" title="itdb_playlist_by_id ()">itdb_playlist_by_id</a>                 (<em class="parameter"><code><a class="link" href="libgpod-The-Itdb-iTunesDB-structure.html#Itdb-iTunesDB" title="struct Itdb_iTunesDB"><span class="type">Itdb_iTunesDB</span></a> *itdb</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint64"><span class="type">guint64</span></a> id</code></em>);
+<a class="link" href="libgpod-Playlists.html#Itdb-Playlist" title="struct Itdb_Playlist"><span class="returnvalue">Itdb_Playlist</span></a> *     <a class="link" href="libgpod-Playlists.html#itdb-playlist-by-nr" title="itdb_playlist_by_nr ()">itdb_playlist_by_nr</a>                 (<em class="parameter"><code><a class="link" href="libgpod-The-Itdb-iTunesDB-structure.html#Itdb-iTunesDB" title="struct Itdb_iTunesDB"><span class="type">Itdb_iTunesDB</span></a> *itdb</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint32"><span class="type">guint32</span></a> num</code></em>);
+<a class="link" href="libgpod-Playlists.html#Itdb-Playlist" title="struct Itdb_Playlist"><span class="returnvalue">Itdb_Playlist</span></a> *     <a class="link" href="libgpod-Playlists.html#itdb-playlist-by-name" title="itdb_playlist_by_name ()">itdb_playlist_by_name</a>               (<em class="parameter"><code><a class="link" href="libgpod-The-Itdb-iTunesDB-structure.html#Itdb-iTunesDB" title="struct Itdb_iTunesDB"><span class="type">Itdb_iTunesDB</span></a> *itdb</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *name</code></em>);
+<span class="returnvalue">void</span>                <a class="link" href="libgpod-Playlists.html#itdb-playlist-randomize" title="itdb_playlist_randomize ()">itdb_playlist_randomize</a>             (<em class="parameter"><code><a class="link" href="libgpod-Playlists.html#Itdb-Playlist" title="struct Itdb_Playlist"><span class="type">Itdb_Playlist</span></a> *pl</code></em>);
+</pre>
+</div>
+<div class="refsect1">
+<a name="libgpod-Playlists.description"></a><h2>Description</h2>
+<p>
+These functions and structures allow for adding and removing playlists,
+adding and removing tracks from playlists, sorting playlists, finding tracks in
+a playlist, etc.
+</p>
+</div>
+<div class="refsect1">
+<a name="libgpod-Playlists.details"></a><h2>Details</h2>
+<div class="refsect2">
+<a name="Itdb-Playlist"></a><h3>struct Itdb_Playlist</h3>
+<pre class="programlisting">struct Itdb_Playlist {
+    Itdb_iTunesDB *itdb;
+    gchar *name;
+    guint8 type;
+    guint8 flag1;
+    guint8 flag2;
+    guint8 flag3;
+    gint  num;
+    GList *members;
+    gboolean is_spl;
+    time_t timestamp;
+    guint64 id;
+    guint32 sortorder;
+    guint32 podcastflag;
+    Itdb_SPLPref splpref;
+    Itdb_SPLRules splrules;
+    gpointer reserved100;
+    gpointer reserved101;
+    /* reserved for future use */
+    gint32 reserved_int1;
+    gint32 reserved_int2;
+    Itdb_Playlist_Private *priv;
+    gpointer reserved2;
+    /* below is for use by application */
+    guint64 usertype;
+    gpointer userdata;
+    /* functions called to duplicate/free userdata */
+    ItdbUserDataDuplicateFunc userdata_duplicate;
+    ItdbUserDataDestroyFunc userdata_destroy;
+};
+</pre>
+<p>
+Structure representing an iTunes Playlist
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><a class="link" href="libgpod-The-Itdb-iTunesDB-structure.html#Itdb-iTunesDB" title="struct Itdb_iTunesDB"><span class="type">Itdb_iTunesDB</span></a> *<em class="structfield"><code><a name="Itdb-Playlist.itdb"></a>itdb</code></em>;</span></p></td>
+<td>A pointer to the <a class="link" href="libgpod-The-Itdb-iTunesDB-structure.html#Itdb-iTunesDB" title="struct Itdb_iTunesDB"><span class="type">Itdb_iTunesDB</span></a> (for convenience)</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *<em class="structfield"><code><a name="Itdb-Playlist.name"></a>name</code></em>;</span></p></td>
+<td>The name of the playlist in UTF8</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint8"><span class="type">guint8</span></a> <em class="structfield"><code><a name="Itdb-Playlist.type"></a>type</code></em>;</span></p></td>
+<td>The playlist type (normal or master)</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint8"><span class="type">guint8</span></a> <em class="structfield"><code><a name="Itdb-Playlist.flag1"></a>flag1</code></em>;</span></p></td>
+<td>Unknown, usually set to 0</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint8"><span class="type">guint8</span></a> <em class="structfield"><code><a name="Itdb-Playlist.flag2"></a>flag2</code></em>;</span></p></td>
+<td>Unknown, always set to 0</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint8"><span class="type">guint8</span></a> <em class="structfield"><code><a name="Itdb-Playlist.flag3"></a>flag3</code></em>;</span></p></td>
+<td>Unknown, always set to 0</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gint"><span class="type">gint</span></a> <em class="structfield"><code><a name="Itdb-Playlist.num"></a>num</code></em>;</span></p></td>
+<td>The number of tracks in the playlist</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Doubly-Linked-Lists.html#GList"><span class="type">GList</span></a> *<em class="structfield"><code><a name="Itdb-Playlist.members"></a>members</code></em>;</span></p></td>
+<td>A list of tracks in the playlist (<a class="link" href="libgpod-Tracks.html#Itdb-Track" title="struct Itdb_Track"><span class="type">Itdb_Track</span></a>)</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="type">gboolean</span></a> <em class="structfield"><code><a name="Itdb-Playlist.is-spl"></a>is_spl</code></em>;</span></p></td>
+<td>True if the playlist is a smart playlist, otherwise
+false</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="type">time_t</span> <em class="structfield"><code><a name="Itdb-Playlist.timestamp"></a>timestamp</code></em>;</span></p></td>
+<td>When the playlist was created</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint64"><span class="type">guint64</span></a> <em class="structfield"><code><a name="Itdb-Playlist.id"></a>id</code></em>;</span></p></td>
+<td>The playlist ID</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint32"><span class="type">guint32</span></a> <em class="structfield"><code><a name="Itdb-Playlist.sortorder"></a>sortorder</code></em>;</span></p></td>
+<td>The playlist sort order (<a class="link" href="libgpod-Playlists.html#ItdbPlaylistSortOrder" title="enum ItdbPlaylistSortOrder"><span class="type">ItdbPlaylistSortOrder</span></a>)</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint32"><span class="type">guint32</span></a> <em class="structfield"><code><a name="Itdb-Playlist.podcastflag"></a>podcastflag</code></em>;</span></p></td>
+<td>This is set to 0 on normal playlists and to 1 for the
+Podcast playlist. If set to 1, the playlist will not be
+shown under 'Playlists' on the iPod, but as 'Podcasts'
+under the Music menu. The actual title of the Playlist
+does not matter. If more than one playlist is set to 1,
+they don't show up at all.</td>
+</tr>
+<tr>
+<td><p><span class="term"><a class="link" href="libgpod-Smart-Playlists.html#Itdb-SPLPref" title="struct Itdb_SPLPref"><span class="type">Itdb_SPLPref</span></a> <em class="structfield"><code><a name="Itdb-Playlist.splpref"></a>splpref</code></em>;</span></p></td>
+<td>Smart playlist preferences (<a class="link" href="libgpod-Smart-Playlists.html#Itdb-SPLPref" title="struct Itdb_SPLPref"><span class="type">Itdb_SPLPref</span></a>)</td>
+</tr>
+<tr>
+<td><p><span class="term"><a class="link" href="libgpod-Smart-Playlists.html#Itdb-SPLRules" title="struct Itdb_SPLRules"><span class="type">Itdb_SPLRules</span></a> <em class="structfield"><code><a name="Itdb-Playlist.splrules"></a>splrules</code></em>;</span></p></td>
+<td>Smart playlist rules (<a class="link" href="libgpod-Smart-Playlists.html#Itdb-SPLRules" title="struct Itdb_SPLRules"><span class="type">Itdb_SPLRules</span></a>)</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a> <em class="structfield"><code><a name="Itdb-Playlist.reserved100"></a>reserved100</code></em>;</span></p></td>
+<td>Reserved for MHOD100 implementation</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a> <em class="structfield"><code><a name="Itdb-Playlist.reserved101"></a>reserved101</code></em>;</span></p></td>
+<td>Reserved for MHOD100 implementation</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gint32"><span class="type">gint32</span></a> <em class="structfield"><code><a name="Itdb-Playlist.reserved-int1"></a>reserved_int1</code></em>;</span></p></td>
+<td>Reserved for future use</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gint32"><span class="type">gint32</span></a> <em class="structfield"><code><a name="Itdb-Playlist.reserved-int2"></a>reserved_int2</code></em>;</span></p></td>
+<td>Reserved for future use</td>
+</tr>
+<tr>
+<td><p><span class="term"><a class="link" href="libgpod-Playlists.html#Itdb-Playlist-Private" title="Itdb_Playlist_Private"><span class="type">Itdb_Playlist_Private</span></a> *<em class="structfield"><code><a name="Itdb-Playlist.priv"></a>priv</code></em>;</span></p></td>
+<td>Private data</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a> <em class="structfield"><code><a name="Itdb-Playlist.reserved2"></a>reserved2</code></em>;</span></p></td>
+<td>Reserved for future use</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint64"><span class="type">guint64</span></a> <em class="structfield"><code><a name="Itdb-Playlist.usertype"></a>usertype</code></em>;</span></p></td>
+<td>For use by application</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a> <em class="structfield"><code><a name="Itdb-Playlist.userdata"></a>userdata</code></em>;</span></p></td>
+<td>For use by application</td>
+</tr>
+<tr>
+<td><p><span class="term"><a class="link" href="libgpod-The-Itdb-iTunesDB-structure.html#ItdbUserDataDuplicateFunc" title="ItdbUserDataDuplicateFunc ()"><span class="type">ItdbUserDataDuplicateFunc</span></a> <em class="structfield"><code><a name="Itdb-Playlist.userdata-duplicate"></a>userdata_duplicate</code></em>;</span></p></td>
+<td>A function to duplicate <span class="type">userdata</span>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><a class="link" href="libgpod-The-Itdb-iTunesDB-structure.html#ItdbUserDataDestroyFunc" title="ItdbUserDataDestroyFunc ()"><span class="type">ItdbUserDataDestroyFunc</span></a> <em class="structfield"><code><a name="Itdb-Playlist.userdata-destroy"></a>userdata_destroy</code></em>;</span></p></td>
+<td>A function to free <span class="type">userdata</span>
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="Itdb-Playlist-Private"></a><h3>Itdb_Playlist_Private</h3>
+<pre class="programlisting">typedef struct {
+    Itdb_Playlist_Mhsd5_Type mhsd5_type;
+} Itdb_Playlist_Private;
+</pre>
+<p>
+</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ItdbPlaylistSortOrder"></a><h3>enum ItdbPlaylistSortOrder</h3>
+<pre class="programlisting">typedef enum {
+    ITDB_PSO_MANUAL = 1,
+/*    ITDB_PSO_UNKNOWN = 2, */
+    ITDB_PSO_TITLE = 3,
+    ITDB_PSO_ALBUM = 4,
+    ITDB_PSO_ARTIST = 5,
+    ITDB_PSO_BITRATE = 6,
+    ITDB_PSO_GENRE = 7,
+    ITDB_PSO_FILETYPE = 8,
+    ITDB_PSO_TIME_MODIFIED = 9,
+    ITDB_PSO_TRACK_NR = 10,
+    ITDB_PSO_SIZE = 11,
+    ITDB_PSO_TIME = 12,  /* ? */
+    ITDB_PSO_YEAR = 13,
+    ITDB_PSO_SAMPLERATE = 14,
+    ITDB_PSO_COMMENT = 15,
+    ITDB_PSO_TIME_ADDED = 16,
+    ITDB_PSO_EQUALIZER = 17, /* ? */
+    ITDB_PSO_COMPOSER = 18,
+/*    ITDB_PSO_UNKNOWN = 19, */
+    ITDB_PSO_PLAYCOUNT = 20,
+    ITDB_PSO_TIME_PLAYED = 21,
+    ITDB_PSO_CD_NR = 22,
+    ITDB_PSO_RATING = 23,
+    ITDB_PSO_RELEASE_DATE = 24, /* used by podcasts */
+    ITDB_PSO_BPM = 25,
+    ITDB_PSO_GROUPING = 26,
+    ITDB_PSO_CATEGORY = 27,
+    ITDB_PSO_DESCRIPTION = 28
+} ItdbPlaylistSortOrder;
+</pre>
+<p>
+Playlist Sort Order
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><a name="ITDB-PSO-MANUAL:CAPS"></a><span class="term"><code class="literal">ITDB_PSO_MANUAL</code></span></p></td>
+<td>Sort by playlist order (manual sort)
+</td>
+</tr>
+<tr>
+<td><p><a name="ITDB-PSO-TITLE:CAPS"></a><span class="term"><code class="literal">ITDB_PSO_TITLE</code></span></p></td>
+<td>Sort by track title
+</td>
+</tr>
+<tr>
+<td><p><a name="ITDB-PSO-ALBUM:CAPS"></a><span class="term"><code class="literal">ITDB_PSO_ALBUM</code></span></p></td>
+<td>Sort by album
+</td>
+</tr>
+<tr>
+<td><p><a name="ITDB-PSO-ARTIST:CAPS"></a><span class="term"><code class="literal">ITDB_PSO_ARTIST</code></span></p></td>
+<td>Sort by artist
+</td>
+</tr>
+<tr>
+<td><p><a name="ITDB-PSO-BITRATE:CAPS"></a><span class="term"><code class="literal">ITDB_PSO_BITRATE</code></span></p></td>
+<td>Sort by bitrate
+</td>
+</tr>
+<tr>
+<td><p><a name="ITDB-PSO-GENRE:CAPS"></a><span class="term"><code class="literal">ITDB_PSO_GENRE</code></span></p></td>
+<td>Sort by genre
+</td>
+</tr>
+<tr>
+<td><p><a name="ITDB-PSO-FILETYPE:CAPS"></a><span class="term"><code class="literal">ITDB_PSO_FILETYPE</code></span></p></td>
+<td>Sort by filetype
+</td>
+</tr>
+<tr>
+<td><p><a name="ITDB-PSO-TIME-MODIFIED:CAPS"></a><span class="term"><code class="literal">ITDB_PSO_TIME_MODIFIED</code></span></p></td>
+<td>Sort by date modified
+</td>
+</tr>
+<tr>
+<td><p><a name="ITDB-PSO-TRACK-NR:CAPS"></a><span class="term"><code class="literal">ITDB_PSO_TRACK_NR</code></span></p></td>
+<td>Sort by track number
+</td>
+</tr>
+<tr>
+<td><p><a name="ITDB-PSO-SIZE:CAPS"></a><span class="term"><code class="literal">ITDB_PSO_SIZE</code></span></p></td>
+<td>Sort by track size
+</td>
+</tr>
+<tr>
+<td><p><a name="ITDB-PSO-TIME:CAPS"></a><span class="term"><code class="literal">ITDB_PSO_TIME</code></span></p></td>
+<td>Sort by track time
+</td>
+</tr>
+<tr>
+<td><p><a name="ITDB-PSO-YEAR:CAPS"></a><span class="term"><code class="literal">ITDB_PSO_YEAR</code></span></p></td>
+<td>Sort by year
+</td>
+</tr>
+<tr>
+<td><p><a name="ITDB-PSO-SAMPLERATE:CAPS"></a><span class="term"><code class="literal">ITDB_PSO_SAMPLERATE</code></span></p></td>
+<td>Sort by samplerate
+</td>
+</tr>
+<tr>
+<td><p><a name="ITDB-PSO-COMMENT:CAPS"></a><span class="term"><code class="literal">ITDB_PSO_COMMENT</code></span></p></td>
+<td>Sort by comments
+</td>
+</tr>
+<tr>
+<td><p><a name="ITDB-PSO-TIME-ADDED:CAPS"></a><span class="term"><code class="literal">ITDB_PSO_TIME_ADDED</code></span></p></td>
+<td>Sort by date added
+</td>
+</tr>
+<tr>
+<td><p><a name="ITDB-PSO-EQUALIZER:CAPS"></a><span class="term"><code class="literal">ITDB_PSO_EQUALIZER</code></span></p></td>
+<td>Sort by equilizer
+</td>
+</tr>
+<tr>
+<td><p><a name="ITDB-PSO-COMPOSER:CAPS"></a><span class="term"><code class="literal">ITDB_PSO_COMPOSER</code></span></p></td>
+<td>Sort by composer
+</td>
+</tr>
+<tr>
+<td><p><a name="ITDB-PSO-PLAYCOUNT:CAPS"></a><span class="term"><code class="literal">ITDB_PSO_PLAYCOUNT</code></span></p></td>
+<td>Sort by playcount
+</td>
+</tr>
+<tr>
+<td><p><a name="ITDB-PSO-TIME-PLAYED:CAPS"></a><span class="term"><code class="literal">ITDB_PSO_TIME_PLAYED</code></span></p></td>
+<td>Sort by date last played
+</td>
+</tr>
+<tr>
+<td><p><a name="ITDB-PSO-CD-NR:CAPS"></a><span class="term"><code class="literal">ITDB_PSO_CD_NR</code></span></p></td>
+<td>Sort by disc number
+</td>
+</tr>
+<tr>
+<td><p><a name="ITDB-PSO-RATING:CAPS"></a><span class="term"><code class="literal">ITDB_PSO_RATING</code></span></p></td>
+<td>Sort by rating
+</td>
+</tr>
+<tr>
+<td><p><a name="ITDB-PSO-RELEASE-DATE:CAPS"></a><span class="term"><code class="literal">ITDB_PSO_RELEASE_DATE</code></span></p></td>
+<td>Sort by release date
+</td>
+</tr>
+<tr>
+<td><p><a name="ITDB-PSO-BPM:CAPS"></a><span class="term"><code class="literal">ITDB_PSO_BPM</code></span></p></td>
+<td>Sort by beats per minute
+</td>
+</tr>
+<tr>
+<td><p><a name="ITDB-PSO-GROUPING:CAPS"></a><span class="term"><code class="literal">ITDB_PSO_GROUPING</code></span></p></td>
+<td>Sort by grouping
+</td>
+</tr>
+<tr>
+<td><p><a name="ITDB-PSO-CATEGORY:CAPS"></a><span class="term"><code class="literal">ITDB_PSO_CATEGORY</code></span></p></td>
+<td>Sort by category
+</td>
+</tr>
+<tr>
+<td><p><a name="ITDB-PSO-DESCRIPTION:CAPS"></a><span class="term"><code class="literal">ITDB_PSO_DESCRIPTION</code></span></p></td>
+<td>Sort by description
+</td>
+</tr>
+</tbody>
+</table></div>
+<p class="since">Since 0.1.3</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="itdb-playlist-new"></a><h3>itdb_playlist_new ()</h3>
+<pre class="programlisting"><a class="link" href="libgpod-Playlists.html#Itdb-Playlist" title="struct Itdb_Playlist"><span class="returnvalue">Itdb_Playlist</span></a> *     itdb_playlist_new                   (<em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *title</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="type">gboolean</span></a> spl</code></em>);</pre>
+<p>
+Creates a new playlist. If <em class="parameter"><code>spl</code></em> is TRUE, a smart playlist is
+generated. pl-&gt;id is set by <a class="link" href="libgpod-Playlists.html#itdb-playlist-add" title="itdb_playlist_add ()"><code class="function">itdb_playlist_add()</code></a> when the playlist
+is added to an <a class="link" href="libgpod-The-Itdb-iTunesDB-structure.html#Itdb-iTunesDB" title="struct Itdb_iTunesDB"><span class="type">Itdb_iTunesDB</span></a>
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>title</code></em> :</span></p></td>
+<td>playlist title</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>spl</code></em> :</span></p></td>
+<td>smart playlist flag</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>a new <a class="link" href="libgpod-Playlists.html#Itdb-Playlist" title="struct Itdb_Playlist"><span class="type">Itdb_Playlist</span></a> which must be freed with
+<a class="link" href="libgpod-Playlists.html#itdb-playlist-free" title="itdb_playlist_free ()"><code class="function">itdb_playlist_free()</code></a> after use</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="itdb-playlist-free"></a><h3>itdb_playlist_free ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                itdb_playlist_free                  (<em class="parameter"><code><a class="link" href="libgpod-Playlists.html#Itdb-Playlist" title="struct Itdb_Playlist"><span class="type">Itdb_Playlist</span></a> *pl</code></em>);</pre>
+<p>
+Frees the memory used by playlist <em class="parameter"><code>pl</code></em>.
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody><tr>
+<td><p><span class="term"><em class="parameter"><code>pl</code></em> :</span></p></td>
+<td>an <a class="link" href="libgpod-Playlists.html#Itdb-Playlist" title="struct Itdb_Playlist"><span class="type">Itdb_Playlist</span></a>
+</td>
+</tr></tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="itdb-playlist-duplicate"></a><h3>itdb_playlist_duplicate ()</h3>
+<pre class="programlisting"><a class="link" href="libgpod-Playlists.html#Itdb-Playlist" title="struct Itdb_Playlist"><span class="returnvalue">Itdb_Playlist</span></a> *     itdb_playlist_duplicate             (<em class="parameter"><code><a class="link" href="libgpod-Playlists.html#Itdb-Playlist" title="struct Itdb_Playlist"><span class="type">Itdb_Playlist</span></a> *pl</code></em>);</pre>
+<p>
+Duplicates an existing playlist. <em class="parameter"><code>pl_dup-&gt;id</code></em> is set to zero, so
+that it will be set to a unique value when adding it to an
+<a class="link" href="libgpod-The-Itdb-iTunesDB-structure.html#Itdb-iTunesDB" title="struct Itdb_iTunesDB"><span class="type">Itdb_iTunesDB</span></a>. The returned playlist won't be associated with an
+<a class="link" href="libgpod-The-Itdb-iTunesDB-structure.html#Itdb-iTunesDB" title="struct Itdb_iTunesDB"><span class="type">Itdb_iTunesDB</span></a>.
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>pl</code></em> :</span></p></td>
+<td>an <a class="link" href="libgpod-Playlists.html#Itdb-Playlist" title="struct Itdb_Playlist"><span class="type">Itdb_Playlist</span></a>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>a newly allocated <a class="link" href="libgpod-Playlists.html#Itdb-Playlist" title="struct Itdb_Playlist"><span class="type">Itdb_Playlist</span></a> that you'll have to
+free with <a class="link" href="libgpod-Playlists.html#itdb-playlist-free" title="itdb_playlist_free ()"><code class="function">itdb_playlist_free()</code></a> when you no longer need it.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="itdb-playlist-add"></a><h3>itdb_playlist_add ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                itdb_playlist_add                   (<em class="parameter"><code><a class="link" href="libgpod-The-Itdb-iTunesDB-structure.html#Itdb-iTunesDB" title="struct Itdb_iTunesDB"><span class="type">Itdb_iTunesDB</span></a> *itdb</code></em>,
+                                                         <em class="parameter"><code><a class="link" href="libgpod-Playlists.html#Itdb-Playlist" title="struct Itdb_Playlist"><span class="type">Itdb_Playlist</span></a> *pl</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gint32"><span class="type">gint32</span></a> pos</code></em>);</pre>
+<p>
+Adds playlist <em class="parameter"><code>pl</code></em> to the database <em class="parameter"><code>itdb</code></em> at position <em class="parameter"><code>pos</code></em> (-1 for
+"append to end"). A unique id is created if <em class="parameter"><code>pl-&gt;id</code></em> is equal to
+zero. After calling this function, <em class="parameter"><code>itdb</code></em> manages the memory of <em class="parameter"><code>pl</code></em>,
+which means you no longer need to explicitly call
+<a class="link" href="libgpod-Playlists.html#itdb-playlist-free" title="itdb_playlist_free ()"><code class="function">itdb_playlist_free()</code></a>
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>itdb</code></em> :</span></p></td>
+<td>an <a class="link" href="libgpod-The-Itdb-iTunesDB-structure.html#Itdb-iTunesDB" title="struct Itdb_iTunesDB"><span class="type">Itdb_iTunesDB</span></a>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>pl</code></em> :</span></p></td>
+<td>an <a class="link" href="libgpod-Playlists.html#Itdb-Playlist" title="struct Itdb_Playlist"><span class="type">Itdb_Playlist</span></a>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>pos</code></em> :</span></p></td>
+<td>position to insert <em class="parameter"><code>pl</code></em> at</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="itdb-playlist-move"></a><h3>itdb_playlist_move ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                itdb_playlist_move                  (<em class="parameter"><code><a class="link" href="libgpod-Playlists.html#Itdb-Playlist" title="struct Itdb_Playlist"><span class="type">Itdb_Playlist</span></a> *pl</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gint32"><span class="type">gint32</span></a> pos</code></em>);</pre>
+<p>
+Moves playlist <em class="parameter"><code>pl</code></em> to position <em class="parameter"><code>pos</code></em>. -1 will append to the end of the
+list.
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>pl</code></em> :</span></p></td>
+<td>an <a class="link" href="libgpod-Playlists.html#Itdb-Playlist" title="struct Itdb_Playlist"><span class="type">Itdb_Playlist</span></a>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>pos</code></em> :</span></p></td>
+<td>new position</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="itdb-playlist-remove"></a><h3>itdb_playlist_remove ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                itdb_playlist_remove                (<em class="parameter"><code><a class="link" href="libgpod-Playlists.html#Itdb-Playlist" title="struct Itdb_Playlist"><span class="type">Itdb_Playlist</span></a> *pl</code></em>);</pre>
+<p>
+Removes <em class="parameter"><code>pl</code></em> from the <a class="link" href="libgpod-The-Itdb-iTunesDB-structure.html#Itdb-iTunesDB" title="struct Itdb_iTunesDB"><span class="type">Itdb_iTunesDB</span></a> it's associated with
+and frees memory
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody><tr>
+<td><p><span class="term"><em class="parameter"><code>pl</code></em> :</span></p></td>
+<td>an <a class="link" href="libgpod-Playlists.html#Itdb-Playlist" title="struct Itdb_Playlist"><span class="type">Itdb_Playlist</span></a>
+</td>
+</tr></tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="itdb-playlist-unlink"></a><h3>itdb_playlist_unlink ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                itdb_playlist_unlink                (<em class="parameter"><code><a class="link" href="libgpod-Playlists.html#Itdb-Playlist" title="struct Itdb_Playlist"><span class="type">Itdb_Playlist</span></a> *pl</code></em>);</pre>
+<p>
+Remove <em class="parameter"><code>pl</code></em> from the <a class="link" href="libgpod-The-Itdb-iTunesDB-structure.html#Itdb-iTunesDB" title="struct Itdb_iTunesDB"><span class="type">Itdb_iTunesDB</span></a> it's associated with but do not
+free memory. <em class="parameter"><code>pl-&gt;itdb</code></em> is set to NULL after this function returns
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody><tr>
+<td><p><span class="term"><em class="parameter"><code>pl</code></em> :</span></p></td>
+<td>an <a class="link" href="libgpod-Playlists.html#Itdb-Playlist" title="struct Itdb_Playlist"><span class="type">Itdb_Playlist</span></a>
+</td>
+</tr></tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="itdb-playlist-add-track"></a><h3>itdb_playlist_add_track ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                itdb_playlist_add_track             (<em class="parameter"><code><a class="link" href="libgpod-Playlists.html#Itdb-Playlist" title="struct Itdb_Playlist"><span class="type">Itdb_Playlist</span></a> *pl</code></em>,
+                                                         <em class="parameter"><code><a class="link" href="libgpod-Tracks.html#Itdb-Track" title="struct Itdb_Track"><span class="type">Itdb_Track</span></a> *track</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gint32"><span class="type">gint32</span></a> pos</code></em>);</pre>
+<p>
+Adds <em class="parameter"><code>track</code></em> to <em class="parameter"><code>pl</code></em> at position <em class="parameter"><code>pos</code></em> (-1 to append at the end)
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>pl</code></em> :</span></p></td>
+<td>an <a class="link" href="libgpod-Playlists.html#Itdb-Playlist" title="struct Itdb_Playlist"><span class="type">Itdb_Playlist</span></a>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>track</code></em> :</span></p></td>
+<td>an <a class="link" href="libgpod-Tracks.html#Itdb-Track" title="struct Itdb_Track"><span class="type">Itdb_Track</span></a>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>pos</code></em> :</span></p></td>
+<td>position to insert <em class="parameter"><code>track</code></em> at</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="itdb-playlist-remove-track"></a><h3>itdb_playlist_remove_track ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                itdb_playlist_remove_track          (<em class="parameter"><code><a class="link" href="libgpod-Playlists.html#Itdb-Playlist" title="struct Itdb_Playlist"><span class="type">Itdb_Playlist</span></a> *pl</code></em>,
+                                                         <em class="parameter"><code><a class="link" href="libgpod-Tracks.html#Itdb-Track" title="struct Itdb_Track"><span class="type">Itdb_Track</span></a> *track</code></em>);</pre>
+<p>
+Removes <em class="parameter"><code>track</code></em> from <em class="parameter"><code>pl</code></em>. If <em class="parameter"><code>pl</code></em> is NULL, removes <em class="parameter"><code>track</code></em> from the
+master playlist. If <em class="parameter"><code>track</code></em> can't be found in <em class="parameter"><code>pl</code></em>, nothing happens.
+If after removing <em class="parameter"><code>track</code></em>, <em class="parameter"><code>pl</code></em> is empty, it's not removed from the
+database The memory used by <em class="parameter"><code>track</code></em> isn't freed.
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>pl</code></em> :</span></p></td>
+<td>an <a class="link" href="libgpod-Playlists.html#Itdb-Playlist" title="struct Itdb_Playlist"><span class="type">Itdb_Playlist</span></a>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>track</code></em> :</span></p></td>
+<td>an <a class="link" href="libgpod-Tracks.html#Itdb-Track" title="struct Itdb_Track"><span class="type">Itdb_Track</span></a>
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="itdb-playlist-contains-track"></a><h3>itdb_playlist_contains_track ()</h3>
+<pre class="programlisting"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            itdb_playlist_contains_track        (<em class="parameter"><code><a class="link" href="libgpod-Playlists.html#Itdb-Playlist" title="struct Itdb_Playlist"><span class="type">Itdb_Playlist</span></a> *pl</code></em>,
+                                                         <em class="parameter"><code><a class="link" href="libgpod-Tracks.html#Itdb-Track" title="struct Itdb_Track"><span class="type">Itdb_Track</span></a> *track</code></em>);</pre>
+<p>
+Checks if <em class="parameter"><code>track</code></em> is in <em class="parameter"><code>pl</code></em>
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>pl</code></em> :</span></p></td>
+<td>an <a class="link" href="libgpod-Playlists.html#Itdb-Playlist" title="struct Itdb_Playlist"><span class="type">Itdb_Playlist</span></a>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>track</code></em> :</span></p></td>
+<td>an <a class="link" href="libgpod-Tracks.html#Itdb-Track" title="struct Itdb_Track"><span class="type">Itdb_Track</span></a>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>TRUE if <em class="parameter"><code>track</code></em> is in <em class="parameter"><code>pl</code></em>, FALSE otherwise</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="itdb-playlist-contain-track-number"></a><h3>itdb_playlist_contain_track_number ()</h3>
+<pre class="programlisting"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint32"><span class="returnvalue">guint32</span></a>             itdb_playlist_contain_track_number  (<em class="parameter"><code><a class="link" href="libgpod-Tracks.html#Itdb-Track" title="struct Itdb_Track"><span class="type">Itdb_Track</span></a> *tr</code></em>);</pre>
+<p>
+Counts the number of playlist <em class="parameter"><code>track</code></em> is a member of (not including
+the master playlist)
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>tr</code></em> :</span></p></td>
+<td>an <a class="link" href="libgpod-Tracks.html#Itdb-Track" title="struct Itdb_Track"><span class="type">Itdb_Track</span></a>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>the number of playlist containing <em class="parameter"><code>track</code></em>
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="itdb-playlist-tracks-number"></a><h3>itdb_playlist_tracks_number ()</h3>
+<pre class="programlisting"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint32"><span class="returnvalue">guint32</span></a>             itdb_playlist_tracks_number         (<em class="parameter"><code><a class="link" href="libgpod-Playlists.html#Itdb-Playlist" title="struct Itdb_Playlist"><span class="type">Itdb_Playlist</span></a> *pl</code></em>);</pre>
+<p>
+Counts the number of tracks in <em class="parameter"><code>pl</code></em>
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>pl</code></em> :</span></p></td>
+<td>an <a class="link" href="libgpod-Playlists.html#Itdb-Playlist" title="struct Itdb_Playlist"><span class="type">Itdb_Playlist</span></a>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>the number of tracks in <em class="parameter"><code>pl</code></em>
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="itdb-playlist-mpl"></a><h3>itdb_playlist_mpl ()</h3>
+<pre class="programlisting"><a class="link" href="libgpod-Playlists.html#Itdb-Playlist" title="struct Itdb_Playlist"><span class="returnvalue">Itdb_Playlist</span></a> *     itdb_playlist_mpl                   (<em class="parameter"><code><a class="link" href="libgpod-The-Itdb-iTunesDB-structure.html#Itdb-iTunesDB" title="struct Itdb_iTunesDB"><span class="type">Itdb_iTunesDB</span></a> *itdb</code></em>);</pre>
+<p>
+Gets the master playlist of <em class="parameter"><code>itdb</code></em>
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>itdb</code></em> :</span></p></td>
+<td>an <a class="link" href="libgpod-The-Itdb-iTunesDB-structure.html#Itdb-iTunesDB" title="struct Itdb_iTunesDB"><span class="type">Itdb_iTunesDB</span></a>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>the master playlist of <em class="parameter"><code>itdb</code></em>
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="itdb-playlist-is-mpl"></a><h3>itdb_playlist_is_mpl ()</h3>
+<pre class="programlisting"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            itdb_playlist_is_mpl                (<em class="parameter"><code><a class="link" href="libgpod-Playlists.html#Itdb-Playlist" title="struct Itdb_Playlist"><span class="type">Itdb_Playlist</span></a> *pl</code></em>);</pre>
+<p>
+Checks if <em class="parameter"><code>pl</code></em> is the master playlist
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>pl</code></em> :</span></p></td>
+<td>an <a class="link" href="libgpod-Playlists.html#Itdb-Playlist" title="struct Itdb_Playlist"><span class="type">Itdb_Playlist</span></a>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>TRUE if <em class="parameter"><code>pl</code></em> is the master playlist, FALSE otherwise</td>
+</tr>
+</tbody>
+</table></div>
+<p class="since">Since 0.1.6</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="itdb-playlist-set-mpl"></a><h3>itdb_playlist_set_mpl ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                itdb_playlist_set_mpl               (<em class="parameter"><code><a class="link" href="libgpod-Playlists.html#Itdb-Playlist" title="struct Itdb_Playlist"><span class="type">Itdb_Playlist</span></a> *pl</code></em>);</pre>
+<p>
+Sets <em class="parameter"><code>pl</code></em> to be a master playlist
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody><tr>
+<td><p><span class="term"><em class="parameter"><code>pl</code></em> :</span></p></td>
+<td>an <a class="link" href="libgpod-Playlists.html#Itdb-Playlist" title="struct Itdb_Playlist"><span class="type">Itdb_Playlist</span></a>
+</td>
+</tr></tbody>
+</table></div>
+<p class="since">Since 0.2.0</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="itdb-playlist-podcasts"></a><h3>itdb_playlist_podcasts ()</h3>
+<pre class="programlisting"><a class="link" href="libgpod-Playlists.html#Itdb-Playlist" title="struct Itdb_Playlist"><span class="returnvalue">Itdb_Playlist</span></a> *     itdb_playlist_podcasts              (<em class="parameter"><code><a class="link" href="libgpod-The-Itdb-iTunesDB-structure.html#Itdb-iTunesDB" title="struct Itdb_iTunesDB"><span class="type">Itdb_iTunesDB</span></a> *itdb</code></em>);</pre>
+<p>
+Gets the podcasts playlist of <em class="parameter"><code>itdb</code></em>
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>itdb</code></em> :</span></p></td>
+<td>an <a class="link" href="libgpod-The-Itdb-iTunesDB-structure.html#Itdb-iTunesDB" title="struct Itdb_iTunesDB"><span class="type">Itdb_iTunesDB</span></a>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>the podcasts playlist of <em class="parameter"><code>itdb</code></em>, or NULL if there is
+not one</td>
+</tr>
+</tbody>
+</table></div>
+<p class="since">Since 0.1.6</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="itdb-playlist-is-podcasts"></a><h3>itdb_playlist_is_podcasts ()</h3>
+<pre class="programlisting"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            itdb_playlist_is_podcasts           (<em class="parameter"><code><a class="link" href="libgpod-Playlists.html#Itdb-Playlist" title="struct Itdb_Playlist"><span class="type">Itdb_Playlist</span></a> *pl</code></em>);</pre>
+<p>
+Checks if <em class="parameter"><code>pl</code></em> is the podcasts playlist
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>pl</code></em> :</span></p></td>
+<td>an <a class="link" href="libgpod-Playlists.html#Itdb-Playlist" title="struct Itdb_Playlist"><span class="type">Itdb_Playlist</span></a>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>TRUE if <em class="parameter"><code>pl</code></em> is the podcasts playlist, FALSE otherwise</td>
+</tr>
+</tbody>
+</table></div>
+<p class="since">Since 0.1.6</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="itdb-playlist-set-podcasts"></a><h3>itdb_playlist_set_podcasts ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                itdb_playlist_set_podcasts          (<em class="parameter"><code><a class="link" href="libgpod-Playlists.html#Itdb-Playlist" title="struct Itdb_Playlist"><span class="type">Itdb_Playlist</span></a> *pl</code></em>);</pre>
+<p>
+Set <em class="parameter"><code>pl</code></em> to be a podcasts playlist
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody><tr>
+<td><p><span class="term"><em class="parameter"><code>pl</code></em> :</span></p></td>
+<td>an <a class="link" href="libgpod-Playlists.html#Itdb-Playlist" title="struct Itdb_Playlist"><span class="type">Itdb_Playlist</span></a>
+</td>
+</tr></tbody>
+</table></div>
+<p class="since">Since 0.2.0</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="itdb-playlist-exists"></a><h3>itdb_playlist_exists ()</h3>
+<pre class="programlisting"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            itdb_playlist_exists                (<em class="parameter"><code><a class="link" href="libgpod-The-Itdb-iTunesDB-structure.html#Itdb-iTunesDB" title="struct Itdb_iTunesDB"><span class="type">Itdb_iTunesDB</span></a> *itdb</code></em>,
+                                                         <em class="parameter"><code><a class="link" href="libgpod-Playlists.html#Itdb-Playlist" title="struct Itdb_Playlist"><span class="type">Itdb_Playlist</span></a> *pl</code></em>);</pre>
+<p>
+Checks if <em class="parameter"><code>pl</code></em> is present in <em class="parameter"><code>itdb</code></em>
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>itdb</code></em> :</span></p></td>
+<td>an <a class="link" href="libgpod-The-Itdb-iTunesDB-structure.html#Itdb-iTunesDB" title="struct Itdb_iTunesDB"><span class="type">Itdb_iTunesDB</span></a>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>pl</code></em> :</span></p></td>
+<td>an <a class="link" href="libgpod-Playlists.html#Itdb-Playlist" title="struct Itdb_Playlist"><span class="type">Itdb_Playlist</span></a>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>TRUE if <em class="parameter"><code>pl</code></em> exists in <em class="parameter"><code>itdb</code></em>, FALSE otherwise</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="itdb-playlist-by-id"></a><h3>itdb_playlist_by_id ()</h3>
+<pre class="programlisting"><a class="link" href="libgpod-Playlists.html#Itdb-Playlist" title="struct Itdb_Playlist"><span class="returnvalue">Itdb_Playlist</span></a> *     itdb_playlist_by_id                 (<em class="parameter"><code><a class="link" href="libgpod-The-Itdb-iTunesDB-structure.html#Itdb-iTunesDB" title="struct Itdb_iTunesDB"><span class="type">Itdb_iTunesDB</span></a> *itdb</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint64"><span class="type">guint64</span></a> id</code></em>);</pre>
+<p>
+Looks up a playlist whose ID is <em class="parameter"><code>id</code></em>
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>itdb</code></em> :</span></p></td>
+<td>an <a class="link" href="libgpod-The-Itdb-iTunesDB-structure.html#Itdb-iTunesDB" title="struct Itdb_iTunesDB"><span class="type">Itdb_iTunesDB</span></a>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>id</code></em> :</span></p></td>
+<td>ID of the playlist to look for</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>the <a class="link" href="libgpod-Playlists.html#Itdb-Playlist" title="struct Itdb_Playlist"><span class="type">Itdb_Playlist</span></a> with ID <em class="parameter"><code>id</code></em> or NULL if there is no
+such playlist.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="itdb-playlist-by-nr"></a><h3>itdb_playlist_by_nr ()</h3>
+<pre class="programlisting"><a class="link" href="libgpod-Playlists.html#Itdb-Playlist" title="struct Itdb_Playlist"><span class="returnvalue">Itdb_Playlist</span></a> *     itdb_playlist_by_nr                 (<em class="parameter"><code><a class="link" href="libgpod-The-Itdb-iTunesDB-structure.html#Itdb-iTunesDB" title="struct Itdb_iTunesDB"><span class="type">Itdb_iTunesDB</span></a> *itdb</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint32"><span class="type">guint32</span></a> num</code></em>);</pre>
+<p>
+Gets the playlist at the given position in <em class="parameter"><code>itdb</code></em>
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>itdb</code></em> :</span></p></td>
+<td>an <a class="link" href="libgpod-The-Itdb-iTunesDB-structure.html#Itdb-iTunesDB" title="struct Itdb_iTunesDB"><span class="type">Itdb_iTunesDB</span></a>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>num</code></em> :</span></p></td>
+<td>the position of the playlist, counting from 0</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>the <a class="link" href="libgpod-Playlists.html#Itdb-Playlist" title="struct Itdb_Playlist"><span class="type">Itdb_Playlist</span></a>, or NULL if there is no playlist
+at <em class="parameter"><code>pos</code></em>
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="itdb-playlist-by-name"></a><h3>itdb_playlist_by_name ()</h3>
+<pre class="programlisting"><a class="link" href="libgpod-Playlists.html#Itdb-Playlist" title="struct Itdb_Playlist"><span class="returnvalue">Itdb_Playlist</span></a> *     itdb_playlist_by_name               (<em class="parameter"><code><a class="link" href="libgpod-The-Itdb-iTunesDB-structure.html#Itdb-iTunesDB" title="struct Itdb_iTunesDB"><span class="type">Itdb_iTunesDB</span></a> *itdb</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *name</code></em>);</pre>
+<p>
+Searches a playlist whose name is <em class="parameter"><code>name</code></em> in <em class="parameter"><code>itdb</code></em>
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>itdb</code></em> :</span></p></td>
+<td>an <a class="link" href="libgpod-The-Itdb-iTunesDB-structure.html#Itdb-iTunesDB" title="struct Itdb_iTunesDB"><span class="type">Itdb_iTunesDB</span></a>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>name</code></em> :</span></p></td>
+<td>name of the playlist to look for</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>the first <a class="link" href="libgpod-Playlists.html#Itdb-Playlist" title="struct Itdb_Playlist"><span class="type">Itdb_Playlist</span></a> with name <em class="parameter"><code>name</code></em>, NULL if
+there is no such playlist</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="itdb-playlist-randomize"></a><h3>itdb_playlist_randomize ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                itdb_playlist_randomize             (<em class="parameter"><code><a class="link" href="libgpod-Playlists.html#Itdb-Playlist" title="struct Itdb_Playlist"><span class="type">Itdb_Playlist</span></a> *pl</code></em>);</pre>
+<p>
+Randomizes <em class="parameter"><code>pl</code></em>
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody><tr>
+<td><p><span class="term"><em class="parameter"><code>pl</code></em> :</span></p></td>
+<td>an <a class="link" href="libgpod-Playlists.html#Itdb-Playlist" title="struct Itdb_Playlist"><span class="type">Itdb_Playlist</span></a> to randomize</td>
+</tr></tbody>
+</table></div>
+</div>
+</div>
+</div>
+<div class="footer">
+<hr>
+          Generated by GTK-Doc V1.19</div>
+</body>
+</html>

@@ -1,0 +1,1272 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Device</title>
+<meta name="generator" content="DocBook XSL Stylesheets V1.78.1">
+<link rel="home" href="index.html" title="libgpod Reference Manual">
+<link rel="up" href="ch01.html" title="iPod database components">
+<link rel="prev" href="libgpod-Chapter-Data.html" title="Chapter Data">
+<link rel="next" href="photodb.html" title="Part II. Photo database">
+<meta name="generator" content="GTK-Doc V1.19 (XML mode)">
+<link rel="stylesheet" href="style.css" type="text/css">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<table class="navigation" id="top" width="100%" summary="Navigation header" cellpadding="2" cellspacing="2">
+<tr valign="middle">
+<td><a accesskey="p" href="libgpod-Chapter-Data.html"><img src="left.png" width="24" height="24" border="0" alt="Prev"></a></td>
+<td><a accesskey="u" href="ch01.html"><img src="up.png" width="24" height="24" border="0" alt="Up"></a></td>
+<td><a accesskey="h" href="index.html"><img src="home.png" width="24" height="24" border="0" alt="Home"></a></td>
+<th width="100%" align="center">libgpod Reference Manual</th>
+<td><a accesskey="n" href="photodb.html"><img src="right.png" width="24" height="24" border="0" alt="Next"></a></td>
+</tr>
+<tr><td colspan="5" class="shortcuts">
+<a href="#libgpod-Device.synopsis" class="shortcut">Top</a>
+                   | 
+                  <a href="#libgpod-Device.description" class="shortcut">Description</a>
+</td></tr>
+</table>
+<div class="refentry">
+<a name="libgpod-Device"></a><div class="titlepage"></div>
+<div class="refnamediv"><table width="100%"><tr>
+<td valign="top">
+<h2><span class="refentrytitle"><a name="libgpod-Device.top_of_page"></a>Device</span></h2>
+<p>Device — Data structure holding information about the iPod (model, mount point, etc.)</p>
+</td>
+<td valign="top" align="right"></td>
+</tr></table></div>
+<div class="refsynopsisdiv">
+<a name="libgpod-Device.synopsis"></a><h2>Synopsis</h2>
+<pre class="synopsis">                    <a class="link" href="libgpod-Device.html#Itdb-Device" title="Itdb_Device">Itdb_Device</a>;
+<a class="link" href="libgpod-Device.html#Itdb-Device" title="Itdb_Device"><span class="returnvalue">Itdb_Device</span></a> *       <a class="link" href="libgpod-Device.html#itdb-device-new" title="itdb_device_new ()">itdb_device_new</a>                     (<em class="parameter"><code><span class="type">void</span></code></em>);
+<span class="returnvalue">void</span>                <a class="link" href="libgpod-Device.html#itdb-device-free" title="itdb_device_free ()">itdb_device_free</a>                    (<em class="parameter"><code><a class="link" href="libgpod-Device.html#Itdb-Device" title="Itdb_Device"><span class="type">Itdb_Device</span></a> *device</code></em>);
+<span class="returnvalue">void</span>                <a class="link" href="libgpod-Device.html#itdb-device-set-mountpoint" title="itdb_device_set_mountpoint ()">itdb_device_set_mountpoint</a>          (<em class="parameter"><code><a class="link" href="libgpod-Device.html#Itdb-Device" title="Itdb_Device"><span class="type">Itdb_Device</span></a> *device</code></em>,
+                                                         <em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *mp</code></em>);
+<a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            <a class="link" href="libgpod-Device.html#itdb-device-supports-artwork" title="itdb_device_supports_artwork ()">itdb_device_supports_artwork</a>        (<em class="parameter"><code>const <a class="link" href="libgpod-Device.html#Itdb-Device" title="Itdb_Device"><span class="type">Itdb_Device</span></a> *device</code></em>);
+<a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            <a class="link" href="libgpod-Device.html#itdb-device-supports-chapter-image" title="itdb_device_supports_chapter_image ()">itdb_device_supports_chapter_image</a>  (<em class="parameter"><code>const <a class="link" href="libgpod-Device.html#Itdb-Device" title="Itdb_Device"><span class="type">Itdb_Device</span></a> *device</code></em>);
+<a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            <a class="link" href="libgpod-Device.html#itdb-device-supports-photo" title="itdb_device_supports_photo ()">itdb_device_supports_photo</a>          (<em class="parameter"><code>const <a class="link" href="libgpod-Device.html#Itdb-Device" title="Itdb_Device"><span class="type">Itdb_Device</span></a> *device</code></em>);
+<a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            <a class="link" href="libgpod-Device.html#itdb-device-supports-podcast" title="itdb_device_supports_podcast ()">itdb_device_supports_podcast</a>        (<em class="parameter"><code>const <a class="link" href="libgpod-Device.html#Itdb-Device" title="Itdb_Device"><span class="type">Itdb_Device</span></a> *device</code></em>);
+<a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            <a class="link" href="libgpod-Device.html#itdb-device-supports-video" title="itdb_device_supports_video ()">itdb_device_supports_video</a>          (<em class="parameter"><code>const <a class="link" href="libgpod-Device.html#Itdb-Device" title="Itdb_Device"><span class="type">Itdb_Device</span></a> *device</code></em>);
+struct              <a class="link" href="libgpod-Device.html#Itdb-IpodInfo" title="struct Itdb_IpodInfo">Itdb_IpodInfo</a>;
+const <a class="link" href="libgpod-Device.html#Itdb-IpodInfo" title="struct Itdb_IpodInfo"><span class="returnvalue">Itdb_IpodInfo</span></a> * <a class="link" href="libgpod-Device.html#itdb-device-get-ipod-info" title="itdb_device_get_ipod_info ()">itdb_device_get_ipod_info</a>         (<em class="parameter"><code>const <a class="link" href="libgpod-Device.html#Itdb-Device" title="Itdb_Device"><span class="type">Itdb_Device</span></a> *device</code></em>);
+const <a class="link" href="libgpod-Device.html#Itdb-IpodInfo" title="struct Itdb_IpodInfo"><span class="returnvalue">Itdb_IpodInfo</span></a> * <a class="link" href="libgpod-Device.html#itdb-info-get-ipod-info-table" title="itdb_info_get_ipod_info_table ()">itdb_info_get_ipod_info_table</a>     (<em class="parameter"><code><span class="type">void</span></code></em>);
+enum                <a class="link" href="libgpod-Device.html#Itdb-IpodGeneration" title="enum Itdb_IpodGeneration">Itdb_IpodGeneration</a>;
+const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="returnvalue">gchar</span></a> *       <a class="link" href="libgpod-Device.html#itdb-info-get-ipod-generation-string" title="itdb_info_get_ipod_generation_string ()">itdb_info_get_ipod_generation_string</a>
+                                                        (<em class="parameter"><code><a class="link" href="libgpod-Device.html#Itdb-IpodGeneration" title="enum Itdb_IpodGeneration"><span class="type">Itdb_IpodGeneration</span></a> generation</code></em>);
+enum                <a class="link" href="libgpod-Device.html#Itdb-IpodModel" title="enum Itdb_IpodModel">Itdb_IpodModel</a>;
+const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="returnvalue">gchar</span></a> *       <a class="link" href="libgpod-Device.html#itdb-info-get-ipod-model-name-string" title="itdb_info_get_ipod_model_name_string ()">itdb_info_get_ipod_model_name_string</a>
+                                                        (<em class="parameter"><code><a class="link" href="libgpod-Device.html#Itdb-IpodModel" title="enum Itdb_IpodModel"><span class="type">Itdb_IpodModel</span></a> model</code></em>);
+                    <a class="link" href="libgpod-Device.html#Itdb-ArtworkFormat" title="Itdb_ArtworkFormat">Itdb_ArtworkFormat</a>;
+<a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            <a class="link" href="libgpod-Device.html#itdb-device-read-sysinfo" title="itdb_device_read_sysinfo ()">itdb_device_read_sysinfo</a>            (<em class="parameter"><code><a class="link" href="libgpod-Device.html#Itdb-Device" title="Itdb_Device"><span class="type">Itdb_Device</span></a> *device</code></em>);
+<a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="returnvalue">gchar</span></a> *             <a class="link" href="libgpod-Device.html#itdb-device-get-sysinfo" title="itdb_device_get_sysinfo ()">itdb_device_get_sysinfo</a>             (<em class="parameter"><code>const <a class="link" href="libgpod-Device.html#Itdb-Device" title="Itdb_Device"><span class="type">Itdb_Device</span></a> *device</code></em>,
+                                                         <em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *field</code></em>);
+<span class="returnvalue">void</span>                <a class="link" href="libgpod-Device.html#itdb-device-set-sysinfo" title="itdb_device_set_sysinfo ()">itdb_device_set_sysinfo</a>             (<em class="parameter"><code><a class="link" href="libgpod-Device.html#Itdb-Device" title="Itdb_Device"><span class="type">Itdb_Device</span></a> *device</code></em>,
+                                                         <em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *field</code></em>,
+                                                         <em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *value</code></em>);
+<a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            <a class="link" href="libgpod-Device.html#itdb-device-write-sysinfo" title="itdb_device_write_sysinfo ()">itdb_device_write_sysinfo</a>           (<em class="parameter"><code><a class="link" href="libgpod-Device.html#Itdb-Device" title="Itdb_Device"><span class="type">Itdb_Device</span></a> *device</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Error-Reporting.html#GError"><span class="type">GError</span></a> **error</code></em>);
+</pre>
+</div>
+<div class="refsect1">
+<a name="libgpod-Device.description"></a><h2>Description</h2>
+<p>
+These functions are for reading and setting information about the iPod.
+</p>
+</div>
+<div class="refsect1">
+<a name="libgpod-Device.details"></a><h2>Details</h2>
+<div class="refsect2">
+<a name="Itdb-Device"></a><h3>Itdb_Device</h3>
+<pre class="programlisting">typedef struct {
+    gchar *mountpoint;
+    gint   musicdirs;
+    guint  byte_order;
+    GHashTable *sysinfo;
+    SysInfoIpodProperties *sysinfo_extended;
+    gboolean sysinfo_changed;
+    gint timezone_shift;
+    void *iphone_sync_context;
+    int iphone_sync_nest_level;
+} Itdb_Device;
+</pre>
+<p>
+Structure representing an iPod device
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *<em class="structfield"><code><a name="Itdb-Device.mountpoint"></a>mountpoint</code></em>;</span></p></td>
+<td>The mountpoint of the iPod</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gint"><span class="type">gint</span></a> <em class="structfield"><code><a name="Itdb-Device.musicdirs"></a>musicdirs</code></em>;</span></p></td>
+<td>The number of /iPod_Control/Music/F.. dirs</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint"><span class="type">guint</span></a> <em class="structfield"><code><a name="Itdb-Device.byte-order"></a>byte_order</code></em>;</span></p></td>
+<td>G_LITTLE_ENDIAN "regular" endianness G_BIG_ENDIAN
+"reversed" endianness (e.g. mobile phone iTunesDBs)</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Hash-Tables.html#GHashTable"><span class="type">GHashTable</span></a> *<em class="structfield"><code><a name="Itdb-Device.sysinfo"></a>sysinfo</code></em>;</span></p></td>
+<td>A hash with key/value pairs of all entries in
+Device/SysInfo</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="type">SysInfoIpodProperties</span> *<em class="structfield"><code><a name="Itdb-Device.sysinfo-extended"></a>sysinfo_extended</code></em>;</span></p></td>
+<td>The parsed content of SysInfoExtended, which can be NULL</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="type">gboolean</span></a> <em class="structfield"><code><a name="Itdb-Device.sysinfo-changed"></a>sysinfo_changed</code></em>;</span></p></td>
+<td>True if the sysinfo hash been changed by the user, false
+otherwise.  (see <code class="function">itdb_set_sysinfo()</code>)</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gint"><span class="type">gint</span></a> <em class="structfield"><code><a name="Itdb-Device.timezone-shift"></a>timezone_shift</code></em>;</span></p></td>
+<td>The difference in seconds between the current timezone
+and UTC</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="type">void</span> *<em class="structfield"><code><a name="Itdb-Device.iphone-sync-context"></a>iphone_sync_context</code></em>;</span></p></td>
+<td>Private data passed as is to libimobiledevice by
+itdb_start/stop_sync</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="type">int</span> <em class="structfield"><code><a name="Itdb-Device.iphone-sync-nest-level"></a>iphone_sync_nest_level</code></em>;</span></p></td>
+<td>Nesting count for itdb_start/stop_sync calls
+itdb_start/stop_sync</td>
+</tr>
+</tbody>
+</table></div>
+<p class="since">Since 0.4.0</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="itdb-device-new"></a><h3>itdb_device_new ()</h3>
+<pre class="programlisting"><a class="link" href="libgpod-Device.html#Itdb-Device" title="Itdb_Device"><span class="returnvalue">Itdb_Device</span></a> *       itdb_device_new                     (<em class="parameter"><code><span class="type">void</span></code></em>);</pre>
+<p>
+Creates a new <a class="link" href="libgpod-Device.html#Itdb-Device" title="Itdb_Device"><span class="type">Itdb_Device</span></a> structure
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody><tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>a newly allocated <a class="link" href="libgpod-Device.html#Itdb-Device" title="Itdb_Device"><span class="type">Itdb_Device</span></a> which must be freed with
+<a class="link" href="libgpod-Device.html#itdb-device-free" title="itdb_device_free ()"><code class="function">itdb_device_free()</code></a> when no longer needed</td>
+</tr></tbody>
+</table></div>
+<p class="since">Since 0.4.0</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="itdb-device-free"></a><h3>itdb_device_free ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                itdb_device_free                    (<em class="parameter"><code><a class="link" href="libgpod-Device.html#Itdb-Device" title="Itdb_Device"><span class="type">Itdb_Device</span></a> *device</code></em>);</pre>
+<p>
+Frees memory used by <em class="parameter"><code>device</code></em>
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody><tr>
+<td><p><span class="term"><em class="parameter"><code>device</code></em> :</span></p></td>
+<td>an <a class="link" href="libgpod-Device.html#Itdb-Device" title="Itdb_Device"><span class="type">Itdb_Device</span></a>
+</td>
+</tr></tbody>
+</table></div>
+<p class="since">Since 0.4.0</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="itdb-device-set-mountpoint"></a><h3>itdb_device_set_mountpoint ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                itdb_device_set_mountpoint          (<em class="parameter"><code><a class="link" href="libgpod-Device.html#Itdb-Device" title="Itdb_Device"><span class="type">Itdb_Device</span></a> *device</code></em>,
+                                                         <em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *mp</code></em>);</pre>
+<p>
+Sets the mountpoint of <em class="parameter"><code>device</code></em> to <em class="parameter"><code>mp</code></em> and update the cached device 
+information (in particular, re-read the SysInfo file)
+</p>
+<p>
+</p>
+<div class="warning" style="margin-left: 0.5in; margin-right: 0.5in;">
+<h3 class="title">Warning</h3>
+<p>Calling this function invalidates all the artwork in the
+<a class="link" href="libgpod-The-Itdb-iTunesDB-structure.html#Itdb-iTunesDB" title="struct Itdb_iTunesDB"><span class="type">Itdb_iTunesDB</span></a> database using this <a class="link" href="libgpod-Device.html#Itdb-Device" title="Itdb_Device"><span class="type">Itdb_Device</span></a>. Trying to access this
+artwork will result in memory corruption. It's recommended to use
+<a class="link" href="libgpod-The-Itdb-iTunesDB-structure.html#itdb-set-mountpoint" title="itdb_set_mountpoint ()"><code class="function">itdb_set_mountpoint()</code></a> instead which will clean the invalidated artwork
+for you.</p>
+</div>
+<p>.
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>device</code></em> :</span></p></td>
+<td>an <a class="link" href="libgpod-Device.html#Itdb-Device" title="Itdb_Device"><span class="type">Itdb_Device</span></a>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>mp</code></em> :</span></p></td>
+<td>the new mount point</td>
+</tr>
+</tbody>
+</table></div>
+<p class="since">Since 0.4.0</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="itdb-device-supports-artwork"></a><h3>itdb_device_supports_artwork ()</h3>
+<pre class="programlisting"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            itdb_device_supports_artwork        (<em class="parameter"><code>const <a class="link" href="libgpod-Device.html#Itdb-Device" title="Itdb_Device"><span class="type">Itdb_Device</span></a> *device</code></em>);</pre>
+<p>
+Indicates whether <em class="parameter"><code>device</code></em> can display artwork or not. When dealing
+with a non-art capable iPod, no artwork data will be written to the
+iPod so you can spare calls to the artwork handling methods.
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>device</code></em> :</span></p></td>
+<td>an <a class="link" href="libgpod-Device.html#Itdb-Device" title="Itdb_Device"><span class="type">Itdb_Device</span></a>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>true if <em class="parameter"><code>device</code></em> can display artwork.</td>
+</tr>
+</tbody>
+</table></div>
+<p class="since">Since 0.5.0</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="itdb-device-supports-chapter-image"></a><h3>itdb_device_supports_chapter_image ()</h3>
+<pre class="programlisting"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            itdb_device_supports_chapter_image  (<em class="parameter"><code>const <a class="link" href="libgpod-Device.html#Itdb-Device" title="Itdb_Device"><span class="type">Itdb_Device</span></a> *device</code></em>);</pre>
+<p>
+Indicates whether <em class="parameter"><code>device</code></em> can display chapter images or not.
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>device</code></em> :</span></p></td>
+<td>an <a class="link" href="libgpod-Device.html#Itdb-Device" title="Itdb_Device"><span class="type">Itdb_Device</span></a>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>true if <em class="parameter"><code>device</code></em> can display chapter images.</td>
+</tr>
+</tbody>
+</table></div>
+<p class="since">Since 0.7.2</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="itdb-device-supports-photo"></a><h3>itdb_device_supports_photo ()</h3>
+<pre class="programlisting"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            itdb_device_supports_photo          (<em class="parameter"><code>const <a class="link" href="libgpod-Device.html#Itdb-Device" title="Itdb_Device"><span class="type">Itdb_Device</span></a> *device</code></em>);</pre>
+<p>
+Indicates whether <em class="parameter"><code>device</code></em> can display photos or not.
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>device</code></em> :</span></p></td>
+<td>an <a class="link" href="libgpod-Device.html#Itdb-Device" title="Itdb_Device"><span class="type">Itdb_Device</span></a>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>true if <em class="parameter"><code>device</code></em> can display photos.</td>
+</tr>
+</tbody>
+</table></div>
+<p class="since">Since 0.5.0</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="itdb-device-supports-podcast"></a><h3>itdb_device_supports_podcast ()</h3>
+<pre class="programlisting"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            itdb_device_supports_podcast        (<em class="parameter"><code>const <a class="link" href="libgpod-Device.html#Itdb-Device" title="Itdb_Device"><span class="type">Itdb_Device</span></a> *device</code></em>);</pre>
+<p>
+Indicates whether <em class="parameter"><code>device</code></em> can play podcasts or not.
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>device</code></em> :</span></p></td>
+<td>an <a class="link" href="libgpod-Device.html#Itdb-Device" title="Itdb_Device"><span class="type">Itdb_Device</span></a>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>true if <em class="parameter"><code>device</code></em> can play podcasts.</td>
+</tr>
+</tbody>
+</table></div>
+<p class="since">Since 0.7.2</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="itdb-device-supports-video"></a><h3>itdb_device_supports_video ()</h3>
+<pre class="programlisting"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            itdb_device_supports_video          (<em class="parameter"><code>const <a class="link" href="libgpod-Device.html#Itdb-Device" title="Itdb_Device"><span class="type">Itdb_Device</span></a> *device</code></em>);</pre>
+<p>
+Indicates whether <em class="parameter"><code>device</code></em> can play videos or not.
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>device</code></em> :</span></p></td>
+<td>an <a class="link" href="libgpod-Device.html#Itdb-Device" title="Itdb_Device"><span class="type">Itdb_Device</span></a>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>true if <em class="parameter"><code>device</code></em> can play videos.</td>
+</tr>
+</tbody>
+</table></div>
+<p class="since">Since 0.7.0</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="Itdb-IpodInfo"></a><h3>struct Itdb_IpodInfo</h3>
+<pre class="programlisting">struct Itdb_IpodInfo {
+    const gchar *model_number;
+    const double capacity;
+    const Itdb_IpodModel ipod_model;
+    const Itdb_IpodGeneration ipod_generation;
+    const guint musicdirs;
+    /* reserved for future use */
+    const gint32 reserved_int1;
+    const gint32 reserved_int2;
+    gconstpointer reserved1;
+    gconstpointer reserved2;
+};
+</pre>
+<p>
+Structure representing information about an iPod
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term">const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *<em class="structfield"><code><a name="Itdb-IpodInfo.model-number"></a>model_number</code></em>;</span></p></td>
+<td>The model number.  This is abbreviated.  If the first
+character is not numeric, it is ommited. e.g.
+"MA350 -&gt; A350", "M9829 -&gt; 9829"</td>
+</tr>
+<tr>
+<td><p><span class="term">const <span class="type">double</span> <em class="structfield"><code><a name="Itdb-IpodInfo.capacity"></a>capacity</code></em>;</span></p></td>
+<td>The iPod's capacity in gigabytes</td>
+</tr>
+<tr>
+<td><p><span class="term">const <a class="link" href="libgpod-Device.html#Itdb-IpodModel" title="enum Itdb_IpodModel"><span class="type">Itdb_IpodModel</span></a> <em class="structfield"><code><a name="Itdb-IpodInfo.ipod-model"></a>ipod_model</code></em>;</span></p></td>
+<td>The iPod model</td>
+</tr>
+<tr>
+<td><p><span class="term">const <a class="link" href="libgpod-Device.html#Itdb-IpodGeneration" title="enum Itdb_IpodGeneration"><span class="type">Itdb_IpodGeneration</span></a> <em class="structfield"><code><a name="Itdb-IpodInfo.ipod-generation"></a>ipod_generation</code></em>;</span></p></td>
+<td>The iPod generation</td>
+</tr>
+<tr>
+<td><p><span class="term">const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint"><span class="type">guint</span></a> <em class="structfield"><code><a name="Itdb-IpodInfo.musicdirs"></a>musicdirs</code></em>;</span></p></td>
+<td>The number of music (Fnn) dirs created by iTunes. The
+exact number seems to be version dependent. Therefore, the
+numbers here represent a mixture of reported values and
+common sense.  Note: this number does not necessarily
+represent the number of dirs present on a particular iPod.
+It is used when setting up a new iPod from scratch.</td>
+</tr>
+<tr>
+<td><p><span class="term">const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gint32"><span class="type">gint32</span></a> <em class="structfield"><code><a name="Itdb-IpodInfo.reserved-int1"></a>reserved_int1</code></em>;</span></p></td>
+<td>Reserved for future use</td>
+</tr>
+<tr>
+<td><p><span class="term">const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gint32"><span class="type">gint32</span></a> <em class="structfield"><code><a name="Itdb-IpodInfo.reserved-int2"></a>reserved_int2</code></em>;</span></p></td>
+<td>Reserved for future use</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gconstpointer"><span class="type">gconstpointer</span></a> <em class="structfield"><code><a name="Itdb-IpodInfo.reserved1"></a>reserved1</code></em>;</span></p></td>
+<td>Reserved for future use</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gconstpointer"><span class="type">gconstpointer</span></a> <em class="structfield"><code><a name="Itdb-IpodInfo.reserved2"></a>reserved2</code></em>;</span></p></td>
+<td>Reserved for future use</td>
+</tr>
+</tbody>
+</table></div>
+<p class="since">Since 0.4.0</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="itdb-device-get-ipod-info"></a><h3>itdb_device_get_ipod_info ()</h3>
+<pre class="programlisting">const <a class="link" href="libgpod-Device.html#Itdb-IpodInfo" title="struct Itdb_IpodInfo"><span class="returnvalue">Itdb_IpodInfo</span></a> * itdb_device_get_ipod_info         (<em class="parameter"><code>const <a class="link" href="libgpod-Device.html#Itdb-Device" title="Itdb_Device"><span class="type">Itdb_Device</span></a> *device</code></em>);</pre>
+<p>
+Retrieve the <a class="link" href="libgpod-Device.html#Itdb-IpodInfo" title="struct Itdb_IpodInfo"><span class="type">Itdb_IpodInfo</span></a> entry for this iPod
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>device</code></em> :</span></p></td>
+<td>an <a class="link" href="libgpod-Device.html#Itdb-Device" title="Itdb_Device"><span class="type">Itdb_Device</span></a>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>the <a class="link" href="libgpod-Device.html#Itdb-IpodInfo" title="struct Itdb_IpodInfo"><span class="type">Itdb_IpodInfo</span></a> entry for this iPod</td>
+</tr>
+</tbody>
+</table></div>
+<p class="since">Since 0.4.0</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="itdb-info-get-ipod-info-table"></a><h3>itdb_info_get_ipod_info_table ()</h3>
+<pre class="programlisting">const <a class="link" href="libgpod-Device.html#Itdb-IpodInfo" title="struct Itdb_IpodInfo"><span class="returnvalue">Itdb_IpodInfo</span></a> * itdb_info_get_ipod_info_table     (<em class="parameter"><code><span class="type">void</span></code></em>);</pre>
+<p>
+Return a pointer to the start of valid iPod model descriptions,
+which is an array of <a class="link" href="libgpod-Device.html#Itdb-IpodInfo" title="struct Itdb_IpodInfo"><span class="type">Itdb_IpodInfo</span></a> entries. This can be useful if you
+want to build a list of all iPod models known to the current libgpod.
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody><tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>a pointer to the array of <a class="link" href="libgpod-Device.html#Itdb-IpodInfo" title="struct Itdb_IpodInfo"><span class="type">Itdb_IpodInfo</span></a> entries.</td>
+</tr></tbody>
+</table></div>
+<p class="since">Since 0.4.0</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="Itdb-IpodGeneration"></a><h3>enum Itdb_IpodGeneration</h3>
+<pre class="programlisting">typedef enum {
+    ITDB_IPOD_GENERATION_UNKNOWN,
+    ITDB_IPOD_GENERATION_FIRST,
+    ITDB_IPOD_GENERATION_SECOND,
+    ITDB_IPOD_GENERATION_THIRD,
+    ITDB_IPOD_GENERATION_FOURTH,
+    ITDB_IPOD_GENERATION_PHOTO,
+    ITDB_IPOD_GENERATION_MOBILE,
+    ITDB_IPOD_GENERATION_MINI_1,
+    ITDB_IPOD_GENERATION_MINI_2,
+    ITDB_IPOD_GENERATION_SHUFFLE_1,
+    ITDB_IPOD_GENERATION_SHUFFLE_2,
+    ITDB_IPOD_GENERATION_SHUFFLE_3,
+    ITDB_IPOD_GENERATION_NANO_1,
+    ITDB_IPOD_GENERATION_NANO_2,
+    ITDB_IPOD_GENERATION_NANO_3,
+    ITDB_IPOD_GENERATION_NANO_4,
+    ITDB_IPOD_GENERATION_VIDEO_1,
+    ITDB_IPOD_GENERATION_VIDEO_2,
+    ITDB_IPOD_GENERATION_CLASSIC_1,
+    ITDB_IPOD_GENERATION_CLASSIC_2,
+    ITDB_IPOD_GENERATION_TOUCH_1,
+    ITDB_IPOD_GENERATION_IPHONE_1,
+    ITDB_IPOD_GENERATION_SHUFFLE_4,
+    ITDB_IPOD_GENERATION_TOUCH_2,
+    ITDB_IPOD_GENERATION_IPHONE_2,
+    ITDB_IPOD_GENERATION_IPHONE_3,
+    ITDB_IPOD_GENERATION_CLASSIC_3,
+    ITDB_IPOD_GENERATION_NANO_5,
+    ITDB_IPOD_GENERATION_TOUCH_3,
+    ITDB_IPOD_GENERATION_IPAD_1,
+    ITDB_IPOD_GENERATION_IPHONE_4,
+    ITDB_IPOD_GENERATION_TOUCH_4,
+    ITDB_IPOD_GENERATION_NANO_6
+} Itdb_IpodGeneration;
+</pre>
+<p>
+iPod generation information
+</p>
+<p>
+See http://support.apple.com/kb/HT1353 and http://en.wikipedia.org/wiki/IPod
+for more details.
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><a name="ITDB-IPOD-GENERATION-UNKNOWN:CAPS"></a><span class="term"><code class="literal">ITDB_IPOD_GENERATION_UNKNOWN</code></span></p></td>
+<td>Unknown iPod
+</td>
+</tr>
+<tr>
+<td><p><a name="ITDB-IPOD-GENERATION-FIRST:CAPS"></a><span class="term"><code class="literal">ITDB_IPOD_GENERATION_FIRST</code></span></p></td>
+<td>First Generation iPod
+</td>
+</tr>
+<tr>
+<td><p><a name="ITDB-IPOD-GENERATION-SECOND:CAPS"></a><span class="term"><code class="literal">ITDB_IPOD_GENERATION_SECOND</code></span></p></td>
+<td>Second Generation iPod
+</td>
+</tr>
+<tr>
+<td><p><a name="ITDB-IPOD-GENERATION-THIRD:CAPS"></a><span class="term"><code class="literal">ITDB_IPOD_GENERATION_THIRD</code></span></p></td>
+<td>Third Generation iPod
+</td>
+</tr>
+<tr>
+<td><p><a name="ITDB-IPOD-GENERATION-FOURTH:CAPS"></a><span class="term"><code class="literal">ITDB_IPOD_GENERATION_FOURTH</code></span></p></td>
+<td>Fourth Generation iPod
+</td>
+</tr>
+<tr>
+<td><p><a name="ITDB-IPOD-GENERATION-PHOTO:CAPS"></a><span class="term"><code class="literal">ITDB_IPOD_GENERATION_PHOTO</code></span></p></td>
+<td>Photo iPod
+</td>
+</tr>
+<tr>
+<td><p><a name="ITDB-IPOD-GENERATION-MOBILE:CAPS"></a><span class="term"><code class="literal">ITDB_IPOD_GENERATION_MOBILE</code></span></p></td>
+<td>Mobile iPod
+</td>
+</tr>
+<tr>
+<td><p><a name="ITDB-IPOD-GENERATION-MINI-1:CAPS"></a><span class="term"><code class="literal">ITDB_IPOD_GENERATION_MINI_1</code></span></p></td>
+<td>First Generation iPod Mini
+</td>
+</tr>
+<tr>
+<td><p><a name="ITDB-IPOD-GENERATION-MINI-2:CAPS"></a><span class="term"><code class="literal">ITDB_IPOD_GENERATION_MINI_2</code></span></p></td>
+<td>Second Generation iPod Mini
+</td>
+</tr>
+<tr>
+<td><p><a name="ITDB-IPOD-GENERATION-SHUFFLE-1:CAPS"></a><span class="term"><code class="literal">ITDB_IPOD_GENERATION_SHUFFLE_1</code></span></p></td>
+<td>First Generation iPod Shuffle
+</td>
+</tr>
+<tr>
+<td><p><a name="ITDB-IPOD-GENERATION-SHUFFLE-2:CAPS"></a><span class="term"><code class="literal">ITDB_IPOD_GENERATION_SHUFFLE_2</code></span></p></td>
+<td>Second Generation iPod Shuffle
+</td>
+</tr>
+<tr>
+<td><p><a name="ITDB-IPOD-GENERATION-SHUFFLE-3:CAPS"></a><span class="term"><code class="literal">ITDB_IPOD_GENERATION_SHUFFLE_3</code></span></p></td>
+<td>Third Generation iPod Shuffle
+</td>
+</tr>
+<tr>
+<td><p><a name="ITDB-IPOD-GENERATION-NANO-1:CAPS"></a><span class="term"><code class="literal">ITDB_IPOD_GENERATION_NANO_1</code></span></p></td>
+<td>First Generation iPod Nano
+</td>
+</tr>
+<tr>
+<td><p><a name="ITDB-IPOD-GENERATION-NANO-2:CAPS"></a><span class="term"><code class="literal">ITDB_IPOD_GENERATION_NANO_2</code></span></p></td>
+<td>Second Generation iPod Nano
+</td>
+</tr>
+<tr>
+<td><p><a name="ITDB-IPOD-GENERATION-NANO-3:CAPS"></a><span class="term"><code class="literal">ITDB_IPOD_GENERATION_NANO_3</code></span></p></td>
+<td>Third Generation iPod Nano
+</td>
+</tr>
+<tr>
+<td><p><a name="ITDB-IPOD-GENERATION-NANO-4:CAPS"></a><span class="term"><code class="literal">ITDB_IPOD_GENERATION_NANO_4</code></span></p></td>
+<td>Fourth Generation iPod Nano
+</td>
+</tr>
+<tr>
+<td><p><a name="ITDB-IPOD-GENERATION-VIDEO-1:CAPS"></a><span class="term"><code class="literal">ITDB_IPOD_GENERATION_VIDEO_1</code></span></p></td>
+<td>First Generation iPod Video (aka 5g)
+</td>
+</tr>
+<tr>
+<td><p><a name="ITDB-IPOD-GENERATION-VIDEO-2:CAPS"></a><span class="term"><code class="literal">ITDB_IPOD_GENERATION_VIDEO_2</code></span></p></td>
+<td>Second Generation iPod Video (aka 5.5g)
+</td>
+</tr>
+<tr>
+<td><p><a name="ITDB-IPOD-GENERATION-CLASSIC-1:CAPS"></a><span class="term"><code class="literal">ITDB_IPOD_GENERATION_CLASSIC_1</code></span></p></td>
+<td>First Generation iPod Classic
+</td>
+</tr>
+<tr>
+<td><p><a name="ITDB-IPOD-GENERATION-CLASSIC-2:CAPS"></a><span class="term"><code class="literal">ITDB_IPOD_GENERATION_CLASSIC_2</code></span></p></td>
+<td>Second Generation iPod Classic
+</td>
+</tr>
+<tr>
+<td><p><a name="ITDB-IPOD-GENERATION-TOUCH-1:CAPS"></a><span class="term"><code class="literal">ITDB_IPOD_GENERATION_TOUCH_1</code></span></p></td>
+<td>First Generation iPod Touch
+</td>
+</tr>
+<tr>
+<td><p><a name="ITDB-IPOD-GENERATION-IPHONE-1:CAPS"></a><span class="term"><code class="literal">ITDB_IPOD_GENERATION_IPHONE_1</code></span></p></td>
+<td>First Generation iPhone
+</td>
+</tr>
+<tr>
+<td><p><a name="ITDB-IPOD-GENERATION-SHUFFLE-4:CAPS"></a><span class="term"><code class="literal">ITDB_IPOD_GENERATION_SHUFFLE_4</code></span></p></td>
+<td>Third Generation iPod Shuffle
+</td>
+</tr>
+<tr>
+<td><p><a name="ITDB-IPOD-GENERATION-TOUCH-2:CAPS"></a><span class="term"><code class="literal">ITDB_IPOD_GENERATION_TOUCH_2</code></span></p></td>
+<td>Second Generation iPod Touch
+</td>
+</tr>
+<tr>
+<td><p><a name="ITDB-IPOD-GENERATION-IPHONE-2:CAPS"></a><span class="term"><code class="literal">ITDB_IPOD_GENERATION_IPHONE_2</code></span></p></td>
+<td>Second Generation iPhone (aka iPhone 3G)
+</td>
+</tr>
+<tr>
+<td><p><a name="ITDB-IPOD-GENERATION-IPHONE-3:CAPS"></a><span class="term"><code class="literal">ITDB_IPOD_GENERATION_IPHONE_3</code></span></p></td>
+<td>Third Generation iPhone (aka iPhone 3GS)
+</td>
+</tr>
+<tr>
+<td><p><a name="ITDB-IPOD-GENERATION-CLASSIC-3:CAPS"></a><span class="term"><code class="literal">ITDB_IPOD_GENERATION_CLASSIC_3</code></span></p></td>
+<td>Third Generation iPod Classic
+</td>
+</tr>
+<tr>
+<td><p><a name="ITDB-IPOD-GENERATION-NANO-5:CAPS"></a><span class="term"><code class="literal">ITDB_IPOD_GENERATION_NANO_5</code></span></p></td>
+<td>Fifth Generation iPod Nano (with camera)
+</td>
+</tr>
+<tr>
+<td><p><a name="ITDB-IPOD-GENERATION-TOUCH-3:CAPS"></a><span class="term"><code class="literal">ITDB_IPOD_GENERATION_TOUCH_3</code></span></p></td>
+<td>Third Generation iPod Touch
+</td>
+</tr>
+<tr>
+<td><p><a name="ITDB-IPOD-GENERATION-IPAD-1:CAPS"></a><span class="term"><code class="literal">ITDB_IPOD_GENERATION_IPAD_1</code></span></p></td>
+<td>
+</td>
+</tr>
+<tr>
+<td><p><a name="ITDB-IPOD-GENERATION-IPHONE-4:CAPS"></a><span class="term"><code class="literal">ITDB_IPOD_GENERATION_IPHONE_4</code></span></p></td>
+<td>Fourth Generation iPhone
+</td>
+</tr>
+<tr>
+<td><p><a name="ITDB-IPOD-GENERATION-TOUCH-4:CAPS"></a><span class="term"><code class="literal">ITDB_IPOD_GENERATION_TOUCH_4</code></span></p></td>
+<td>Fourth Generation iPod Touch
+</td>
+</tr>
+<tr>
+<td><p><a name="ITDB-IPOD-GENERATION-NANO-6:CAPS"></a><span class="term"><code class="literal">ITDB_IPOD_GENERATION_NANO_6</code></span></p></td>
+<td>
+</td>
+</tr>
+</tbody>
+</table></div>
+<p class="since">Since 0.4.0</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="itdb-info-get-ipod-generation-string"></a><h3>itdb_info_get_ipod_generation_string ()</h3>
+<pre class="programlisting">const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="returnvalue">gchar</span></a> *       itdb_info_get_ipod_generation_string
+                                                        (<em class="parameter"><code><a class="link" href="libgpod-Device.html#Itdb-IpodGeneration" title="enum Itdb_IpodGeneration"><span class="type">Itdb_IpodGeneration</span></a> generation</code></em>);</pre>
+<p>
+Return the iPod's generic generation name, like "First Generation",
+"Mobile Phone"...
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>generation</code></em> :</span></p></td>
+<td>an <a class="link" href="libgpod-Device.html#Itdb-IpodGeneration" title="enum Itdb_IpodGeneration"><span class="type">Itdb_IpodGeneration</span></a>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>a pointer to the generation name. This is a static
+string and must not be <a href="http://library.gnome.org/devel/glib/unstable/glib-Memory-Allocation.html#g-free"><code class="function">g_free()</code></a>d.</td>
+</tr>
+</tbody>
+</table></div>
+<p class="since">Since 0.4.0</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="Itdb-IpodModel"></a><h3>enum Itdb_IpodModel</h3>
+<pre class="programlisting">typedef enum {
+    ITDB_IPOD_MODEL_INVALID,
+    ITDB_IPOD_MODEL_UNKNOWN,
+    ITDB_IPOD_MODEL_COLOR,
+    ITDB_IPOD_MODEL_COLOR_U2,
+    ITDB_IPOD_MODEL_REGULAR,
+    ITDB_IPOD_MODEL_REGULAR_U2,
+    ITDB_IPOD_MODEL_MINI,
+    ITDB_IPOD_MODEL_MINI_BLUE,
+    ITDB_IPOD_MODEL_MINI_PINK,
+    ITDB_IPOD_MODEL_MINI_GREEN,
+    ITDB_IPOD_MODEL_MINI_GOLD,
+    ITDB_IPOD_MODEL_SHUFFLE,
+    ITDB_IPOD_MODEL_NANO_WHITE,
+    ITDB_IPOD_MODEL_NANO_BLACK,
+    ITDB_IPOD_MODEL_VIDEO_WHITE,
+    ITDB_IPOD_MODEL_VIDEO_BLACK,
+    ITDB_IPOD_MODEL_MOBILE_1,
+    ITDB_IPOD_MODEL_VIDEO_U2,
+    ITDB_IPOD_MODEL_NANO_SILVER,
+    ITDB_IPOD_MODEL_NANO_BLUE,
+    ITDB_IPOD_MODEL_NANO_GREEN,
+    ITDB_IPOD_MODEL_NANO_PINK,
+    ITDB_IPOD_MODEL_NANO_RED,
+    ITDB_IPOD_MODEL_NANO_YELLOW,
+    ITDB_IPOD_MODEL_NANO_PURPLE,
+    ITDB_IPOD_MODEL_NANO_ORANGE,
+    ITDB_IPOD_MODEL_IPHONE_1,
+    ITDB_IPOD_MODEL_SHUFFLE_SILVER,
+    ITDB_IPOD_MODEL_SHUFFLE_PINK,
+    ITDB_IPOD_MODEL_SHUFFLE_BLUE,
+    ITDB_IPOD_MODEL_SHUFFLE_GREEN,
+    ITDB_IPOD_MODEL_SHUFFLE_ORANGE,
+    ITDB_IPOD_MODEL_SHUFFLE_PURPLE,
+    ITDB_IPOD_MODEL_SHUFFLE_RED,
+    ITDB_IPOD_MODEL_CLASSIC_SILVER,
+    ITDB_IPOD_MODEL_CLASSIC_BLACK,
+    ITDB_IPOD_MODEL_TOUCH_SILVER,
+    ITDB_IPOD_MODEL_SHUFFLE_BLACK,
+    ITDB_IPOD_MODEL_IPHONE_WHITE,
+    ITDB_IPOD_MODEL_IPHONE_BLACK,
+    ITDB_IPOD_MODEL_SHUFFLE_GOLD,
+    ITDB_IPOD_MODEL_SHUFFLE_STAINLESS,
+    ITDB_IPOD_MODEL_IPAD
+} Itdb_IpodModel;
+</pre>
+<p>
+iPod model information
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><a name="ITDB-IPOD-MODEL-INVALID:CAPS"></a><span class="term"><code class="literal">ITDB_IPOD_MODEL_INVALID</code></span></p></td>
+<td>Invalid model
+</td>
+</tr>
+<tr>
+<td><p><a name="ITDB-IPOD-MODEL-UNKNOWN:CAPS"></a><span class="term"><code class="literal">ITDB_IPOD_MODEL_UNKNOWN</code></span></p></td>
+<td>Unknown model
+</td>
+</tr>
+<tr>
+<td><p><a name="ITDB-IPOD-MODEL-COLOR:CAPS"></a><span class="term"><code class="literal">ITDB_IPOD_MODEL_COLOR</code></span></p></td>
+<td>Color iPod
+</td>
+</tr>
+<tr>
+<td><p><a name="ITDB-IPOD-MODEL-COLOR-U2:CAPS"></a><span class="term"><code class="literal">ITDB_IPOD_MODEL_COLOR_U2</code></span></p></td>
+<td>Color iPod (U2)
+</td>
+</tr>
+<tr>
+<td><p><a name="ITDB-IPOD-MODEL-REGULAR:CAPS"></a><span class="term"><code class="literal">ITDB_IPOD_MODEL_REGULAR</code></span></p></td>
+<td>Regular iPod
+</td>
+</tr>
+<tr>
+<td><p><a name="ITDB-IPOD-MODEL-REGULAR-U2:CAPS"></a><span class="term"><code class="literal">ITDB_IPOD_MODEL_REGULAR_U2</code></span></p></td>
+<td>Regular iPod (U2)
+</td>
+</tr>
+<tr>
+<td><p><a name="ITDB-IPOD-MODEL-MINI:CAPS"></a><span class="term"><code class="literal">ITDB_IPOD_MODEL_MINI</code></span></p></td>
+<td>iPod Mini
+</td>
+</tr>
+<tr>
+<td><p><a name="ITDB-IPOD-MODEL-MINI-BLUE:CAPS"></a><span class="term"><code class="literal">ITDB_IPOD_MODEL_MINI_BLUE</code></span></p></td>
+<td>iPod Mini (Blue)
+</td>
+</tr>
+<tr>
+<td><p><a name="ITDB-IPOD-MODEL-MINI-PINK:CAPS"></a><span class="term"><code class="literal">ITDB_IPOD_MODEL_MINI_PINK</code></span></p></td>
+<td>iPod Mini (Pink)
+</td>
+</tr>
+<tr>
+<td><p><a name="ITDB-IPOD-MODEL-MINI-GREEN:CAPS"></a><span class="term"><code class="literal">ITDB_IPOD_MODEL_MINI_GREEN</code></span></p></td>
+<td>iPod Mini (Green)
+</td>
+</tr>
+<tr>
+<td><p><a name="ITDB-IPOD-MODEL-MINI-GOLD:CAPS"></a><span class="term"><code class="literal">ITDB_IPOD_MODEL_MINI_GOLD</code></span></p></td>
+<td>iPod Mini (Gold)
+</td>
+</tr>
+<tr>
+<td><p><a name="ITDB-IPOD-MODEL-SHUFFLE:CAPS"></a><span class="term"><code class="literal">ITDB_IPOD_MODEL_SHUFFLE</code></span></p></td>
+<td>iPod Shuffle
+</td>
+</tr>
+<tr>
+<td><p><a name="ITDB-IPOD-MODEL-NANO-WHITE:CAPS"></a><span class="term"><code class="literal">ITDB_IPOD_MODEL_NANO_WHITE</code></span></p></td>
+<td>iPod Nano (White)
+</td>
+</tr>
+<tr>
+<td><p><a name="ITDB-IPOD-MODEL-NANO-BLACK:CAPS"></a><span class="term"><code class="literal">ITDB_IPOD_MODEL_NANO_BLACK</code></span></p></td>
+<td>iPod Nano (Black)
+</td>
+</tr>
+<tr>
+<td><p><a name="ITDB-IPOD-MODEL-VIDEO-WHITE:CAPS"></a><span class="term"><code class="literal">ITDB_IPOD_MODEL_VIDEO_WHITE</code></span></p></td>
+<td>iPod Video (White)
+</td>
+</tr>
+<tr>
+<td><p><a name="ITDB-IPOD-MODEL-VIDEO-BLACK:CAPS"></a><span class="term"><code class="literal">ITDB_IPOD_MODEL_VIDEO_BLACK</code></span></p></td>
+<td>iPod Video (Black)
+</td>
+</tr>
+<tr>
+<td><p><a name="ITDB-IPOD-MODEL-MOBILE-1:CAPS"></a><span class="term"><code class="literal">ITDB_IPOD_MODEL_MOBILE_1</code></span></p></td>
+<td>Mobile iPod
+</td>
+</tr>
+<tr>
+<td><p><a name="ITDB-IPOD-MODEL-VIDEO-U2:CAPS"></a><span class="term"><code class="literal">ITDB_IPOD_MODEL_VIDEO_U2</code></span></p></td>
+<td>iPod Video (U2)
+</td>
+</tr>
+<tr>
+<td><p><a name="ITDB-IPOD-MODEL-NANO-SILVER:CAPS"></a><span class="term"><code class="literal">ITDB_IPOD_MODEL_NANO_SILVER</code></span></p></td>
+<td>iPod Nano (Silver)
+</td>
+</tr>
+<tr>
+<td><p><a name="ITDB-IPOD-MODEL-NANO-BLUE:CAPS"></a><span class="term"><code class="literal">ITDB_IPOD_MODEL_NANO_BLUE</code></span></p></td>
+<td>iPod Nano (Blue)
+</td>
+</tr>
+<tr>
+<td><p><a name="ITDB-IPOD-MODEL-NANO-GREEN:CAPS"></a><span class="term"><code class="literal">ITDB_IPOD_MODEL_NANO_GREEN</code></span></p></td>
+<td>iPod Nano (Green)
+</td>
+</tr>
+<tr>
+<td><p><a name="ITDB-IPOD-MODEL-NANO-PINK:CAPS"></a><span class="term"><code class="literal">ITDB_IPOD_MODEL_NANO_PINK</code></span></p></td>
+<td>iPod Nano (Pink)
+</td>
+</tr>
+<tr>
+<td><p><a name="ITDB-IPOD-MODEL-NANO-RED:CAPS"></a><span class="term"><code class="literal">ITDB_IPOD_MODEL_NANO_RED</code></span></p></td>
+<td>iPod Nano (Red)
+</td>
+</tr>
+<tr>
+<td><p><a name="ITDB-IPOD-MODEL-NANO-YELLOW:CAPS"></a><span class="term"><code class="literal">ITDB_IPOD_MODEL_NANO_YELLOW</code></span></p></td>
+<td>iPod Nano (Yellow)
+</td>
+</tr>
+<tr>
+<td><p><a name="ITDB-IPOD-MODEL-NANO-PURPLE:CAPS"></a><span class="term"><code class="literal">ITDB_IPOD_MODEL_NANO_PURPLE</code></span></p></td>
+<td>iPod Nano (Purple)
+</td>
+</tr>
+<tr>
+<td><p><a name="ITDB-IPOD-MODEL-NANO-ORANGE:CAPS"></a><span class="term"><code class="literal">ITDB_IPOD_MODEL_NANO_ORANGE</code></span></p></td>
+<td>iPod Nano (Orange)
+</td>
+</tr>
+<tr>
+<td><p><a name="ITDB-IPOD-MODEL-IPHONE-1:CAPS"></a><span class="term"><code class="literal">ITDB_IPOD_MODEL_IPHONE_1</code></span></p></td>
+<td>iPhone
+</td>
+</tr>
+<tr>
+<td><p><a name="ITDB-IPOD-MODEL-SHUFFLE-SILVER:CAPS"></a><span class="term"><code class="literal">ITDB_IPOD_MODEL_SHUFFLE_SILVER</code></span></p></td>
+<td>iPod Shuffle (Silver)
+</td>
+</tr>
+<tr>
+<td><p><a name="ITDB-IPOD-MODEL-SHUFFLE-PINK:CAPS"></a><span class="term"><code class="literal">ITDB_IPOD_MODEL_SHUFFLE_PINK</code></span></p></td>
+<td>iPod Shuffle (Pink)
+</td>
+</tr>
+<tr>
+<td><p><a name="ITDB-IPOD-MODEL-SHUFFLE-BLUE:CAPS"></a><span class="term"><code class="literal">ITDB_IPOD_MODEL_SHUFFLE_BLUE</code></span></p></td>
+<td>iPod Shuffle (Blue)
+</td>
+</tr>
+<tr>
+<td><p><a name="ITDB-IPOD-MODEL-SHUFFLE-GREEN:CAPS"></a><span class="term"><code class="literal">ITDB_IPOD_MODEL_SHUFFLE_GREEN</code></span></p></td>
+<td>iPod Shuffle (Green)
+</td>
+</tr>
+<tr>
+<td><p><a name="ITDB-IPOD-MODEL-SHUFFLE-ORANGE:CAPS"></a><span class="term"><code class="literal">ITDB_IPOD_MODEL_SHUFFLE_ORANGE</code></span></p></td>
+<td>iPod Shuffle (Orange)
+</td>
+</tr>
+<tr>
+<td><p><a name="ITDB-IPOD-MODEL-SHUFFLE-PURPLE:CAPS"></a><span class="term"><code class="literal">ITDB_IPOD_MODEL_SHUFFLE_PURPLE</code></span></p></td>
+<td>iPod Shuffle (Purple)
+</td>
+</tr>
+<tr>
+<td><p><a name="ITDB-IPOD-MODEL-SHUFFLE-RED:CAPS"></a><span class="term"><code class="literal">ITDB_IPOD_MODEL_SHUFFLE_RED</code></span></p></td>
+<td>iPod Shuffle (Red)
+</td>
+</tr>
+<tr>
+<td><p><a name="ITDB-IPOD-MODEL-CLASSIC-SILVER:CAPS"></a><span class="term"><code class="literal">ITDB_IPOD_MODEL_CLASSIC_SILVER</code></span></p></td>
+<td>iPod Classic (Silver)
+</td>
+</tr>
+<tr>
+<td><p><a name="ITDB-IPOD-MODEL-CLASSIC-BLACK:CAPS"></a><span class="term"><code class="literal">ITDB_IPOD_MODEL_CLASSIC_BLACK</code></span></p></td>
+<td>iPod Classic (Black)
+</td>
+</tr>
+<tr>
+<td><p><a name="ITDB-IPOD-MODEL-TOUCH-SILVER:CAPS"></a><span class="term"><code class="literal">ITDB_IPOD_MODEL_TOUCH_SILVER</code></span></p></td>
+<td>iPod Touch (Silver)
+</td>
+</tr>
+<tr>
+<td><p><a name="ITDB-IPOD-MODEL-SHUFFLE-BLACK:CAPS"></a><span class="term"><code class="literal">ITDB_IPOD_MODEL_SHUFFLE_BLACK</code></span></p></td>
+<td>iPod Shuffle (Black)
+</td>
+</tr>
+<tr>
+<td><p><a name="ITDB-IPOD-MODEL-IPHONE-WHITE:CAPS"></a><span class="term"><code class="literal">ITDB_IPOD_MODEL_IPHONE_WHITE</code></span></p></td>
+<td>iPhone (White)
+</td>
+</tr>
+<tr>
+<td><p><a name="ITDB-IPOD-MODEL-IPHONE-BLACK:CAPS"></a><span class="term"><code class="literal">ITDB_IPOD_MODEL_IPHONE_BLACK</code></span></p></td>
+<td>iPhone (Black)
+</td>
+</tr>
+<tr>
+<td><p><a name="ITDB-IPOD-MODEL-SHUFFLE-GOLD:CAPS"></a><span class="term"><code class="literal">ITDB_IPOD_MODEL_SHUFFLE_GOLD</code></span></p></td>
+<td>
+</td>
+</tr>
+<tr>
+<td><p><a name="ITDB-IPOD-MODEL-SHUFFLE-STAINLESS:CAPS"></a><span class="term"><code class="literal">ITDB_IPOD_MODEL_SHUFFLE_STAINLESS</code></span></p></td>
+<td>
+</td>
+</tr>
+<tr>
+<td><p><a name="ITDB-IPOD-MODEL-IPAD:CAPS"></a><span class="term"><code class="literal">ITDB_IPOD_MODEL_IPAD</code></span></p></td>
+<td>
+</td>
+</tr>
+</tbody>
+</table></div>
+<p class="since">Since 0.4.0</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="itdb-info-get-ipod-model-name-string"></a><h3>itdb_info_get_ipod_model_name_string ()</h3>
+<pre class="programlisting">const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="returnvalue">gchar</span></a> *       itdb_info_get_ipod_model_name_string
+                                                        (<em class="parameter"><code><a class="link" href="libgpod-Device.html#Itdb-IpodModel" title="enum Itdb_IpodModel"><span class="type">Itdb_IpodModel</span></a> model</code></em>);</pre>
+<p>
+Return the iPod's generic model name, like "Color", "Nano"...
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>model</code></em> :</span></p></td>
+<td>an <a class="link" href="libgpod-Device.html#Itdb-IpodModel" title="enum Itdb_IpodModel"><span class="type">Itdb_IpodModel</span></a>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>a pointer to the model name. This is a static string
+and must not be <a href="http://library.gnome.org/devel/glib/unstable/glib-Memory-Allocation.html#g-free"><code class="function">g_free()</code></a>d.</td>
+</tr>
+</tbody>
+</table></div>
+<p class="since">Since 0.4.0</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="Itdb-ArtworkFormat"></a><h3>Itdb_ArtworkFormat</h3>
+<pre class="programlisting">typedef struct {
+        gint format_id;
+        gint width;
+        gint height;
+        ItdbThumbFormat format;
+        gint32 padding;
+        gboolean crop;
+        gint rotation;
+        guchar back_color[4];
+
+        gint display_width;
+        gboolean interlaced;
+        gint color_adjustment;
+        gdouble gamma;
+        gint associated_format;
+        gint row_bytes_alignment;
+} Itdb_ArtworkFormat;
+</pre>
+<p>
+Structure representing the characteristics of the thumbnails to
+write to a given .ithmb file. The format of the structure is based
+on the way artwork formats are written to SysInfoExtended.
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gint"><span class="type">gint</span></a> <em class="structfield"><code><a name="Itdb-ArtworkFormat.format-id"></a>format_id</code></em>;</span></p></td>
+<td>Unique ID for the format (generally a 4 digit int)</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gint"><span class="type">gint</span></a> <em class="structfield"><code><a name="Itdb-ArtworkFormat.width"></a>width</code></em>;</span></p></td>
+<td>Width of the thumbnail</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gint"><span class="type">gint</span></a> <em class="structfield"><code><a name="Itdb-ArtworkFormat.height"></a>height</code></em>;</span></p></td>
+<td>Height of the thumbnail</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="type">ItdbThumbFormat</span> <em class="structfield"><code><a name="Itdb-ArtworkFormat.format"></a>format</code></em>;</span></p></td>
+<td>Pixel format of the thumbnail (RGB, YUV, ...)</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gint32"><span class="type">gint32</span></a> <em class="structfield"><code><a name="Itdb-ArtworkFormat.padding"></a>padding</code></em>;</span></p></td>
+<td>Number of bytes of padding to add after the thumbnail
+(not found in SysInfoExtended -- added for
+compatibility with hardcoded artwork formats)</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="type">gboolean</span></a> <em class="structfield"><code><a name="Itdb-ArtworkFormat.crop"></a>crop</code></em>;</span></p></td>
+<td>Indicates if the thumbnail is to be cropped</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gint"><span class="type">gint</span></a> <em class="structfield"><code><a name="Itdb-ArtworkFormat.rotation"></a>rotation</code></em>;</span></p></td>
+<td>Degrees to rotate the thumbnail</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guchar"><span class="type">guchar</span></a> <em class="structfield"><code><a name="Itdb-ArtworkFormat.back-color"></a>back_color</code></em>[4];</span></p></td>
+<td>Background color for the thumbnail</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gint"><span class="type">gint</span></a> <em class="structfield"><code><a name="Itdb-ArtworkFormat.display-width"></a>display_width</code></em>;</span></p></td>
+<td>Width at which the thumbnail will be displayed
+(not currently used)</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="type">gboolean</span></a> <em class="structfield"><code><a name="Itdb-ArtworkFormat.interlaced"></a>interlaced</code></em>;</span></p></td>
+<td>If TRUE, the thumbnails are interlaced
+(not currently used)</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gint"><span class="type">gint</span></a> <em class="structfield"><code><a name="Itdb-ArtworkFormat.color-adjustment"></a>color_adjustment</code></em>;</span></p></td>
+<td>Color adjustment for the thumbnails
+(not currently used)</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gdouble"><span class="type">gdouble</span></a> <em class="structfield"><code><a name="Itdb-ArtworkFormat.gamma"></a>gamma</code></em>;</span></p></td>
+<td>Gamma value for the thumbails
+(not currently used)</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gint"><span class="type">gint</span></a> <em class="structfield"><code><a name="Itdb-ArtworkFormat.associated-format"></a>associated_format</code></em>;</span></p></td>
+<td>Unknown (not currently used)</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gint"><span class="type">gint</span></a> <em class="structfield"><code><a name="Itdb-ArtworkFormat.row-bytes-alignment"></a>row_bytes_alignment</code></em>;</span></p></td>
+<td>Specifies the number of bytes a pixel row must be aligned to</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="itdb-device-read-sysinfo"></a><h3>itdb_device_read_sysinfo ()</h3>
+<pre class="programlisting"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            itdb_device_read_sysinfo            (<em class="parameter"><code><a class="link" href="libgpod-Device.html#Itdb-Device" title="Itdb_Device"><span class="type">Itdb_Device</span></a> *device</code></em>);</pre>
+<p>
+Reads the SysInfo file and stores information in device-&gt;sysinfo for
+later use.
+</p>
+<p>
+</p>
+<div class="warning" style="margin-left: 0.5in; margin-right: 0.5in;">
+<h3 class="title">Warning</h3>
+<p>Calling this function invalidates all the artwork in the
+<a class="link" href="libgpod-The-Itdb-iTunesDB-structure.html#Itdb-iTunesDB" title="struct Itdb_iTunesDB"><span class="type">Itdb_iTunesDB</span></a> database using this <a class="link" href="libgpod-Device.html#Itdb-Device" title="Itdb_Device"><span class="type">Itdb_Device</span></a>. Trying to access this
+artwork will result in memory corruption. Directly calling this function
+shouldn't ever be needed and it will be deprecated
+soon.</p>
+</div>
+<p>.
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>device</code></em> :</span></p></td>
+<td>an <a class="link" href="libgpod-Device.html#Itdb-Device" title="Itdb_Device"><span class="type">Itdb_Device</span></a>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>TRUE if file could be read, FALSE otherwise</td>
+</tr>
+</tbody>
+</table></div>
+<p class="since">Since 0.4.0</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="itdb-device-get-sysinfo"></a><h3>itdb_device_get_sysinfo ()</h3>
+<pre class="programlisting"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="returnvalue">gchar</span></a> *             itdb_device_get_sysinfo             (<em class="parameter"><code>const <a class="link" href="libgpod-Device.html#Itdb-Device" title="Itdb_Device"><span class="type">Itdb_Device</span></a> *device</code></em>,
+                                                         <em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *field</code></em>);</pre>
+<p>
+Retrieve specified field from the SysInfo file.
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>device</code></em> :</span></p></td>
+<td>an <a class="link" href="libgpod-Device.html#Itdb-Device" title="Itdb_Device"><span class="type">Itdb_Device</span></a>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>field</code></em> :</span></p></td>
+<td>field to retrive information from</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>the information associated with <em class="parameter"><code>field</code></em>, or NULL if <em class="parameter"><code>field</code></em>
+couldn't be found. <a href="http://library.gnome.org/devel/glib/unstable/glib-Memory-Allocation.html#g-free"><code class="function">g_free()</code></a> after use</td>
+</tr>
+</tbody>
+</table></div>
+<p class="since">Since 0.4.0</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="itdb-device-set-sysinfo"></a><h3>itdb_device_set_sysinfo ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                itdb_device_set_sysinfo             (<em class="parameter"><code><a class="link" href="libgpod-Device.html#Itdb-Device" title="Itdb_Device"><span class="type">Itdb_Device</span></a> *device</code></em>,
+                                                         <em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *field</code></em>,
+                                                         <em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *value</code></em>);</pre>
+<p>
+Set specified field. It can later be written to the iPod using
+<a class="link" href="libgpod-Device.html#itdb-device-write-sysinfo" title="itdb_device_write_sysinfo ()"><code class="function">itdb_device_write_sysinfo()</code></a>
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>device</code></em> :</span></p></td>
+<td>an <a class="link" href="libgpod-Device.html#Itdb-Device" title="Itdb_Device"><span class="type">Itdb_Device</span></a>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>field</code></em> :</span></p></td>
+<td>field to set</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>value</code></em> :</span></p></td>
+<td>value to set (or NULL to remove the field).</td>
+</tr>
+</tbody>
+</table></div>
+<p class="since">Since 0.4.0</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="itdb-device-write-sysinfo"></a><h3>itdb_device_write_sysinfo ()</h3>
+<pre class="programlisting"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            itdb_device_write_sysinfo           (<em class="parameter"><code><a class="link" href="libgpod-Device.html#Itdb-Device" title="Itdb_Device"><span class="type">Itdb_Device</span></a> *device</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Error-Reporting.html#GError"><span class="type">GError</span></a> **error</code></em>);</pre>
+<p>
+Fills the SysInfo file with information in device-&gt;sysinfo. Note:
+no directories are created if not already existent.
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>device</code></em> :</span></p></td>
+<td>an <a class="link" href="libgpod-Device.html#Itdb-Device" title="Itdb_Device"><span class="type">Itdb_Device</span></a>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>error</code></em> :</span></p></td>
+<td>return location for a <a href="http://library.gnome.org/devel/glib/unstable/glib-Error-Reporting.html#GError"><span class="type">GError</span></a> or NULL</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>TRUE if file could be read, FALSE otherwise</td>
+</tr>
+</tbody>
+</table></div>
+<p class="since">Since 0.4.0</p>
+</div>
+</div>
+</div>
+<div class="footer">
+<hr>
+          Generated by GTK-Doc V1.19</div>
+</body>
+</html>

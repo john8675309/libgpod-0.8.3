@@ -1,0 +1,678 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Artwork</title>
+<meta name="generator" content="DocBook XSL Stylesheets V1.78.1">
+<link rel="home" href="index.html" title="libgpod Reference Manual">
+<link rel="up" href="ch01.html" title="iPod database components">
+<link rel="prev" href="libgpod-Smart-Playlists.html" title="Smart Playlists">
+<link rel="next" href="libgpod-Chapter-Data.html" title="Chapter Data">
+<meta name="generator" content="GTK-Doc V1.19 (XML mode)">
+<link rel="stylesheet" href="style.css" type="text/css">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<table class="navigation" id="top" width="100%" summary="Navigation header" cellpadding="2" cellspacing="2">
+<tr valign="middle">
+<td><a accesskey="p" href="libgpod-Smart-Playlists.html"><img src="left.png" width="24" height="24" border="0" alt="Prev"></a></td>
+<td><a accesskey="u" href="ch01.html"><img src="up.png" width="24" height="24" border="0" alt="Up"></a></td>
+<td><a accesskey="h" href="index.html"><img src="home.png" width="24" height="24" border="0" alt="Home"></a></td>
+<th width="100%" align="center">libgpod Reference Manual</th>
+<td><a accesskey="n" href="libgpod-Chapter-Data.html"><img src="right.png" width="24" height="24" border="0" alt="Next"></a></td>
+</tr>
+<tr><td colspan="5" class="shortcuts">
+<a href="#libgpod-Artwork.synopsis" class="shortcut">Top</a>
+                   | 
+                  <a href="#libgpod-Artwork.description" class="shortcut">Description</a>
+</td></tr>
+</table>
+<div class="refentry">
+<a name="libgpod-Artwork"></a><div class="titlepage"></div>
+<div class="refnamediv"><table width="100%"><tr>
+<td valign="top">
+<h2><span class="refentrytitle"><a name="libgpod-Artwork.top_of_page"></a>Artwork</span></h2>
+<p>Artwork — Data structure to store iPod artwork (album covers)</p>
+</td>
+<td valign="top" align="right"></td>
+</tr></table></div>
+<div class="refsynopsisdiv">
+<a name="libgpod-Artwork.synopsis"></a><h2>Synopsis</h2>
+<pre class="synopsis">struct              <a class="link" href="libgpod-Artwork.html#Itdb-Artwork" title="struct Itdb_Artwork">Itdb_Artwork</a>;
+<a class="link" href="libgpod-Artwork.html#Itdb-Artwork" title="struct Itdb_Artwork"><span class="returnvalue">Itdb_Artwork</span></a> *      <a class="link" href="libgpod-Artwork.html#itdb-artwork-new" title="itdb_artwork_new ()">itdb_artwork_new</a>                    (<em class="parameter"><code><span class="type">void</span></code></em>);
+<a class="link" href="libgpod-Artwork.html#Itdb-Artwork" title="struct Itdb_Artwork"><span class="returnvalue">Itdb_Artwork</span></a> *      <a class="link" href="libgpod-Artwork.html#itdb-artwork-duplicate" title="itdb_artwork_duplicate ()">itdb_artwork_duplicate</a>              (<em class="parameter"><code><a class="link" href="libgpod-Artwork.html#Itdb-Artwork" title="struct Itdb_Artwork"><span class="type">Itdb_Artwork</span></a> *artwork</code></em>);
+<span class="returnvalue">void</span>                <a class="link" href="libgpod-Artwork.html#itdb-artwork-free" title="itdb_artwork_free ()">itdb_artwork_free</a>                   (<em class="parameter"><code><a class="link" href="libgpod-Artwork.html#Itdb-Artwork" title="struct Itdb_Artwork"><span class="type">Itdb_Artwork</span></a> *artwork</code></em>);
+<a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"><span class="returnvalue">gpointer</span></a>            <a class="link" href="libgpod-Artwork.html#itdb-artwork-get-pixbuf" title="itdb_artwork_get_pixbuf ()">itdb_artwork_get_pixbuf</a>             (<em class="parameter"><code><a class="link" href="libgpod-Device.html#Itdb-Device" title="Itdb_Device"><span class="type">Itdb_Device</span></a> *device</code></em>,
+                                                         <em class="parameter"><code><a class="link" href="libgpod-Artwork.html#Itdb-Artwork" title="struct Itdb_Artwork"><span class="type">Itdb_Artwork</span></a> *artwork</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gint"><span class="type">gint</span></a> width</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gint"><span class="type">gint</span></a> height</code></em>);
+<a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            <a class="link" href="libgpod-Artwork.html#itdb-artwork-set-thumbnail" title="itdb_artwork_set_thumbnail ()">itdb_artwork_set_thumbnail</a>          (<em class="parameter"><code><a class="link" href="libgpod-Artwork.html#Itdb-Artwork" title="struct Itdb_Artwork"><span class="type">Itdb_Artwork</span></a> *artwork</code></em>,
+                                                         <em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *filename</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gint"><span class="type">gint</span></a> rotation</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Error-Reporting.html#GError"><span class="type">GError</span></a> **error</code></em>);
+<a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            <a class="link" href="libgpod-Artwork.html#itdb-artwork-set-thumbnail-from-data" title="itdb_artwork_set_thumbnail_from_data ()">itdb_artwork_set_thumbnail_from_data</a>
+                                                        (<em class="parameter"><code><a class="link" href="libgpod-Artwork.html#Itdb-Artwork" title="struct Itdb_Artwork"><span class="type">Itdb_Artwork</span></a> *artwork</code></em>,
+                                                         <em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guchar"><span class="type">guchar</span></a> *image_data</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gsize"><span class="type">gsize</span></a> image_data_len</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gint"><span class="type">gint</span></a> rotation</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Error-Reporting.html#GError"><span class="type">GError</span></a> **error</code></em>);
+<a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            <a class="link" href="libgpod-Artwork.html#itdb-artwork-set-thumbnail-from-pixbuf" title="itdb_artwork_set_thumbnail_from_pixbuf ()">itdb_artwork_set_thumbnail_from_pixbuf</a>
+                                                        (<em class="parameter"><code><a class="link" href="libgpod-Artwork.html#Itdb-Artwork" title="struct Itdb_Artwork"><span class="type">Itdb_Artwork</span></a> *artwork</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a> pixbuf</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gint"><span class="type">gint</span></a> rotation</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Error-Reporting.html#GError"><span class="type">GError</span></a> **error</code></em>);
+<span class="returnvalue">void</span>                <a class="link" href="libgpod-Artwork.html#itdb-artwork-remove-thumbnails" title="itdb_artwork_remove_thumbnails ()">itdb_artwork_remove_thumbnails</a>      (<em class="parameter"><code><a class="link" href="libgpod-Artwork.html#Itdb-Artwork" title="struct Itdb_Artwork"><span class="type">Itdb_Artwork</span></a> *artwork</code></em>);
+                    <a class="link" href="libgpod-Artwork.html#Itdb-Thumb" title="Itdb_Thumb">Itdb_Thumb</a>;
+<a class="link" href="libgpod-Artwork.html#Itdb-Thumb" title="Itdb_Thumb"><span class="returnvalue">Itdb_Thumb</span></a> *        <a class="link" href="libgpod-Artwork.html#itdb-thumb-duplicate" title="itdb_thumb_duplicate ()">itdb_thumb_duplicate</a>                (<em class="parameter"><code><a class="link" href="libgpod-Artwork.html#Itdb-Thumb" title="Itdb_Thumb"><span class="type">Itdb_Thumb</span></a> *thumb</code></em>);
+<span class="returnvalue">void</span>                <a class="link" href="libgpod-Artwork.html#itdb-thumb-free" title="itdb_thumb_free ()">itdb_thumb_free</a>                     (<em class="parameter"><code><a class="link" href="libgpod-Artwork.html#Itdb-Thumb" title="Itdb_Thumb"><span class="type">Itdb_Thumb</span></a> *thumb</code></em>);
+<a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"><span class="returnvalue">gpointer</span></a>            <a class="link" href="libgpod-Artwork.html#itdb-thumb-to-pixbuf-at-size" title="itdb_thumb_to_pixbuf_at_size ()">itdb_thumb_to_pixbuf_at_size</a>        (<em class="parameter"><code><a class="link" href="libgpod-Device.html#Itdb-Device" title="Itdb_Device"><span class="type">Itdb_Device</span></a> *device</code></em>,
+                                                         <em class="parameter"><code><a class="link" href="libgpod-Artwork.html#Itdb-Thumb" title="Itdb_Thumb"><span class="type">Itdb_Thumb</span></a> *thumb</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gint"><span class="type">gint</span></a> width</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gint"><span class="type">gint</span></a> height</code></em>);
+<a href="http://library.gnome.org/devel/glib/unstable/glib-Doubly-Linked-Lists.html#GList"><span class="returnvalue">GList</span></a> *             <a class="link" href="libgpod-Artwork.html#itdb-thumb-to-pixbufs" title="itdb_thumb_to_pixbufs ()">itdb_thumb_to_pixbufs</a>               (<em class="parameter"><code><a class="link" href="libgpod-Device.html#Itdb-Device" title="Itdb_Device"><span class="type">Itdb_Device</span></a> *device</code></em>,
+                                                         <em class="parameter"><code><a class="link" href="libgpod-Artwork.html#Itdb-Thumb" title="Itdb_Thumb"><span class="type">Itdb_Thumb</span></a> *thumb</code></em>);
+</pre>
+</div>
+<div class="refsect1">
+<a name="libgpod-Artwork.description"></a><h2>Description</h2>
+<p>
+These functions and structures are for adding, changing, and removing
+album/track artwork.  For working with photos, see the
+<a class="link" href="photodb.html" title="Part II. Photo database">Photo database</a> section.
+</p>
+</div>
+<div class="refsect1">
+<a name="libgpod-Artwork.details"></a><h2>Details</h2>
+<div class="refsect2">
+<a name="Itdb-Artwork"></a><h3>struct Itdb_Artwork</h3>
+<pre class="programlisting">struct Itdb_Artwork {
+    Itdb_Thumb *thumbnail;
+    guint32 id;
+    guint64 dbid;
+    gint32  unk028;
+    guint32 rating;
+    gint32  unk036;
+    time_t  creation_date;
+    time_t  digitized_date;
+    guint32 artwork_size;
+    /* reserved for future use */
+    gint32 reserved_int1;
+    gint32 reserved_int2;
+    gpointer reserved1;
+    gpointer reserved2;
+    /* below is for use by application */
+    guint64 usertype;
+    gpointer userdata;
+    /* functions called to duplicate/free userdata */
+    ItdbUserDataDuplicateFunc userdata_duplicate;
+    ItdbUserDataDestroyFunc userdata_destroy;
+};
+</pre>
+<p>
+Structure representing artwork in an <a class="link" href="libgpod-The-Itdb-iTunesDB-structure.html#Itdb-iTunesDB" title="struct Itdb_iTunesDB"><span class="type">Itdb_iTunesDB</span></a> or <a class="link" href="libgpod-Photo-database.html#Itdb-PhotoDB" title="struct Itdb_PhotoDB"><span class="type">Itdb_PhotoDB</span></a>
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><a class="link" href="libgpod-Artwork.html#Itdb-Thumb" title="Itdb_Thumb"><span class="type">Itdb_Thumb</span></a> *<em class="structfield"><code><a name="Itdb-Artwork.thumbnail"></a>thumbnail</code></em>;</span></p></td>
+<td>An <a class="link" href="libgpod-Artwork.html#Itdb-Thumb" title="Itdb_Thumb"><span class="type">Itdb_Thumb</span></a>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint32"><span class="type">guint32</span></a> <em class="structfield"><code><a name="Itdb-Artwork.id"></a>id</code></em>;</span></p></td>
+<td>Artwork id used by photoalbums.  This starts at 0x40 and
+is set automatically when the ArtworkDB or PhotoDB is
+written</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint64"><span class="type">guint64</span></a> <em class="structfield"><code><a name="Itdb-Artwork.dbid"></a>dbid</code></em>;</span></p></td>
+<td>The dbid of associated track.  Used internally by
+libgpod.</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gint32"><span class="type">gint32</span></a> <em class="structfield"><code><a name="Itdb-Artwork.unk028"></a>unk028</code></em>;</span></p></td>
+<td>Unknown</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint32"><span class="type">guint32</span></a> <em class="structfield"><code><a name="Itdb-Artwork.rating"></a>rating</code></em>;</span></p></td>
+<td>Rating from iPhoto * 20 (PhotoDB only)</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gint32"><span class="type">gint32</span></a> <em class="structfield"><code><a name="Itdb-Artwork.unk036"></a>unk036</code></em>;</span></p></td>
+<td>Unknown</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="type">time_t</span> <em class="structfield"><code><a name="Itdb-Artwork.creation-date"></a>creation_date</code></em>;</span></p></td>
+<td>Date the image file was created (PhotoDB only)</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="type">time_t</span> <em class="structfield"><code><a name="Itdb-Artwork.digitized-date"></a>digitized_date</code></em>;</span></p></td>
+<td>Date the image was taken (EXIF information, PhotoDB
+only)</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint32"><span class="type">guint32</span></a> <em class="structfield"><code><a name="Itdb-Artwork.artwork-size"></a>artwork_size</code></em>;</span></p></td>
+<td>Size in bytes of the original source image (PhotoDB
+only -- don't touch in case of ArtworkDB!)</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gint32"><span class="type">gint32</span></a> <em class="structfield"><code><a name="Itdb-Artwork.reserved-int1"></a>reserved_int1</code></em>;</span></p></td>
+<td>Reserved for future use</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gint32"><span class="type">gint32</span></a> <em class="structfield"><code><a name="Itdb-Artwork.reserved-int2"></a>reserved_int2</code></em>;</span></p></td>
+<td>Reserved for future use</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a> <em class="structfield"><code><a name="Itdb-Artwork.reserved1"></a>reserved1</code></em>;</span></p></td>
+<td>Reserved for future use</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a> <em class="structfield"><code><a name="Itdb-Artwork.reserved2"></a>reserved2</code></em>;</span></p></td>
+<td>Reserved for future use</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint64"><span class="type">guint64</span></a> <em class="structfield"><code><a name="Itdb-Artwork.usertype"></a>usertype</code></em>;</span></p></td>
+<td>For use by application</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a> <em class="structfield"><code><a name="Itdb-Artwork.userdata"></a>userdata</code></em>;</span></p></td>
+<td>For use by application</td>
+</tr>
+<tr>
+<td><p><span class="term"><a class="link" href="libgpod-The-Itdb-iTunesDB-structure.html#ItdbUserDataDuplicateFunc" title="ItdbUserDataDuplicateFunc ()"><span class="type">ItdbUserDataDuplicateFunc</span></a> <em class="structfield"><code><a name="Itdb-Artwork.userdata-duplicate"></a>userdata_duplicate</code></em>;</span></p></td>
+<td>A function to duplicate <span class="type">userdata</span>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><a class="link" href="libgpod-The-Itdb-iTunesDB-structure.html#ItdbUserDataDestroyFunc" title="ItdbUserDataDestroyFunc ()"><span class="type">ItdbUserDataDestroyFunc</span></a> <em class="structfield"><code><a name="Itdb-Artwork.userdata-destroy"></a>userdata_destroy</code></em>;</span></p></td>
+<td>A function to free <span class="type">userdata</span>
+</td>
+</tr>
+</tbody>
+</table></div>
+<p class="since">Since 0.3.0</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="itdb-artwork-new"></a><h3>itdb_artwork_new ()</h3>
+<pre class="programlisting"><a class="link" href="libgpod-Artwork.html#Itdb-Artwork" title="struct Itdb_Artwork"><span class="returnvalue">Itdb_Artwork</span></a> *      itdb_artwork_new                    (<em class="parameter"><code><span class="type">void</span></code></em>);</pre>
+<p>
+Creates a new <a class="link" href="libgpod-Artwork.html#Itdb-Artwork" title="struct Itdb_Artwork"><span class="type">Itdb_Artwork</span></a>
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody><tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>a new <a class="link" href="libgpod-Artwork.html#Itdb-Artwork" title="struct Itdb_Artwork"><span class="type">Itdb_Artwork</span></a> to be freed with <a class="link" href="libgpod-Artwork.html#itdb-artwork-free" title="itdb_artwork_free ()"><code class="function">itdb_artwork_free()</code></a> when
+no longer needed</td>
+</tr></tbody>
+</table></div>
+<p class="since">Since 0.3.0</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="itdb-artwork-duplicate"></a><h3>itdb_artwork_duplicate ()</h3>
+<pre class="programlisting"><a class="link" href="libgpod-Artwork.html#Itdb-Artwork" title="struct Itdb_Artwork"><span class="returnvalue">Itdb_Artwork</span></a> *      itdb_artwork_duplicate              (<em class="parameter"><code><a class="link" href="libgpod-Artwork.html#Itdb-Artwork" title="struct Itdb_Artwork"><span class="type">Itdb_Artwork</span></a> *artwork</code></em>);</pre>
+<p>
+Duplicates <em class="parameter"><code>artwork</code></em>
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>artwork</code></em> :</span></p></td>
+<td>an <a class="link" href="libgpod-Artwork.html#Itdb-Artwork" title="struct Itdb_Artwork"><span class="type">Itdb_Artwork</span></a>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>a new copy of <em class="parameter"><code>artwork</code></em>
+</td>
+</tr>
+</tbody>
+</table></div>
+<p class="since">Since 0.3.0</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="itdb-artwork-free"></a><h3>itdb_artwork_free ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                itdb_artwork_free                   (<em class="parameter"><code><a class="link" href="libgpod-Artwork.html#Itdb-Artwork" title="struct Itdb_Artwork"><span class="type">Itdb_Artwork</span></a> *artwork</code></em>);</pre>
+<p>
+Frees memory used by <em class="parameter"><code>artwork</code></em>
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody><tr>
+<td><p><span class="term"><em class="parameter"><code>artwork</code></em> :</span></p></td>
+<td>an <a class="link" href="libgpod-Artwork.html#Itdb-Artwork" title="struct Itdb_Artwork"><span class="type">Itdb_Artwork</span></a>
+</td>
+</tr></tbody>
+</table></div>
+<p class="since">Since 0.3.0</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="itdb-artwork-get-pixbuf"></a><h3>itdb_artwork_get_pixbuf ()</h3>
+<pre class="programlisting"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"><span class="returnvalue">gpointer</span></a>            itdb_artwork_get_pixbuf             (<em class="parameter"><code><a class="link" href="libgpod-Device.html#Itdb-Device" title="Itdb_Device"><span class="type">Itdb_Device</span></a> *device</code></em>,
+                                                         <em class="parameter"><code><a class="link" href="libgpod-Artwork.html#Itdb-Artwork" title="struct Itdb_Artwork"><span class="type">Itdb_Artwork</span></a> *artwork</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gint"><span class="type">gint</span></a> width</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gint"><span class="type">gint</span></a> height</code></em>);</pre>
+<p>
+Returns a <a href="http://library.gnome.org/devel/gdk-pixbuf/unstable/gdk-pixbuf-The-GdkPixbuf-Structure.html#GdkPixbuf"><span class="type">GdkPixbuf</span></a> representing the thumbnail stored in <em class="parameter"><code>artwork</code></em>
+scaling it if appropriate. If either height or width is -1, then the
+biggest unscaled thumbnail available will be returned
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>device</code></em> :</span></p></td>
+<td>an <a class="link" href="libgpod-Device.html#Itdb-Device" title="Itdb_Device"><span class="type">Itdb_Device</span></a>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>artwork</code></em> :</span></p></td>
+<td>an <a class="link" href="libgpod-Artwork.html#Itdb-Artwork" title="struct Itdb_Artwork"><span class="type">Itdb_Artwork</span></a>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>width</code></em> :</span></p></td>
+<td>width of the pixbuf to retrieve, -1 for the biggest
+possible size and 0 for the smallest possible size (with no
+scaling)</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>height</code></em> :</span></p></td>
+<td>height of the pixbuf to retrieve, -1 for the biggest possible
+size and 0 for the smallest possible size (with no scaling)</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>a <a href="http://library.gnome.org/devel/gdk-pixbuf/unstable/gdk-pixbuf-The-GdkPixbuf-Structure.html#GdkPixbuf"><span class="type">GdkPixbuf</span></a> that must be unreffed when no longer used, NULL
+if no artwork could be found or if libgpod is compiled without GdkPixbuf
+support</td>
+</tr>
+</tbody>
+</table></div>
+<p class="since">Since 0.7.0</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="itdb-artwork-set-thumbnail"></a><h3>itdb_artwork_set_thumbnail ()</h3>
+<pre class="programlisting"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            itdb_artwork_set_thumbnail          (<em class="parameter"><code><a class="link" href="libgpod-Artwork.html#Itdb-Artwork" title="struct Itdb_Artwork"><span class="type">Itdb_Artwork</span></a> *artwork</code></em>,
+                                                         <em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *filename</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gint"><span class="type">gint</span></a> rotation</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Error-Reporting.html#GError"><span class="type">GError</span></a> **error</code></em>);</pre>
+<p>
+Appends a thumbnail of type <em class="parameter"><code>type</code></em> to existing thumbnails in <em class="parameter"><code>artwork</code></em>. No
+data is read from <em class="parameter"><code>filename</code></em> yet, the file will be when <em class="parameter"><code>artwork</code></em> is saved to
+disk. <em class="parameter"><code>filename</code></em> must still exist when that happens.
+</p>
+<p>
+For the rotation angle you can also use the gdk constants
+<a href="http://library.gnome.org/devel/gdk-pixbuf/unstable/gdk-pixbuf-Scaling.html#GDK-PIXBUF-ROTATE-NONE:CAPS"><code class="literal">GDK_PIXBUF_ROTATE_NONE</code></a>, <a href="http://library.gnome.org/devel/gdk-pixbuf/unstable/gdk-pixbuf-Scaling.html#GDK-PIXBUF-ROTATE-COUNTERCLOCKWISE:CAPS"><code class="literal">GDK_PIXBUF_ROTATE_COUNTERCLOCKWISE</code></a>,
+<a href="http://library.gnome.org/devel/gdk-pixbuf/unstable/gdk-pixbuf-Scaling.html#GDK-PIXBUF-ROTATE-UPSIDEDOWN:CAPS"><code class="literal">GDK_PIXBUF_ROTATE_UPSIDEDOWN</code></a>, AND <a href="http://library.gnome.org/devel/gdk-pixbuf/unstable/gdk-pixbuf-Scaling.html#GDK-PIXBUF-ROTATE-CLOCKWISE:CAPS"><code class="literal">GDK_PIXBUF_ROTATE_CLOCKWISE</code></a>.
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>artwork</code></em> :</span></p></td>
+<td>an <a class="link" href="libgpod-Artwork.html#Itdb-Artwork" title="struct Itdb_Artwork"><span class="type">Itdb_Artwork</span></a>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>filename</code></em> :</span></p></td>
+<td>image file to use to create the thumbnail</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>rotation</code></em> :</span></p></td>
+<td>angle by which the image should be rotated
+counterclockwise. Valid values are 0, 90, 180 and 270.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>error</code></em> :</span></p></td>
+<td>return location for a <a href="http://library.gnome.org/devel/glib/unstable/glib-Error-Reporting.html#GError"><span class="type">GError</span></a> or NULL</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>TRUE if the thumbnail could be successfully added, FALSE
+otherwise. <em class="parameter"><code>error</code></em> is set appropriately.</td>
+</tr>
+</tbody>
+</table></div>
+<p class="since">Since 0.7.0</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="itdb-artwork-set-thumbnail-from-data"></a><h3>itdb_artwork_set_thumbnail_from_data ()</h3>
+<pre class="programlisting"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            itdb_artwork_set_thumbnail_from_data
+                                                        (<em class="parameter"><code><a class="link" href="libgpod-Artwork.html#Itdb-Artwork" title="struct Itdb_Artwork"><span class="type">Itdb_Artwork</span></a> *artwork</code></em>,
+                                                         <em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guchar"><span class="type">guchar</span></a> *image_data</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gsize"><span class="type">gsize</span></a> image_data_len</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gint"><span class="type">gint</span></a> rotation</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Error-Reporting.html#GError"><span class="type">GError</span></a> **error</code></em>);</pre>
+<p>
+Set a thumbnail in <em class="parameter"><code>artwork</code></em>. No data is processed yet. This will be done when
+<em class="parameter"><code>artwork</code></em> is saved to disk.
+</p>
+<p>
+For the rotation angle you can also use the gdk constants
+<a href="http://library.gnome.org/devel/gdk-pixbuf/unstable/gdk-pixbuf-Scaling.html#GDK-PIXBUF-ROTATE-NONE:CAPS"><code class="literal">GDK_PIXBUF_ROTATE_NONE</code></a>, <a href="http://library.gnome.org/devel/gdk-pixbuf/unstable/gdk-pixbuf-Scaling.html#GDK-PIXBUF-ROTATE-COUNTERCLOCKWISE:CAPS"><code class="literal">GDK_PIXBUF_ROTATE_COUNTERCLOCKWISE</code></a>,
+<a href="http://library.gnome.org/devel/gdk-pixbuf/unstable/gdk-pixbuf-Scaling.html#GDK-PIXBUF-ROTATE-UPSIDEDOWN:CAPS"><code class="literal">GDK_PIXBUF_ROTATE_UPSIDEDOWN</code></a>, AND <a href="http://library.gnome.org/devel/gdk-pixbuf/unstable/gdk-pixbuf-Scaling.html#GDK-PIXBUF-ROTATE-CLOCKWISE:CAPS"><code class="literal">GDK_PIXBUF_ROTATE_CLOCKWISE</code></a>.
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>artwork</code></em> :</span></p></td>
+<td>an <a class="link" href="libgpod-Artwork.html#Itdb-Artwork" title="struct Itdb_Artwork"><span class="type">Itdb_Artwork</span></a>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>image_data</code></em> :</span></p></td>
+<td>data used to create the thumbnail (the raw contents of
+an image file)</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>image_data_len</code></em> :</span></p></td>
+<td>length of above data block</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>rotation</code></em> :</span></p></td>
+<td>angle by which the image should be rotated
+counterclockwise. Valid values are 0, 90, 180 and 270.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>error</code></em> :</span></p></td>
+<td>return location for a <a href="http://library.gnome.org/devel/glib/unstable/glib-Error-Reporting.html#GError"><span class="type">GError</span></a> or NULL</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>TRUE if the thumbnail could be successfully added, FALSE
+otherwise. <em class="parameter"><code>error</code></em> is set appropriately.</td>
+</tr>
+</tbody>
+</table></div>
+<p class="since">Since 0.7.0</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="itdb-artwork-set-thumbnail-from-pixbuf"></a><h3>itdb_artwork_set_thumbnail_from_pixbuf ()</h3>
+<pre class="programlisting"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            itdb_artwork_set_thumbnail_from_pixbuf
+                                                        (<em class="parameter"><code><a class="link" href="libgpod-Artwork.html#Itdb-Artwork" title="struct Itdb_Artwork"><span class="type">Itdb_Artwork</span></a> *artwork</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a> pixbuf</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gint"><span class="type">gint</span></a> rotation</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Error-Reporting.html#GError"><span class="type">GError</span></a> **error</code></em>);</pre>
+<p>
+Set a thumbnail in <em class="parameter"><code>artwork</code></em>. No data is generated from <em class="parameter"><code>pixbuf</code></em> yet, it will
+be done when <em class="parameter"><code>artwork</code></em> is saved to disk. <em class="parameter"><code>pixbuf</code></em> is ref'ed by this function,
+but is not copied, so it should not be modified before the database is saved.
+</p>
+<p>
+For the rotation angle you can also use the gdk constants
+<a href="http://library.gnome.org/devel/gdk-pixbuf/unstable/gdk-pixbuf-Scaling.html#GDK-PIXBUF-ROTATE-NONE:CAPS"><code class="literal">GDK_PIXBUF_ROTATE_NONE</code></a>, <a href="http://library.gnome.org/devel/gdk-pixbuf/unstable/gdk-pixbuf-Scaling.html#GDK-PIXBUF-ROTATE-COUNTERCLOCKWISE:CAPS"><code class="literal">GDK_PIXBUF_ROTATE_COUNTERCLOCKWISE</code></a>,
+<a href="http://library.gnome.org/devel/gdk-pixbuf/unstable/gdk-pixbuf-Scaling.html#GDK-PIXBUF-ROTATE-UPSIDEDOWN:CAPS"><code class="literal">GDK_PIXBUF_ROTATE_UPSIDEDOWN</code></a>, AND <a href="http://library.gnome.org/devel/gdk-pixbuf/unstable/gdk-pixbuf-Scaling.html#GDK-PIXBUF-ROTATE-CLOCKWISE:CAPS"><code class="literal">GDK_PIXBUF_ROTATE_CLOCKWISE</code></a>.
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>artwork</code></em> :</span></p></td>
+<td>an <a class="link" href="libgpod-Artwork.html#Itdb-Artwork" title="struct Itdb_Artwork"><span class="type">Itdb_Artwork</span></a>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>pixbuf</code></em> :</span></p></td>
+<td>
+<a href="http://library.gnome.org/devel/gdk-pixbuf/unstable/gdk-pixbuf-The-GdkPixbuf-Structure.html#GdkPixbuf"><span class="type">GdkPixbuf</span></a> to use to create the thumbnail</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>rotation</code></em> :</span></p></td>
+<td>angle by which the image should be rotated
+counterclockwise. Valid values are 0, 90, 180 and 270.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>error</code></em> :</span></p></td>
+<td>return location for a <a href="http://library.gnome.org/devel/glib/unstable/glib-Error-Reporting.html#GError"><span class="type">GError</span></a> or NULL</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>TRUE if the thumbnail could be successfully added, FALSE
+otherwise. <em class="parameter"><code>error</code></em> is set appropriately.</td>
+</tr>
+</tbody>
+</table></div>
+<p class="since">Since 0.7.0</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="itdb-artwork-remove-thumbnails"></a><h3>itdb_artwork_remove_thumbnails ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                itdb_artwork_remove_thumbnails      (<em class="parameter"><code><a class="link" href="libgpod-Artwork.html#Itdb-Artwork" title="struct Itdb_Artwork"><span class="type">Itdb_Artwork</span></a> *artwork</code></em>);</pre>
+<p>
+Removes all thumbnails from <em class="parameter"><code>artwork</code></em>
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody><tr>
+<td><p><span class="term"><em class="parameter"><code>artwork</code></em> :</span></p></td>
+<td>an <a class="link" href="libgpod-Artwork.html#Itdb-Artwork" title="struct Itdb_Artwork"><span class="type">Itdb_Artwork</span></a>
+</td>
+</tr></tbody>
+</table></div>
+<p class="since">Since 0.3.0</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="Itdb-Thumb"></a><h3>Itdb_Thumb</h3>
+<pre class="programlisting">typedef struct {
+    ItdbThumbDataType data_type;
+    guint rotation;
+} Itdb_Thumb;
+</pre>
+<p>
+This is an opaque structure representing a thumbnail to be
+transferred to the ipod or read from the ipod.
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><span class="type">ItdbThumbDataType</span> <em class="structfield"><code><a name="Itdb-Thumb.data-type"></a>data_type</code></em>;</span></p></td>
+<td>The type of data (file, memory, pixbuf, ipod, etc.)</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint"><span class="type">guint</span></a> <em class="structfield"><code><a name="Itdb-Thumb.rotation"></a>rotation</code></em>;</span></p></td>
+<td>Angle by which the image is rotated counterclockwise</td>
+</tr>
+</tbody>
+</table></div>
+<p class="since">Since 0.3.0</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="itdb-thumb-duplicate"></a><h3>itdb_thumb_duplicate ()</h3>
+<pre class="programlisting"><a class="link" href="libgpod-Artwork.html#Itdb-Thumb" title="Itdb_Thumb"><span class="returnvalue">Itdb_Thumb</span></a> *        itdb_thumb_duplicate                (<em class="parameter"><code><a class="link" href="libgpod-Artwork.html#Itdb-Thumb" title="Itdb_Thumb"><span class="type">Itdb_Thumb</span></a> *thumb</code></em>);</pre>
+<p>
+Duplicates the data contained in <em class="parameter"><code>thumb</code></em>
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>thumb</code></em> :</span></p></td>
+<td>an <a class="link" href="libgpod-Artwork.html#Itdb-Thumb" title="Itdb_Thumb"><span class="type">Itdb_Thumb</span></a>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>a newly allocated copy of <em class="parameter"><code>thumb</code></em> to be freed with
+<a class="link" href="libgpod-Artwork.html#itdb-thumb-free" title="itdb_thumb_free ()"><code class="function">itdb_thumb_free()</code></a> after use</td>
+</tr>
+</tbody>
+</table></div>
+<p class="since">Since 0.3.0</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="itdb-thumb-free"></a><h3>itdb_thumb_free ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                itdb_thumb_free                     (<em class="parameter"><code><a class="link" href="libgpod-Artwork.html#Itdb-Thumb" title="Itdb_Thumb"><span class="type">Itdb_Thumb</span></a> *thumb</code></em>);</pre>
+<p>
+Frees the memory used by <em class="parameter"><code>thumb</code></em>
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody><tr>
+<td><p><span class="term"><em class="parameter"><code>thumb</code></em> :</span></p></td>
+<td>an <a class="link" href="libgpod-Artwork.html#Itdb-Thumb" title="Itdb_Thumb"><span class="type">Itdb_Thumb</span></a>
+</td>
+</tr></tbody>
+</table></div>
+<p class="since">Since 0.3.0</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="itdb-thumb-to-pixbuf-at-size"></a><h3>itdb_thumb_to_pixbuf_at_size ()</h3>
+<pre class="programlisting"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"><span class="returnvalue">gpointer</span></a>            itdb_thumb_to_pixbuf_at_size        (<em class="parameter"><code><a class="link" href="libgpod-Device.html#Itdb-Device" title="Itdb_Device"><span class="type">Itdb_Device</span></a> *device</code></em>,
+                                                         <em class="parameter"><code><a class="link" href="libgpod-Artwork.html#Itdb-Thumb" title="Itdb_Thumb"><span class="type">Itdb_Thumb</span></a> *thumb</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gint"><span class="type">gint</span></a> width</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gint"><span class="type">gint</span></a> height</code></em>);</pre>
+<p>
+Converts <em class="parameter"><code>thumb</code></em> to a <a href="http://library.gnome.org/devel/gdk-pixbuf/unstable/gdk-pixbuf-The-GdkPixbuf-Structure.html#GdkPixbuf"><span class="type">GdkPixbuf</span></a>.
+</p>
+<p>
+</p>
+<div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+<h3 class="title">Note</h3>
+Since we want to have gdk-pixbuf dependency optional, a generic
+gpointer is returned which you have to cast to a <a href="http://library.gnome.org/devel/gdk-pixbuf/unstable/gdk-pixbuf-The-GdkPixbuf-Structure.html#GdkPixbuf"><span class="type">GdkPixbuf</span></a> using
+<code class="function">GDK_PIXBUF()</code> yourself.
+</div>
+<p>
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>device</code></em> :</span></p></td>
+<td>an <a class="link" href="libgpod-Device.html#Itdb-Device" title="Itdb_Device"><span class="type">Itdb_Device</span></a>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>thumb</code></em> :</span></p></td>
+<td>an <a class="link" href="libgpod-Artwork.html#Itdb-Thumb" title="Itdb_Thumb"><span class="type">Itdb_Thumb</span></a>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>width</code></em> :</span></p></td>
+<td>width of the pixbuf to retrieve, -1 for the biggest
+possible size and 0 for the smallest possible size (with no scaling)</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>height</code></em> :</span></p></td>
+<td>height of the pixbuf to retrieve, -1 for the biggest possible size
+and 0 for the smallest possible size (with no scaling)</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>a <a href="http://library.gnome.org/devel/gdk-pixbuf/unstable/gdk-pixbuf-The-GdkPixbuf-Structure.html#GdkPixbuf"><span class="type">GdkPixbuf</span></a> that must be unreffed with <a href="http://library.gnome.org/devel/gobject/unstable/gobject-The-Base-Object-Type.html#g-object-unref"><code class="function">g_object_unref()</code></a>
+after use, or NULL if the creation of the gdk-pixbuf failed or if
+libgpod was compiled without gdk-pixbuf support.</td>
+</tr>
+</tbody>
+</table></div>
+<p class="since">Since 0.7.0</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="itdb-thumb-to-pixbufs"></a><h3>itdb_thumb_to_pixbufs ()</h3>
+<pre class="programlisting"><a href="http://library.gnome.org/devel/glib/unstable/glib-Doubly-Linked-Lists.html#GList"><span class="returnvalue">GList</span></a> *             itdb_thumb_to_pixbufs               (<em class="parameter"><code><a class="link" href="libgpod-Device.html#Itdb-Device" title="Itdb_Device"><span class="type">Itdb_Device</span></a> *device</code></em>,
+                                                         <em class="parameter"><code><a class="link" href="libgpod-Artwork.html#Itdb-Thumb" title="Itdb_Thumb"><span class="type">Itdb_Thumb</span></a> *thumb</code></em>);</pre>
+<p>
+Converts <em class="parameter"><code>thumb</code></em> to a <a href="http://library.gnome.org/devel/glib/unstable/glib-Doubly-Linked-Lists.html#GList"><span class="type">GList</span></a> of <a href="http://library.gnome.org/devel/gdk-pixbuf/unstable/gdk-pixbuf-The-GdkPixbuf-Structure.html#GdkPixbuf"><span class="type">GdkPixbuf</span></a>. The returned <a href="http://library.gnome.org/devel/glib/unstable/glib-Doubly-Linked-Lists.html#GList"><span class="type">GList</span></a> will
+generally contain only 1 element, the full-size pixbuf associated with
+<em class="parameter"><code>thumb</code></em>, but when the artwork has been read from the ipod and hasn't been
+modified from the library, then the returned <a href="http://library.gnome.org/devel/glib/unstable/glib-Doubly-Linked-Lists.html#GList"><span class="type">GList</span></a> will contain several
+<a href="http://library.gnome.org/devel/gdk-pixbuf/unstable/gdk-pixbuf-The-GdkPixbuf-Structure.html#GdkPixbuf"><span class="type">GdkPixbuf</span></a> corresponding to the various thumbnail sizes that were
+written to the iPod database.
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>device</code></em> :</span></p></td>
+<td>an <a class="link" href="libgpod-Device.html#Itdb-Device" title="Itdb_Device"><span class="type">Itdb_Device</span></a>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>thumb</code></em> :</span></p></td>
+<td>an <a class="link" href="libgpod-Artwork.html#Itdb-Thumb" title="Itdb_Thumb"><span class="type">Itdb_Thumb</span></a>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>a <a href="http://library.gnome.org/devel/glib/unstable/glib-Doubly-Linked-Lists.html#GList"><span class="type">GList</span></a> of <a href="http://library.gnome.org/devel/gdk-pixbuf/unstable/gdk-pixbuf-The-GdkPixbuf-Structure.html#GdkPixbuf"><span class="type">GdkPixbuf</span></a> which are associated with <em class="parameter"><code>thumb</code></em>, NULL
+if the pixbuf was invalid or if libgpod is compiled without gdk-pixbuf
+support. The <a href="http://library.gnome.org/devel/gdk-pixbuf/unstable/gdk-pixbuf-The-GdkPixbuf-Structure.html#GdkPixbuf"><span class="type">GdkPixbuf</span></a> must be unreffed with <a href="http://library.gnome.org/devel/gobject/unstable/gobject-The-Base-Object-Type.html#g-object-unref"><code class="function">g_object_unref()</code></a> after use
+and the <a href="http://library.gnome.org/devel/glib/unstable/glib-Doubly-Linked-Lists.html#GList"><span class="type">GList</span></a> must be freed with <a href="http://library.gnome.org/devel/glib/unstable/glib-Doubly-Linked-Lists.html#g-list-free"><code class="function">g_list_free()</code></a>.</td>
+</tr>
+</tbody>
+</table></div>
+<p class="since">Since 0.7.0</p>
+</div>
+</div>
+<div class="refsect1">
+<a name="libgpod-Artwork.see-also"></a><h2>See Also</h2>
+<p>
+<a class="link" href="photodb.html" title="Part II. Photo database">Photo database</a>
+</p>
+</div>
+</div>
+<div class="footer">
+<hr>
+          Generated by GTK-Doc V1.19</div>
+</body>
+</html>

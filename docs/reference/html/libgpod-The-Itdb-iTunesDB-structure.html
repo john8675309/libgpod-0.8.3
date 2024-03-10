@@ -1,0 +1,657 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>iPod database reading/writing</title>
+<meta name="generator" content="DocBook XSL Stylesheets V1.78.1">
+<link rel="home" href="index.html" title="libgpod Reference Manual">
+<link rel="up" href="itunesdb.html" title="Part I. iPod database">
+<link rel="prev" href="itunesdb.html" title="Part I. iPod database">
+<link rel="next" href="libgpod-File-handling-functions.html" title="File handling functions">
+<meta name="generator" content="GTK-Doc V1.19 (XML mode)">
+<link rel="stylesheet" href="style.css" type="text/css">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<table class="navigation" id="top" width="100%" summary="Navigation header" cellpadding="2" cellspacing="2">
+<tr valign="middle">
+<td><a accesskey="p" href="itunesdb.html"><img src="left.png" width="24" height="24" border="0" alt="Prev"></a></td>
+<td><a accesskey="u" href="itunesdb.html"><img src="up.png" width="24" height="24" border="0" alt="Up"></a></td>
+<td><a accesskey="h" href="index.html"><img src="home.png" width="24" height="24" border="0" alt="Home"></a></td>
+<th width="100%" align="center">libgpod Reference Manual</th>
+<td><a accesskey="n" href="libgpod-File-handling-functions.html"><img src="right.png" width="24" height="24" border="0" alt="Next"></a></td>
+</tr>
+<tr><td colspan="5" class="shortcuts">
+<a href="#libgpod-The-Itdb-iTunesDB-structure.synopsis" class="shortcut">Top</a>
+                   | 
+                  <a href="#libgpod-The-Itdb-iTunesDB-structure.description" class="shortcut">Description</a>
+</td></tr>
+</table>
+<div class="refentry">
+<a name="libgpod-The-Itdb-iTunesDB-structure"></a><div class="titlepage"></div>
+<div class="refnamediv"><table width="100%"><tr>
+<td valign="top">
+<h2><span class="refentrytitle"><a name="libgpod-The-Itdb-iTunesDB-structure.top_of_page"></a>iPod database reading/writing</span></h2>
+<p>iPod database reading/writing — Functions to read, write, and create an iPod database</p>
+</td>
+<td valign="top" align="right"></td>
+</tr></table></div>
+<div class="refsynopsisdiv">
+<a name="libgpod-The-Itdb-iTunesDB-structure.synopsis"></a><h2>Synopsis</h2>
+<pre class="synopsis">struct              <a class="link" href="libgpod-The-Itdb-iTunesDB-structure.html#Itdb-iTunesDB" title="struct Itdb_iTunesDB">Itdb_iTunesDB</a>;
+                    <a class="link" href="libgpod-The-Itdb-iTunesDB-structure.html#Itdb-iTunesDB-Private" title="Itdb_iTunesDB_Private">Itdb_iTunesDB_Private</a>;
+enum                <a class="link" href="libgpod-The-Itdb-iTunesDB-structure.html#ItdbFileError" title="enum ItdbFileError">ItdbFileError</a>;
+<a class="link" href="libgpod-The-Itdb-iTunesDB-structure.html#Itdb-iTunesDB" title="struct Itdb_iTunesDB"><span class="returnvalue">Itdb_iTunesDB</span></a> *     <a class="link" href="libgpod-The-Itdb-iTunesDB-structure.html#itdb-new" title="itdb_new ()">itdb_new</a>                            (<em class="parameter"><code><span class="type">void</span></code></em>);
+<span class="returnvalue">void</span>                <a class="link" href="libgpod-The-Itdb-iTunesDB-structure.html#itdb-free" title="itdb_free ()">itdb_free</a>                           (<em class="parameter"><code><a class="link" href="libgpod-The-Itdb-iTunesDB-structure.html#Itdb-iTunesDB" title="struct Itdb_iTunesDB"><span class="type">Itdb_iTunesDB</span></a> *itdb</code></em>);
+<a class="link" href="libgpod-The-Itdb-iTunesDB-structure.html#Itdb-iTunesDB" title="struct Itdb_iTunesDB"><span class="returnvalue">Itdb_iTunesDB</span></a> *     <a class="link" href="libgpod-The-Itdb-iTunesDB-structure.html#itdb-parse" title="itdb_parse ()">itdb_parse</a>                          (<em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *mp</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Error-Reporting.html#GError"><span class="type">GError</span></a> **error</code></em>);
+<a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            <a class="link" href="libgpod-The-Itdb-iTunesDB-structure.html#itdb-write" title="itdb_write ()">itdb_write</a>                          (<em class="parameter"><code><a class="link" href="libgpod-The-Itdb-iTunesDB-structure.html#Itdb-iTunesDB" title="struct Itdb_iTunesDB"><span class="type">Itdb_iTunesDB</span></a> *itdb</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Error-Reporting.html#GError"><span class="type">GError</span></a> **error</code></em>);
+<span class="returnvalue">void</span>                <a class="link" href="libgpod-The-Itdb-iTunesDB-structure.html#itdb-set-mountpoint" title="itdb_set_mountpoint ()">itdb_set_mountpoint</a>                 (<em class="parameter"><code><a class="link" href="libgpod-The-Itdb-iTunesDB-structure.html#Itdb-iTunesDB" title="struct Itdb_iTunesDB"><span class="type">Itdb_iTunesDB</span></a> *itdb</code></em>,
+                                                         <em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *mp</code></em>);
+const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="returnvalue">gchar</span></a> *       <a class="link" href="libgpod-The-Itdb-iTunesDB-structure.html#itdb-get-mountpoint" title="itdb_get_mountpoint ()">itdb_get_mountpoint</a>                 (<em class="parameter"><code><a class="link" href="libgpod-The-Itdb-iTunesDB-structure.html#Itdb-iTunesDB" title="struct Itdb_iTunesDB"><span class="type">Itdb_iTunesDB</span></a> *itdb</code></em>);
+<a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            <a class="link" href="libgpod-The-Itdb-iTunesDB-structure.html#itdb-init-ipod" title="itdb_init_ipod ()">itdb_init_ipod</a>                      (<em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *mountpoint</code></em>,
+                                                         <em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *model_number</code></em>,
+                                                         <em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *ipod_name</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Error-Reporting.html#GError"><span class="type">GError</span></a> **error</code></em>);
+<a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint32"><span class="returnvalue">guint32</span></a>             <a class="link" href="libgpod-The-Itdb-iTunesDB-structure.html#itdb-tracks-number" title="itdb_tracks_number ()">itdb_tracks_number</a>                  (<em class="parameter"><code><a class="link" href="libgpod-The-Itdb-iTunesDB-structure.html#Itdb-iTunesDB" title="struct Itdb_iTunesDB"><span class="type">Itdb_iTunesDB</span></a> *itdb</code></em>);
+<a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint32"><span class="returnvalue">guint32</span></a>             <a class="link" href="libgpod-The-Itdb-iTunesDB-structure.html#itdb-tracks-number-nontransferred" title="itdb_tracks_number_nontransferred ()">itdb_tracks_number_nontransferred</a>   (<em class="parameter"><code><a class="link" href="libgpod-The-Itdb-iTunesDB-structure.html#Itdb-iTunesDB" title="struct Itdb_iTunesDB"><span class="type">Itdb_iTunesDB</span></a> *itdb</code></em>);
+<a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint32"><span class="returnvalue">guint32</span></a>             <a class="link" href="libgpod-The-Itdb-iTunesDB-structure.html#itdb-playlists-number" title="itdb_playlists_number ()">itdb_playlists_number</a>               (<em class="parameter"><code><a class="link" href="libgpod-The-Itdb-iTunesDB-structure.html#Itdb-iTunesDB" title="struct Itdb_iTunesDB"><span class="type">Itdb_iTunesDB</span></a> *itdb</code></em>);
+<span class="returnvalue">void</span>                (<a class="link" href="libgpod-The-Itdb-iTunesDB-structure.html#ItdbUserDataDestroyFunc" title="ItdbUserDataDestroyFunc ()">*ItdbUserDataDestroyFunc</a>)          (<em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a> userdata</code></em>);
+<a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"><span class="returnvalue">gpointer</span></a>            (<a class="link" href="libgpod-The-Itdb-iTunesDB-structure.html#ItdbUserDataDuplicateFunc" title="ItdbUserDataDuplicateFunc ()">*ItdbUserDataDuplicateFunc</a>)        (<em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a> userdata</code></em>);
+</pre>
+</div>
+<div class="refsect1">
+<a name="libgpod-The-Itdb-iTunesDB-structure.description"></a><h2>Description</h2>
+<p>
+These functions are for reading, writing, creating, and deleting an iPod
+database and getting the total number of tracks and playlists.
+</p>
+<p>
+Overview of using an iPod database:
+</p>
+<p>
+<a class="link" href="libgpod-The-Itdb-iTunesDB-structure.html#itdb-parse" title="itdb_parse ()"><code class="function">itdb_parse()</code></a>: read the iTunesDB and ArtworkDB
+</p>
+<p>
+<a class="link" href="libgpod-The-Itdb-iTunesDB-structure.html#itdb-write" title="itdb_write ()"><code class="function">itdb_write()</code></a>: write the iTunesDB and ArtworkDB
+</p>
+<p>
+<a class="link" href="libgpod-The-Itdb-iTunesDB-structure.html#itdb-parse" title="itdb_parse ()"><code class="function">itdb_parse()</code></a> will return a <a class="link" href="libgpod-The-Itdb-iTunesDB-structure.html#Itdb-iTunesDB" title="struct Itdb_iTunesDB"><span class="type">Itdb_iTunesDB</span></a> structure with GLists
+containing all tracks the playlists in the database.  Each track is
+represented by an <a class="link" href="libgpod-Tracks.html#Itdb-Track" title="struct Itdb_Track"><span class="type">Itdb_Track</span></a>.   Each playlist is represented by an
+<a class="link" href="libgpod-Playlists.html#Itdb-Playlist" title="struct Itdb_Playlist"><span class="type">Itdb_Playlist</span></a>.  See the <a class="link" href="libgpod-Tracks.html" title="Tracks">Tracks</a>
+and <a class="link" href="libgpod-Playlists.html" title="Playlists">Playlists</a> sections for
+details on tracks and playlists, respectively.
+</p>
+<p>
+Each <a class="link" href="libgpod-Playlists.html#Itdb-Playlist" title="struct Itdb_Playlist"><span class="type">Itdb_Playlist</span></a> has a GList called <em class="parameter"><code>members</code></em> which contains all of
+the tracks in the playlist.  Tracks referenced in a playlist must also
+be present in the <em class="parameter"><code>tracks</code></em> GList of the <a class="link" href="libgpod-The-Itdb-iTunesDB-structure.html#Itdb-iTunesDB" title="struct Itdb_iTunesDB"><span class="type">Itdb_iTunesDB</span></a>.
+</p>
+<p>
+The iPod must contain one master playlist (MPL) containing all tracks
+accessible on the iPod through the Music-&gt;Tracks/Albums/Artists/etc.
+menu.  In addition to the MPL there can be a number of normal
+playlists accessible through the Music-&gt;Playlists menu on the iPod.
+Tracks that are a member of one of these normal playlists must also be
+a member of the MPL.
+</p>
+<p>
+The Podcasts playlist is just another playlist with some internal
+flags set differently.  Tracks in the Podcasts playlist are not
+normally members of the MPL (so on the iPod they will only show up
+under the Podcasts menu). All tracks referenced must be in the
+<em class="parameter"><code>tracks</code></em> GList of the <a class="link" href="libgpod-The-Itdb-iTunesDB-structure.html#Itdb-iTunesDB" title="struct Itdb_iTunesDB"><span class="type">Itdb_iTunesDB</span></a>, however.
+</p>
+<p>
+Each track may have a thumbnail associated with it. You can retrieve a
+<a href="http://library.gnome.org/devel/gdk3/gdk2-Bitmaps-and-Pixmaps.html#GdkPixmap"><span class="type">GdkPixmap</span></a> of the thumbnail using <a class="link" href="libgpod-Artwork.html#itdb-artwork-get-pixbuf" title="itdb_artwork_get_pixbuf ()"><code class="function">itdb_artwork_get_pixbuf()</code></a>.  A
+thumbnail can be added with <a class="link" href="libgpod-Tracks.html#itdb-track-set-thumbnails" title="itdb_track_set_thumbnails ()"><code class="function">itdb_track_set_thumbnails()</code></a>.  A thumbnail
+can be removed with <a class="link" href="libgpod-Tracks.html#itdb-track-remove-thumbnails" title="itdb_track_remove_thumbnails ()"><code class="function">itdb_track_remove_thumbnails()</code></a>.  Please see the
+<a class="link" href="libgpod-Artwork.html" title="Artwork">Artwork</a> section for more
+details on artwork related functions and structures.
+</p>
+<div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+<h3 class="title">Note</h3>
+<p>
+Be aware that iTunes additionally stores the artwork as tags
+in the original music file. That's also from where the data is
+read when artwork is displayed in iTunes, and there can be more
+than one piece of artwork. libgpod does not store the artwork as
+tags in the original music file. As a consequence, if iTunes
+attempts to access the artwork, it will find none, and remove
+libgpod's artwork. Luckily, iTunes will only attempt to access
+the artwork if you select a track in iTunes.  To work around
+this, gtkpod keeps a list of the original filename of all
+artwork and silently adds the thumbnails if they were 'lost'.
+Your application might want to do something similar, or you can
+supply patches for (optionally!) adding tags to the original music
+files.
+</p>
+</div>
+<p>
+The <a class="link" href="libgpod-The-Itdb-iTunesDB-structure.html#Itdb-iTunesDB" title="struct Itdb_iTunesDB"><span class="type">Itdb_iTunesDB</span></a>, <a class="link" href="libgpod-Playlists.html#Itdb-Playlist" title="struct Itdb_Playlist"><span class="type">Itdb_Playlist</span></a> and <a class="link" href="libgpod-Tracks.html#Itdb-Track" title="struct Itdb_Track"><span class="type">Itdb_Track</span></a> structures each
+have <em class="parameter"><code>userdata</code></em> and <em class="parameter"><code>usertype</code></em> fields that can be used by the
+application to store additional application-specific data. If
+<em class="parameter"><code>userdata</code></em> is a pointer to an external structure, you can supply a
+<a class="link" href="libgpod-The-Itdb-iTunesDB-structure.html#ItdbUserDataDuplicateFunc" title="ItdbUserDataDuplicateFunc ()"><span class="type">ItdbUserDataDuplicateFunc</span></a> and a <a class="link" href="libgpod-The-Itdb-iTunesDB-structure.html#ItdbUserDataDestroyFunc" title="ItdbUserDataDestroyFunc ()"><span class="type">ItdbUserDataDestroyFunc</span></a> so that this
+data can be duplicated or freed automatically with a call to the
+library <code class="function">_duplicate()</code>/<code class="function">_free()</code> functions.
+</p>
+</div>
+<div class="refsect1">
+<a name="libgpod-The-Itdb-iTunesDB-structure.details"></a><h2>Details</h2>
+<div class="refsect2">
+<a name="Itdb-iTunesDB"></a><h3>struct Itdb_iTunesDB</h3>
+<pre class="programlisting">struct Itdb_iTunesDB {
+    GList *tracks;
+    GList *playlists;
+    gchar *filename;
+    Itdb_Device *device;
+    guint32 version;
+    guint64 id;
+    gint32 tzoffset;
+    /* reserved for future use */
+    gint32 reserved_int2;
+    Itdb_iTunesDB_Private *priv;
+    gpointer reserved2;
+    /* below is for use by application */
+    guint64 usertype;
+    gpointer userdata;
+    /* functions called to duplicate/free userdata */
+    ItdbUserDataDuplicateFunc userdata_duplicate;
+    ItdbUserDataDestroyFunc userdata_destroy;
+};
+</pre>
+<p>
+Structure representing an iTunes database
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Doubly-Linked-Lists.html#GList"><span class="type">GList</span></a> *<em class="structfield"><code><a name="Itdb-iTunesDB.tracks"></a>tracks</code></em>;</span></p></td>
+<td>A list of tracks in the database (<a class="link" href="libgpod-Tracks.html#Itdb-Track" title="struct Itdb_Track"><span class="type">Itdb_Track</span></a>)</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Doubly-Linked-Lists.html#GList"><span class="type">GList</span></a> *<em class="structfield"><code><a name="Itdb-iTunesDB.playlists"></a>playlists</code></em>;</span></p></td>
+<td>A list of playlists in the database (<a class="link" href="libgpod-Playlists.html#Itdb-Playlist" title="struct Itdb_Playlist"><span class="type">Itdb_Playlist</span></a>)</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *<em class="structfield"><code><a name="Itdb-iTunesDB.filename"></a>filename</code></em>;</span></p></td>
+<td>The filename of the iTunesDB</td>
+</tr>
+<tr>
+<td><p><span class="term"><a class="link" href="libgpod-Device.html#Itdb-Device" title="Itdb_Device"><span class="type">Itdb_Device</span></a> *<em class="structfield"><code><a name="Itdb-iTunesDB.device"></a>device</code></em>;</span></p></td>
+<td>iPod device info (<a class="link" href="libgpod-Device.html#Itdb-Device" title="Itdb_Device"><span class="type">Itdb_Device</span></a>)</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint32"><span class="type">guint32</span></a> <em class="structfield"><code><a name="Itdb-iTunesDB.version"></a>version</code></em>;</span></p></td>
+<td>The version number of the iTunesDB</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint64"><span class="type">guint64</span></a> <em class="structfield"><code><a name="Itdb-iTunesDB.id"></a>id</code></em>;</span></p></td>
+<td>A 64 bit id value for the iTunesDB</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gint32"><span class="type">gint32</span></a> <em class="structfield"><code><a name="Itdb-iTunesDB.tzoffset"></a>tzoffset</code></em>;</span></p></td>
+<td>offset in seconds from UTC</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gint32"><span class="type">gint32</span></a> <em class="structfield"><code><a name="Itdb-iTunesDB.reserved-int2"></a>reserved_int2</code></em>;</span></p></td>
+<td>Reserved for future use</td>
+</tr>
+<tr>
+<td><p><span class="term"><a class="link" href="libgpod-The-Itdb-iTunesDB-structure.html#Itdb-iTunesDB-Private" title="Itdb_iTunesDB_Private"><span class="type">Itdb_iTunesDB_Private</span></a> *<em class="structfield"><code><a name="Itdb-iTunesDB.priv"></a>priv</code></em>;</span></p></td>
+<td>Private data</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a> <em class="structfield"><code><a name="Itdb-iTunesDB.reserved2"></a>reserved2</code></em>;</span></p></td>
+<td>Reserved for future use</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint64"><span class="type">guint64</span></a> <em class="structfield"><code><a name="Itdb-iTunesDB.usertype"></a>usertype</code></em>;</span></p></td>
+<td>For use by application</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a> <em class="structfield"><code><a name="Itdb-iTunesDB.userdata"></a>userdata</code></em>;</span></p></td>
+<td>For use by application</td>
+</tr>
+<tr>
+<td><p><span class="term"><a class="link" href="libgpod-The-Itdb-iTunesDB-structure.html#ItdbUserDataDuplicateFunc" title="ItdbUserDataDuplicateFunc ()"><span class="type">ItdbUserDataDuplicateFunc</span></a> <em class="structfield"><code><a name="Itdb-iTunesDB.userdata-duplicate"></a>userdata_duplicate</code></em>;</span></p></td>
+<td>A function to duplicate <span class="type">userdata</span>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><a class="link" href="libgpod-The-Itdb-iTunesDB-structure.html#ItdbUserDataDestroyFunc" title="ItdbUserDataDestroyFunc ()"><span class="type">ItdbUserDataDestroyFunc</span></a> <em class="structfield"><code><a name="Itdb-iTunesDB.userdata-destroy"></a>userdata_destroy</code></em>;</span></p></td>
+<td>A function to free <span class="type">userdata</span>
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="Itdb-iTunesDB-Private"></a><h3>Itdb_iTunesDB_Private</h3>
+<pre class="programlisting">typedef struct {
+    GList *mhsd5_playlists;
+    guint16 platform;
+    guint16 unk_0x22;
+    guint64 id_0x24;
+    guint16 lang;
+    guint64 pid;
+    gint32 unk_0x50;
+    gint32 unk_0x54;
+    gint16 audio_language;
+    gint16 subtitle_language;
+    gint16 unk_0xa4;
+    gint16 unk_0xa6;
+    gint16 unk_0xa8;
+    gchar *genius_cuid;
+} Itdb_iTunesDB_Private;
+</pre>
+<p>
+</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ItdbFileError"></a><h3>enum ItdbFileError</h3>
+<pre class="programlisting">typedef enum {
+    ITDB_FILE_ERROR_SEEK,
+    ITDB_FILE_ERROR_CORRUPT,
+    ITDB_FILE_ERROR_NOTFOUND,
+    ITDB_FILE_ERROR_RENAME,
+    ITDB_FILE_ERROR_ITDB_CORRUPT
+} ItdbFileError;
+</pre>
+<p>
+Error codes for iTunesDB file
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><a name="ITDB-FILE-ERROR-SEEK:CAPS"></a><span class="term"><code class="literal">ITDB_FILE_ERROR_SEEK</code></span></p></td>
+<td>file corrupt: illegal seek occured
+</td>
+</tr>
+<tr>
+<td><p><a name="ITDB-FILE-ERROR-CORRUPT:CAPS"></a><span class="term"><code class="literal">ITDB_FILE_ERROR_CORRUPT</code></span></p></td>
+<td>file corrupt
+</td>
+</tr>
+<tr>
+<td><p><a name="ITDB-FILE-ERROR-NOTFOUND:CAPS"></a><span class="term"><code class="literal">ITDB_FILE_ERROR_NOTFOUND</code></span></p></td>
+<td>file not found
+</td>
+</tr>
+<tr>
+<td><p><a name="ITDB-FILE-ERROR-RENAME:CAPS"></a><span class="term"><code class="literal">ITDB_FILE_ERROR_RENAME</code></span></p></td>
+<td>file could not be renamed
+</td>
+</tr>
+<tr>
+<td><p><a name="ITDB-FILE-ERROR-ITDB-CORRUPT:CAPS"></a><span class="term"><code class="literal">ITDB_FILE_ERROR_ITDB_CORRUPT</code></span></p></td>
+<td>iTunesDB in memory corrupt
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="itdb-new"></a><h3>itdb_new ()</h3>
+<pre class="programlisting"><a class="link" href="libgpod-The-Itdb-iTunesDB-structure.html#Itdb-iTunesDB" title="struct Itdb_iTunesDB"><span class="returnvalue">Itdb_iTunesDB</span></a> *     itdb_new                            (<em class="parameter"><code><span class="type">void</span></code></em>);</pre>
+<p>
+Creates a new Itdb_iTunesDB with the unknowns filled in to reasonable
+values.
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody><tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>a newly created Itdb_iTunesDB to be freed with <a class="link" href="libgpod-The-Itdb-iTunesDB-structure.html#itdb-free" title="itdb_free ()"><code class="function">itdb_free()</code></a>
+when it's no longer needed</td>
+</tr></tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="itdb-free"></a><h3>itdb_free ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                itdb_free                           (<em class="parameter"><code><a class="link" href="libgpod-The-Itdb-iTunesDB-structure.html#Itdb-iTunesDB" title="struct Itdb_iTunesDB"><span class="type">Itdb_iTunesDB</span></a> *itdb</code></em>);</pre>
+<p>
+Free the memory taken by <em class="parameter"><code>itdb</code></em>.
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody><tr>
+<td><p><span class="term"><em class="parameter"><code>itdb</code></em> :</span></p></td>
+<td>an <a class="link" href="libgpod-The-Itdb-iTunesDB-structure.html#Itdb-iTunesDB" title="struct Itdb_iTunesDB"><span class="type">Itdb_iTunesDB</span></a>
+</td>
+</tr></tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="itdb-parse"></a><h3>itdb_parse ()</h3>
+<pre class="programlisting"><a class="link" href="libgpod-The-Itdb-iTunesDB-structure.html#Itdb-iTunesDB" title="struct Itdb_iTunesDB"><span class="returnvalue">Itdb_iTunesDB</span></a> *     itdb_parse                          (<em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *mp</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Error-Reporting.html#GError"><span class="type">GError</span></a> **error</code></em>);</pre>
+<p>
+Parse the Itdb_iTunesDB of the iPod located at <em class="parameter"><code>mp</code></em>
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>mp</code></em> :</span></p></td>
+<td>mount point of the iPod (eg "/mnt/ipod") in local encoding</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>error</code></em> :</span></p></td>
+<td>return location for a <a href="http://library.gnome.org/devel/glib/unstable/glib-Error-Reporting.html#GError"><span class="type">GError</span></a> or NULL</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>a newly allocated <a class="link" href="libgpod-The-Itdb-iTunesDB-structure.html#Itdb-iTunesDB" title="struct Itdb_iTunesDB"><span class="type">Itdb_iTunesDB</span></a> struct holding the tracks and
+the playlists present on the iPod at <em class="parameter"><code>mp</code></em>, NULL if <em class="parameter"><code>mp</code></em> isn't an iPod mount
+point. If non-NULL, the <a class="link" href="libgpod-The-Itdb-iTunesDB-structure.html#Itdb-iTunesDB" title="struct Itdb_iTunesDB"><span class="type">Itdb_iTunesDB</span></a> is to be freed with <a class="link" href="libgpod-The-Itdb-iTunesDB-structure.html#itdb-free" title="itdb_free ()"><code class="function">itdb_free()</code></a> when
+it's no longer needed</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="itdb-write"></a><h3>itdb_write ()</h3>
+<pre class="programlisting"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            itdb_write                          (<em class="parameter"><code><a class="link" href="libgpod-The-Itdb-iTunesDB-structure.html#Itdb-iTunesDB" title="struct Itdb_iTunesDB"><span class="type">Itdb_iTunesDB</span></a> *itdb</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Error-Reporting.html#GError"><span class="type">GError</span></a> **error</code></em>);</pre>
+<p>
+Write out an iTunesDB. It reassigns unique IDs to all tracks. 
+An existing "Play Counts" file is renamed to "Play Counts.bak" if
+the export was successful.
+An existing "OTGPlaylistInfo" file is removed if the export was
+successful.
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>itdb</code></em> :</span></p></td>
+<td>the <a class="link" href="libgpod-The-Itdb-iTunesDB-structure.html#Itdb-iTunesDB" title="struct Itdb_iTunesDB"><span class="type">Itdb_iTunesDB</span></a> to write to disk</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>error</code></em> :</span></p></td>
+<td>return location for a <a href="http://library.gnome.org/devel/glib/unstable/glib-Error-Reporting.html#GError"><span class="type">GError</span></a> or NULL</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>TRUE on success, FALSE on error, in which case <em class="parameter"><code>error</code></em> is
+set accordingly.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="itdb-set-mountpoint"></a><h3>itdb_set_mountpoint ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                itdb_set_mountpoint                 (<em class="parameter"><code><a class="link" href="libgpod-The-Itdb-iTunesDB-structure.html#Itdb-iTunesDB" title="struct Itdb_iTunesDB"><span class="type">Itdb_iTunesDB</span></a> *itdb</code></em>,
+                                                         <em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *mp</code></em>);</pre>
+<p>
+Sets the mountpoint of <em class="parameter"><code>itdb</code></em>. Always use this function to set the
+mountpoint of an <a class="link" href="libgpod-The-Itdb-iTunesDB-structure.html#Itdb-iTunesDB" title="struct Itdb_iTunesDB"><span class="type">Itdb_iTunesDB</span></a> as it will reset the number of
+available /iPod_Control/Music/F.. dirs. It doesn't attempt to parse
+an iPod database that may be present on the iPod at <em class="parameter"><code>mp</code></em>.
+</p>
+<p>
+</p>
+<div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+<h3 class="title">Note</h3>
+<p>Calling this function removes the artwork in the
+<a class="link" href="libgpod-The-Itdb-iTunesDB-structure.html#Itdb-iTunesDB" title="struct Itdb_iTunesDB"><span class="type">Itdb_iTunesDB</span></a> database using this <a class="link" href="libgpod-Device.html#Itdb-Device" title="Itdb_Device"><span class="type">Itdb_Device</span></a> which was read from the
+iPod.</p>
+</div>
+<p>.
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>itdb</code></em> :</span></p></td>
+<td>an <a class="link" href="libgpod-The-Itdb-iTunesDB-structure.html#Itdb-iTunesDB" title="struct Itdb_iTunesDB"><span class="type">Itdb_iTunesDB</span></a>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>mp</code></em> :</span></p></td>
+<td>new mount point</td>
+</tr>
+</tbody>
+</table></div>
+<p class="since">Since 0.1.3</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="itdb-get-mountpoint"></a><h3>itdb_get_mountpoint ()</h3>
+<pre class="programlisting">const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="returnvalue">gchar</span></a> *       itdb_get_mountpoint                 (<em class="parameter"><code><a class="link" href="libgpod-The-Itdb-iTunesDB-structure.html#Itdb-iTunesDB" title="struct Itdb_iTunesDB"><span class="type">Itdb_iTunesDB</span></a> *itdb</code></em>);</pre>
+<p>
+Retrieve a reference to the mountpoint of <em class="parameter"><code>itdb</code></em>
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>itdb</code></em> :</span></p></td>
+<td>an <a class="link" href="libgpod-The-Itdb-iTunesDB-structure.html#Itdb-iTunesDB" title="struct Itdb_iTunesDB"><span class="type">Itdb_iTunesDB</span></a>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>the <em class="parameter"><code>itdb</code></em> mountpoint, this string shouldn't be freed
+nor modified</td>
+</tr>
+</tbody>
+</table></div>
+<p class="since">Since 0.4.0</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="itdb-init-ipod"></a><h3>itdb_init_ipod ()</h3>
+<pre class="programlisting"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            itdb_init_ipod                      (<em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *mountpoint</code></em>,
+                                                         <em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *model_number</code></em>,
+                                                         <em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *ipod_name</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Error-Reporting.html#GError"><span class="type">GError</span></a> **error</code></em>);</pre>
+<p>
+Initialise an iPod device from scratch. The function attempts to
+create a blank database, complete with master playlist and device
+information as well as the directory structure required for the
+type of iPod.
+<em class="parameter"><code>model_number</code></em> is used to tell libgpod about the exact iPod
+model, which is needed for proper artwork writing. <em class="parameter"><code>model_number</code></em> can be
+found from the table returned by itdb_device_get_ipod_info_table (for
+example). On recent distros with iPods released
+in the last few years (starting with the iPod Color), it should be fine
+to pass in a NULL <em class="parameter"><code>model_number</code></em> while still getting artwork writing.
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>mountpoint</code></em> :</span></p></td>
+<td>the iPod mountpoint</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>model_number</code></em> :</span></p></td>
+<td>the iPod model number, can be NULL</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>ipod_name</code></em> :</span></p></td>
+<td>the name to give to the iPod. Will be displayed in
+gtkpod or itunes</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>error</code></em> :</span></p></td>
+<td>return location for a <a href="http://library.gnome.org/devel/glib/unstable/glib-Error-Reporting.html#GError"><span class="type">GError</span></a> or NULL</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>TRUE when successful, FALSE if a failure has occurred.</td>
+</tr>
+</tbody>
+</table></div>
+<p class="since">Since 0.4.0</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="itdb-tracks-number"></a><h3>itdb_tracks_number ()</h3>
+<pre class="programlisting"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint32"><span class="returnvalue">guint32</span></a>             itdb_tracks_number                  (<em class="parameter"><code><a class="link" href="libgpod-The-Itdb-iTunesDB-structure.html#Itdb-iTunesDB" title="struct Itdb_iTunesDB"><span class="type">Itdb_iTunesDB</span></a> *itdb</code></em>);</pre>
+<p>
+Counts the number of tracks stored in <em class="parameter"><code>itdb</code></em>
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>itdb</code></em> :</span></p></td>
+<td>an <a class="link" href="libgpod-The-Itdb-iTunesDB-structure.html#Itdb-iTunesDB" title="struct Itdb_iTunesDB"><span class="type">Itdb_iTunesDB</span></a>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>the number of tracks in <em class="parameter"><code>itdb</code></em>
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="itdb-tracks-number-nontransferred"></a><h3>itdb_tracks_number_nontransferred ()</h3>
+<pre class="programlisting"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint32"><span class="returnvalue">guint32</span></a>             itdb_tracks_number_nontransferred   (<em class="parameter"><code><a class="link" href="libgpod-The-Itdb-iTunesDB-structure.html#Itdb-iTunesDB" title="struct Itdb_iTunesDB"><span class="type">Itdb_iTunesDB</span></a> *itdb</code></em>);</pre>
+<p>
+Counts the number of non-transferred tracks in <em class="parameter"><code>itdb</code></em>
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>itdb</code></em> :</span></p></td>
+<td>an <a class="link" href="libgpod-The-Itdb-iTunesDB-structure.html#Itdb-iTunesDB" title="struct Itdb_iTunesDB"><span class="type">Itdb_iTunesDB</span></a>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>the number of tracks in <em class="parameter"><code>itdb</code></em> that haven't been transferred
+to the iPod yet (ie the number of <a class="link" href="libgpod-Tracks.html#Itdb-Track" title="struct Itdb_Track"><span class="type">Itdb_Track</span></a> in which the transferred field
+is false)</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="itdb-playlists-number"></a><h3>itdb_playlists_number ()</h3>
+<pre class="programlisting"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint32"><span class="returnvalue">guint32</span></a>             itdb_playlists_number               (<em class="parameter"><code><a class="link" href="libgpod-The-Itdb-iTunesDB-structure.html#Itdb-iTunesDB" title="struct Itdb_iTunesDB"><span class="type">Itdb_iTunesDB</span></a> *itdb</code></em>);</pre>
+<p>
+Counts the number of playlists stored in <em class="parameter"><code>itdb</code></em>
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>itdb</code></em> :</span></p></td>
+<td>an <a class="link" href="libgpod-The-Itdb-iTunesDB-structure.html#Itdb-iTunesDB" title="struct Itdb_iTunesDB"><span class="type">Itdb_iTunesDB</span></a>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>the number of playlists in <em class="parameter"><code>itdb</code></em> (including the master
+playlist)</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ItdbUserDataDestroyFunc"></a><h3>ItdbUserDataDestroyFunc ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                (*ItdbUserDataDestroyFunc)          (<em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a> userdata</code></em>);</pre>
+<p>
+Function called to free userdata
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody><tr>
+<td><p><span class="term"><em class="parameter"><code>userdata</code></em> :</span></p></td>
+<td>A <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a> to user data</td>
+</tr></tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ItdbUserDataDuplicateFunc"></a><h3>ItdbUserDataDuplicateFunc ()</h3>
+<pre class="programlisting"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"><span class="returnvalue">gpointer</span></a>            (*ItdbUserDataDuplicateFunc)        (<em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a> userdata</code></em>);</pre>
+<p>
+Function called to duplicate userdata
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>userdata</code></em> :</span></p></td>
+<td>A <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a> to user data</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>A <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a>
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+</div>
+<div class="footer">
+<hr>
+          Generated by GTK-Doc V1.19</div>
+</body>
+</html>

@@ -1,0 +1,432 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE book PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "">
+<book xmlns="http://www.devhelp.net/book" title="libgpod Reference Manual" link="index.html" author="Jorg SchulerChristophe Fergeau" name="libgpod" version="2" language="c">
+  <chapters>
+    <sub name="iPod database" link="itunesdb.html">
+      <sub name="iPod database reading/writing" link="libgpod-The-Itdb-iTunesDB-structure.html"/>
+      <sub name="File handling functions" link="libgpod-File-handling-functions.html"/>
+      <sub name="Time handling" link="libgpod-Time-handling.html"/>
+      <sub name="Low-level functions" link="libgpod-Low-level-functions.html"/>
+      <sub name="iPod database components" link="ch01.html">
+        <sub name="Tracks" link="libgpod-Tracks.html"/>
+        <sub name="Playlists" link="libgpod-Playlists.html"/>
+        <sub name="Smart Playlists" link="libgpod-Smart-Playlists.html"/>
+        <sub name="Artwork" link="libgpod-Artwork.html"/>
+        <sub name="Chapter Data" link="libgpod-Chapter-Data.html"/>
+        <sub name="Device" link="libgpod-Device.html"/>
+      </sub>
+    </sub>
+    <sub name="Photo database" link="photodb.html">
+      <sub name="Photo database" link="libgpod-Photo-database.html"/>
+    </sub>
+  </chapters>
+  <functions>
+    <keyword type="struct" name="struct Itdb_iTunesDB" link="libgpod-The-Itdb-iTunesDB-structure.html#Itdb-iTunesDB"/>
+    <keyword type="struct" name="Itdb_iTunesDB_Private" link="libgpod-The-Itdb-iTunesDB-structure.html#Itdb-iTunesDB-Private"/>
+    <keyword type="enum" name="enum ItdbFileError" link="libgpod-The-Itdb-iTunesDB-structure.html#ItdbFileError"/>
+    <keyword type="function" name="itdb_new ()" link="libgpod-The-Itdb-iTunesDB-structure.html#itdb-new"/>
+    <keyword type="function" name="itdb_free ()" link="libgpod-The-Itdb-iTunesDB-structure.html#itdb-free"/>
+    <keyword type="function" name="itdb_parse ()" link="libgpod-The-Itdb-iTunesDB-structure.html#itdb-parse"/>
+    <keyword type="function" name="itdb_write ()" link="libgpod-The-Itdb-iTunesDB-structure.html#itdb-write"/>
+    <keyword type="function" name="itdb_set_mountpoint ()" link="libgpod-The-Itdb-iTunesDB-structure.html#itdb-set-mountpoint" since="0.1.3"/>
+    <keyword type="function" name="itdb_get_mountpoint ()" link="libgpod-The-Itdb-iTunesDB-structure.html#itdb-get-mountpoint" since="0.4.0"/>
+    <keyword type="function" name="itdb_init_ipod ()" link="libgpod-The-Itdb-iTunesDB-structure.html#itdb-init-ipod" since="0.4.0"/>
+    <keyword type="function" name="itdb_tracks_number ()" link="libgpod-The-Itdb-iTunesDB-structure.html#itdb-tracks-number"/>
+    <keyword type="function" name="itdb_tracks_number_nontransferred ()" link="libgpod-The-Itdb-iTunesDB-structure.html#itdb-tracks-number-nontransferred"/>
+    <keyword type="function" name="itdb_playlists_number ()" link="libgpod-The-Itdb-iTunesDB-structure.html#itdb-playlists-number"/>
+    <keyword type="function" name="ItdbUserDataDestroyFunc ()" link="libgpod-The-Itdb-iTunesDB-structure.html#ItdbUserDataDestroyFunc"/>
+    <keyword type="function" name="ItdbUserDataDuplicateFunc ()" link="libgpod-The-Itdb-iTunesDB-structure.html#ItdbUserDataDuplicateFunc"/>
+    <keyword type="function" name="itdb_cp_track_to_ipod ()" link="libgpod-File-handling-functions.html#itdb-cp-track-to-ipod"/>
+    <keyword type="function" name="itdb_filename_fs2ipod ()" link="libgpod-File-handling-functions.html#itdb-filename-fs2ipod"/>
+    <keyword type="function" name="itdb_filename_ipod2fs ()" link="libgpod-File-handling-functions.html#itdb-filename-ipod2fs"/>
+    <keyword type="function" name="itdb_filename_on_ipod ()" link="libgpod-File-handling-functions.html#itdb-filename-on-ipod"/>
+    <keyword type="function" name="itdb_musicdirs_number ()" link="libgpod-File-handling-functions.html#itdb-musicdirs-number" since="0.1.3"/>
+    <keyword type="function" name="itdb_rename_files ()" link="libgpod-File-handling-functions.html#itdb-rename-files"/>
+    <keyword type="function" name="itdb_start_sync ()" link="libgpod-File-handling-functions.html#itdb-start-sync"/>
+    <keyword type="function" name="itdb_stop_sync ()" link="libgpod-File-handling-functions.html#itdb-stop-sync"/>
+    <keyword type="function" name="itdb_time_get_mac_time ()" link="libgpod-Time-handling.html#itdb-time-get-mac-time" deprecated=""/>
+    <keyword type="function" name="itdb_time_mac_to_host ()" link="libgpod-Time-handling.html#itdb-time-mac-to-host" deprecated=""/>
+    <keyword type="function" name="itdb_time_host_to_mac ()" link="libgpod-Time-handling.html#itdb-time-host-to-mac" deprecated=""/>
+    <keyword type="function" name="itdb_get_control_dir ()" link="libgpod-Low-level-functions.html#itdb-get-control-dir" since="0.4.0"/>
+    <keyword type="function" name="itdb_get_itunes_dir ()" link="libgpod-Low-level-functions.html#itdb-get-itunes-dir" since="0.4.0"/>
+    <keyword type="function" name="itdb_get_music_dir ()" link="libgpod-Low-level-functions.html#itdb-get-music-dir"/>
+    <keyword type="function" name="itdb_get_artwork_dir ()" link="libgpod-Low-level-functions.html#itdb-get-artwork-dir" since="0.4.0"/>
+    <keyword type="function" name="itdb_get_device_dir ()" link="libgpod-Low-level-functions.html#itdb-get-device-dir" since="0.4.0"/>
+    <keyword type="function" name="itdb_get_photos_dir ()" link="libgpod-Low-level-functions.html#itdb-get-photos-dir" since="0.4.0"/>
+    <keyword type="function" name="itdb_get_itunesdb_path ()" link="libgpod-Low-level-functions.html#itdb-get-itunesdb-path" since="0.4.0"/>
+    <keyword type="function" name="itdb_get_itunessd_path ()" link="libgpod-Low-level-functions.html#itdb-get-itunessd-path" since="0.4.0"/>
+    <keyword type="function" name="itdb_get_itunescdb_path ()" link="libgpod-Low-level-functions.html#itdb-get-itunescdb-path" since="0.4.0"/>
+    <keyword type="function" name="itdb_get_artworkdb_path ()" link="libgpod-Low-level-functions.html#itdb-get-artworkdb-path" since="0.4.0"/>
+    <keyword type="function" name="itdb_get_photodb_path ()" link="libgpod-Low-level-functions.html#itdb-get-photodb-path" since="0.4.0"/>
+    <keyword type="function" name="itdb_get_photos_thumb_dir ()" link="libgpod-Low-level-functions.html#itdb-get-photos-thumb-dir" since="0.4.0"/>
+    <keyword type="function" name="itdb_get_path ()" link="libgpod-Low-level-functions.html#itdb-get-path" since="0.4.0"/>
+    <keyword type="function" name="itdb_resolve_path ()" link="libgpod-Low-level-functions.html#itdb-resolve-path"/>
+    <keyword type="function" name="itdb_cp ()" link="libgpod-Low-level-functions.html#itdb-cp"/>
+    <keyword type="function" name="itdb_cp_get_dest_filename ()" link="libgpod-Low-level-functions.html#itdb-cp-get-dest-filename" since="0.5.0"/>
+    <keyword type="function" name="itdb_cp_finalize ()" link="libgpod-Low-level-functions.html#itdb-cp-finalize" since="0.5.0"/>
+    <keyword type="function" name="itdb_parse_file ()" link="libgpod-Low-level-functions.html#itdb-parse-file"/>
+    <keyword type="function" name="itdb_write_file ()" link="libgpod-Low-level-functions.html#itdb-write-file"/>
+    <keyword type="function" name="itdb_shuffle_write ()" link="libgpod-Low-level-functions.html#itdb-shuffle-write"/>
+    <keyword type="function" name="itdb_shuffle_write_file ()" link="libgpod-Low-level-functions.html#itdb-shuffle-write-file"/>
+    <keyword type="function" name="itdb_duplicate ()" link="libgpod-Low-level-functions.html#itdb-duplicate"/>
+    <keyword type="struct" name="struct Itdb_Track" link="libgpod-Tracks.html#Itdb-Track"/>
+    <keyword type="struct" name="Itdb_Track_Private" link="libgpod-Tracks.html#Itdb-Track-Private"/>
+    <keyword type="enum" name="enum Itdb_Mediatype" link="libgpod-Tracks.html#Itdb-Mediatype" since="0.5.0"/>
+    <keyword type="macro" name="ITDB_RATING_STEP" link="libgpod-Tracks.html#ITDB-RATING-STEP:CAPS"/>
+    <keyword type="function" name="itdb_track_new ()" link="libgpod-Tracks.html#itdb-track-new"/>
+    <keyword type="function" name="itdb_track_free ()" link="libgpod-Tracks.html#itdb-track-free"/>
+    <keyword type="function" name="itdb_track_add ()" link="libgpod-Tracks.html#itdb-track-add"/>
+    <keyword type="function" name="itdb_track_remove ()" link="libgpod-Tracks.html#itdb-track-remove"/>
+    <keyword type="function" name="itdb_track_unlink ()" link="libgpod-Tracks.html#itdb-track-unlink"/>
+    <keyword type="function" name="itdb_track_duplicate ()" link="libgpod-Tracks.html#itdb-track-duplicate"/>
+    <keyword type="function" name="itdb_track_by_id ()" link="libgpod-Tracks.html#itdb-track-by-id"/>
+    <keyword type="function" name="itdb_track_id_tree_create ()" link="libgpod-Tracks.html#itdb-track-id-tree-create"/>
+    <keyword type="function" name="itdb_track_id_tree_destroy ()" link="libgpod-Tracks.html#itdb-track-id-tree-destroy"/>
+    <keyword type="function" name="itdb_track_id_tree_by_id ()" link="libgpod-Tracks.html#itdb-track-id-tree-by-id"/>
+    <keyword type="function" name="itdb_track_get_thumbnail ()" link="libgpod-Tracks.html#itdb-track-get-thumbnail" since="0.7.0"/>
+    <keyword type="function" name="itdb_track_has_thumbnails ()" link="libgpod-Tracks.html#itdb-track-has-thumbnails" since="0.7.0"/>
+    <keyword type="function" name="itdb_track_set_thumbnails ()" link="libgpod-Tracks.html#itdb-track-set-thumbnails" since="0.3.0"/>
+    <keyword type="function" name="itdb_track_set_thumbnails_from_data ()" link="libgpod-Tracks.html#itdb-track-set-thumbnails-from-data" since="0.4.0"/>
+    <keyword type="function" name="itdb_track_set_thumbnails_from_pixbuf ()" link="libgpod-Tracks.html#itdb-track-set-thumbnails-from-pixbuf" since="0.5.0"/>
+    <keyword type="function" name="itdb_track_remove_thumbnails ()" link="libgpod-Tracks.html#itdb-track-remove-thumbnails" since="0.3.0"/>
+    <keyword type="struct" name="struct Itdb_Playlist" link="libgpod-Playlists.html#Itdb-Playlist"/>
+    <keyword type="struct" name="Itdb_Playlist_Private" link="libgpod-Playlists.html#Itdb-Playlist-Private"/>
+    <keyword type="enum" name="enum ItdbPlaylistSortOrder" link="libgpod-Playlists.html#ItdbPlaylistSortOrder" since="0.1.3"/>
+    <keyword type="function" name="itdb_playlist_new ()" link="libgpod-Playlists.html#itdb-playlist-new"/>
+    <keyword type="function" name="itdb_playlist_free ()" link="libgpod-Playlists.html#itdb-playlist-free"/>
+    <keyword type="function" name="itdb_playlist_duplicate ()" link="libgpod-Playlists.html#itdb-playlist-duplicate"/>
+    <keyword type="function" name="itdb_playlist_add ()" link="libgpod-Playlists.html#itdb-playlist-add"/>
+    <keyword type="function" name="itdb_playlist_move ()" link="libgpod-Playlists.html#itdb-playlist-move"/>
+    <keyword type="function" name="itdb_playlist_remove ()" link="libgpod-Playlists.html#itdb-playlist-remove"/>
+    <keyword type="function" name="itdb_playlist_unlink ()" link="libgpod-Playlists.html#itdb-playlist-unlink"/>
+    <keyword type="function" name="itdb_playlist_add_track ()" link="libgpod-Playlists.html#itdb-playlist-add-track"/>
+    <keyword type="function" name="itdb_playlist_remove_track ()" link="libgpod-Playlists.html#itdb-playlist-remove-track"/>
+    <keyword type="function" name="itdb_playlist_contains_track ()" link="libgpod-Playlists.html#itdb-playlist-contains-track"/>
+    <keyword type="function" name="itdb_playlist_contain_track_number ()" link="libgpod-Playlists.html#itdb-playlist-contain-track-number"/>
+    <keyword type="function" name="itdb_playlist_tracks_number ()" link="libgpod-Playlists.html#itdb-playlist-tracks-number"/>
+    <keyword type="function" name="itdb_playlist_mpl ()" link="libgpod-Playlists.html#itdb-playlist-mpl"/>
+    <keyword type="function" name="itdb_playlist_is_mpl ()" link="libgpod-Playlists.html#itdb-playlist-is-mpl" since="0.1.6"/>
+    <keyword type="function" name="itdb_playlist_set_mpl ()" link="libgpod-Playlists.html#itdb-playlist-set-mpl" since="0.2.0"/>
+    <keyword type="function" name="itdb_playlist_podcasts ()" link="libgpod-Playlists.html#itdb-playlist-podcasts" since="0.1.6"/>
+    <keyword type="function" name="itdb_playlist_is_podcasts ()" link="libgpod-Playlists.html#itdb-playlist-is-podcasts" since="0.1.6"/>
+    <keyword type="function" name="itdb_playlist_set_podcasts ()" link="libgpod-Playlists.html#itdb-playlist-set-podcasts" since="0.2.0"/>
+    <keyword type="function" name="itdb_playlist_exists ()" link="libgpod-Playlists.html#itdb-playlist-exists"/>
+    <keyword type="function" name="itdb_playlist_by_id ()" link="libgpod-Playlists.html#itdb-playlist-by-id"/>
+    <keyword type="function" name="itdb_playlist_by_nr ()" link="libgpod-Playlists.html#itdb-playlist-by-nr"/>
+    <keyword type="function" name="itdb_playlist_by_name ()" link="libgpod-Playlists.html#itdb-playlist-by-name"/>
+    <keyword type="function" name="itdb_playlist_randomize ()" link="libgpod-Playlists.html#itdb-playlist-randomize"/>
+    <keyword type="struct" name="struct Itdb_SPLPref" link="libgpod-Smart-Playlists.html#Itdb-SPLPref" since="0.5.0"/>
+    <keyword type="struct" name="struct Itdb_SPLRule" link="libgpod-Smart-Playlists.html#Itdb-SPLRule" since="0.5.0"/>
+    <keyword type="struct" name="struct Itdb_SPLRules" link="libgpod-Smart-Playlists.html#Itdb-SPLRules" since="0.5.0"/>
+    <keyword type="enum" name="enum ItdbLimitSort" link="libgpod-Smart-Playlists.html#ItdbLimitSort" since="0.5.0"/>
+    <keyword type="enum" name="enum ItdbLimitType" link="libgpod-Smart-Playlists.html#ItdbLimitType" since="0.5.0"/>
+    <keyword type="enum" name="enum ItdbSPLAction" link="libgpod-Smart-Playlists.html#ItdbSPLAction" since="0.5.0"/>
+    <keyword type="enum" name="enum ItdbSPLActionLast" link="libgpod-Smart-Playlists.html#ItdbSPLActionLast" since="0.5.0"/>
+    <keyword type="enum" name="enum ItdbSPLActionType" link="libgpod-Smart-Playlists.html#ItdbSPLActionType" since="0.5.0"/>
+    <keyword type="enum" name="enum ItdbSPLField" link="libgpod-Smart-Playlists.html#ItdbSPLField" since="0.5.0"/>
+    <keyword type="enum" name="enum ItdbSPLFieldType" link="libgpod-Smart-Playlists.html#ItdbSPLFieldType" since="0.5.0"/>
+    <keyword type="enum" name="enum ItdbSPLMatch" link="libgpod-Smart-Playlists.html#ItdbSPLMatch"/>
+    <keyword type="macro" name="ITDB_SPL_DATE_IDENTIFIER" link="libgpod-Smart-Playlists.html#ITDB-SPL-DATE-IDENTIFIER:CAPS" since="0.5.0"/>
+    <keyword type="macro" name="ITDB_SPL_STRING_MAXLEN" link="libgpod-Smart-Playlists.html#ITDB-SPL-STRING-MAXLEN:CAPS" since="0.5.0"/>
+    <keyword type="function" name="itdb_splr_get_field_type ()" link="libgpod-Smart-Playlists.html#itdb-splr-get-field-type"/>
+    <keyword type="function" name="itdb_splr_get_action_type ()" link="libgpod-Smart-Playlists.html#itdb-splr-get-action-type"/>
+    <keyword type="function" name="itdb_splr_validate ()" link="libgpod-Smart-Playlists.html#itdb-splr-validate"/>
+    <keyword type="function" name="itdb_splr_remove ()" link="libgpod-Smart-Playlists.html#itdb-splr-remove"/>
+    <keyword type="function" name="itdb_splr_new ()" link="libgpod-Smart-Playlists.html#itdb-splr-new"/>
+    <keyword type="function" name="itdb_splr_add ()" link="libgpod-Smart-Playlists.html#itdb-splr-add"/>
+    <keyword type="function" name="itdb_splr_add_new ()" link="libgpod-Smart-Playlists.html#itdb-splr-add-new"/>
+    <keyword type="function" name="itdb_spl_copy_rules ()" link="libgpod-Smart-Playlists.html#itdb-spl-copy-rules"/>
+    <keyword type="function" name="itdb_splr_eval ()" link="libgpod-Smart-Playlists.html#itdb-splr-eval"/>
+    <keyword type="function" name="itdb_spl_update ()" link="libgpod-Smart-Playlists.html#itdb-spl-update"/>
+    <keyword type="function" name="itdb_spl_update_all ()" link="libgpod-Smart-Playlists.html#itdb-spl-update-all"/>
+    <keyword type="function" name="itdb_spl_update_live ()" link="libgpod-Smart-Playlists.html#itdb-spl-update-live" since="0.2.0"/>
+    <keyword type="struct" name="struct Itdb_Artwork" link="libgpod-Artwork.html#Itdb-Artwork" since="0.3.0"/>
+    <keyword type="function" name="itdb_artwork_new ()" link="libgpod-Artwork.html#itdb-artwork-new" since="0.3.0"/>
+    <keyword type="function" name="itdb_artwork_duplicate ()" link="libgpod-Artwork.html#itdb-artwork-duplicate" since="0.3.0"/>
+    <keyword type="function" name="itdb_artwork_free ()" link="libgpod-Artwork.html#itdb-artwork-free" since="0.3.0"/>
+    <keyword type="function" name="itdb_artwork_get_pixbuf ()" link="libgpod-Artwork.html#itdb-artwork-get-pixbuf" since="0.7.0"/>
+    <keyword type="function" name="itdb_artwork_set_thumbnail ()" link="libgpod-Artwork.html#itdb-artwork-set-thumbnail" since="0.7.0"/>
+    <keyword type="function" name="itdb_artwork_set_thumbnail_from_data ()" link="libgpod-Artwork.html#itdb-artwork-set-thumbnail-from-data" since="0.7.0"/>
+    <keyword type="function" name="itdb_artwork_set_thumbnail_from_pixbuf ()" link="libgpod-Artwork.html#itdb-artwork-set-thumbnail-from-pixbuf" since="0.7.0"/>
+    <keyword type="function" name="itdb_artwork_remove_thumbnails ()" link="libgpod-Artwork.html#itdb-artwork-remove-thumbnails" since="0.3.0"/>
+    <keyword type="struct" name="Itdb_Thumb" link="libgpod-Artwork.html#Itdb-Thumb" since="0.3.0"/>
+    <keyword type="function" name="itdb_thumb_duplicate ()" link="libgpod-Artwork.html#itdb-thumb-duplicate" since="0.3.0"/>
+    <keyword type="function" name="itdb_thumb_free ()" link="libgpod-Artwork.html#itdb-thumb-free" since="0.3.0"/>
+    <keyword type="function" name="itdb_thumb_to_pixbuf_at_size ()" link="libgpod-Artwork.html#itdb-thumb-to-pixbuf-at-size" since="0.7.0"/>
+    <keyword type="function" name="itdb_thumb_to_pixbufs ()" link="libgpod-Artwork.html#itdb-thumb-to-pixbufs" since="0.7.0"/>
+    <keyword type="struct" name="struct Itdb_Chapter" link="libgpod-Chapter-Data.html#Itdb-Chapter" since="0.7.0"/>
+    <keyword type="struct" name="struct Itdb_Chapterdata" link="libgpod-Chapter-Data.html#Itdb-Chapterdata" since="0.7.0"/>
+    <keyword type="function" name="itdb_chapter_new ()" link="libgpod-Chapter-Data.html#itdb-chapter-new" since="0.7.0"/>
+    <keyword type="function" name="itdb_chapter_duplicate ()" link="libgpod-Chapter-Data.html#itdb-chapter-duplicate" since="0.7.0"/>
+    <keyword type="function" name="itdb_chapter_free ()" link="libgpod-Chapter-Data.html#itdb-chapter-free" since="0.7.0"/>
+    <keyword type="function" name="itdb_chapterdata_new ()" link="libgpod-Chapter-Data.html#itdb-chapterdata-new" since="0.7.0"/>
+    <keyword type="function" name="itdb_chapterdata_add_chapter ()" link="libgpod-Chapter-Data.html#itdb-chapterdata-add-chapter" since="0.7.0"/>
+    <keyword type="function" name="itdb_chapterdata_duplicate ()" link="libgpod-Chapter-Data.html#itdb-chapterdata-duplicate" since="0.7.0"/>
+    <keyword type="function" name="itdb_chapterdata_remove_chapter ()" link="libgpod-Chapter-Data.html#itdb-chapterdata-remove-chapter" since="0.7.0"/>
+    <keyword type="function" name="itdb_chapterdata_remove_chapters ()" link="libgpod-Chapter-Data.html#itdb-chapterdata-remove-chapters" since="0.7.0"/>
+    <keyword type="function" name="itdb_chapterdata_unlink_chapter ()" link="libgpod-Chapter-Data.html#itdb-chapterdata-unlink-chapter"/>
+    <keyword type="function" name="itdb_chapterdata_free ()" link="libgpod-Chapter-Data.html#itdb-chapterdata-free" since="0.7.0"/>
+    <keyword type="struct" name="Itdb_Device" link="libgpod-Device.html#Itdb-Device" since="0.4.0"/>
+    <keyword type="function" name="itdb_device_new ()" link="libgpod-Device.html#itdb-device-new" since="0.4.0"/>
+    <keyword type="function" name="itdb_device_free ()" link="libgpod-Device.html#itdb-device-free" since="0.4.0"/>
+    <keyword type="function" name="itdb_device_set_mountpoint ()" link="libgpod-Device.html#itdb-device-set-mountpoint" since="0.4.0"/>
+    <keyword type="function" name="itdb_device_supports_artwork ()" link="libgpod-Device.html#itdb-device-supports-artwork" since="0.5.0"/>
+    <keyword type="function" name="itdb_device_supports_chapter_image ()" link="libgpod-Device.html#itdb-device-supports-chapter-image" since="0.7.2"/>
+    <keyword type="function" name="itdb_device_supports_photo ()" link="libgpod-Device.html#itdb-device-supports-photo" since="0.5.0"/>
+    <keyword type="function" name="itdb_device_supports_podcast ()" link="libgpod-Device.html#itdb-device-supports-podcast" since="0.7.2"/>
+    <keyword type="function" name="itdb_device_supports_video ()" link="libgpod-Device.html#itdb-device-supports-video" since="0.7.0"/>
+    <keyword type="struct" name="struct Itdb_IpodInfo" link="libgpod-Device.html#Itdb-IpodInfo" since="0.4.0"/>
+    <keyword type="function" name="itdb_device_get_ipod_info ()" link="libgpod-Device.html#itdb-device-get-ipod-info" since="0.4.0"/>
+    <keyword type="function" name="itdb_info_get_ipod_info_table ()" link="libgpod-Device.html#itdb-info-get-ipod-info-table" since="0.4.0"/>
+    <keyword type="enum" name="enum Itdb_IpodGeneration" link="libgpod-Device.html#Itdb-IpodGeneration" since="0.4.0"/>
+    <keyword type="function" name="itdb_info_get_ipod_generation_string ()" link="libgpod-Device.html#itdb-info-get-ipod-generation-string" since="0.4.0"/>
+    <keyword type="enum" name="enum Itdb_IpodModel" link="libgpod-Device.html#Itdb-IpodModel" since="0.4.0"/>
+    <keyword type="function" name="itdb_info_get_ipod_model_name_string ()" link="libgpod-Device.html#itdb-info-get-ipod-model-name-string" since="0.4.0"/>
+    <keyword type="struct" name="Itdb_ArtworkFormat" link="libgpod-Device.html#Itdb-ArtworkFormat"/>
+    <keyword type="function" name="itdb_device_read_sysinfo ()" link="libgpod-Device.html#itdb-device-read-sysinfo" since="0.4.0"/>
+    <keyword type="function" name="itdb_device_get_sysinfo ()" link="libgpod-Device.html#itdb-device-get-sysinfo" since="0.4.0"/>
+    <keyword type="function" name="itdb_device_set_sysinfo ()" link="libgpod-Device.html#itdb-device-set-sysinfo" since="0.4.0"/>
+    <keyword type="function" name="itdb_device_write_sysinfo ()" link="libgpod-Device.html#itdb-device-write-sysinfo" since="0.4.0"/>
+    <keyword type="struct" name="struct Itdb_PhotoDB" link="libgpod-Photo-database.html#Itdb-PhotoDB" since="0.4.0"/>
+    <keyword type="function" name="itdb_photodb_create ()" link="libgpod-Photo-database.html#itdb-photodb-create" since="0.4.2"/>
+    <keyword type="function" name="itdb_photodb_free ()" link="libgpod-Photo-database.html#itdb-photodb-free" since="0.4.0"/>
+    <keyword type="function" name="itdb_photodb_parse ()" link="libgpod-Photo-database.html#itdb-photodb-parse" since="0.4.0"/>
+    <keyword type="function" name="itdb_photodb_write ()" link="libgpod-Photo-database.html#itdb-photodb-write" since="0.4.0"/>
+    <keyword type="function" name="itdb_photodb_add_photo ()" link="libgpod-Photo-database.html#itdb-photodb-add-photo" since="0.4.0"/>
+    <keyword type="function" name="itdb_photodb_add_photo_from_data ()" link="libgpod-Photo-database.html#itdb-photodb-add-photo-from-data" since="0.4.0"/>
+    <keyword type="function" name="itdb_photodb_add_photo_from_pixbuf ()" link="libgpod-Photo-database.html#itdb-photodb-add-photo-from-pixbuf" since="0.5.0"/>
+    <keyword type="function" name="itdb_photodb_remove_photo ()" link="libgpod-Photo-database.html#itdb-photodb-remove-photo" since="0.4.0"/>
+    <keyword type="struct" name="struct Itdb_PhotoAlbum" link="libgpod-Photo-database.html#Itdb-PhotoAlbum" since="0.4.0"/>
+    <keyword type="function" name="itdb_photodb_photoalbum_free ()" link="libgpod-Photo-database.html#itdb-photodb-photoalbum-free"/>
+    <keyword type="function" name="itdb_photodb_photoalbum_new ()" link="libgpod-Photo-database.html#itdb-photodb-photoalbum-new"/>
+    <keyword type="function" name="itdb_photodb_photoalbum_add ()" link="libgpod-Photo-database.html#itdb-photodb-photoalbum-add"/>
+    <keyword type="function" name="itdb_photodb_photoalbum_unlink ()" link="libgpod-Photo-database.html#itdb-photodb-photoalbum-unlink"/>
+    <keyword type="function" name="itdb_photodb_photoalbum_create ()" link="libgpod-Photo-database.html#itdb-photodb-photoalbum-create" since="0.4.2"/>
+    <keyword type="function" name="itdb_photodb_photoalbum_add_photo ()" link="libgpod-Photo-database.html#itdb-photodb-photoalbum-add-photo" since="0.4.2"/>
+    <keyword type="function" name="itdb_photodb_photoalbum_by_name ()" link="libgpod-Photo-database.html#itdb-photodb-photoalbum-by-name" since="0.4.2"/>
+    <keyword type="function" name="itdb_photodb_photoalbum_remove ()" link="libgpod-Photo-database.html#itdb-photodb-photoalbum-remove" since="0.4.2"/>
+    <keyword type="constant" name="ITDB_FILE_ERROR_SEEK" link="libgpod-The-Itdb-iTunesDB-structure.html#ITDB-FILE-ERROR-SEEK:CAPS"/>
+    <keyword type="constant" name="ITDB_FILE_ERROR_CORRUPT" link="libgpod-The-Itdb-iTunesDB-structure.html#ITDB-FILE-ERROR-CORRUPT:CAPS"/>
+    <keyword type="constant" name="ITDB_FILE_ERROR_NOTFOUND" link="libgpod-The-Itdb-iTunesDB-structure.html#ITDB-FILE-ERROR-NOTFOUND:CAPS"/>
+    <keyword type="constant" name="ITDB_FILE_ERROR_RENAME" link="libgpod-The-Itdb-iTunesDB-structure.html#ITDB-FILE-ERROR-RENAME:CAPS"/>
+    <keyword type="constant" name="ITDB_FILE_ERROR_ITDB_CORRUPT" link="libgpod-The-Itdb-iTunesDB-structure.html#ITDB-FILE-ERROR-ITDB-CORRUPT:CAPS"/>
+    <keyword type="constant" name="ITDB_MEDIATYPE_AUDIO" link="libgpod-Tracks.html#ITDB-MEDIATYPE-AUDIO:CAPS"/>
+    <keyword type="constant" name="ITDB_MEDIATYPE_MOVIE" link="libgpod-Tracks.html#ITDB-MEDIATYPE-MOVIE:CAPS"/>
+    <keyword type="constant" name="ITDB_MEDIATYPE_PODCAST" link="libgpod-Tracks.html#ITDB-MEDIATYPE-PODCAST:CAPS"/>
+    <keyword type="constant" name="ITDB_MEDIATYPE_AUDIOBOOK" link="libgpod-Tracks.html#ITDB-MEDIATYPE-AUDIOBOOK:CAPS"/>
+    <keyword type="constant" name="ITDB_MEDIATYPE_MUSICVIDEO" link="libgpod-Tracks.html#ITDB-MEDIATYPE-MUSICVIDEO:CAPS"/>
+    <keyword type="constant" name="ITDB_MEDIATYPE_TVSHOW" link="libgpod-Tracks.html#ITDB-MEDIATYPE-TVSHOW:CAPS"/>
+    <keyword type="constant" name="ITDB_MEDIATYPE_RINGTONE" link="libgpod-Tracks.html#ITDB-MEDIATYPE-RINGTONE:CAPS"/>
+    <keyword type="constant" name="ITDB_MEDIATYPE_RENTAL" link="libgpod-Tracks.html#ITDB-MEDIATYPE-RENTAL:CAPS"/>
+    <keyword type="constant" name="ITDB_MEDIATYPE_ITUNES_EXTRA" link="libgpod-Tracks.html#ITDB-MEDIATYPE-ITUNES-EXTRA:CAPS"/>
+    <keyword type="constant" name="ITDB_MEDIATYPE_MEMO" link="libgpod-Tracks.html#ITDB-MEDIATYPE-MEMO:CAPS"/>
+    <keyword type="constant" name="ITDB_MEDIATYPE_ITUNES_U" link="libgpod-Tracks.html#ITDB-MEDIATYPE-ITUNES-U:CAPS"/>
+    <keyword type="constant" name="ITDB_MEDIATYPE_EPUB_BOOK" link="libgpod-Tracks.html#ITDB-MEDIATYPE-EPUB-BOOK:CAPS"/>
+    <keyword type="constant" name="ITDB_MEDIATYPE_PDF_BOOK" link="libgpod-Tracks.html#ITDB-MEDIATYPE-PDF-BOOK:CAPS"/>
+    <keyword type="constant" name="ITDB_PSO_MANUAL" link="libgpod-Playlists.html#ITDB-PSO-MANUAL:CAPS"/>
+    <keyword type="constant" name="ITDB_PSO_TITLE" link="libgpod-Playlists.html#ITDB-PSO-TITLE:CAPS"/>
+    <keyword type="constant" name="ITDB_PSO_ALBUM" link="libgpod-Playlists.html#ITDB-PSO-ALBUM:CAPS"/>
+    <keyword type="constant" name="ITDB_PSO_ARTIST" link="libgpod-Playlists.html#ITDB-PSO-ARTIST:CAPS"/>
+    <keyword type="constant" name="ITDB_PSO_BITRATE" link="libgpod-Playlists.html#ITDB-PSO-BITRATE:CAPS"/>
+    <keyword type="constant" name="ITDB_PSO_GENRE" link="libgpod-Playlists.html#ITDB-PSO-GENRE:CAPS"/>
+    <keyword type="constant" name="ITDB_PSO_FILETYPE" link="libgpod-Playlists.html#ITDB-PSO-FILETYPE:CAPS"/>
+    <keyword type="constant" name="ITDB_PSO_TIME_MODIFIED" link="libgpod-Playlists.html#ITDB-PSO-TIME-MODIFIED:CAPS"/>
+    <keyword type="constant" name="ITDB_PSO_TRACK_NR" link="libgpod-Playlists.html#ITDB-PSO-TRACK-NR:CAPS"/>
+    <keyword type="constant" name="ITDB_PSO_SIZE" link="libgpod-Playlists.html#ITDB-PSO-SIZE:CAPS"/>
+    <keyword type="constant" name="ITDB_PSO_TIME" link="libgpod-Playlists.html#ITDB-PSO-TIME:CAPS"/>
+    <keyword type="constant" name="ITDB_PSO_YEAR" link="libgpod-Playlists.html#ITDB-PSO-YEAR:CAPS"/>
+    <keyword type="constant" name="ITDB_PSO_SAMPLERATE" link="libgpod-Playlists.html#ITDB-PSO-SAMPLERATE:CAPS"/>
+    <keyword type="constant" name="ITDB_PSO_COMMENT" link="libgpod-Playlists.html#ITDB-PSO-COMMENT:CAPS"/>
+    <keyword type="constant" name="ITDB_PSO_TIME_ADDED" link="libgpod-Playlists.html#ITDB-PSO-TIME-ADDED:CAPS"/>
+    <keyword type="constant" name="ITDB_PSO_EQUALIZER" link="libgpod-Playlists.html#ITDB-PSO-EQUALIZER:CAPS"/>
+    <keyword type="constant" name="ITDB_PSO_COMPOSER" link="libgpod-Playlists.html#ITDB-PSO-COMPOSER:CAPS"/>
+    <keyword type="constant" name="ITDB_PSO_PLAYCOUNT" link="libgpod-Playlists.html#ITDB-PSO-PLAYCOUNT:CAPS"/>
+    <keyword type="constant" name="ITDB_PSO_TIME_PLAYED" link="libgpod-Playlists.html#ITDB-PSO-TIME-PLAYED:CAPS"/>
+    <keyword type="constant" name="ITDB_PSO_CD_NR" link="libgpod-Playlists.html#ITDB-PSO-CD-NR:CAPS"/>
+    <keyword type="constant" name="ITDB_PSO_RATING" link="libgpod-Playlists.html#ITDB-PSO-RATING:CAPS"/>
+    <keyword type="constant" name="ITDB_PSO_RELEASE_DATE" link="libgpod-Playlists.html#ITDB-PSO-RELEASE-DATE:CAPS"/>
+    <keyword type="constant" name="ITDB_PSO_BPM" link="libgpod-Playlists.html#ITDB-PSO-BPM:CAPS"/>
+    <keyword type="constant" name="ITDB_PSO_GROUPING" link="libgpod-Playlists.html#ITDB-PSO-GROUPING:CAPS"/>
+    <keyword type="constant" name="ITDB_PSO_CATEGORY" link="libgpod-Playlists.html#ITDB-PSO-CATEGORY:CAPS"/>
+    <keyword type="constant" name="ITDB_PSO_DESCRIPTION" link="libgpod-Playlists.html#ITDB-PSO-DESCRIPTION:CAPS"/>
+    <keyword type="constant" name="ITDB_LIMITSORT_RANDOM" link="libgpod-Smart-Playlists.html#ITDB-LIMITSORT-RANDOM:CAPS"/>
+    <keyword type="constant" name="ITDB_LIMITSORT_SONG_NAME" link="libgpod-Smart-Playlists.html#ITDB-LIMITSORT-SONG-NAME:CAPS"/>
+    <keyword type="constant" name="ITDB_LIMITSORT_ALBUM" link="libgpod-Smart-Playlists.html#ITDB-LIMITSORT-ALBUM:CAPS"/>
+    <keyword type="constant" name="ITDB_LIMITSORT_ARTIST" link="libgpod-Smart-Playlists.html#ITDB-LIMITSORT-ARTIST:CAPS"/>
+    <keyword type="constant" name="ITDB_LIMITSORT_GENRE" link="libgpod-Smart-Playlists.html#ITDB-LIMITSORT-GENRE:CAPS"/>
+    <keyword type="constant" name="ITDB_LIMITSORT_MOST_RECENTLY_ADDED" link="libgpod-Smart-Playlists.html#ITDB-LIMITSORT-MOST-RECENTLY-ADDED:CAPS"/>
+    <keyword type="constant" name="ITDB_LIMITSORT_LEAST_RECENTLY_ADDED" link="libgpod-Smart-Playlists.html#ITDB-LIMITSORT-LEAST-RECENTLY-ADDED:CAPS"/>
+    <keyword type="constant" name="ITDB_LIMITSORT_MOST_OFTEN_PLAYED" link="libgpod-Smart-Playlists.html#ITDB-LIMITSORT-MOST-OFTEN-PLAYED:CAPS"/>
+    <keyword type="constant" name="ITDB_LIMITSORT_LEAST_OFTEN_PLAYED" link="libgpod-Smart-Playlists.html#ITDB-LIMITSORT-LEAST-OFTEN-PLAYED:CAPS"/>
+    <keyword type="constant" name="ITDB_LIMITSORT_MOST_RECENTLY_PLAYED" link="libgpod-Smart-Playlists.html#ITDB-LIMITSORT-MOST-RECENTLY-PLAYED:CAPS"/>
+    <keyword type="constant" name="ITDB_LIMITSORT_LEAST_RECENTLY_PLAYED" link="libgpod-Smart-Playlists.html#ITDB-LIMITSORT-LEAST-RECENTLY-PLAYED:CAPS"/>
+    <keyword type="constant" name="ITDB_LIMITSORT_HIGHEST_RATING" link="libgpod-Smart-Playlists.html#ITDB-LIMITSORT-HIGHEST-RATING:CAPS"/>
+    <keyword type="constant" name="ITDB_LIMITSORT_LOWEST_RATING" link="libgpod-Smart-Playlists.html#ITDB-LIMITSORT-LOWEST-RATING:CAPS"/>
+    <keyword type="constant" name="ITDB_LIMITTYPE_MINUTES" link="libgpod-Smart-Playlists.html#ITDB-LIMITTYPE-MINUTES:CAPS"/>
+    <keyword type="constant" name="ITDB_LIMITTYPE_MB" link="libgpod-Smart-Playlists.html#ITDB-LIMITTYPE-MB:CAPS"/>
+    <keyword type="constant" name="ITDB_LIMITTYPE_SONGS" link="libgpod-Smart-Playlists.html#ITDB-LIMITTYPE-SONGS:CAPS"/>
+    <keyword type="constant" name="ITDB_LIMITTYPE_HOURS" link="libgpod-Smart-Playlists.html#ITDB-LIMITTYPE-HOURS:CAPS"/>
+    <keyword type="constant" name="ITDB_LIMITTYPE_GB" link="libgpod-Smart-Playlists.html#ITDB-LIMITTYPE-GB:CAPS"/>
+    <keyword type="constant" name="ITDB_SPLACTION_IS_INT" link="libgpod-Smart-Playlists.html#ITDB-SPLACTION-IS-INT:CAPS"/>
+    <keyword type="constant" name="ITDB_SPLACTION_IS_GREATER_THAN" link="libgpod-Smart-Playlists.html#ITDB-SPLACTION-IS-GREATER-THAN:CAPS"/>
+    <keyword type="constant" name="ITDB_SPLACTION_IS_LESS_THAN" link="libgpod-Smart-Playlists.html#ITDB-SPLACTION-IS-LESS-THAN:CAPS"/>
+    <keyword type="constant" name="ITDB_SPLACTION_IS_IN_THE_RANGE" link="libgpod-Smart-Playlists.html#ITDB-SPLACTION-IS-IN-THE-RANGE:CAPS"/>
+    <keyword type="constant" name="ITDB_SPLACTION_IS_IN_THE_LAST" link="libgpod-Smart-Playlists.html#ITDB-SPLACTION-IS-IN-THE-LAST:CAPS"/>
+    <keyword type="constant" name="ITDB_SPLACTION_BINARY_AND" link="libgpod-Smart-Playlists.html#ITDB-SPLACTION-BINARY-AND:CAPS"/>
+    <keyword type="constant" name="ITDB_SPLACTION_BINARY_UNKNOWN1" link="libgpod-Smart-Playlists.html#ITDB-SPLACTION-BINARY-UNKNOWN1:CAPS"/>
+    <keyword type="constant" name="ITDB_SPLACTION_IS_STRING" link="libgpod-Smart-Playlists.html#ITDB-SPLACTION-IS-STRING:CAPS"/>
+    <keyword type="constant" name="ITDB_SPLACTION_CONTAINS" link="libgpod-Smart-Playlists.html#ITDB-SPLACTION-CONTAINS:CAPS"/>
+    <keyword type="constant" name="ITDB_SPLACTION_STARTS_WITH" link="libgpod-Smart-Playlists.html#ITDB-SPLACTION-STARTS-WITH:CAPS"/>
+    <keyword type="constant" name="ITDB_SPLACTION_ENDS_WITH" link="libgpod-Smart-Playlists.html#ITDB-SPLACTION-ENDS-WITH:CAPS"/>
+    <keyword type="constant" name="ITDB_SPLACTION_IS_NOT_INT" link="libgpod-Smart-Playlists.html#ITDB-SPLACTION-IS-NOT-INT:CAPS"/>
+    <keyword type="constant" name="ITDB_SPLACTION_IS_NOT_GREATER_THAN" link="libgpod-Smart-Playlists.html#ITDB-SPLACTION-IS-NOT-GREATER-THAN:CAPS"/>
+    <keyword type="constant" name="ITDB_SPLACTION_IS_NOT_LESS_THAN" link="libgpod-Smart-Playlists.html#ITDB-SPLACTION-IS-NOT-LESS-THAN:CAPS"/>
+    <keyword type="constant" name="ITDB_SPLACTION_IS_NOT_IN_THE_RANGE" link="libgpod-Smart-Playlists.html#ITDB-SPLACTION-IS-NOT-IN-THE-RANGE:CAPS"/>
+    <keyword type="constant" name="ITDB_SPLACTION_IS_NOT_IN_THE_LAST" link="libgpod-Smart-Playlists.html#ITDB-SPLACTION-IS-NOT-IN-THE-LAST:CAPS"/>
+    <keyword type="constant" name="ITDB_SPLACTION_NOT_BINARY_AND" link="libgpod-Smart-Playlists.html#ITDB-SPLACTION-NOT-BINARY-AND:CAPS"/>
+    <keyword type="constant" name="ITDB_SPLACTION_BINARY_UNKNOWN2" link="libgpod-Smart-Playlists.html#ITDB-SPLACTION-BINARY-UNKNOWN2:CAPS"/>
+    <keyword type="constant" name="ITDB_SPLACTION_IS_NOT" link="libgpod-Smart-Playlists.html#ITDB-SPLACTION-IS-NOT:CAPS"/>
+    <keyword type="constant" name="ITDB_SPLACTION_DOES_NOT_CONTAIN" link="libgpod-Smart-Playlists.html#ITDB-SPLACTION-DOES-NOT-CONTAIN:CAPS"/>
+    <keyword type="constant" name="ITDB_SPLACTION_DOES_NOT_START_WITH" link="libgpod-Smart-Playlists.html#ITDB-SPLACTION-DOES-NOT-START-WITH:CAPS"/>
+    <keyword type="constant" name="ITDB_SPLACTION_DOES_NOT_END_WITH" link="libgpod-Smart-Playlists.html#ITDB-SPLACTION-DOES-NOT-END-WITH:CAPS"/>
+    <keyword type="constant" name="ITDB_SPLACTION_LAST_DAYS_VALUE" link="libgpod-Smart-Playlists.html#ITDB-SPLACTION-LAST-DAYS-VALUE:CAPS"/>
+    <keyword type="constant" name="ITDB_SPLACTION_LAST_WEEKS_VALUE" link="libgpod-Smart-Playlists.html#ITDB-SPLACTION-LAST-WEEKS-VALUE:CAPS"/>
+    <keyword type="constant" name="ITDB_SPLACTION_LAST_MONTHS_VALUE" link="libgpod-Smart-Playlists.html#ITDB-SPLACTION-LAST-MONTHS-VALUE:CAPS"/>
+    <keyword type="constant" name="ITDB_SPLAT_STRING" link="libgpod-Smart-Playlists.html#ITDB-SPLAT-STRING:CAPS"/>
+    <keyword type="constant" name="ITDB_SPLAT_INT" link="libgpod-Smart-Playlists.html#ITDB-SPLAT-INT:CAPS"/>
+    <keyword type="constant" name="ITDB_SPLAT_DATE" link="libgpod-Smart-Playlists.html#ITDB-SPLAT-DATE:CAPS"/>
+    <keyword type="constant" name="ITDB_SPLAT_RANGE_INT" link="libgpod-Smart-Playlists.html#ITDB-SPLAT-RANGE-INT:CAPS"/>
+    <keyword type="constant" name="ITDB_SPLAT_RANGE_DATE" link="libgpod-Smart-Playlists.html#ITDB-SPLAT-RANGE-DATE:CAPS"/>
+    <keyword type="constant" name="ITDB_SPLAT_INTHELAST" link="libgpod-Smart-Playlists.html#ITDB-SPLAT-INTHELAST:CAPS"/>
+    <keyword type="constant" name="ITDB_SPLAT_PLAYLIST" link="libgpod-Smart-Playlists.html#ITDB-SPLAT-PLAYLIST:CAPS"/>
+    <keyword type="constant" name="ITDB_SPLAT_NONE" link="libgpod-Smart-Playlists.html#ITDB-SPLAT-NONE:CAPS"/>
+    <keyword type="constant" name="ITDB_SPLAT_INVALID" link="libgpod-Smart-Playlists.html#ITDB-SPLAT-INVALID:CAPS"/>
+    <keyword type="constant" name="ITDB_SPLAT_UNKNOWN" link="libgpod-Smart-Playlists.html#ITDB-SPLAT-UNKNOWN:CAPS"/>
+    <keyword type="constant" name="ITDB_SPLAT_BINARY_AND" link="libgpod-Smart-Playlists.html#ITDB-SPLAT-BINARY-AND:CAPS"/>
+    <keyword type="constant" name="ITDB_SPLFIELD_SONG_NAME" link="libgpod-Smart-Playlists.html#ITDB-SPLFIELD-SONG-NAME:CAPS"/>
+    <keyword type="constant" name="ITDB_SPLFIELD_ALBUM" link="libgpod-Smart-Playlists.html#ITDB-SPLFIELD-ALBUM:CAPS"/>
+    <keyword type="constant" name="ITDB_SPLFIELD_ARTIST" link="libgpod-Smart-Playlists.html#ITDB-SPLFIELD-ARTIST:CAPS"/>
+    <keyword type="constant" name="ITDB_SPLFIELD_BITRATE" link="libgpod-Smart-Playlists.html#ITDB-SPLFIELD-BITRATE:CAPS"/>
+    <keyword type="constant" name="ITDB_SPLFIELD_SAMPLE_RATE" link="libgpod-Smart-Playlists.html#ITDB-SPLFIELD-SAMPLE-RATE:CAPS"/>
+    <keyword type="constant" name="ITDB_SPLFIELD_YEAR" link="libgpod-Smart-Playlists.html#ITDB-SPLFIELD-YEAR:CAPS"/>
+    <keyword type="constant" name="ITDB_SPLFIELD_GENRE" link="libgpod-Smart-Playlists.html#ITDB-SPLFIELD-GENRE:CAPS"/>
+    <keyword type="constant" name="ITDB_SPLFIELD_KIND" link="libgpod-Smart-Playlists.html#ITDB-SPLFIELD-KIND:CAPS"/>
+    <keyword type="constant" name="ITDB_SPLFIELD_DATE_MODIFIED" link="libgpod-Smart-Playlists.html#ITDB-SPLFIELD-DATE-MODIFIED:CAPS"/>
+    <keyword type="constant" name="ITDB_SPLFIELD_TRACKNUMBER" link="libgpod-Smart-Playlists.html#ITDB-SPLFIELD-TRACKNUMBER:CAPS"/>
+    <keyword type="constant" name="ITDB_SPLFIELD_SIZE" link="libgpod-Smart-Playlists.html#ITDB-SPLFIELD-SIZE:CAPS"/>
+    <keyword type="constant" name="ITDB_SPLFIELD_TIME" link="libgpod-Smart-Playlists.html#ITDB-SPLFIELD-TIME:CAPS"/>
+    <keyword type="constant" name="ITDB_SPLFIELD_COMMENT" link="libgpod-Smart-Playlists.html#ITDB-SPLFIELD-COMMENT:CAPS"/>
+    <keyword type="constant" name="ITDB_SPLFIELD_DATE_ADDED" link="libgpod-Smart-Playlists.html#ITDB-SPLFIELD-DATE-ADDED:CAPS"/>
+    <keyword type="constant" name="ITDB_SPLFIELD_COMPOSER" link="libgpod-Smart-Playlists.html#ITDB-SPLFIELD-COMPOSER:CAPS"/>
+    <keyword type="constant" name="ITDB_SPLFIELD_PLAYCOUNT" link="libgpod-Smart-Playlists.html#ITDB-SPLFIELD-PLAYCOUNT:CAPS"/>
+    <keyword type="constant" name="ITDB_SPLFIELD_LAST_PLAYED" link="libgpod-Smart-Playlists.html#ITDB-SPLFIELD-LAST-PLAYED:CAPS"/>
+    <keyword type="constant" name="ITDB_SPLFIELD_DISC_NUMBER" link="libgpod-Smart-Playlists.html#ITDB-SPLFIELD-DISC-NUMBER:CAPS"/>
+    <keyword type="constant" name="ITDB_SPLFIELD_RATING" link="libgpod-Smart-Playlists.html#ITDB-SPLFIELD-RATING:CAPS"/>
+    <keyword type="constant" name="ITDB_SPLFIELD_COMPILATION" link="libgpod-Smart-Playlists.html#ITDB-SPLFIELD-COMPILATION:CAPS"/>
+    <keyword type="constant" name="ITDB_SPLFIELD_BPM" link="libgpod-Smart-Playlists.html#ITDB-SPLFIELD-BPM:CAPS"/>
+    <keyword type="constant" name="ITDB_SPLFIELD_GROUPING" link="libgpod-Smart-Playlists.html#ITDB-SPLFIELD-GROUPING:CAPS"/>
+    <keyword type="constant" name="ITDB_SPLFIELD_PLAYLIST" link="libgpod-Smart-Playlists.html#ITDB-SPLFIELD-PLAYLIST:CAPS"/>
+    <keyword type="constant" name="ITDB_SPLFIELD_PURCHASE" link="libgpod-Smart-Playlists.html#ITDB-SPLFIELD-PURCHASE:CAPS"/>
+    <keyword type="constant" name="ITDB_SPLFIELD_DESCRIPTION" link="libgpod-Smart-Playlists.html#ITDB-SPLFIELD-DESCRIPTION:CAPS"/>
+    <keyword type="constant" name="ITDB_SPLFIELD_CATEGORY" link="libgpod-Smart-Playlists.html#ITDB-SPLFIELD-CATEGORY:CAPS"/>
+    <keyword type="constant" name="ITDB_SPLFIELD_PODCAST" link="libgpod-Smart-Playlists.html#ITDB-SPLFIELD-PODCAST:CAPS"/>
+    <keyword type="constant" name="ITDB_SPLFIELD_VIDEO_KIND" link="libgpod-Smart-Playlists.html#ITDB-SPLFIELD-VIDEO-KIND:CAPS"/>
+    <keyword type="constant" name="ITDB_SPLFIELD_TVSHOW" link="libgpod-Smart-Playlists.html#ITDB-SPLFIELD-TVSHOW:CAPS"/>
+    <keyword type="constant" name="ITDB_SPLFIELD_SEASON_NR" link="libgpod-Smart-Playlists.html#ITDB-SPLFIELD-SEASON-NR:CAPS"/>
+    <keyword type="constant" name="ITDB_SPLFIELD_SKIPCOUNT" link="libgpod-Smart-Playlists.html#ITDB-SPLFIELD-SKIPCOUNT:CAPS"/>
+    <keyword type="constant" name="ITDB_SPLFIELD_LAST_SKIPPED" link="libgpod-Smart-Playlists.html#ITDB-SPLFIELD-LAST-SKIPPED:CAPS"/>
+    <keyword type="constant" name="ITDB_SPLFIELD_ALBUMARTIST" link="libgpod-Smart-Playlists.html#ITDB-SPLFIELD-ALBUMARTIST:CAPS"/>
+    <keyword type="constant" name="ITDB_SPLFIELD_SORT_SONG_NAME" link="libgpod-Smart-Playlists.html#ITDB-SPLFIELD-SORT-SONG-NAME:CAPS"/>
+    <keyword type="constant" name="ITDB_SPLFIELD_SORT_ALBUM" link="libgpod-Smart-Playlists.html#ITDB-SPLFIELD-SORT-ALBUM:CAPS"/>
+    <keyword type="constant" name="ITDB_SPLFIELD_SORT_ARTIST" link="libgpod-Smart-Playlists.html#ITDB-SPLFIELD-SORT-ARTIST:CAPS"/>
+    <keyword type="constant" name="ITDB_SPLFIELD_SORT_ALBUMARTIST" link="libgpod-Smart-Playlists.html#ITDB-SPLFIELD-SORT-ALBUMARTIST:CAPS"/>
+    <keyword type="constant" name="ITDB_SPLFIELD_SORT_COMPOSER" link="libgpod-Smart-Playlists.html#ITDB-SPLFIELD-SORT-COMPOSER:CAPS"/>
+    <keyword type="constant" name="ITDB_SPLFIELD_SORT_TVSHOW" link="libgpod-Smart-Playlists.html#ITDB-SPLFIELD-SORT-TVSHOW:CAPS"/>
+    <keyword type="constant" name="ITDB_SPLFIELD_ALBUM_RATING" link="libgpod-Smart-Playlists.html#ITDB-SPLFIELD-ALBUM-RATING:CAPS"/>
+    <keyword type="constant" name="ITDB_SPLFT_STRING" link="libgpod-Smart-Playlists.html#ITDB-SPLFT-STRING:CAPS"/>
+    <keyword type="constant" name="ITDB_SPLFT_INT" link="libgpod-Smart-Playlists.html#ITDB-SPLFT-INT:CAPS"/>
+    <keyword type="constant" name="ITDB_SPLFT_BOOLEAN" link="libgpod-Smart-Playlists.html#ITDB-SPLFT-BOOLEAN:CAPS"/>
+    <keyword type="constant" name="ITDB_SPLFT_DATE" link="libgpod-Smart-Playlists.html#ITDB-SPLFT-DATE:CAPS"/>
+    <keyword type="constant" name="ITDB_SPLFT_PLAYLIST" link="libgpod-Smart-Playlists.html#ITDB-SPLFT-PLAYLIST:CAPS"/>
+    <keyword type="constant" name="ITDB_SPLFT_UNKNOWN" link="libgpod-Smart-Playlists.html#ITDB-SPLFT-UNKNOWN:CAPS"/>
+    <keyword type="constant" name="ITDB_SPLFT_BINARY_AND" link="libgpod-Smart-Playlists.html#ITDB-SPLFT-BINARY-AND:CAPS"/>
+    <keyword type="constant" name="ITDB_SPLMATCH_AND" link="libgpod-Smart-Playlists.html#ITDB-SPLMATCH-AND:CAPS"/>
+    <keyword type="constant" name="ITDB_SPLMATCH_OR" link="libgpod-Smart-Playlists.html#ITDB-SPLMATCH-OR:CAPS"/>
+    <keyword type="constant" name="ITDB_IPOD_GENERATION_UNKNOWN" link="libgpod-Device.html#ITDB-IPOD-GENERATION-UNKNOWN:CAPS"/>
+    <keyword type="constant" name="ITDB_IPOD_GENERATION_FIRST" link="libgpod-Device.html#ITDB-IPOD-GENERATION-FIRST:CAPS"/>
+    <keyword type="constant" name="ITDB_IPOD_GENERATION_SECOND" link="libgpod-Device.html#ITDB-IPOD-GENERATION-SECOND:CAPS"/>
+    <keyword type="constant" name="ITDB_IPOD_GENERATION_THIRD" link="libgpod-Device.html#ITDB-IPOD-GENERATION-THIRD:CAPS"/>
+    <keyword type="constant" name="ITDB_IPOD_GENERATION_FOURTH" link="libgpod-Device.html#ITDB-IPOD-GENERATION-FOURTH:CAPS"/>
+    <keyword type="constant" name="ITDB_IPOD_GENERATION_PHOTO" link="libgpod-Device.html#ITDB-IPOD-GENERATION-PHOTO:CAPS"/>
+    <keyword type="constant" name="ITDB_IPOD_GENERATION_MOBILE" link="libgpod-Device.html#ITDB-IPOD-GENERATION-MOBILE:CAPS"/>
+    <keyword type="constant" name="ITDB_IPOD_GENERATION_MINI_1" link="libgpod-Device.html#ITDB-IPOD-GENERATION-MINI-1:CAPS"/>
+    <keyword type="constant" name="ITDB_IPOD_GENERATION_MINI_2" link="libgpod-Device.html#ITDB-IPOD-GENERATION-MINI-2:CAPS"/>
+    <keyword type="constant" name="ITDB_IPOD_GENERATION_SHUFFLE_1" link="libgpod-Device.html#ITDB-IPOD-GENERATION-SHUFFLE-1:CAPS"/>
+    <keyword type="constant" name="ITDB_IPOD_GENERATION_SHUFFLE_2" link="libgpod-Device.html#ITDB-IPOD-GENERATION-SHUFFLE-2:CAPS"/>
+    <keyword type="constant" name="ITDB_IPOD_GENERATION_SHUFFLE_3" link="libgpod-Device.html#ITDB-IPOD-GENERATION-SHUFFLE-3:CAPS"/>
+    <keyword type="constant" name="ITDB_IPOD_GENERATION_NANO_1" link="libgpod-Device.html#ITDB-IPOD-GENERATION-NANO-1:CAPS"/>
+    <keyword type="constant" name="ITDB_IPOD_GENERATION_NANO_2" link="libgpod-Device.html#ITDB-IPOD-GENERATION-NANO-2:CAPS"/>
+    <keyword type="constant" name="ITDB_IPOD_GENERATION_NANO_3" link="libgpod-Device.html#ITDB-IPOD-GENERATION-NANO-3:CAPS"/>
+    <keyword type="constant" name="ITDB_IPOD_GENERATION_NANO_4" link="libgpod-Device.html#ITDB-IPOD-GENERATION-NANO-4:CAPS"/>
+    <keyword type="constant" name="ITDB_IPOD_GENERATION_VIDEO_1" link="libgpod-Device.html#ITDB-IPOD-GENERATION-VIDEO-1:CAPS"/>
+    <keyword type="constant" name="ITDB_IPOD_GENERATION_VIDEO_2" link="libgpod-Device.html#ITDB-IPOD-GENERATION-VIDEO-2:CAPS"/>
+    <keyword type="constant" name="ITDB_IPOD_GENERATION_CLASSIC_1" link="libgpod-Device.html#ITDB-IPOD-GENERATION-CLASSIC-1:CAPS"/>
+    <keyword type="constant" name="ITDB_IPOD_GENERATION_CLASSIC_2" link="libgpod-Device.html#ITDB-IPOD-GENERATION-CLASSIC-2:CAPS"/>
+    <keyword type="constant" name="ITDB_IPOD_GENERATION_TOUCH_1" link="libgpod-Device.html#ITDB-IPOD-GENERATION-TOUCH-1:CAPS"/>
+    <keyword type="constant" name="ITDB_IPOD_GENERATION_IPHONE_1" link="libgpod-Device.html#ITDB-IPOD-GENERATION-IPHONE-1:CAPS"/>
+    <keyword type="constant" name="ITDB_IPOD_GENERATION_SHUFFLE_4" link="libgpod-Device.html#ITDB-IPOD-GENERATION-SHUFFLE-4:CAPS"/>
+    <keyword type="constant" name="ITDB_IPOD_GENERATION_TOUCH_2" link="libgpod-Device.html#ITDB-IPOD-GENERATION-TOUCH-2:CAPS"/>
+    <keyword type="constant" name="ITDB_IPOD_GENERATION_IPHONE_2" link="libgpod-Device.html#ITDB-IPOD-GENERATION-IPHONE-2:CAPS"/>
+    <keyword type="constant" name="ITDB_IPOD_GENERATION_IPHONE_3" link="libgpod-Device.html#ITDB-IPOD-GENERATION-IPHONE-3:CAPS"/>
+    <keyword type="constant" name="ITDB_IPOD_GENERATION_CLASSIC_3" link="libgpod-Device.html#ITDB-IPOD-GENERATION-CLASSIC-3:CAPS"/>
+    <keyword type="constant" name="ITDB_IPOD_GENERATION_NANO_5" link="libgpod-Device.html#ITDB-IPOD-GENERATION-NANO-5:CAPS"/>
+    <keyword type="constant" name="ITDB_IPOD_GENERATION_TOUCH_3" link="libgpod-Device.html#ITDB-IPOD-GENERATION-TOUCH-3:CAPS"/>
+    <keyword type="constant" name="ITDB_IPOD_GENERATION_IPAD_1" link="libgpod-Device.html#ITDB-IPOD-GENERATION-IPAD-1:CAPS"/>
+    <keyword type="constant" name="ITDB_IPOD_GENERATION_IPHONE_4" link="libgpod-Device.html#ITDB-IPOD-GENERATION-IPHONE-4:CAPS"/>
+    <keyword type="constant" name="ITDB_IPOD_GENERATION_TOUCH_4" link="libgpod-Device.html#ITDB-IPOD-GENERATION-TOUCH-4:CAPS"/>
+    <keyword type="constant" name="ITDB_IPOD_GENERATION_NANO_6" link="libgpod-Device.html#ITDB-IPOD-GENERATION-NANO-6:CAPS"/>
+    <keyword type="constant" name="ITDB_IPOD_MODEL_INVALID" link="libgpod-Device.html#ITDB-IPOD-MODEL-INVALID:CAPS"/>
+    <keyword type="constant" name="ITDB_IPOD_MODEL_UNKNOWN" link="libgpod-Device.html#ITDB-IPOD-MODEL-UNKNOWN:CAPS"/>
+    <keyword type="constant" name="ITDB_IPOD_MODEL_COLOR" link="libgpod-Device.html#ITDB-IPOD-MODEL-COLOR:CAPS"/>
+    <keyword type="constant" name="ITDB_IPOD_MODEL_COLOR_U2" link="libgpod-Device.html#ITDB-IPOD-MODEL-COLOR-U2:CAPS"/>
+    <keyword type="constant" name="ITDB_IPOD_MODEL_REGULAR" link="libgpod-Device.html#ITDB-IPOD-MODEL-REGULAR:CAPS"/>
+    <keyword type="constant" name="ITDB_IPOD_MODEL_REGULAR_U2" link="libgpod-Device.html#ITDB-IPOD-MODEL-REGULAR-U2:CAPS"/>
+    <keyword type="constant" name="ITDB_IPOD_MODEL_MINI" link="libgpod-Device.html#ITDB-IPOD-MODEL-MINI:CAPS"/>
+    <keyword type="constant" name="ITDB_IPOD_MODEL_MINI_BLUE" link="libgpod-Device.html#ITDB-IPOD-MODEL-MINI-BLUE:CAPS"/>
+    <keyword type="constant" name="ITDB_IPOD_MODEL_MINI_PINK" link="libgpod-Device.html#ITDB-IPOD-MODEL-MINI-PINK:CAPS"/>
+    <keyword type="constant" name="ITDB_IPOD_MODEL_MINI_GREEN" link="libgpod-Device.html#ITDB-IPOD-MODEL-MINI-GREEN:CAPS"/>
+    <keyword type="constant" name="ITDB_IPOD_MODEL_MINI_GOLD" link="libgpod-Device.html#ITDB-IPOD-MODEL-MINI-GOLD:CAPS"/>
+    <keyword type="constant" name="ITDB_IPOD_MODEL_SHUFFLE" link="libgpod-Device.html#ITDB-IPOD-MODEL-SHUFFLE:CAPS"/>
+    <keyword type="constant" name="ITDB_IPOD_MODEL_NANO_WHITE" link="libgpod-Device.html#ITDB-IPOD-MODEL-NANO-WHITE:CAPS"/>
+    <keyword type="constant" name="ITDB_IPOD_MODEL_NANO_BLACK" link="libgpod-Device.html#ITDB-IPOD-MODEL-NANO-BLACK:CAPS"/>
+    <keyword type="constant" name="ITDB_IPOD_MODEL_VIDEO_WHITE" link="libgpod-Device.html#ITDB-IPOD-MODEL-VIDEO-WHITE:CAPS"/>
+    <keyword type="constant" name="ITDB_IPOD_MODEL_VIDEO_BLACK" link="libgpod-Device.html#ITDB-IPOD-MODEL-VIDEO-BLACK:CAPS"/>
+    <keyword type="constant" name="ITDB_IPOD_MODEL_MOBILE_1" link="libgpod-Device.html#ITDB-IPOD-MODEL-MOBILE-1:CAPS"/>
+    <keyword type="constant" name="ITDB_IPOD_MODEL_VIDEO_U2" link="libgpod-Device.html#ITDB-IPOD-MODEL-VIDEO-U2:CAPS"/>
+    <keyword type="constant" name="ITDB_IPOD_MODEL_NANO_SILVER" link="libgpod-Device.html#ITDB-IPOD-MODEL-NANO-SILVER:CAPS"/>
+    <keyword type="constant" name="ITDB_IPOD_MODEL_NANO_BLUE" link="libgpod-Device.html#ITDB-IPOD-MODEL-NANO-BLUE:CAPS"/>
+    <keyword type="constant" name="ITDB_IPOD_MODEL_NANO_GREEN" link="libgpod-Device.html#ITDB-IPOD-MODEL-NANO-GREEN:CAPS"/>
+    <keyword type="constant" name="ITDB_IPOD_MODEL_NANO_PINK" link="libgpod-Device.html#ITDB-IPOD-MODEL-NANO-PINK:CAPS"/>
+    <keyword type="constant" name="ITDB_IPOD_MODEL_NANO_RED" link="libgpod-Device.html#ITDB-IPOD-MODEL-NANO-RED:CAPS"/>
+    <keyword type="constant" name="ITDB_IPOD_MODEL_NANO_YELLOW" link="libgpod-Device.html#ITDB-IPOD-MODEL-NANO-YELLOW:CAPS"/>
+    <keyword type="constant" name="ITDB_IPOD_MODEL_NANO_PURPLE" link="libgpod-Device.html#ITDB-IPOD-MODEL-NANO-PURPLE:CAPS"/>
+    <keyword type="constant" name="ITDB_IPOD_MODEL_NANO_ORANGE" link="libgpod-Device.html#ITDB-IPOD-MODEL-NANO-ORANGE:CAPS"/>
+    <keyword type="constant" name="ITDB_IPOD_MODEL_IPHONE_1" link="libgpod-Device.html#ITDB-IPOD-MODEL-IPHONE-1:CAPS"/>
+    <keyword type="constant" name="ITDB_IPOD_MODEL_SHUFFLE_SILVER" link="libgpod-Device.html#ITDB-IPOD-MODEL-SHUFFLE-SILVER:CAPS"/>
+    <keyword type="constant" name="ITDB_IPOD_MODEL_SHUFFLE_PINK" link="libgpod-Device.html#ITDB-IPOD-MODEL-SHUFFLE-PINK:CAPS"/>
+    <keyword type="constant" name="ITDB_IPOD_MODEL_SHUFFLE_BLUE" link="libgpod-Device.html#ITDB-IPOD-MODEL-SHUFFLE-BLUE:CAPS"/>
+    <keyword type="constant" name="ITDB_IPOD_MODEL_SHUFFLE_GREEN" link="libgpod-Device.html#ITDB-IPOD-MODEL-SHUFFLE-GREEN:CAPS"/>
+    <keyword type="constant" name="ITDB_IPOD_MODEL_SHUFFLE_ORANGE" link="libgpod-Device.html#ITDB-IPOD-MODEL-SHUFFLE-ORANGE:CAPS"/>
+    <keyword type="constant" name="ITDB_IPOD_MODEL_SHUFFLE_PURPLE" link="libgpod-Device.html#ITDB-IPOD-MODEL-SHUFFLE-PURPLE:CAPS"/>
+    <keyword type="constant" name="ITDB_IPOD_MODEL_SHUFFLE_RED" link="libgpod-Device.html#ITDB-IPOD-MODEL-SHUFFLE-RED:CAPS"/>
+    <keyword type="constant" name="ITDB_IPOD_MODEL_CLASSIC_SILVER" link="libgpod-Device.html#ITDB-IPOD-MODEL-CLASSIC-SILVER:CAPS"/>
+    <keyword type="constant" name="ITDB_IPOD_MODEL_CLASSIC_BLACK" link="libgpod-Device.html#ITDB-IPOD-MODEL-CLASSIC-BLACK:CAPS"/>
+    <keyword type="constant" name="ITDB_IPOD_MODEL_TOUCH_SILVER" link="libgpod-Device.html#ITDB-IPOD-MODEL-TOUCH-SILVER:CAPS"/>
+    <keyword type="constant" name="ITDB_IPOD_MODEL_SHUFFLE_BLACK" link="libgpod-Device.html#ITDB-IPOD-MODEL-SHUFFLE-BLACK:CAPS"/>
+    <keyword type="constant" name="ITDB_IPOD_MODEL_IPHONE_WHITE" link="libgpod-Device.html#ITDB-IPOD-MODEL-IPHONE-WHITE:CAPS"/>
+    <keyword type="constant" name="ITDB_IPOD_MODEL_IPHONE_BLACK" link="libgpod-Device.html#ITDB-IPOD-MODEL-IPHONE-BLACK:CAPS"/>
+    <keyword type="constant" name="ITDB_IPOD_MODEL_SHUFFLE_GOLD" link="libgpod-Device.html#ITDB-IPOD-MODEL-SHUFFLE-GOLD:CAPS"/>
+    <keyword type="constant" name="ITDB_IPOD_MODEL_SHUFFLE_STAINLESS" link="libgpod-Device.html#ITDB-IPOD-MODEL-SHUFFLE-STAINLESS:CAPS"/>
+    <keyword type="constant" name="ITDB_IPOD_MODEL_IPAD" link="libgpod-Device.html#ITDB-IPOD-MODEL-IPAD:CAPS"/>
+  </functions>
+</book>

@@ -1,0 +1,148 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Time handling</title>
+<meta name="generator" content="DocBook XSL Stylesheets V1.78.1">
+<link rel="home" href="index.html" title="libgpod Reference Manual">
+<link rel="up" href="itunesdb.html" title="Part I. iPod database">
+<link rel="prev" href="libgpod-File-handling-functions.html" title="File handling functions">
+<link rel="next" href="libgpod-Low-level-functions.html" title="Low-level functions">
+<meta name="generator" content="GTK-Doc V1.19 (XML mode)">
+<link rel="stylesheet" href="style.css" type="text/css">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<table class="navigation" id="top" width="100%" summary="Navigation header" cellpadding="2" cellspacing="2">
+<tr valign="middle">
+<td><a accesskey="p" href="libgpod-File-handling-functions.html"><img src="left.png" width="24" height="24" border="0" alt="Prev"></a></td>
+<td><a accesskey="u" href="itunesdb.html"><img src="up.png" width="24" height="24" border="0" alt="Up"></a></td>
+<td><a accesskey="h" href="index.html"><img src="home.png" width="24" height="24" border="0" alt="Home"></a></td>
+<th width="100%" align="center">libgpod Reference Manual</th>
+<td><a accesskey="n" href="libgpod-Low-level-functions.html"><img src="right.png" width="24" height="24" border="0" alt="Next"></a></td>
+</tr>
+<tr><td colspan="5" class="shortcuts">
+<a href="#libgpod-Time-handling.synopsis" class="shortcut">Top</a>
+                   | 
+                  <a href="#libgpod-Time-handling.description" class="shortcut">Description</a>
+</td></tr>
+</table>
+<div class="refentry">
+<a name="libgpod-Time-handling"></a><div class="titlepage"></div>
+<div class="refnamediv"><table width="100%"><tr>
+<td valign="top">
+<h2><span class="refentrytitle"><a name="libgpod-Time-handling.top_of_page"></a>Time handling</span></h2>
+<p>Time handling — [DEPRECATED] Helper functions to convert between Epoch time and Mac
+(iPod) time</p>
+</td>
+<td valign="top" align="right"></td>
+</tr></table></div>
+<div class="refsynopsisdiv">
+<a name="libgpod-Time-handling.synopsis"></a><h2>Synopsis</h2>
+<pre class="synopsis"><span class="returnvalue">time_t</span>              <a class="link" href="libgpod-Time-handling.html#itdb-time-get-mac-time" title="itdb_time_get_mac_time ()">itdb_time_get_mac_time</a>              (<em class="parameter"><code><span class="type">void</span></code></em>);
+<span class="returnvalue">time_t</span>              <a class="link" href="libgpod-Time-handling.html#itdb-time-mac-to-host" title="itdb_time_mac_to_host ()">itdb_time_mac_to_host</a>               (<em class="parameter"><code><span class="type">time_t</span> time</code></em>);
+<span class="returnvalue">time_t</span>              <a class="link" href="libgpod-Time-handling.html#itdb-time-host-to-mac" title="itdb_time_host_to_mac ()">itdb_time_host_to_mac</a>               (<em class="parameter"><code><span class="type">time_t</span> time</code></em>);
+</pre>
+</div>
+<div class="refsect1">
+<a name="libgpod-Time-handling.description"></a><h2>Description</h2>
+<p>
+The functions provide conversion between Epoch time and Mac (iPod)
+time.
+</p>
+<div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+<h3 class="title">Note</h3>
+These functions are now obsolete and should no longer be used, libgpod
+automatically converts to/from Epoch time and iPod time when
+writing/reading the iPod databases.
+</div>
+</div>
+<div class="refsect1">
+<a name="libgpod-Time-handling.details"></a><h2>Details</h2>
+<div class="refsect2">
+<a name="itdb-time-get-mac-time"></a><h3>itdb_time_get_mac_time ()</h3>
+<pre class="programlisting"><span class="returnvalue">time_t</span>              itdb_time_get_mac_time              (<em class="parameter"><code><span class="type">void</span></code></em>);</pre>
+<div class="warning" style="margin-left: 0.5in; margin-right: 0.5in;">
+<h3 class="title">Warning</h3>
+<p><code class="literal">itdb_time_get_mac_time</code> is deprecated and should not be used in newly-written code. kept for compatibility with older code, directly use
+<a href="http://library.gnome.org/devel/glib/unstable/glib-Date-and-Time-Functions.html#g-get-current-time"><code class="function">g_get_current_time()</code></a> or time(NULL) instead</p>
+</div>
+<p>
+Gets the current time in a format appropriate for storing in the libgpod
+data structures
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody><tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>current time</td>
+</tr></tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="itdb-time-mac-to-host"></a><h3>itdb_time_mac_to_host ()</h3>
+<pre class="programlisting"><span class="returnvalue">time_t</span>              itdb_time_mac_to_host               (<em class="parameter"><code><span class="type">time_t</span> time</code></em>);</pre>
+<div class="warning" style="margin-left: 0.5in; margin-right: 0.5in;">
+<h3 class="title">Warning</h3>
+<p><code class="literal">itdb_time_mac_to_host</code> is deprecated and should not be used in newly-written code. It's been kept for compatibility with older code, but this
+function is now a no-op</p>
+</div>
+<p>
+Converts a timestamp from libgpod format to host system timestamp.
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>time</code></em> :</span></p></td>
+<td>time expressed in libgpod format</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>timestamp for the host system</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="itdb-time-host-to-mac"></a><h3>itdb_time_host_to_mac ()</h3>
+<pre class="programlisting"><span class="returnvalue">time_t</span>              itdb_time_host_to_mac               (<em class="parameter"><code><span class="type">time_t</span> time</code></em>);</pre>
+<div class="warning" style="margin-left: 0.5in; margin-right: 0.5in;">
+<h3 class="title">Warning</h3>
+<p><code class="literal">itdb_time_host_to_mac</code> is deprecated and should not be used in newly-written code. It's been kept for compatibility with older code, but this
+function is now a no-op</p>
+</div>
+<p>
+Convert host system timestamp to libgpod format timestamp
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>time</code></em> :</span></p></td>
+<td>time expressed in host unit</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>a libgpod timestamp</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+</div>
+<div class="footer">
+<hr>
+          Generated by GTK-Doc V1.19</div>
+</body>
+</html>

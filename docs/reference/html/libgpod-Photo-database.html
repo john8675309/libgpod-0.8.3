@@ -1,0 +1,987 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Photo database</title>
+<meta name="generator" content="DocBook XSL Stylesheets V1.78.1">
+<link rel="home" href="index.html" title="libgpod Reference Manual">
+<link rel="up" href="photodb.html" title="Part II. Photo database">
+<link rel="prev" href="photodb.html" title="Part II. Photo database">
+<meta name="generator" content="GTK-Doc V1.19 (XML mode)">
+<link rel="stylesheet" href="style.css" type="text/css">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<table class="navigation" id="top" width="100%" summary="Navigation header" cellpadding="2" cellspacing="2">
+<tr valign="middle">
+<td><a accesskey="p" href="photodb.html"><img src="left.png" width="24" height="24" border="0" alt="Prev"></a></td>
+<td><a accesskey="u" href="photodb.html"><img src="up.png" width="24" height="24" border="0" alt="Up"></a></td>
+<td><a accesskey="h" href="index.html"><img src="home.png" width="24" height="24" border="0" alt="Home"></a></td>
+<th width="100%" align="center">libgpod Reference Manual</th>
+<td> </td>
+</tr>
+<tr><td colspan="5" class="shortcuts">
+<a href="#libgpod-Photo-database.synopsis" class="shortcut">Top</a>
+                   | 
+                  <a href="#libgpod-Photo-database.description" class="shortcut">Description</a>
+</td></tr>
+</table>
+<div class="refentry">
+<a name="libgpod-Photo-database"></a><div class="titlepage"></div>
+<div class="refnamediv"><table width="100%"><tr>
+<td valign="top">
+<h2><span class="refentrytitle"><a name="libgpod-Photo-database.top_of_page"></a>Photo database</span></h2>
+<p>Photo database — Functions to create, read, write the photo database</p>
+</td>
+<td valign="top" align="right"></td>
+</tr></table></div>
+<div class="refsynopsisdiv">
+<a name="libgpod-Photo-database.synopsis"></a><h2>Synopsis</h2>
+<pre class="synopsis">struct              <a class="link" href="libgpod-Photo-database.html#Itdb-PhotoDB" title="struct Itdb_PhotoDB">Itdb_PhotoDB</a>;
+<a class="link" href="libgpod-Photo-database.html#Itdb-PhotoDB" title="struct Itdb_PhotoDB"><span class="returnvalue">Itdb_PhotoDB</span></a> *      <a class="link" href="libgpod-Photo-database.html#itdb-photodb-create" title="itdb_photodb_create ()">itdb_photodb_create</a>                 (<em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *mountpoint</code></em>);
+<span class="returnvalue">void</span>                <a class="link" href="libgpod-Photo-database.html#itdb-photodb-free" title="itdb_photodb_free ()">itdb_photodb_free</a>                   (<em class="parameter"><code><a class="link" href="libgpod-Photo-database.html#Itdb-PhotoDB" title="struct Itdb_PhotoDB"><span class="type">Itdb_PhotoDB</span></a> *photodb</code></em>);
+<a class="link" href="libgpod-Photo-database.html#Itdb-PhotoDB" title="struct Itdb_PhotoDB"><span class="returnvalue">Itdb_PhotoDB</span></a> *      <a class="link" href="libgpod-Photo-database.html#itdb-photodb-parse" title="itdb_photodb_parse ()">itdb_photodb_parse</a>                  (<em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *mp</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Error-Reporting.html#GError"><span class="type">GError</span></a> **error</code></em>);
+<a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            <a class="link" href="libgpod-Photo-database.html#itdb-photodb-write" title="itdb_photodb_write ()">itdb_photodb_write</a>                  (<em class="parameter"><code><a class="link" href="libgpod-Photo-database.html#Itdb-PhotoDB" title="struct Itdb_PhotoDB"><span class="type">Itdb_PhotoDB</span></a> *photodb</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Error-Reporting.html#GError"><span class="type">GError</span></a> **error</code></em>);
+<a class="link" href="libgpod-Artwork.html#Itdb-Artwork" title="struct Itdb_Artwork"><span class="returnvalue">Itdb_Artwork</span></a> *      <a class="link" href="libgpod-Photo-database.html#itdb-photodb-add-photo" title="itdb_photodb_add_photo ()">itdb_photodb_add_photo</a>              (<em class="parameter"><code><a class="link" href="libgpod-Photo-database.html#Itdb-PhotoDB" title="struct Itdb_PhotoDB"><span class="type">Itdb_PhotoDB</span></a> *db</code></em>,
+                                                         <em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *filename</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gint"><span class="type">gint</span></a> position</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gint"><span class="type">gint</span></a> rotation</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Error-Reporting.html#GError"><span class="type">GError</span></a> **error</code></em>);
+<a class="link" href="libgpod-Artwork.html#Itdb-Artwork" title="struct Itdb_Artwork"><span class="returnvalue">Itdb_Artwork</span></a> *      <a class="link" href="libgpod-Photo-database.html#itdb-photodb-add-photo-from-data" title="itdb_photodb_add_photo_from_data ()">itdb_photodb_add_photo_from_data</a>    (<em class="parameter"><code><a class="link" href="libgpod-Photo-database.html#Itdb-PhotoDB" title="struct Itdb_PhotoDB"><span class="type">Itdb_PhotoDB</span></a> *db</code></em>,
+                                                         <em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guchar"><span class="type">guchar</span></a> *image_data</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gsize"><span class="type">gsize</span></a> image_data_len</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gint"><span class="type">gint</span></a> position</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gint"><span class="type">gint</span></a> rotation</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Error-Reporting.html#GError"><span class="type">GError</span></a> **error</code></em>);
+<a class="link" href="libgpod-Artwork.html#Itdb-Artwork" title="struct Itdb_Artwork"><span class="returnvalue">Itdb_Artwork</span></a> *      <a class="link" href="libgpod-Photo-database.html#itdb-photodb-add-photo-from-pixbuf" title="itdb_photodb_add_photo_from_pixbuf ()">itdb_photodb_add_photo_from_pixbuf</a>  (<em class="parameter"><code><a class="link" href="libgpod-Photo-database.html#Itdb-PhotoDB" title="struct Itdb_PhotoDB"><span class="type">Itdb_PhotoDB</span></a> *db</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a> pixbuf</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gint"><span class="type">gint</span></a> position</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gint"><span class="type">gint</span></a> rotation</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Error-Reporting.html#GError"><span class="type">GError</span></a> **error</code></em>);
+<span class="returnvalue">void</span>                <a class="link" href="libgpod-Photo-database.html#itdb-photodb-remove-photo" title="itdb_photodb_remove_photo ()">itdb_photodb_remove_photo</a>           (<em class="parameter"><code><a class="link" href="libgpod-Photo-database.html#Itdb-PhotoDB" title="struct Itdb_PhotoDB"><span class="type">Itdb_PhotoDB</span></a> *db</code></em>,
+                                                         <em class="parameter"><code><a class="link" href="libgpod-Photo-database.html#Itdb-PhotoAlbum" title="struct Itdb_PhotoAlbum"><span class="type">Itdb_PhotoAlbum</span></a> *album</code></em>,
+                                                         <em class="parameter"><code><a class="link" href="libgpod-Artwork.html#Itdb-Artwork" title="struct Itdb_Artwork"><span class="type">Itdb_Artwork</span></a> *photo</code></em>);
+struct              <a class="link" href="libgpod-Photo-database.html#Itdb-PhotoAlbum" title="struct Itdb_PhotoAlbum">Itdb_PhotoAlbum</a>;
+<span class="returnvalue">void</span>                <a class="link" href="libgpod-Photo-database.html#itdb-photodb-photoalbum-free" title="itdb_photodb_photoalbum_free ()">itdb_photodb_photoalbum_free</a>        (<em class="parameter"><code><a class="link" href="libgpod-Photo-database.html#Itdb-PhotoAlbum" title="struct Itdb_PhotoAlbum"><span class="type">Itdb_PhotoAlbum</span></a> *album</code></em>);
+<a class="link" href="libgpod-Photo-database.html#Itdb-PhotoAlbum" title="struct Itdb_PhotoAlbum"><span class="returnvalue">Itdb_PhotoAlbum</span></a> *   <a class="link" href="libgpod-Photo-database.html#itdb-photodb-photoalbum-new" title="itdb_photodb_photoalbum_new ()">itdb_photodb_photoalbum_new</a>         (<em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *albumname</code></em>);
+<span class="returnvalue">void</span>                <a class="link" href="libgpod-Photo-database.html#itdb-photodb-photoalbum-add" title="itdb_photodb_photoalbum_add ()">itdb_photodb_photoalbum_add</a>         (<em class="parameter"><code><a class="link" href="libgpod-Photo-database.html#Itdb-PhotoDB" title="struct Itdb_PhotoDB"><span class="type">Itdb_PhotoDB</span></a> *db</code></em>,
+                                                         <em class="parameter"><code><a class="link" href="libgpod-Photo-database.html#Itdb-PhotoAlbum" title="struct Itdb_PhotoAlbum"><span class="type">Itdb_PhotoAlbum</span></a> *album</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gint"><span class="type">gint</span></a> pos</code></em>);
+<span class="returnvalue">void</span>                <a class="link" href="libgpod-Photo-database.html#itdb-photodb-photoalbum-unlink" title="itdb_photodb_photoalbum_unlink ()">itdb_photodb_photoalbum_unlink</a>      (<em class="parameter"><code><a class="link" href="libgpod-Photo-database.html#Itdb-PhotoAlbum" title="struct Itdb_PhotoAlbum"><span class="type">Itdb_PhotoAlbum</span></a> *album</code></em>);
+<a class="link" href="libgpod-Photo-database.html#Itdb-PhotoAlbum" title="struct Itdb_PhotoAlbum"><span class="returnvalue">Itdb_PhotoAlbum</span></a> *   <a class="link" href="libgpod-Photo-database.html#itdb-photodb-photoalbum-create" title="itdb_photodb_photoalbum_create ()">itdb_photodb_photoalbum_create</a>      (<em class="parameter"><code><a class="link" href="libgpod-Photo-database.html#Itdb-PhotoDB" title="struct Itdb_PhotoDB"><span class="type">Itdb_PhotoDB</span></a> *db</code></em>,
+                                                         <em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *albumname</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gint"><span class="type">gint</span></a> pos</code></em>);
+<span class="returnvalue">void</span>                <a class="link" href="libgpod-Photo-database.html#itdb-photodb-photoalbum-add-photo" title="itdb_photodb_photoalbum_add_photo ()">itdb_photodb_photoalbum_add_photo</a>   (<em class="parameter"><code><a class="link" href="libgpod-Photo-database.html#Itdb-PhotoDB" title="struct Itdb_PhotoDB"><span class="type">Itdb_PhotoDB</span></a> *db</code></em>,
+                                                         <em class="parameter"><code><a class="link" href="libgpod-Photo-database.html#Itdb-PhotoAlbum" title="struct Itdb_PhotoAlbum"><span class="type">Itdb_PhotoAlbum</span></a> *album</code></em>,
+                                                         <em class="parameter"><code><a class="link" href="libgpod-Artwork.html#Itdb-Artwork" title="struct Itdb_Artwork"><span class="type">Itdb_Artwork</span></a> *photo</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gint"><span class="type">gint</span></a> position</code></em>);
+<a class="link" href="libgpod-Photo-database.html#Itdb-PhotoAlbum" title="struct Itdb_PhotoAlbum"><span class="returnvalue">Itdb_PhotoAlbum</span></a> *   <a class="link" href="libgpod-Photo-database.html#itdb-photodb-photoalbum-by-name" title="itdb_photodb_photoalbum_by_name ()">itdb_photodb_photoalbum_by_name</a>     (<em class="parameter"><code><a class="link" href="libgpod-Photo-database.html#Itdb-PhotoDB" title="struct Itdb_PhotoDB"><span class="type">Itdb_PhotoDB</span></a> *db</code></em>,
+                                                         <em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *albumname</code></em>);
+<span class="returnvalue">void</span>                <a class="link" href="libgpod-Photo-database.html#itdb-photodb-photoalbum-remove" title="itdb_photodb_photoalbum_remove ()">itdb_photodb_photoalbum_remove</a>      (<em class="parameter"><code><a class="link" href="libgpod-Photo-database.html#Itdb-PhotoDB" title="struct Itdb_PhotoDB"><span class="type">Itdb_PhotoDB</span></a> *db</code></em>,
+                                                         <em class="parameter"><code><a class="link" href="libgpod-Photo-database.html#Itdb-PhotoAlbum" title="struct Itdb_PhotoAlbum"><span class="type">Itdb_PhotoAlbum</span></a> *album</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="type">gboolean</span></a> remove_pics</code></em>);
+</pre>
+</div>
+<div class="refsect1">
+<a name="libgpod-Photo-database.description"></a><h2>Description</h2>
+<p>
+These functions are for creating, reading, and writing the photo
+database.
+</p>
+<p>
+Overview of using the Photo database:
+</p>
+<p>
+<a class="link" href="libgpod-Photo-database.html#itdb-photodb-parse" title="itdb_photodb_parse ()"><code class="function">itdb_photodb_parse()</code></a>:
+Read an existing PhotoDB.
+</p>
+<p>
+<a class="link" href="libgpod-Photo-database.html#itdb-photodb-create" title="itdb_photodb_create ()"><code class="function">itdb_photodb_create()</code></a>:
+Create a new <a class="link" href="libgpod-Photo-database.html#Itdb-PhotoDB" title="struct Itdb_PhotoDB"><span class="type">Itdb_PhotoDB</span></a> structure. The Photo Library Album is
+(first album) is created automatically.
+</p>
+<p>
+<a class="link" href="libgpod-Photo-database.html#itdb-photodb-add-photo" title="itdb_photodb_add_photo ()"><code class="function">itdb_photodb_add_photo()</code></a>, <a class="link" href="libgpod-Photo-database.html#itdb-photodb-add-photo-from-data" title="itdb_photodb_add_photo_from_data ()"><code class="function">itdb_photodb_add_photo_from_data()</code></a>:
+Add a photo to the PhotoDB (from file or from a chunk of
+memory). It is automatically added to the Photo Library Album
+(first album), which is created if it does not exist already.
+</p>
+<p>
+<a class="link" href="libgpod-Photo-database.html#itdb-photodb-photoalbum-create" title="itdb_photodb_photoalbum_create ()"><code class="function">itdb_photodb_photoalbum_create()</code></a>:
+Create and add a new photoalbum.
+</p>
+<p>
+<a class="link" href="libgpod-Photo-database.html#itdb-photodb-photoalbum-add-photo" title="itdb_photodb_photoalbum_add_photo ()"><code class="function">itdb_photodb_photoalbum_add_photo()</code></a>:
+Add a photo (<a class="link" href="libgpod-Artwork.html#Itdb-Artwork" title="struct Itdb_Artwork"><span class="type">Itdb_Artwork</span></a>) to an existing photoalbum.
+</p>
+<p>
+<a class="link" href="libgpod-Photo-database.html#itdb-photodb-photoalbum-remove" title="itdb_photodb_photoalbum_remove ()"><code class="function">itdb_photodb_photoalbum_remove()</code></a>:
+Remove an existing photoalbum. Pictures can be kept in the
+Photo Library or automatically removed as well.
+</p>
+<p>
+<a class="link" href="libgpod-Photo-database.html#itdb-photodb-remove-photo" title="itdb_photodb_remove_photo ()"><code class="function">itdb_photodb_remove_photo()</code></a>:
+Remove a photo either from a photoalbum or completely from the database.
+</p>
+<p>
+<a class="link" href="libgpod-Photo-database.html#itdb-photodb-write" title="itdb_photodb_write ()"><code class="function">itdb_photodb_write()</code></a>:
+Write out your PhotoDB.
+</p>
+<p>
+<a class="link" href="libgpod-Photo-database.html#itdb-photodb-free" title="itdb_photodb_free ()"><code class="function">itdb_photodb_free()</code></a>:
+Free all memory taken by the PhotoDB.
+</p>
+<p>
+<a class="link" href="libgpod-Photo-database.html#itdb-photodb-photoalbum-by-name" title="itdb_photodb_photoalbum_by_name ()"><code class="function">itdb_photodb_photoalbum_by_name()</code></a>:
+Find the first photoalbum with a given name or the Photo
+Library Album if called with no name.
+</p>
+<p>
+If you cannot add photos because your iPod is not recognized,
+you may have to set the iPod model by calling
+<a class="link" href="libgpod-Device.html#itdb-device-set-sysinfo" title="itdb_device_set_sysinfo ()"><code class="function">itdb_device_set_sysinfo()</code></a>, e.g. for an 80 GB 6th generation
+iPod Video, you would use:
+</p>
+<pre class="programlisting">
+itdb_device_set_sysinfo (db-&gt;device, "ModelNumStr", "MA450");
+</pre>
+<p>
+See <a class="ulink" href="http://gtkpod.git.sourceforge.net/git/gitweb.cgi?p=gtkpod/libgpod;a=blob_plain;f=src/itdb_device.c;hb=HEAD" target="_top">itdb_device.c</a>
+for a list of supported models.
+</p>
+<p>
+The model number will be saved on the iPod when the PhotoDB is
+written (<a class="link" href="libgpod-Photo-database.html#itdb-photodb-write" title="itdb_photodb_write ()"><code class="function">itdb_photodb_write()</code></a> calls <a class="link" href="libgpod-Device.html#itdb-device-write-sysinfo" title="itdb_device_write_sysinfo ()"><code class="function">itdb_device_write_sysinfo()</code></a>).
+</p>
+<p>
+Have a look at the <a class="ulink" href="http://gtkpod.git.sourceforge.net/git/gitweb.cgi?p=gtkpod/libgpod;a=blob_plain;f=tests/test-photos.c;hb=HEAD" target="_top">test-photos</a>
+test program in the <a class="ulink" href="http://gtkpod.git.sourceforge.net/git/gitweb.cgi?p=gtkpod/libgpod;a=tree;f=tests;hb=HEAD" target="_top">tests/</a>
+directory of the libgpod source for an example of how to use the interface.
+</p>
+</div>
+<div class="refsect1">
+<a name="libgpod-Photo-database.details"></a><h2>Details</h2>
+<div class="refsect2">
+<a name="Itdb-PhotoDB"></a><h3>struct Itdb_PhotoDB</h3>
+<pre class="programlisting">struct Itdb_PhotoDB {
+    GList *photos;
+    GList *photoalbums;
+    Itdb_Device *device;
+    /* reserved for future use */
+    gint32 reserved_int1;
+    gint32 reserved_int2;
+    gpointer reserved1;
+    gpointer reserved2;
+    /* below is for use by application */
+    guint64 usertype;
+    gpointer userdata;
+    /* functions called to duplicate/free userdata */
+    ItdbUserDataDuplicateFunc userdata_duplicate;
+    ItdbUserDataDestroyFunc userdata_destroy;
+};
+</pre>
+<p>
+Structure representing an iTunes Photo database
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Doubly-Linked-Lists.html#GList"><span class="type">GList</span></a> *<em class="structfield"><code><a name="Itdb-PhotoDB.photos"></a>photos</code></em>;</span></p></td>
+<td>A list of photos in the database (<a class="link" href="libgpod-Artwork.html#Itdb-Artwork" title="struct Itdb_Artwork"><span class="type">Itdb_Artwork</span></a>)</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Doubly-Linked-Lists.html#GList"><span class="type">GList</span></a> *<em class="structfield"><code><a name="Itdb-PhotoDB.photoalbums"></a>photoalbums</code></em>;</span></p></td>
+<td>A list of albums in the database (<a class="link" href="libgpod-Photo-database.html#Itdb-PhotoAlbum" title="struct Itdb_PhotoAlbum"><span class="type">Itdb_PhotoAlbum</span></a>)</td>
+</tr>
+<tr>
+<td><p><span class="term"><a class="link" href="libgpod-Device.html#Itdb-Device" title="Itdb_Device"><span class="type">Itdb_Device</span></a> *<em class="structfield"><code><a name="Itdb-PhotoDB.device"></a>device</code></em>;</span></p></td>
+<td>iPod device info (<a class="link" href="libgpod-Device.html#Itdb-Device" title="Itdb_Device"><span class="type">Itdb_Device</span></a>)</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gint32"><span class="type">gint32</span></a> <em class="structfield"><code><a name="Itdb-PhotoDB.reserved-int1"></a>reserved_int1</code></em>;</span></p></td>
+<td>Reserved for future use</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gint32"><span class="type">gint32</span></a> <em class="structfield"><code><a name="Itdb-PhotoDB.reserved-int2"></a>reserved_int2</code></em>;</span></p></td>
+<td>Reserved for future use</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a> <em class="structfield"><code><a name="Itdb-PhotoDB.reserved1"></a>reserved1</code></em>;</span></p></td>
+<td>Reserved for future use</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a> <em class="structfield"><code><a name="Itdb-PhotoDB.reserved2"></a>reserved2</code></em>;</span></p></td>
+<td>Reserved for future use</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint64"><span class="type">guint64</span></a> <em class="structfield"><code><a name="Itdb-PhotoDB.usertype"></a>usertype</code></em>;</span></p></td>
+<td>For use by application</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a> <em class="structfield"><code><a name="Itdb-PhotoDB.userdata"></a>userdata</code></em>;</span></p></td>
+<td>For use by application</td>
+</tr>
+<tr>
+<td><p><span class="term"><a class="link" href="libgpod-The-Itdb-iTunesDB-structure.html#ItdbUserDataDuplicateFunc" title="ItdbUserDataDuplicateFunc ()"><span class="type">ItdbUserDataDuplicateFunc</span></a> <em class="structfield"><code><a name="Itdb-PhotoDB.userdata-duplicate"></a>userdata_duplicate</code></em>;</span></p></td>
+<td>A function to duplicate <span class="type">userdata</span>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><a class="link" href="libgpod-The-Itdb-iTunesDB-structure.html#ItdbUserDataDestroyFunc" title="ItdbUserDataDestroyFunc ()"><span class="type">ItdbUserDataDestroyFunc</span></a> <em class="structfield"><code><a name="Itdb-PhotoDB.userdata-destroy"></a>userdata_destroy</code></em>;</span></p></td>
+<td>A function to free <span class="type">userdata</span>
+</td>
+</tr>
+</tbody>
+</table></div>
+<p class="since">Since 0.4.0</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="itdb-photodb-create"></a><h3>itdb_photodb_create ()</h3>
+<pre class="programlisting"><a class="link" href="libgpod-Photo-database.html#Itdb-PhotoDB" title="struct Itdb_PhotoDB"><span class="returnvalue">Itdb_PhotoDB</span></a> *      itdb_photodb_create                 (<em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *mountpoint</code></em>);</pre>
+<p>
+Creates a new Itdb_PhotoDB. If mountpoint is NULL, you will have to
+set it manually later by calling <a class="link" href="libgpod-Device.html#itdb-device-set-mountpoint" title="itdb_device_set_mountpoint ()"><code class="function">itdb_device_set_mountpoint()</code></a>.
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>mountpoint</code></em> :</span></p></td>
+<td>mountpoint or NULL.</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>a newly created Itdb_PhotoDB to be freed with
+<a class="link" href="libgpod-Photo-database.html#itdb-photodb-free" title="itdb_photodb_free ()"><code class="function">itdb_photodb_free()</code></a> when it's no longer needed. The Photo Library
+Album is created automatically.</td>
+</tr>
+</tbody>
+</table></div>
+<p class="since">Since 0.4.2</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="itdb-photodb-free"></a><h3>itdb_photodb_free ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                itdb_photodb_free                   (<em class="parameter"><code><a class="link" href="libgpod-Photo-database.html#Itdb-PhotoDB" title="struct Itdb_PhotoDB"><span class="type">Itdb_PhotoDB</span></a> *photodb</code></em>);</pre>
+<p>
+Free the memory taken by <em class="parameter"><code>photodb</code></em>.
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody><tr>
+<td><p><span class="term"><em class="parameter"><code>photodb</code></em> :</span></p></td>
+<td>an <a class="link" href="libgpod-Photo-database.html#Itdb-PhotoDB" title="struct Itdb_PhotoDB"><span class="type">Itdb_PhotoDB</span></a>
+</td>
+</tr></tbody>
+</table></div>
+<p class="since">Since 0.4.0</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="itdb-photodb-parse"></a><h3>itdb_photodb_parse ()</h3>
+<pre class="programlisting"><a class="link" href="libgpod-Photo-database.html#Itdb-PhotoDB" title="struct Itdb_PhotoDB"><span class="returnvalue">Itdb_PhotoDB</span></a> *      itdb_photodb_parse                  (<em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *mp</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Error-Reporting.html#GError"><span class="type">GError</span></a> **error</code></em>);</pre>
+<p>
+Parses the photo database of an iPod mounted at <em class="parameter"><code>mp</code></em>.
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>mp</code></em> :</span></p></td>
+<td>mountpoint of the iPod</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>error</code></em> :</span></p></td>
+<td>will contain the error description when an error occured.</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>the imported PhotoDB or NULL in case of an error.</td>
+</tr>
+</tbody>
+</table></div>
+<p class="since">Since 0.4.0</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="itdb-photodb-write"></a><h3>itdb_photodb_write ()</h3>
+<pre class="programlisting"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            itdb_photodb_write                  (<em class="parameter"><code><a class="link" href="libgpod-Photo-database.html#Itdb-PhotoDB" title="struct Itdb_PhotoDB"><span class="type">Itdb_PhotoDB</span></a> *photodb</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Error-Reporting.html#GError"><span class="type">GError</span></a> **error</code></em>);</pre>
+<p>
+Write out a PhotoDB.
+</p>
+<p>
+FIXME: error is not set yet.
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>photodb</code></em> :</span></p></td>
+<td>the <a class="link" href="libgpod-Photo-database.html#Itdb-PhotoDB" title="struct Itdb_PhotoDB"><span class="type">Itdb_PhotoDB</span></a> to write to disk</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>error</code></em> :</span></p></td>
+<td>return location for a <a href="http://library.gnome.org/devel/glib/unstable/glib-Error-Reporting.html#GError"><span class="type">GError</span></a> or NULL</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>TRUE on success, FALSE on error, in which case <em class="parameter"><code>error</code></em> is
+set accordingly.</td>
+</tr>
+</tbody>
+</table></div>
+<p class="since">Since 0.4.0</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="itdb-photodb-add-photo"></a><h3>itdb_photodb_add_photo ()</h3>
+<pre class="programlisting"><a class="link" href="libgpod-Artwork.html#Itdb-Artwork" title="struct Itdb_Artwork"><span class="returnvalue">Itdb_Artwork</span></a> *      itdb_photodb_add_photo              (<em class="parameter"><code><a class="link" href="libgpod-Photo-database.html#Itdb-PhotoDB" title="struct Itdb_PhotoDB"><span class="type">Itdb_PhotoDB</span></a> *db</code></em>,
+                                                         <em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *filename</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gint"><span class="type">gint</span></a> position</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gint"><span class="type">gint</span></a> rotation</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Error-Reporting.html#GError"><span class="type">GError</span></a> **error</code></em>);</pre>
+<p>
+Add a photo to the PhotoDB. The photo is automatically added to the
+first Photoalbum, which by default contains a list of all photos in
+the database. If no Photoalbums exist one is created automatically.
+</p>
+<p>
+For the rotation angle you can also use the gdk constants
+<a href="http://library.gnome.org/devel/gdk-pixbuf/unstable/gdk-pixbuf-Scaling.html#GDK-PIXBUF-ROTATE-NONE:CAPS"><code class="literal">GDK_PIXBUF_ROTATE_NONE</code></a>, <a href="http://library.gnome.org/devel/gdk-pixbuf/unstable/gdk-pixbuf-Scaling.html#GDK-PIXBUF-ROTATE-COUNTERCLOCKWISE:CAPS"><code class="literal">GDK_PIXBUF_ROTATE_COUNTERCLOCKWISE</code></a>,
+<a href="http://library.gnome.org/devel/gdk-pixbuf/unstable/gdk-pixbuf-Scaling.html#GDK-PIXBUF-ROTATE-UPSIDEDOWN:CAPS"><code class="literal">GDK_PIXBUF_ROTATE_UPSIDEDOWN</code></a>, AND <a href="http://library.gnome.org/devel/gdk-pixbuf/unstable/gdk-pixbuf-Scaling.html#GDK-PIXBUF-ROTATE-CLOCKWISE:CAPS"><code class="literal">GDK_PIXBUF_ROTATE_CLOCKWISE</code></a>.
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>db</code></em> :</span></p></td>
+<td>the <a class="link" href="libgpod-Photo-database.html#Itdb-PhotoDB" title="struct Itdb_PhotoDB"><span class="type">Itdb_PhotoDB</span></a> to add the photo to</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>filename</code></em> :</span></p></td>
+<td>path of the photo to add.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>position</code></em> :</span></p></td>
+<td>position where to insert the new photo (-1 to append
+at the end)</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>rotation</code></em> :</span></p></td>
+<td>angle by which the image should be rotated
+counterclockwise. Valid values are 0, 90, 180 and 270.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>error</code></em> :</span></p></td>
+<td>return location for a <a href="http://library.gnome.org/devel/glib/unstable/glib-Error-Reporting.html#GError"><span class="type">GError</span></a> or NULL</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>a pointer to the added photo.</td>
+</tr>
+</tbody>
+</table></div>
+<p class="since">Since 0.4.0</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="itdb-photodb-add-photo-from-data"></a><h3>itdb_photodb_add_photo_from_data ()</h3>
+<pre class="programlisting"><a class="link" href="libgpod-Artwork.html#Itdb-Artwork" title="struct Itdb_Artwork"><span class="returnvalue">Itdb_Artwork</span></a> *      itdb_photodb_add_photo_from_data    (<em class="parameter"><code><a class="link" href="libgpod-Photo-database.html#Itdb-PhotoDB" title="struct Itdb_PhotoDB"><span class="type">Itdb_PhotoDB</span></a> *db</code></em>,
+                                                         <em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guchar"><span class="type">guchar</span></a> *image_data</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gsize"><span class="type">gsize</span></a> image_data_len</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gint"><span class="type">gint</span></a> position</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gint"><span class="type">gint</span></a> rotation</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Error-Reporting.html#GError"><span class="type">GError</span></a> **error</code></em>);</pre>
+<p>
+Add a photo to the PhotoDB. The photo is automatically added to the
+first Photoalbum, which by default contains a list of all photos in
+the database. If no Photoalbums exist one is created automatically.
+</p>
+<p>
+For the rotation angle you can also use the gdk constants
+<a href="http://library.gnome.org/devel/gdk-pixbuf/unstable/gdk-pixbuf-Scaling.html#GDK-PIXBUF-ROTATE-NONE:CAPS"><code class="literal">GDK_PIXBUF_ROTATE_NONE</code></a>, <a href="http://library.gnome.org/devel/gdk-pixbuf/unstable/gdk-pixbuf-Scaling.html#GDK-PIXBUF-ROTATE-COUNTERCLOCKWISE:CAPS"><code class="literal">GDK_PIXBUF_ROTATE_COUNTERCLOCKWISE</code></a>,
+<a href="http://library.gnome.org/devel/gdk-pixbuf/unstable/gdk-pixbuf-Scaling.html#GDK-PIXBUF-ROTATE-UPSIDEDOWN:CAPS"><code class="literal">GDK_PIXBUF_ROTATE_UPSIDEDOWN</code></a>, AND <a href="http://library.gnome.org/devel/gdk-pixbuf/unstable/gdk-pixbuf-Scaling.html#GDK-PIXBUF-ROTATE-CLOCKWISE:CAPS"><code class="literal">GDK_PIXBUF_ROTATE_CLOCKWISE</code></a>.
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>db</code></em> :</span></p></td>
+<td>the <a class="link" href="libgpod-Photo-database.html#Itdb-PhotoDB" title="struct Itdb_PhotoDB"><span class="type">Itdb_PhotoDB</span></a> to add the photo to</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>image_data</code></em> :</span></p></td>
+<td>chunk of memory containing the image data (for
+example a jpg file)</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>image_data_len</code></em> :</span></p></td>
+<td>length of above chunk of memory</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>position</code></em> :</span></p></td>
+<td>position where to insert the new photo (-1 to
+append at the end)</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>rotation</code></em> :</span></p></td>
+<td>angle by which the image should be rotated
+counterclockwise. Valid values are 0, 90, 180 and 270.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>error</code></em> :</span></p></td>
+<td>return location for a <a href="http://library.gnome.org/devel/glib/unstable/glib-Error-Reporting.html#GError"><span class="type">GError</span></a> or NULL</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>a pointer to the added photo.</td>
+</tr>
+</tbody>
+</table></div>
+<p class="since">Since 0.4.0</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="itdb-photodb-add-photo-from-pixbuf"></a><h3>itdb_photodb_add_photo_from_pixbuf ()</h3>
+<pre class="programlisting"><a class="link" href="libgpod-Artwork.html#Itdb-Artwork" title="struct Itdb_Artwork"><span class="returnvalue">Itdb_Artwork</span></a> *      itdb_photodb_add_photo_from_pixbuf  (<em class="parameter"><code><a class="link" href="libgpod-Photo-database.html#Itdb-PhotoDB" title="struct Itdb_PhotoDB"><span class="type">Itdb_PhotoDB</span></a> *db</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a> pixbuf</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gint"><span class="type">gint</span></a> position</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gint"><span class="type">gint</span></a> rotation</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Error-Reporting.html#GError"><span class="type">GError</span></a> **error</code></em>);</pre>
+<p>
+Add a photo to the PhotoDB. The photo is automatically added to the
+first Photoalbum, which by default contains a list of all photos in
+the database. If no Photoalbums exist one is created automatically.
+</p>
+<p>
+For the rotation angle you can also use the gdk constants
+<a href="http://library.gnome.org/devel/gdk-pixbuf/unstable/gdk-pixbuf-Scaling.html#GDK-PIXBUF-ROTATE-NONE:CAPS"><code class="literal">GDK_PIXBUF_ROTATE_NONE</code></a>, <a href="http://library.gnome.org/devel/gdk-pixbuf/unstable/gdk-pixbuf-Scaling.html#GDK-PIXBUF-ROTATE-COUNTERCLOCKWISE:CAPS"><code class="literal">GDK_PIXBUF_ROTATE_COUNTERCLOCKWISE</code></a>,
+<a href="http://library.gnome.org/devel/gdk-pixbuf/unstable/gdk-pixbuf-Scaling.html#GDK-PIXBUF-ROTATE-UPSIDEDOWN:CAPS"><code class="literal">GDK_PIXBUF_ROTATE_UPSIDEDOWN</code></a>, AND <a href="http://library.gnome.org/devel/gdk-pixbuf/unstable/gdk-pixbuf-Scaling.html#GDK-PIXBUF-ROTATE-CLOCKWISE:CAPS"><code class="literal">GDK_PIXBUF_ROTATE_CLOCKWISE</code></a>.
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>db</code></em> :</span></p></td>
+<td>the <a class="link" href="libgpod-Photo-database.html#Itdb-PhotoDB" title="struct Itdb_PhotoDB"><span class="type">Itdb_PhotoDB</span></a> to add the photo to</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>pixbuf</code></em> :</span></p></td>
+<td>a <a href="http://library.gnome.org/devel/gdk-pixbuf/unstable/gdk-pixbuf-The-GdkPixbuf-Structure.html#GdkPixbuf"><span class="type">GdkPixbuf</span></a> to use as the image data</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>position</code></em> :</span></p></td>
+<td>position where to insert the new photo (-1 to append
+at the end)</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>rotation</code></em> :</span></p></td>
+<td>angle by which the image should be rotated
+counterclockwise. Valid values are 0, 90, 180 and 270.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>error</code></em> :</span></p></td>
+<td>return location for a <a href="http://library.gnome.org/devel/glib/unstable/glib-Error-Reporting.html#GError"><span class="type">GError</span></a> or NULL</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>a pointer to the added photo.</td>
+</tr>
+</tbody>
+</table></div>
+<p class="since">Since 0.5.0</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="itdb-photodb-remove-photo"></a><h3>itdb_photodb_remove_photo ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                itdb_photodb_remove_photo           (<em class="parameter"><code><a class="link" href="libgpod-Photo-database.html#Itdb-PhotoDB" title="struct Itdb_PhotoDB"><span class="type">Itdb_PhotoDB</span></a> *db</code></em>,
+                                                         <em class="parameter"><code><a class="link" href="libgpod-Photo-database.html#Itdb-PhotoAlbum" title="struct Itdb_PhotoAlbum"><span class="type">Itdb_PhotoAlbum</span></a> *album</code></em>,
+                                                         <em class="parameter"><code><a class="link" href="libgpod-Artwork.html#Itdb-Artwork" title="struct Itdb_Artwork"><span class="type">Itdb_Artwork</span></a> *photo</code></em>);</pre>
+<p>
+Removes a photo. If <em class="parameter"><code>album</code></em> is not the first photoalbum, the photo
+will be removed from that album only. If <em class="parameter"><code>album</code></em> is NULL or the
+first photoalbum (Photo Library), the photo will be removed from
+all albums and the <a class="link" href="libgpod-Photo-database.html#Itdb-PhotoDB" title="struct Itdb_PhotoDB"><span class="type">Itdb_PhotoDB</span></a>.
+</p>
+<p>
+</p>
+<div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+<h3 class="title">Note</h3>
+<em class="parameter"><code>photo</code></em> will be freed and can no longer be used if removed from the
+first photoalbum.
+</div>
+<p>
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>db</code></em> :</span></p></td>
+<td>the <a class="link" href="libgpod-Photo-database.html#Itdb-PhotoDB" title="struct Itdb_PhotoDB"><span class="type">Itdb_PhotoDB</span></a> to remove the photo from</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>album</code></em> :</span></p></td>
+<td>the album to remove the photo from. If album is NULL, then
+it will first be removed from all photoalbums and then
+from the photo database as well.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>photo</code></em> :</span></p></td>
+<td>
+<a class="link" href="libgpod-Artwork.html#Itdb-Artwork" title="struct Itdb_Artwork"><span class="type">Itdb_Artwork</span></a> (photo) to remove.</td>
+</tr>
+</tbody>
+</table></div>
+<p class="since">Since 0.4.0</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="Itdb-PhotoAlbum"></a><h3>struct Itdb_PhotoAlbum</h3>
+<pre class="programlisting">struct Itdb_PhotoAlbum {
+    Itdb_PhotoDB *photodb;
+    gchar *name;
+    GList *members;
+    guint8 album_type;
+    guint8 playmusic;
+    guint8 repeat;
+    guint8 random;
+    guint8 show_titles;
+    guint8 transition_direction;
+    gint32 slide_duration;
+    gint32 transition_duration;
+    gint64 song_id;
+    gint32 unk024;
+    gint16 unk028;
+    gint32 unk044;
+    gint32 unk048;
+    /* set automatically at time of writing the PhotoDB */
+    gint32  album_id;
+    gint32  prev_album_id;
+    /* reserved for future use */
+    gint32 reserved_int1;
+    gint32 reserved_int2;
+    gpointer reserved1;
+    gpointer reserved2;
+    /* below is for use by application */
+    guint64 usertype;
+    gpointer userdata;
+    /* functions called to duplicate/free userdata */
+    ItdbUserDataDuplicateFunc userdata_duplicate;
+    ItdbUserDataDestroyFunc userdata_destroy;
+};
+</pre>
+<p>
+Structure representing an iTunes Photo Album
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><a class="link" href="libgpod-Photo-database.html#Itdb-PhotoDB" title="struct Itdb_PhotoDB"><span class="type">Itdb_PhotoDB</span></a> *<em class="structfield"><code><a name="Itdb-PhotoAlbum.photodb"></a>photodb</code></em>;</span></p></td>
+<td>A pointer to the <a class="link" href="libgpod-Photo-database.html#Itdb-PhotoDB" title="struct Itdb_PhotoDB"><span class="type">Itdb_PhotoDB</span></a> (for convenience)</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *<em class="structfield"><code><a name="Itdb-PhotoAlbum.name"></a>name</code></em>;</span></p></td>
+<td>The name of photoalbum in UTF8</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Doubly-Linked-Lists.html#GList"><span class="type">GList</span></a> *<em class="structfield"><code><a name="Itdb-PhotoAlbum.members"></a>members</code></em>;</span></p></td>
+<td>A list of photos in album (<a class="link" href="libgpod-Artwork.html#Itdb-Artwork" title="struct Itdb_Artwork"><span class="type">Itdb_Artwork</span></a>)</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint8"><span class="type">guint8</span></a> <em class="structfield"><code><a name="Itdb-PhotoAlbum.album-type"></a>album_type</code></em>;</span></p></td>
+<td>The album type.  0x01 for master (Photo Library),
+0x02 for a normal album.  (4 and 5 have also been
+seen.)</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint8"><span class="type">guint8</span></a> <em class="structfield"><code><a name="Itdb-PhotoAlbum.playmusic"></a>playmusic</code></em>;</span></p></td>
+<td>Play music during slideshow</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint8"><span class="type">guint8</span></a> <em class="structfield"><code><a name="Itdb-PhotoAlbum.repeat"></a>repeat</code></em>;</span></p></td>
+<td>Repeat the slideshow</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint8"><span class="type">guint8</span></a> <em class="structfield"><code><a name="Itdb-PhotoAlbum.random"></a>random</code></em>;</span></p></td>
+<td>Show slides in random order</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint8"><span class="type">guint8</span></a> <em class="structfield"><code><a name="Itdb-PhotoAlbum.show-titles"></a>show_titles</code></em>;</span></p></td>
+<td>Show slide captions</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint8"><span class="type">guint8</span></a> <em class="structfield"><code><a name="Itdb-PhotoAlbum.transition-direction"></a>transition_direction</code></em>;</span></p></td>
+<td>Transition direction.  0=none, 1=left-to-right,
+2=right-to-left, 3=top-to-bottom, 4=bottom-to-top</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gint32"><span class="type">gint32</span></a> <em class="structfield"><code><a name="Itdb-PhotoAlbum.slide-duration"></a>slide_duration</code></em>;</span></p></td>
+<td>Slide duration in seconds</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gint32"><span class="type">gint32</span></a> <em class="structfield"><code><a name="Itdb-PhotoAlbum.transition-duration"></a>transition_duration</code></em>;</span></p></td>
+<td>Transition duration, in milliseconds</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gint64"><span class="type">gint64</span></a> <em class="structfield"><code><a name="Itdb-PhotoAlbum.song-id"></a>song_id</code></em>;</span></p></td>
+<td>The <em class="parameter"><code>dbid2</code></em> of a track to play during slideshow</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gint32"><span class="type">gint32</span></a> <em class="structfield"><code><a name="Itdb-PhotoAlbum.unk024"></a>unk024</code></em>;</span></p></td>
+<td>Unknown, seems to be always 0</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gint16"><span class="type">gint16</span></a> <em class="structfield"><code><a name="Itdb-PhotoAlbum.unk028"></a>unk028</code></em>;</span></p></td>
+<td>Unknown, seems to be always 0</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gint32"><span class="type">gint32</span></a> <em class="structfield"><code><a name="Itdb-PhotoAlbum.unk044"></a>unk044</code></em>;</span></p></td>
+<td>Unknown, seems to always be 0</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gint32"><span class="type">gint32</span></a> <em class="structfield"><code><a name="Itdb-PhotoAlbum.unk048"></a>unk048</code></em>;</span></p></td>
+<td>Unknown, seems to always be 0</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gint32"><span class="type">gint32</span></a> <em class="structfield"><code><a name="Itdb-PhotoAlbum.album-id"></a>album_id</code></em>;</span></p></td>
+<td>Unique integer for each playlist. This is set
+automatically when the PhotoDB is written.</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gint32"><span class="type">gint32</span></a> <em class="structfield"><code><a name="Itdb-PhotoAlbum.prev-album-id"></a>prev_album_id</code></em>;</span></p></td>
+<td>The id of the previous playlist.  This is set
+automatically when the PhotoDB is written.</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gint32"><span class="type">gint32</span></a> <em class="structfield"><code><a name="Itdb-PhotoAlbum.reserved-int1"></a>reserved_int1</code></em>;</span></p></td>
+<td>Reserved for future use</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gint32"><span class="type">gint32</span></a> <em class="structfield"><code><a name="Itdb-PhotoAlbum.reserved-int2"></a>reserved_int2</code></em>;</span></p></td>
+<td>Reserved for future use</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a> <em class="structfield"><code><a name="Itdb-PhotoAlbum.reserved1"></a>reserved1</code></em>;</span></p></td>
+<td>Reserved for future use</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a> <em class="structfield"><code><a name="Itdb-PhotoAlbum.reserved2"></a>reserved2</code></em>;</span></p></td>
+<td>Reserved for future use</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint64"><span class="type">guint64</span></a> <em class="structfield"><code><a name="Itdb-PhotoAlbum.usertype"></a>usertype</code></em>;</span></p></td>
+<td>For use by application</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a> <em class="structfield"><code><a name="Itdb-PhotoAlbum.userdata"></a>userdata</code></em>;</span></p></td>
+<td>For use by application</td>
+</tr>
+<tr>
+<td><p><span class="term"><a class="link" href="libgpod-The-Itdb-iTunesDB-structure.html#ItdbUserDataDuplicateFunc" title="ItdbUserDataDuplicateFunc ()"><span class="type">ItdbUserDataDuplicateFunc</span></a> <em class="structfield"><code><a name="Itdb-PhotoAlbum.userdata-duplicate"></a>userdata_duplicate</code></em>;</span></p></td>
+<td>A function to duplicate <span class="type">userdata</span>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><a class="link" href="libgpod-The-Itdb-iTunesDB-structure.html#ItdbUserDataDestroyFunc" title="ItdbUserDataDestroyFunc ()"><span class="type">ItdbUserDataDestroyFunc</span></a> <em class="structfield"><code><a name="Itdb-PhotoAlbum.userdata-destroy"></a>userdata_destroy</code></em>;</span></p></td>
+<td>A function to free <span class="type">userdata</span>
+</td>
+</tr>
+</tbody>
+</table></div>
+<p class="since">Since 0.4.0</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="itdb-photodb-photoalbum-free"></a><h3>itdb_photodb_photoalbum_free ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                itdb_photodb_photoalbum_free        (<em class="parameter"><code><a class="link" href="libgpod-Photo-database.html#Itdb-PhotoAlbum" title="struct Itdb_PhotoAlbum"><span class="type">Itdb_PhotoAlbum</span></a> *album</code></em>);</pre>
+<p>
+Frees the memory used by <em class="parameter"><code>album</code></em>
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody><tr>
+<td><p><span class="term"><em class="parameter"><code>album</code></em> :</span></p></td>
+<td>an <a class="link" href="libgpod-Photo-database.html#Itdb-PhotoAlbum" title="struct Itdb_PhotoAlbum"><span class="type">Itdb_PhotoAlbum</span></a>
+</td>
+</tr></tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="itdb-photodb-photoalbum-new"></a><h3>itdb_photodb_photoalbum_new ()</h3>
+<pre class="programlisting"><a class="link" href="libgpod-Photo-database.html#Itdb-PhotoAlbum" title="struct Itdb_PhotoAlbum"><span class="returnvalue">Itdb_PhotoAlbum</span></a> *   itdb_photodb_photoalbum_new         (<em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *albumname</code></em>);</pre>
+<p>
+Creates an empty <a class="link" href="libgpod-Photo-database.html#Itdb-PhotoAlbum" title="struct Itdb_PhotoAlbum"><span class="type">Itdb_PhotoAlbum</span></a> named <em class="parameter"><code>albumname</code></em>
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>albumname</code></em> :</span></p></td>
+<td>name of the new album</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>the new <a class="link" href="libgpod-Photo-database.html#Itdb-PhotoAlbum" title="struct Itdb_PhotoAlbum"><span class="type">Itdb_PhotoAlbum</span></a>, free it with
+<a class="link" href="libgpod-Photo-database.html#itdb-photodb-photoalbum-free" title="itdb_photodb_photoalbum_free ()"><code class="function">itdb_photodb_photoalbum_free()</code></a> when no longer needed</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="itdb-photodb-photoalbum-add"></a><h3>itdb_photodb_photoalbum_add ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                itdb_photodb_photoalbum_add         (<em class="parameter"><code><a class="link" href="libgpod-Photo-database.html#Itdb-PhotoDB" title="struct Itdb_PhotoDB"><span class="type">Itdb_PhotoDB</span></a> *db</code></em>,
+                                                         <em class="parameter"><code><a class="link" href="libgpod-Photo-database.html#Itdb-PhotoAlbum" title="struct Itdb_PhotoAlbum"><span class="type">Itdb_PhotoAlbum</span></a> *album</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gint"><span class="type">gint</span></a> pos</code></em>);</pre>
+<p>
+Adds <em class="parameter"><code>album</code></em> to <em class="parameter"><code>db-&gt;photoalbums</code></em> at position <em class="parameter"><code>pos</code></em> (or at the end if pos
+is -1).The <em class="parameter"><code>ib</code></em> gets ownership of the <em class="parameter"><code>album</code></em> and will take care of
+freeing the memory it uses when it's no longer necessary.
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>db</code></em> :</span></p></td>
+<td>an <a class="link" href="libgpod-Photo-database.html#Itdb-PhotoDB" title="struct Itdb_PhotoDB"><span class="type">Itdb_PhotoDB</span></a>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>album</code></em> :</span></p></td>
+<td>an <a class="link" href="libgpod-Photo-database.html#Itdb-PhotoAlbum" title="struct Itdb_PhotoAlbum"><span class="type">Itdb_PhotoAlbum</span></a>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>pos</code></em> :</span></p></td>
+<td>position of the album to add</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="itdb-photodb-photoalbum-unlink"></a><h3>itdb_photodb_photoalbum_unlink ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                itdb_photodb_photoalbum_unlink      (<em class="parameter"><code><a class="link" href="libgpod-Photo-database.html#Itdb-PhotoAlbum" title="struct Itdb_PhotoAlbum"><span class="type">Itdb_PhotoAlbum</span></a> *album</code></em>);</pre>
+<p>
+Removes <em class="parameter"><code>album</code></em> from the <a class="link" href="libgpod-Photo-database.html#Itdb-PhotoDB" title="struct Itdb_PhotoDB"><span class="type">Itdb_PhotoDB</span></a> it's associated with, but do not free
+memory.
+<em class="parameter"><code>album-&gt;photodb</code></em> is set to NULL.
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody><tr>
+<td><p><span class="term"><em class="parameter"><code>album</code></em> :</span></p></td>
+<td>an <a class="link" href="libgpod-Photo-database.html#Itdb-PhotoAlbum" title="struct Itdb_PhotoAlbum"><span class="type">Itdb_PhotoAlbum</span></a>
+</td>
+</tr></tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="itdb-photodb-photoalbum-create"></a><h3>itdb_photodb_photoalbum_create ()</h3>
+<pre class="programlisting"><a class="link" href="libgpod-Photo-database.html#Itdb-PhotoAlbum" title="struct Itdb_PhotoAlbum"><span class="returnvalue">Itdb_PhotoAlbum</span></a> *   itdb_photodb_photoalbum_create      (<em class="parameter"><code><a class="link" href="libgpod-Photo-database.html#Itdb-PhotoDB" title="struct Itdb_PhotoDB"><span class="type">Itdb_PhotoDB</span></a> *db</code></em>,
+                                                         <em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *albumname</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gint"><span class="type">gint</span></a> pos</code></em>);</pre>
+<p>
+Create and add a new photoalbum.
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>db</code></em> :</span></p></td>
+<td>The database to create a new album in</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>albumname</code></em> :</span></p></td>
+<td>the name of the new album</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>pos</code></em> :</span></p></td>
+<td>position where to insert the newly created album (-1
+to append at the end).</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>the album which was created and added.</td>
+</tr>
+</tbody>
+</table></div>
+<p class="since">Since 0.4.2</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="itdb-photodb-photoalbum-add-photo"></a><h3>itdb_photodb_photoalbum_add_photo ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                itdb_photodb_photoalbum_add_photo   (<em class="parameter"><code><a class="link" href="libgpod-Photo-database.html#Itdb-PhotoDB" title="struct Itdb_PhotoDB"><span class="type">Itdb_PhotoDB</span></a> *db</code></em>,
+                                                         <em class="parameter"><code><a class="link" href="libgpod-Photo-database.html#Itdb-PhotoAlbum" title="struct Itdb_PhotoAlbum"><span class="type">Itdb_PhotoAlbum</span></a> *album</code></em>,
+                                                         <em class="parameter"><code><a class="link" href="libgpod-Artwork.html#Itdb-Artwork" title="struct Itdb_Artwork"><span class="type">Itdb_Artwork</span></a> *photo</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gint"><span class="type">gint</span></a> position</code></em>);</pre>
+<p>
+Adds a photo already in the library to the specified album
+<em class="parameter"><code>album</code></em>. Photos are automatically added to the first album (Photo
+Library) when calling <a class="link" href="libgpod-Photo-database.html#itdb-photodb-add-photo" title="itdb_photodb_add_photo ()"><code class="function">itdb_photodb_add_photo()</code></a> or
+<a class="link" href="libgpod-Photo-database.html#itdb-photodb-add-photo-from-data" title="itdb_photodb_add_photo_from_data ()"><code class="function">itdb_photodb_add_photo_from_data()</code></a>, so you don't have to use this
+function to add them there.
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>db</code></em> :</span></p></td>
+<td>the <a class="link" href="libgpod-Photo-database.html#Itdb-PhotoDB" title="struct Itdb_PhotoDB"><span class="type">Itdb_PhotoDB</span></a> to act on</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>album</code></em> :</span></p></td>
+<td>the <a class="link" href="libgpod-Photo-database.html#Itdb-PhotoAlbum" title="struct Itdb_PhotoAlbum"><span class="type">Itdb_PhotoAlbum</span></a> to add the photo to</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>photo</code></em> :</span></p></td>
+<td>a pointer to the photo (<a class="link" href="libgpod-Artwork.html#Itdb-Artwork" title="struct Itdb_Artwork"><span class="type">Itdb_Artwork</span></a>) to add to the
+album</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>position</code></em> :</span></p></td>
+<td>position where to insert the new photo (-1 to append
+at the end)</td>
+</tr>
+</tbody>
+</table></div>
+<p class="since">Since 0.4.2</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="itdb-photodb-photoalbum-by-name"></a><h3>itdb_photodb_photoalbum_by_name ()</h3>
+<pre class="programlisting"><a class="link" href="libgpod-Photo-database.html#Itdb-PhotoAlbum" title="struct Itdb_PhotoAlbum"><span class="returnvalue">Itdb_PhotoAlbum</span></a> *   itdb_photodb_photoalbum_by_name     (<em class="parameter"><code><a class="link" href="libgpod-Photo-database.html#Itdb-PhotoDB" title="struct Itdb_PhotoDB"><span class="type">Itdb_PhotoDB</span></a> *db</code></em>,
+                                                         <em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *albumname</code></em>);</pre>
+<p>
+Find the first photoalbum with a given name or the Photo Library
+Album if called with no name.
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>db</code></em> :</span></p></td>
+<td>the <a class="link" href="libgpod-Photo-database.html#Itdb-PhotoDB" title="struct Itdb_PhotoDB"><span class="type">Itdb_PhotoDB</span></a> to retrieve the album from</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>albumname</code></em> :</span></p></td>
+<td>the name of the photoalbum to get or NULL for the
+master photoalbum.</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>a pointer to the first photoalbum named <em class="parameter"><code>albumname</code></em>,
+else NULL</td>
+</tr>
+</tbody>
+</table></div>
+<p class="since">Since 0.4.2</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="itdb-photodb-photoalbum-remove"></a><h3>itdb_photodb_photoalbum_remove ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                itdb_photodb_photoalbum_remove      (<em class="parameter"><code><a class="link" href="libgpod-Photo-database.html#Itdb-PhotoDB" title="struct Itdb_PhotoDB"><span class="type">Itdb_PhotoDB</span></a> *db</code></em>,
+                                                         <em class="parameter"><code><a class="link" href="libgpod-Photo-database.html#Itdb-PhotoAlbum" title="struct Itdb_PhotoAlbum"><span class="type">Itdb_PhotoAlbum</span></a> *album</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="type">gboolean</span></a> remove_pics</code></em>);</pre>
+<p>
+Remove <em class="parameter"><code>album</code></em> from the Photo Database. If <em class="parameter"><code>remove_pics</code></em> is TRUE,
+remove all photos contained in <em class="parameter"><code>album</code></em> from the Photo Database.
+</p>
+<p>
+</p>
+<div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+<h3 class="title">Note</h3>
+Memory used by the removed album will be freed and the album cannot
+be accessed any more.
+</div>
+<p>
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>db</code></em> :</span></p></td>
+<td>the <a class="link" href="libgpod-Photo-database.html#Itdb-PhotoDB" title="struct Itdb_PhotoDB"><span class="type">Itdb_PhotoDB</span></a> to apply changes to</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>album</code></em> :</span></p></td>
+<td>the album to be removed from the database</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>remove_pics</code></em> :</span></p></td>
+<td>TRUE to remove pics in that album permanently
+from the database.</td>
+</tr>
+</tbody>
+</table></div>
+<p class="since">Since 0.4.2</p>
+</div>
+</div>
+</div>
+<div class="footer">
+<hr>
+          Generated by GTK-Doc V1.19</div>
+</body>
+</html>

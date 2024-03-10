@@ -1,0 +1,1540 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Smart Playlists</title>
+<meta name="generator" content="DocBook XSL Stylesheets V1.78.1">
+<link rel="home" href="index.html" title="libgpod Reference Manual">
+<link rel="up" href="ch01.html" title="iPod database components">
+<link rel="prev" href="libgpod-Playlists.html" title="Playlists">
+<link rel="next" href="libgpod-Artwork.html" title="Artwork">
+<meta name="generator" content="GTK-Doc V1.19 (XML mode)">
+<link rel="stylesheet" href="style.css" type="text/css">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<table class="navigation" id="top" width="100%" summary="Navigation header" cellpadding="2" cellspacing="2">
+<tr valign="middle">
+<td><a accesskey="p" href="libgpod-Playlists.html"><img src="left.png" width="24" height="24" border="0" alt="Prev"></a></td>
+<td><a accesskey="u" href="ch01.html"><img src="up.png" width="24" height="24" border="0" alt="Up"></a></td>
+<td><a accesskey="h" href="index.html"><img src="home.png" width="24" height="24" border="0" alt="Home"></a></td>
+<th width="100%" align="center">libgpod Reference Manual</th>
+<td><a accesskey="n" href="libgpod-Artwork.html"><img src="right.png" width="24" height="24" border="0" alt="Next"></a></td>
+</tr>
+<tr><td colspan="5" class="shortcuts">
+<a href="#libgpod-Smart-Playlists.synopsis" class="shortcut">Top</a>
+                   | 
+                  <a href="#libgpod-Smart-Playlists.description" class="shortcut">Description</a>
+</td></tr>
+</table>
+<div class="refentry">
+<a name="libgpod-Smart-Playlists"></a><div class="titlepage"></div>
+<div class="refnamediv"><table width="100%"><tr>
+<td valign="top">
+<h2><span class="refentrytitle"><a name="libgpod-Smart-Playlists.top_of_page"></a>Smart Playlists</span></h2>
+<p>Smart Playlists — Data structure to represent an iPod smart playlist</p>
+</td>
+<td valign="top" align="right"></td>
+</tr></table></div>
+<div class="refsynopsisdiv">
+<a name="libgpod-Smart-Playlists.synopsis"></a><h2>Synopsis</h2>
+<pre class="synopsis">struct              <a class="link" href="libgpod-Smart-Playlists.html#Itdb-SPLPref" title="struct Itdb_SPLPref">Itdb_SPLPref</a>;
+struct              <a class="link" href="libgpod-Smart-Playlists.html#Itdb-SPLRule" title="struct Itdb_SPLRule">Itdb_SPLRule</a>;
+struct              <a class="link" href="libgpod-Smart-Playlists.html#Itdb-SPLRules" title="struct Itdb_SPLRules">Itdb_SPLRules</a>;
+enum                <a class="link" href="libgpod-Smart-Playlists.html#ItdbLimitSort" title="enum ItdbLimitSort">ItdbLimitSort</a>;
+enum                <a class="link" href="libgpod-Smart-Playlists.html#ItdbLimitType" title="enum ItdbLimitType">ItdbLimitType</a>;
+enum                <a class="link" href="libgpod-Smart-Playlists.html#ItdbSPLAction" title="enum ItdbSPLAction">ItdbSPLAction</a>;
+enum                <a class="link" href="libgpod-Smart-Playlists.html#ItdbSPLActionLast" title="enum ItdbSPLActionLast">ItdbSPLActionLast</a>;
+enum                <a class="link" href="libgpod-Smart-Playlists.html#ItdbSPLActionType" title="enum ItdbSPLActionType">ItdbSPLActionType</a>;
+enum                <a class="link" href="libgpod-Smart-Playlists.html#ItdbSPLField" title="enum ItdbSPLField">ItdbSPLField</a>;
+enum                <a class="link" href="libgpod-Smart-Playlists.html#ItdbSPLFieldType" title="enum ItdbSPLFieldType">ItdbSPLFieldType</a>;
+enum                <a class="link" href="libgpod-Smart-Playlists.html#ItdbSPLMatch" title="enum ItdbSPLMatch">ItdbSPLMatch</a>;
+#define             <a class="link" href="libgpod-Smart-Playlists.html#ITDB-SPL-DATE-IDENTIFIER:CAPS" title="ITDB_SPL_DATE_IDENTIFIER">ITDB_SPL_DATE_IDENTIFIER</a>
+#define             <a class="link" href="libgpod-Smart-Playlists.html#ITDB-SPL-STRING-MAXLEN:CAPS" title="ITDB_SPL_STRING_MAXLEN">ITDB_SPL_STRING_MAXLEN</a>
+<a class="link" href="libgpod-Smart-Playlists.html#ItdbSPLFieldType" title="enum ItdbSPLFieldType"><span class="returnvalue">ItdbSPLFieldType</span></a>    <a class="link" href="libgpod-Smart-Playlists.html#itdb-splr-get-field-type" title="itdb_splr_get_field_type ()">itdb_splr_get_field_type</a>            (<em class="parameter"><code>const <a class="link" href="libgpod-Smart-Playlists.html#Itdb-SPLRule" title="struct Itdb_SPLRule"><span class="type">Itdb_SPLRule</span></a> *splr</code></em>);
+<a class="link" href="libgpod-Smart-Playlists.html#ItdbSPLActionType" title="enum ItdbSPLActionType"><span class="returnvalue">ItdbSPLActionType</span></a>   <a class="link" href="libgpod-Smart-Playlists.html#itdb-splr-get-action-type" title="itdb_splr_get_action_type ()">itdb_splr_get_action_type</a>           (<em class="parameter"><code>const <a class="link" href="libgpod-Smart-Playlists.html#Itdb-SPLRule" title="struct Itdb_SPLRule"><span class="type">Itdb_SPLRule</span></a> *splr</code></em>);
+<span class="returnvalue">void</span>                <a class="link" href="libgpod-Smart-Playlists.html#itdb-splr-validate" title="itdb_splr_validate ()">itdb_splr_validate</a>                  (<em class="parameter"><code><a class="link" href="libgpod-Smart-Playlists.html#Itdb-SPLRule" title="struct Itdb_SPLRule"><span class="type">Itdb_SPLRule</span></a> *splr</code></em>);
+<span class="returnvalue">void</span>                <a class="link" href="libgpod-Smart-Playlists.html#itdb-splr-remove" title="itdb_splr_remove ()">itdb_splr_remove</a>                    (<em class="parameter"><code><a class="link" href="libgpod-Playlists.html#Itdb-Playlist" title="struct Itdb_Playlist"><span class="type">Itdb_Playlist</span></a> *pl</code></em>,
+                                                         <em class="parameter"><code><a class="link" href="libgpod-Smart-Playlists.html#Itdb-SPLRule" title="struct Itdb_SPLRule"><span class="type">Itdb_SPLRule</span></a> *splr</code></em>);
+<a class="link" href="libgpod-Smart-Playlists.html#Itdb-SPLRule" title="struct Itdb_SPLRule"><span class="returnvalue">Itdb_SPLRule</span></a> *      <a class="link" href="libgpod-Smart-Playlists.html#itdb-splr-new" title="itdb_splr_new ()">itdb_splr_new</a>                       (<em class="parameter"><code><span class="type">void</span></code></em>);
+<span class="returnvalue">void</span>                <a class="link" href="libgpod-Smart-Playlists.html#itdb-splr-add" title="itdb_splr_add ()">itdb_splr_add</a>                       (<em class="parameter"><code><a class="link" href="libgpod-Playlists.html#Itdb-Playlist" title="struct Itdb_Playlist"><span class="type">Itdb_Playlist</span></a> *pl</code></em>,
+                                                         <em class="parameter"><code><a class="link" href="libgpod-Smart-Playlists.html#Itdb-SPLRule" title="struct Itdb_SPLRule"><span class="type">Itdb_SPLRule</span></a> *splr</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gint"><span class="type">gint</span></a> pos</code></em>);
+<a class="link" href="libgpod-Smart-Playlists.html#Itdb-SPLRule" title="struct Itdb_SPLRule"><span class="returnvalue">Itdb_SPLRule</span></a> *      <a class="link" href="libgpod-Smart-Playlists.html#itdb-splr-add-new" title="itdb_splr_add_new ()">itdb_splr_add_new</a>                   (<em class="parameter"><code><a class="link" href="libgpod-Playlists.html#Itdb-Playlist" title="struct Itdb_Playlist"><span class="type">Itdb_Playlist</span></a> *pl</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gint"><span class="type">gint</span></a> pos</code></em>);
+<span class="returnvalue">void</span>                <a class="link" href="libgpod-Smart-Playlists.html#itdb-spl-copy-rules" title="itdb_spl_copy_rules ()">itdb_spl_copy_rules</a>                 (<em class="parameter"><code><a class="link" href="libgpod-Playlists.html#Itdb-Playlist" title="struct Itdb_Playlist"><span class="type">Itdb_Playlist</span></a> *dest</code></em>,
+                                                         <em class="parameter"><code><a class="link" href="libgpod-Playlists.html#Itdb-Playlist" title="struct Itdb_Playlist"><span class="type">Itdb_Playlist</span></a> *src</code></em>);
+<a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            <a class="link" href="libgpod-Smart-Playlists.html#itdb-splr-eval" title="itdb_splr_eval ()">itdb_splr_eval</a>                      (<em class="parameter"><code><a class="link" href="libgpod-Smart-Playlists.html#Itdb-SPLRule" title="struct Itdb_SPLRule"><span class="type">Itdb_SPLRule</span></a> *splr</code></em>,
+                                                         <em class="parameter"><code><a class="link" href="libgpod-Tracks.html#Itdb-Track" title="struct Itdb_Track"><span class="type">Itdb_Track</span></a> *track</code></em>);
+<span class="returnvalue">void</span>                <a class="link" href="libgpod-Smart-Playlists.html#itdb-spl-update" title="itdb_spl_update ()">itdb_spl_update</a>                     (<em class="parameter"><code><a class="link" href="libgpod-Playlists.html#Itdb-Playlist" title="struct Itdb_Playlist"><span class="type">Itdb_Playlist</span></a> *spl</code></em>);
+<span class="returnvalue">void</span>                <a class="link" href="libgpod-Smart-Playlists.html#itdb-spl-update-all" title="itdb_spl_update_all ()">itdb_spl_update_all</a>                 (<em class="parameter"><code><a class="link" href="libgpod-The-Itdb-iTunesDB-structure.html#Itdb-iTunesDB" title="struct Itdb_iTunesDB"><span class="type">Itdb_iTunesDB</span></a> *itdb</code></em>);
+<span class="returnvalue">void</span>                <a class="link" href="libgpod-Smart-Playlists.html#itdb-spl-update-live" title="itdb_spl_update_live ()">itdb_spl_update_live</a>                (<em class="parameter"><code><a class="link" href="libgpod-The-Itdb-iTunesDB-structure.html#Itdb-iTunesDB" title="struct Itdb_iTunesDB"><span class="type">Itdb_iTunesDB</span></a> *itdb</code></em>);
+</pre>
+</div>
+<div class="refsect1">
+<a name="libgpod-Smart-Playlists.description"></a><h2>Description</h2>
+<p>
+These functions and structures are for dealing with smart playlists.
+</p>
+</div>
+<div class="refsect1">
+<a name="libgpod-Smart-Playlists.details"></a><h2>Details</h2>
+<div class="refsect2">
+<a name="Itdb-SPLPref"></a><h3>struct Itdb_SPLPref</h3>
+<pre class="programlisting">struct Itdb_SPLPref {
+    guint8  liveupdate;
+    guint8  checkrules;
+    guint8  checklimits;
+    guint32 limittype;
+    guint32 limitsort;
+    guint32 limitvalue;
+    guint8  matchcheckedonly;
+    gint32 reserved_int1;
+    gint32 reserved_int2;
+    gpointer reserved1;
+    gpointer reserved2;
+};
+</pre>
+<p>
+Smart Playlist preferences are for various flags that are not strictly smart
+playlist "rules."
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint8"><span class="type">guint8</span></a> <em class="structfield"><code><a name="Itdb-SPLPref.liveupdate"></a>liveupdate</code></em>;</span></p></td>
+<td>Live Updating</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint8"><span class="type">guint8</span></a> <em class="structfield"><code><a name="Itdb-SPLPref.checkrules"></a>checkrules</code></em>;</span></p></td>
+<td>Match this number of rules.  If set to 0, ignore rules.</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint8"><span class="type">guint8</span></a> <em class="structfield"><code><a name="Itdb-SPLPref.checklimits"></a>checklimits</code></em>;</span></p></td>
+<td>Limit to this number of <em class="parameter"><code>limittype</code></em>.  If 0, no limits.</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint32"><span class="type">guint32</span></a> <em class="structfield"><code><a name="Itdb-SPLPref.limittype"></a>limittype</code></em>;</span></p></td>
+<td>an <a class="link" href="libgpod-Smart-Playlists.html#ItdbLimitType" title="enum ItdbLimitType"><span class="type">ItdbLimitType</span></a>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint32"><span class="type">guint32</span></a> <em class="structfield"><code><a name="Itdb-SPLPref.limitsort"></a>limitsort</code></em>;</span></p></td>
+<td>an <a class="link" href="libgpod-Smart-Playlists.html#ItdbLimitSort" title="enum ItdbLimitSort"><span class="type">ItdbLimitSort</span></a>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint32"><span class="type">guint32</span></a> <em class="structfield"><code><a name="Itdb-SPLPref.limitvalue"></a>limitvalue</code></em>;</span></p></td>
+<td>The value typed next to "Limit type"</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint8"><span class="type">guint8</span></a> <em class="structfield"><code><a name="Itdb-SPLPref.matchcheckedonly"></a>matchcheckedonly</code></em>;</span></p></td>
+<td>Match only checked songs</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gint32"><span class="type">gint32</span></a> <em class="structfield"><code><a name="Itdb-SPLPref.reserved-int1"></a>reserved_int1</code></em>;</span></p></td>
+<td>Reserved for future use</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gint32"><span class="type">gint32</span></a> <em class="structfield"><code><a name="Itdb-SPLPref.reserved-int2"></a>reserved_int2</code></em>;</span></p></td>
+<td>Reserved for future use</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a> <em class="structfield"><code><a name="Itdb-SPLPref.reserved1"></a>reserved1</code></em>;</span></p></td>
+<td>Reserved for future use</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a> <em class="structfield"><code><a name="Itdb-SPLPref.reserved2"></a>reserved2</code></em>;</span></p></td>
+<td>Reserved for future use</td>
+</tr>
+</tbody>
+</table></div>
+<p class="since">Since 0.5.0</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="Itdb-SPLRule"></a><h3>struct Itdb_SPLRule</h3>
+<pre class="programlisting">struct Itdb_SPLRule {
+    guint32 field;
+    guint32 action;
+    gchar *string;
+    guint64 fromvalue;
+    gint64 fromdate;
+    guint64 fromunits;
+    guint64 tovalue;
+    gint64 todate;
+    guint64 tounits;
+    guint32 unk052;
+    guint32 unk056;
+    guint32 unk060;
+    guint32 unk064;
+    guint32 unk068;
+    /* reserved for future use */
+    gint32 reserved_int1;
+    gint32 reserved_int2;
+    gpointer reserved1;
+    gpointer reserved2;
+};
+</pre>
+<p>
+Smart Playlist Rule
+</p>
+<p>
+The from and to fields require some explanation.  If <em class="parameter"><code>field</code></em> is a date type,
+then <em class="parameter"><code>value</code></em> would be set to 0x2dae2dae2dae2dae, <em class="parameter"><code>date</code></em> would be a number,
+(e.g. 2 or -2), and <em class="parameter"><code>units</code></em> would be a time unit in seconds (e.g. one week
+would be 604800).  If <em class="parameter"><code>field</code></em> is an integer comparison, like rating = 60 (i.e.
+3 stars), then <em class="parameter"><code>value</code></em> would be the value we care about (e.g. 60), <em class="parameter"><code>date</code></em> would
+be 0, and <em class="parameter"><code>units</code></em> would be 1.  Binary AND types are similar, <em class="parameter"><code>value</code></em> is the
+important part, with <em class="parameter"><code>date</code></em> = 0 and <em class="parameter"><code>units</code></em> = 1.  Clear as mud, right?
+</p>
+<p>
+For more details see <a class="ulink" href="http://ipodlinux.org/ITunesDB.html#Smart_Playlist_Rule_Values" target="_top">ipodlinux.org</a>.
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint32"><span class="type">guint32</span></a> <em class="structfield"><code><a name="Itdb-SPLRule.field"></a>field</code></em>;</span></p></td>
+<td>an <a class="link" href="libgpod-Smart-Playlists.html#ItdbSPLFieldType" title="enum ItdbSPLFieldType"><span class="type">ItdbSPLFieldType</span></a>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint32"><span class="type">guint32</span></a> <em class="structfield"><code><a name="Itdb-SPLRule.action"></a>action</code></em>;</span></p></td>
+<td>an <a class="link" href="libgpod-Smart-Playlists.html#ItdbSPLActionType" title="enum ItdbSPLActionType"><span class="type">ItdbSPLActionType</span></a>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *<em class="structfield"><code><a name="Itdb-SPLRule.string"></a>string</code></em>;</span></p></td>
+<td>data in UTF8</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint64"><span class="type">guint64</span></a> <em class="structfield"><code><a name="Itdb-SPLRule.fromvalue"></a>fromvalue</code></em>;</span></p></td>
+<td>from value</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gint64"><span class="type">gint64</span></a> <em class="structfield"><code><a name="Itdb-SPLRule.fromdate"></a>fromdate</code></em>;</span></p></td>
+<td>from date</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint64"><span class="type">guint64</span></a> <em class="structfield"><code><a name="Itdb-SPLRule.fromunits"></a>fromunits</code></em>;</span></p></td>
+<td>from units</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint64"><span class="type">guint64</span></a> <em class="structfield"><code><a name="Itdb-SPLRule.tovalue"></a>tovalue</code></em>;</span></p></td>
+<td>to value</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gint64"><span class="type">gint64</span></a> <em class="structfield"><code><a name="Itdb-SPLRule.todate"></a>todate</code></em>;</span></p></td>
+<td>to date</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint64"><span class="type">guint64</span></a> <em class="structfield"><code><a name="Itdb-SPLRule.tounits"></a>tounits</code></em>;</span></p></td>
+<td>to units</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint32"><span class="type">guint32</span></a> <em class="structfield"><code><a name="Itdb-SPLRule.unk052"></a>unk052</code></em>;</span></p></td>
+<td>Unknown</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint32"><span class="type">guint32</span></a> <em class="structfield"><code><a name="Itdb-SPLRule.unk056"></a>unk056</code></em>;</span></p></td>
+<td>Unknown</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint32"><span class="type">guint32</span></a> <em class="structfield"><code><a name="Itdb-SPLRule.unk060"></a>unk060</code></em>;</span></p></td>
+<td>Unknown</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint32"><span class="type">guint32</span></a> <em class="structfield"><code><a name="Itdb-SPLRule.unk064"></a>unk064</code></em>;</span></p></td>
+<td>Unknown</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint32"><span class="type">guint32</span></a> <em class="structfield"><code><a name="Itdb-SPLRule.unk068"></a>unk068</code></em>;</span></p></td>
+<td>Unknown</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gint32"><span class="type">gint32</span></a> <em class="structfield"><code><a name="Itdb-SPLRule.reserved-int1"></a>reserved_int1</code></em>;</span></p></td>
+<td>Reserved for future use</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gint32"><span class="type">gint32</span></a> <em class="structfield"><code><a name="Itdb-SPLRule.reserved-int2"></a>reserved_int2</code></em>;</span></p></td>
+<td>Reserved for future use</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a> <em class="structfield"><code><a name="Itdb-SPLRule.reserved1"></a>reserved1</code></em>;</span></p></td>
+<td>Reserved for future use</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a> <em class="structfield"><code><a name="Itdb-SPLRule.reserved2"></a>reserved2</code></em>;</span></p></td>
+<td>Reserved for future use</td>
+</tr>
+</tbody>
+</table></div>
+<p class="since">Since 0.5.0</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="Itdb-SPLRules"></a><h3>struct Itdb_SPLRules</h3>
+<pre class="programlisting">struct Itdb_SPLRules {
+    guint32 unk004;
+    guint32 match_operator;
+    GList *rules;
+    /* reserved for future use */
+    gint32 reserved_int1;
+    gint32 reserved_int2;
+    gpointer reserved1;
+    gpointer reserved2;
+};
+</pre>
+<p>
+Smart Playlist Rules
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint32"><span class="type">guint32</span></a> <em class="structfield"><code><a name="Itdb-SPLRules.unk004"></a>unk004</code></em>;</span></p></td>
+<td>Unknown</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint32"><span class="type">guint32</span></a> <em class="structfield"><code><a name="Itdb-SPLRules.match-operator"></a>match_operator</code></em>;</span></p></td>
+<td>Whether all rules must match (<a class="link" href="libgpod-Smart-Playlists.html#ITDB-SPLMATCH-AND:CAPS"><span class="type">ITDB_SPLMATCH_AND</span></a>) or any
+rules may match (<a class="link" href="libgpod-Smart-Playlists.html#ITDB-SPLMATCH-OR:CAPS"><span class="type">ITDB_SPLMATCH_OR</span></a>)</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Doubly-Linked-Lists.html#GList"><span class="type">GList</span></a> *<em class="structfield"><code><a name="Itdb-SPLRules.rules"></a>rules</code></em>;</span></p></td>
+<td>list of <a class="link" href="libgpod-Smart-Playlists.html#Itdb-SPLRule" title="struct Itdb_SPLRule"><span class="type">Itdb_SPLRule</span></a>'s</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gint32"><span class="type">gint32</span></a> <em class="structfield"><code><a name="Itdb-SPLRules.reserved-int1"></a>reserved_int1</code></em>;</span></p></td>
+<td>Reserved for future use</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gint32"><span class="type">gint32</span></a> <em class="structfield"><code><a name="Itdb-SPLRules.reserved-int2"></a>reserved_int2</code></em>;</span></p></td>
+<td>Reserved for future use</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a> <em class="structfield"><code><a name="Itdb-SPLRules.reserved1"></a>reserved1</code></em>;</span></p></td>
+<td>Reserved for future use</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a> <em class="structfield"><code><a name="Itdb-SPLRules.reserved2"></a>reserved2</code></em>;</span></p></td>
+<td>Reserved for future use</td>
+</tr>
+</tbody>
+</table></div>
+<p class="since">Since 0.5.0</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ItdbLimitSort"></a><h3>enum ItdbLimitSort</h3>
+<pre class="programlisting">typedef enum {
+    ITDB_LIMITSORT_RANDOM = 0x02,
+    ITDB_LIMITSORT_SONG_NAME = 0x03,
+    ITDB_LIMITSORT_ALBUM = 0x04,
+    ITDB_LIMITSORT_ARTIST = 0x05,
+    ITDB_LIMITSORT_GENRE = 0x07,
+    ITDB_LIMITSORT_MOST_RECENTLY_ADDED = 0x10,
+    ITDB_LIMITSORT_LEAST_RECENTLY_ADDED = 0x80000010, /* See note above */
+    ITDB_LIMITSORT_MOST_OFTEN_PLAYED = 0x14,
+    ITDB_LIMITSORT_LEAST_OFTEN_PLAYED = 0x80000014,   /* See note above */
+    ITDB_LIMITSORT_MOST_RECENTLY_PLAYED = 0x15,
+    ITDB_LIMITSORT_LEAST_RECENTLY_PLAYED = 0x80000015,/* See note above */
+    ITDB_LIMITSORT_HIGHEST_RATING = 0x17,
+    ITDB_LIMITSORT_LOWEST_RATING = 0x80000017         /* See note above */
+} ItdbLimitSort;
+</pre>
+<p>
+Which songs to pick when using a limit type
+</p>
+<p>
+Note: the values for <a class="link" href="libgpod-Smart-Playlists.html#ITDB-LIMITSORT-LEAST-RECENTLY-ADDED:CAPS"><span class="type">ITDB_LIMITSORT_LEAST_RECENTLY_ADDED</span></a>,
+<a class="link" href="libgpod-Smart-Playlists.html#ITDB-LIMITSORT-LEAST-OFTEN-PLAYED:CAPS"><span class="type">ITDB_LIMITSORT_LEAST_OFTEN_PLAYED</span></a>, <a class="link" href="libgpod-Smart-Playlists.html#ITDB-LIMITSORT-LEAST-RECENTLY-PLAYED:CAPS"><span class="type">ITDB_LIMITSORT_LEAST_RECENTLY_PLAYED</span></a>,
+and <a class="link" href="libgpod-Smart-Playlists.html#ITDB-LIMITSORT-LOWEST-RATING:CAPS"><span class="type">ITDB_LIMITSORT_LOWEST_RATING</span></a> are really 0x10, 0x14, 0x15, 0x17, with the
+'limitsort_opposite' flag set.  This is the same value as the "positive"
+value (i.e. <a class="link" href="libgpod-Smart-Playlists.html#ITDB-LIMITSORT-LEAST-RECENTLY-ADDED:CAPS"><span class="type">ITDB_LIMITSORT_LEAST_RECENTLY_ADDED</span></a>), and is really very
+terribly awfully weird, so we map the values to iPodDB specific values with
+the high bit set.
+</p>
+<p>
+On writing, we check the high bit and write the limitsort_opposite from that.
+That way, we don't have to deal with programs using the class needing to set
+the wrong limit and then make it into the "opposite", which would be frickin'
+annoying.
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><a name="ITDB-LIMITSORT-RANDOM:CAPS"></a><span class="term"><code class="literal">ITDB_LIMITSORT_RANDOM</code></span></p></td>
+<td>Sort randomly
+</td>
+</tr>
+<tr>
+<td><p><a name="ITDB-LIMITSORT-SONG-NAME:CAPS"></a><span class="term"><code class="literal">ITDB_LIMITSORT_SONG_NAME</code></span></p></td>
+<td>Sort by track name
+</td>
+</tr>
+<tr>
+<td><p><a name="ITDB-LIMITSORT-ALBUM:CAPS"></a><span class="term"><code class="literal">ITDB_LIMITSORT_ALBUM</code></span></p></td>
+<td>Sort by album name
+</td>
+</tr>
+<tr>
+<td><p><a name="ITDB-LIMITSORT-ARTIST:CAPS"></a><span class="term"><code class="literal">ITDB_LIMITSORT_ARTIST</code></span></p></td>
+<td>Sort by artist name
+</td>
+</tr>
+<tr>
+<td><p><a name="ITDB-LIMITSORT-GENRE:CAPS"></a><span class="term"><code class="literal">ITDB_LIMITSORT_GENRE</code></span></p></td>
+<td>Sort by genre
+</td>
+</tr>
+<tr>
+<td><p><a name="ITDB-LIMITSORT-MOST-RECENTLY-ADDED:CAPS"></a><span class="term"><code class="literal">ITDB_LIMITSORT_MOST_RECENTLY_ADDED</code></span></p></td>
+<td>Sort by most recently added
+</td>
+</tr>
+<tr>
+<td><p><a name="ITDB-LIMITSORT-LEAST-RECENTLY-ADDED:CAPS"></a><span class="term"><code class="literal">ITDB_LIMITSORT_LEAST_RECENTLY_ADDED</code></span></p></td>
+<td>Sort by least recently added
+</td>
+</tr>
+<tr>
+<td><p><a name="ITDB-LIMITSORT-MOST-OFTEN-PLAYED:CAPS"></a><span class="term"><code class="literal">ITDB_LIMITSORT_MOST_OFTEN_PLAYED</code></span></p></td>
+<td>Sort by most often played
+</td>
+</tr>
+<tr>
+<td><p><a name="ITDB-LIMITSORT-LEAST-OFTEN-PLAYED:CAPS"></a><span class="term"><code class="literal">ITDB_LIMITSORT_LEAST_OFTEN_PLAYED</code></span></p></td>
+<td>Sort by least often played
+</td>
+</tr>
+<tr>
+<td><p><a name="ITDB-LIMITSORT-MOST-RECENTLY-PLAYED:CAPS"></a><span class="term"><code class="literal">ITDB_LIMITSORT_MOST_RECENTLY_PLAYED</code></span></p></td>
+<td>Sort by most recently played
+</td>
+</tr>
+<tr>
+<td><p><a name="ITDB-LIMITSORT-LEAST-RECENTLY-PLAYED:CAPS"></a><span class="term"><code class="literal">ITDB_LIMITSORT_LEAST_RECENTLY_PLAYED</code></span></p></td>
+<td>Sort by least recently played
+</td>
+</tr>
+<tr>
+<td><p><a name="ITDB-LIMITSORT-HIGHEST-RATING:CAPS"></a><span class="term"><code class="literal">ITDB_LIMITSORT_HIGHEST_RATING</code></span></p></td>
+<td>Sort by highest rating
+</td>
+</tr>
+<tr>
+<td><p><a name="ITDB-LIMITSORT-LOWEST-RATING:CAPS"></a><span class="term"><code class="literal">ITDB_LIMITSORT_LOWEST_RATING</code></span></p></td>
+<td>Sort by lowest rating
+</td>
+</tr>
+</tbody>
+</table></div>
+<p class="since">Since 0.5.0</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ItdbLimitType"></a><h3>enum ItdbLimitType</h3>
+<pre class="programlisting">typedef enum {
+    ITDB_LIMITTYPE_MINUTES = 0x01,
+    ITDB_LIMITTYPE_MB      = 0x02,
+    ITDB_LIMITTYPE_SONGS   = 0x03,
+    ITDB_LIMITTYPE_HOURS   = 0x04,
+    ITDB_LIMITTYPE_GB      = 0x05
+} ItdbLimitType;
+</pre>
+<p>
+The type of unit to use when limiting a playlist
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><a name="ITDB-LIMITTYPE-MINUTES:CAPS"></a><span class="term"><code class="literal">ITDB_LIMITTYPE_MINUTES</code></span></p></td>
+<td>Limit in minutes
+</td>
+</tr>
+<tr>
+<td><p><a name="ITDB-LIMITTYPE-MB:CAPS"></a><span class="term"><code class="literal">ITDB_LIMITTYPE_MB</code></span></p></td>
+<td>Limit in megabytes
+</td>
+</tr>
+<tr>
+<td><p><a name="ITDB-LIMITTYPE-SONGS:CAPS"></a><span class="term"><code class="literal">ITDB_LIMITTYPE_SONGS</code></span></p></td>
+<td>Limit in number of songs
+</td>
+</tr>
+<tr>
+<td><p><a name="ITDB-LIMITTYPE-HOURS:CAPS"></a><span class="term"><code class="literal">ITDB_LIMITTYPE_HOURS</code></span></p></td>
+<td>Limit in hours
+</td>
+</tr>
+<tr>
+<td><p><a name="ITDB-LIMITTYPE-GB:CAPS"></a><span class="term"><code class="literal">ITDB_LIMITTYPE_GB</code></span></p></td>
+<td>Limit in gigabytes
+</td>
+</tr>
+</tbody>
+</table></div>
+<p class="since">Since 0.5.0</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ItdbSPLAction"></a><h3>enum ItdbSPLAction</h3>
+<pre class="programlisting">typedef enum {
+    ITDB_SPLACTION_IS_INT = 0x00000001,
+    ITDB_SPLACTION_IS_GREATER_THAN = 0x00000010,
+    ITDB_SPLACTION_IS_LESS_THAN = 0x00000040,
+    ITDB_SPLACTION_IS_IN_THE_RANGE = 0x00000100,
+    ITDB_SPLACTION_IS_IN_THE_LAST = 0x00000200,
+    ITDB_SPLACTION_BINARY_AND = 0x00000400,
+    /* This action has been seen in the smart playlists stored in mhsd5
+     * on recent ipods. It operates on the "video kind" field. 
+     * It uses integer values, and the from/to values are different.
+     * The "from" value might be the list of bits that are allowed to be set
+     * in the value we are matching, and the "to" value might be a value
+     * that must be set in the value we are matching. For example, there's 
+     * a TVShow playlist using that action, from is 0x208044, to is 0x40. 
+     * "video kind" is a bitfield so the 1st value let us filter out
+     * entries with unwanted bits, and the second one ensures we have a
+     * TVShow. A match could be tested with:
+     * is_match = (((val &amp; from) == val) &amp;&amp; (val &amp; to))
+     * I'm not sure what this becomes when this action is negated...
+     */
+    ITDB_SPLACTION_BINARY_UNKNOWN1 = 0x00000800,
+
+    ITDB_SPLACTION_IS_STRING = 0x01000001,
+    ITDB_SPLACTION_CONTAINS = 0x01000002,
+    ITDB_SPLACTION_STARTS_WITH = 0x01000004,
+    ITDB_SPLACTION_ENDS_WITH = 0x01000008,
+
+    ITDB_SPLACTION_IS_NOT_INT = 0x02000001,
+    ITDB_SPLACTION_IS_NOT_GREATER_THAN = 0x02000010,
+    ITDB_SPLACTION_IS_NOT_LESS_THAN = 0x02000040,
+    ITDB_SPLACTION_IS_NOT_IN_THE_RANGE = 0x02000100,
+    ITDB_SPLACTION_IS_NOT_IN_THE_LAST = 0x02000200,
+    ITDB_SPLACTION_NOT_BINARY_AND = 0x02000400,
+    ITDB_SPLACTION_BINARY_UNKNOWN2 = 0x02000800,
+
+
+    ITDB_SPLACTION_IS_NOT = 0x03000001,
+    ITDB_SPLACTION_DOES_NOT_CONTAIN = 0x03000002,
+    ITDB_SPLACTION_DOES_NOT_START_WITH = 0x03000004,
+    ITDB_SPLACTION_DOES_NOT_END_WITH = 0x03000008
+} ItdbSPLAction;
+</pre>
+<p>
+Smartlist Actions used in smart playlist rules.
+</p>
+<p>
+Note by Otto (Samuel Wood):
+</p>
+<div class="informalexample">
+  <table class="listing_frame" border="0" cellpadding="0" cellspacing="0">
+    <tbody>
+      <tr>
+        <td class="listing_lines" align="right"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17</pre></td>
+        <td class="listing_code"><pre class="programlisting"><span class="normal">really this is a </span><span class="usertype">bitmapped</span><span class="normal"> field</span><span class="symbol">...</span>
+<span class="normal">high byte</span>
+<span class="normal">bit </span><span class="number">0</span><span class="normal"> </span><span class="symbol">=</span><span class="normal"> </span><span class="string">"string"</span><span class="normal"> values </span><span class="usertype">if</span><span class="normal"> set</span><span class="symbol">,</span><span class="normal"> </span><span class="string">"int"</span><span class="normal"> values </span><span class="keyword">if</span><span class="normal"> not set</span>
+<span class="normal">bit </span><span class="number">1</span><span class="normal"> </span><span class="symbol">=</span><span class="normal"> </span><span class="string">"not"</span><span class="symbol">,</span><span class="normal"> or to negate </span><span class="usertype">the</span><span class="normal"> check</span><span class="symbol">.</span>
+<span class="normal">lower </span><span class="number">2</span><span class="normal"> bytes</span>
+<span class="normal">bit </span><span class="number">0</span><span class="normal"> </span><span class="symbol">=</span><span class="normal"> simple </span><span class="string">"IS"</span><span class="normal"> query</span>
+<span class="normal">bit </span><span class="number">1</span><span class="normal"> </span><span class="symbol">=</span><span class="normal"> contains</span>
+<span class="normal">bit </span><span class="number">2</span><span class="normal"> </span><span class="symbol">=</span><span class="normal"> begins with</span>
+<span class="normal">bit </span><span class="number">3</span><span class="normal"> </span><span class="symbol">=</span><span class="normal"> ends with</span>
+<span class="normal">bit </span><span class="number">4</span><span class="normal"> </span><span class="symbol">=</span><span class="normal"> greater than</span>
+<span class="normal">bit </span><span class="number">5</span><span class="normal"> </span><span class="symbol">=</span><span class="normal"> unknown</span><span class="symbol">,</span><span class="normal"> but probably greater than or equal to</span>
+<span class="normal">bit </span><span class="number">6</span><span class="normal"> </span><span class="symbol">=</span><span class="normal"> less than</span>
+<span class="normal">bit </span><span class="number">7</span><span class="normal"> </span><span class="symbol">=</span><span class="normal"> unknown</span><span class="symbol">,</span><span class="normal"> but probably less than or equal to</span>
+<span class="normal">bit </span><span class="number">8</span><span class="normal"> </span><span class="symbol">=</span><span class="normal"> a range selection</span>
+<span class="normal">bit </span><span class="number">9</span><span class="normal"> </span><span class="symbol">=</span><span class="normal"> </span><span class="string">"in the last"</span>
+<span class="normal">bit </span><span class="number">10</span><span class="normal"> </span><span class="symbol">=</span><span class="normal"> binary AND</span>
+<span class="normal">bit </span><span class="number">11</span><span class="normal"> </span><span class="symbol">=</span><span class="normal"> unknown</span></pre></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<p>
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><a name="ITDB-SPLACTION-IS-INT:CAPS"></a><span class="term"><code class="literal">ITDB_SPLACTION_IS_INT</code></span></p></td>
+<td>is integer ("Is Set" in iTunes)
+</td>
+</tr>
+<tr>
+<td><p><a name="ITDB-SPLACTION-IS-GREATER-THAN:CAPS"></a><span class="term"><code class="literal">ITDB_SPLACTION_IS_GREATER_THAN</code></span></p></td>
+<td>is greater than ("Is after" in iTunes)
+</td>
+</tr>
+<tr>
+<td><p><a name="ITDB-SPLACTION-IS-LESS-THAN:CAPS"></a><span class="term"><code class="literal">ITDB_SPLACTION_IS_LESS_THAN</code></span></p></td>
+<td>is less than ("Is Before" in iTunes)
+</td>
+</tr>
+<tr>
+<td><p><a name="ITDB-SPLACTION-IS-IN-THE-RANGE:CAPS"></a><span class="term"><code class="literal">ITDB_SPLACTION_IS_IN_THE_RANGE</code></span></p></td>
+<td>is in the range
+</td>
+</tr>
+<tr>
+<td><p><a name="ITDB-SPLACTION-IS-IN-THE-LAST:CAPS"></a><span class="term"><code class="literal">ITDB_SPLACTION_IS_IN_THE_LAST</code></span></p></td>
+<td>is in the last
+</td>
+</tr>
+<tr>
+<td><p><a name="ITDB-SPLACTION-BINARY-AND:CAPS"></a><span class="term"><code class="literal">ITDB_SPLACTION_BINARY_AND</code></span></p></td>
+<td>binary AND
+</td>
+</tr>
+<tr>
+<td><p><a name="ITDB-SPLACTION-BINARY-UNKNOWN1:CAPS"></a><span class="term"><code class="literal">ITDB_SPLACTION_BINARY_UNKNOWN1</code></span></p></td>
+<td>
+</td>
+</tr>
+<tr>
+<td><p><a name="ITDB-SPLACTION-IS-STRING:CAPS"></a><span class="term"><code class="literal">ITDB_SPLACTION_IS_STRING</code></span></p></td>
+<td>is a string
+</td>
+</tr>
+<tr>
+<td><p><a name="ITDB-SPLACTION-CONTAINS:CAPS"></a><span class="term"><code class="literal">ITDB_SPLACTION_CONTAINS</code></span></p></td>
+<td>contains
+</td>
+</tr>
+<tr>
+<td><p><a name="ITDB-SPLACTION-STARTS-WITH:CAPS"></a><span class="term"><code class="literal">ITDB_SPLACTION_STARTS_WITH</code></span></p></td>
+<td>starts with
+</td>
+</tr>
+<tr>
+<td><p><a name="ITDB-SPLACTION-ENDS-WITH:CAPS"></a><span class="term"><code class="literal">ITDB_SPLACTION_ENDS_WITH</code></span></p></td>
+<td>ends with
+</td>
+</tr>
+<tr>
+<td><p><a name="ITDB-SPLACTION-IS-NOT-INT:CAPS"></a><span class="term"><code class="literal">ITDB_SPLACTION_IS_NOT_INT</code></span></p></td>
+<td>is not an integer ("Is Not Set" in iTunes)
+</td>
+</tr>
+<tr>
+<td><p><a name="ITDB-SPLACTION-IS-NOT-GREATER-THAN:CAPS"></a><span class="term"><code class="literal">ITDB_SPLACTION_IS_NOT_GREATER_THAN</code></span></p></td>
+<td>is not greater than (not in iTunes)
+</td>
+</tr>
+<tr>
+<td><p><a name="ITDB-SPLACTION-IS-NOT-LESS-THAN:CAPS"></a><span class="term"><code class="literal">ITDB_SPLACTION_IS_NOT_LESS_THAN</code></span></p></td>
+<td>is not less than (not in iTunes)
+</td>
+</tr>
+<tr>
+<td><p><a name="ITDB-SPLACTION-IS-NOT-IN-THE-RANGE:CAPS"></a><span class="term"><code class="literal">ITDB_SPLACTION_IS_NOT_IN_THE_RANGE</code></span></p></td>
+<td>is not in the range (not in iTunes)
+</td>
+</tr>
+<tr>
+<td><p><a name="ITDB-SPLACTION-IS-NOT-IN-THE-LAST:CAPS"></a><span class="term"><code class="literal">ITDB_SPLACTION_IS_NOT_IN_THE_LAST</code></span></p></td>
+<td>is not in the last
+</td>
+</tr>
+<tr>
+<td><p><a name="ITDB-SPLACTION-NOT-BINARY-AND:CAPS"></a><span class="term"><code class="literal">ITDB_SPLACTION_NOT_BINARY_AND</code></span></p></td>
+<td>
+</td>
+</tr>
+<tr>
+<td><p><a name="ITDB-SPLACTION-BINARY-UNKNOWN2:CAPS"></a><span class="term"><code class="literal">ITDB_SPLACTION_BINARY_UNKNOWN2</code></span></p></td>
+<td>
+</td>
+</tr>
+<tr>
+<td><p><a name="ITDB-SPLACTION-IS-NOT:CAPS"></a><span class="term"><code class="literal">ITDB_SPLACTION_IS_NOT</code></span></p></td>
+<td>is not
+</td>
+</tr>
+<tr>
+<td><p><a name="ITDB-SPLACTION-DOES-NOT-CONTAIN:CAPS"></a><span class="term"><code class="literal">ITDB_SPLACTION_DOES_NOT_CONTAIN</code></span></p></td>
+<td>does not contain
+</td>
+</tr>
+<tr>
+<td><p><a name="ITDB-SPLACTION-DOES-NOT-START-WITH:CAPS"></a><span class="term"><code class="literal">ITDB_SPLACTION_DOES_NOT_START_WITH</code></span></p></td>
+<td>does not start with (not in iTunes)
+</td>
+</tr>
+<tr>
+<td><p><a name="ITDB-SPLACTION-DOES-NOT-END-WITH:CAPS"></a><span class="term"><code class="literal">ITDB_SPLACTION_DOES_NOT_END_WITH</code></span></p></td>
+<td>does not end with (not in iTunes)
+</td>
+</tr>
+</tbody>
+</table></div>
+<p class="since">Since 0.5.0</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ItdbSPLActionLast"></a><h3>enum ItdbSPLActionLast</h3>
+<pre class="programlisting">typedef enum {
+    ITDB_SPLACTION_LAST_DAYS_VALUE = 86400,    /* nr of secs in 24 hours */
+    ITDB_SPLACTION_LAST_WEEKS_VALUE = 604800,  /* nr of secs in 7 days   */
+    ITDB_SPLACTION_LAST_MONTHS_VALUE = 2628000 /* nr of secs in 30.4167
+						  days ~= 1 month */
+} ItdbSPLActionLast;
+</pre>
+<p>
+These are to pass to <code class="function">AddRule()</code> when you need a unit for the two "in the last"
+action types.  In theory, you can use any time range.  iTunes might not
+like it, but the iPod shouldn't care.
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><a name="ITDB-SPLACTION-LAST-DAYS-VALUE:CAPS"></a><span class="term"><code class="literal">ITDB_SPLACTION_LAST_DAYS_VALUE</code></span></p></td>
+<td>Seconds in 24 hours
+</td>
+</tr>
+<tr>
+<td><p><a name="ITDB-SPLACTION-LAST-WEEKS-VALUE:CAPS"></a><span class="term"><code class="literal">ITDB_SPLACTION_LAST_WEEKS_VALUE</code></span></p></td>
+<td>Seconds in 7 days
+</td>
+</tr>
+<tr>
+<td><p><a name="ITDB-SPLACTION-LAST-MONTHS-VALUE:CAPS"></a><span class="term"><code class="literal">ITDB_SPLACTION_LAST_MONTHS_VALUE</code></span></p></td>
+<td>Seconds in 1 month (approximately)
+</td>
+</tr>
+</tbody>
+</table></div>
+<p class="since">Since 0.5.0</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ItdbSPLActionType"></a><h3>enum ItdbSPLActionType</h3>
+<pre class="programlisting">typedef enum {
+    ITDB_SPLAT_STRING = 1,
+    ITDB_SPLAT_INT,
+    ITDB_SPLAT_DATE,
+    ITDB_SPLAT_RANGE_INT,
+    ITDB_SPLAT_RANGE_DATE,
+    ITDB_SPLAT_INTHELAST,
+    ITDB_SPLAT_PLAYLIST,
+    ITDB_SPLAT_NONE,
+    ITDB_SPLAT_INVALID,
+    ITDB_SPLAT_UNKNOWN,
+    ITDB_SPLAT_BINARY_AND
+} ItdbSPLActionType;
+</pre>
+<p>
+Smart Playlist Action Types
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><a name="ITDB-SPLAT-STRING:CAPS"></a><span class="term"><code class="literal">ITDB_SPLAT_STRING</code></span></p></td>
+<td>string
+</td>
+</tr>
+<tr>
+<td><p><a name="ITDB-SPLAT-INT:CAPS"></a><span class="term"><code class="literal">ITDB_SPLAT_INT</code></span></p></td>
+<td>from integer
+</td>
+</tr>
+<tr>
+<td><p><a name="ITDB-SPLAT-DATE:CAPS"></a><span class="term"><code class="literal">ITDB_SPLAT_DATE</code></span></p></td>
+<td>from date ...
+</td>
+</tr>
+<tr>
+<td><p><a name="ITDB-SPLAT-RANGE-INT:CAPS"></a><span class="term"><code class="literal">ITDB_SPLAT_RANGE_INT</code></span></p></td>
+<td>an integer range ...
+</td>
+</tr>
+<tr>
+<td><p><a name="ITDB-SPLAT-RANGE-DATE:CAPS"></a><span class="term"><code class="literal">ITDB_SPLAT_RANGE_DATE</code></span></p></td>
+<td>a date range ...
+</td>
+</tr>
+<tr>
+<td><p><a name="ITDB-SPLAT-INTHELAST:CAPS"></a><span class="term"><code class="literal">ITDB_SPLAT_INTHELAST</code></span></p></td>
+<td>in the last ...
+</td>
+</tr>
+<tr>
+<td><p><a name="ITDB-SPLAT-PLAYLIST:CAPS"></a><span class="term"><code class="literal">ITDB_SPLAT_PLAYLIST</code></span></p></td>
+<td>in playlist
+</td>
+</tr>
+<tr>
+<td><p><a name="ITDB-SPLAT-NONE:CAPS"></a><span class="term"><code class="literal">ITDB_SPLAT_NONE</code></span></p></td>
+<td>none
+</td>
+</tr>
+<tr>
+<td><p><a name="ITDB-SPLAT-INVALID:CAPS"></a><span class="term"><code class="literal">ITDB_SPLAT_INVALID</code></span></p></td>
+<td>invalid
+</td>
+</tr>
+<tr>
+<td><p><a name="ITDB-SPLAT-UNKNOWN:CAPS"></a><span class="term"><code class="literal">ITDB_SPLAT_UNKNOWN</code></span></p></td>
+<td>unknown
+</td>
+</tr>
+<tr>
+<td><p><a name="ITDB-SPLAT-BINARY-AND:CAPS"></a><span class="term"><code class="literal">ITDB_SPLAT_BINARY_AND</code></span></p></td>
+<td>is / is not (binary AND)
+</td>
+</tr>
+</tbody>
+</table></div>
+<p class="since">Since 0.5.0</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ItdbSPLField"></a><h3>enum ItdbSPLField</h3>
+<pre class="programlisting">typedef enum {
+    ITDB_SPLFIELD_SONG_NAME = 0x02,
+    ITDB_SPLFIELD_ALBUM = 0x03,
+    ITDB_SPLFIELD_ARTIST = 0x04,
+    ITDB_SPLFIELD_BITRATE = 0x05,
+    ITDB_SPLFIELD_SAMPLE_RATE = 0x06,
+    ITDB_SPLFIELD_YEAR = 0x07,
+    ITDB_SPLFIELD_GENRE = 0x08,
+    ITDB_SPLFIELD_KIND = 0x09,
+    ITDB_SPLFIELD_DATE_MODIFIED = 0x0a,
+    ITDB_SPLFIELD_TRACKNUMBER = 0x0b,
+    ITDB_SPLFIELD_SIZE = 0x0c,
+    ITDB_SPLFIELD_TIME = 0x0d,
+    ITDB_SPLFIELD_COMMENT = 0x0e,
+    ITDB_SPLFIELD_DATE_ADDED = 0x10,
+    ITDB_SPLFIELD_COMPOSER = 0x12,
+    ITDB_SPLFIELD_PLAYCOUNT = 0x16,
+    ITDB_SPLFIELD_LAST_PLAYED = 0x17,
+    ITDB_SPLFIELD_DISC_NUMBER = 0x18,
+    ITDB_SPLFIELD_RATING = 0x19,
+    ITDB_SPLFIELD_COMPILATION = 0x1f,
+    ITDB_SPLFIELD_BPM = 0x23,
+    ITDB_SPLFIELD_GROUPING = 0x27,
+    ITDB_SPLFIELD_PLAYLIST = 0x28,
+    ITDB_SPLFIELD_PURCHASE = 0x29,
+    ITDB_SPLFIELD_DESCRIPTION = 0x36,
+    ITDB_SPLFIELD_CATEGORY = 0x37,
+    ITDB_SPLFIELD_PODCAST = 0x39,
+    ITDB_SPLFIELD_VIDEO_KIND = 0x3c,
+    ITDB_SPLFIELD_TVSHOW = 0x3e,
+    ITDB_SPLFIELD_SEASON_NR = 0x3f,
+    ITDB_SPLFIELD_SKIPCOUNT = 0x44,
+    ITDB_SPLFIELD_LAST_SKIPPED = 0x45,
+    ITDB_SPLFIELD_ALBUMARTIST = 0x47,
+    ITDB_SPLFIELD_SORT_SONG_NAME = 0x4e,
+    ITDB_SPLFIELD_SORT_ALBUM = 0x4f,
+    ITDB_SPLFIELD_SORT_ARTIST = 0x50,
+    ITDB_SPLFIELD_SORT_ALBUMARTIST = 0x51,
+    ITDB_SPLFIELD_SORT_COMPOSER = 0x52,
+    ITDB_SPLFIELD_SORT_TVSHOW = 0x53,
+    ITDB_SPLFIELD_ALBUM_RATING = 0x5a
+} ItdbSPLField;
+</pre>
+<p>
+Smart Playlist Fields, used for Smart Playlist Rules (<a class="link" href="libgpod-Smart-Playlists.html#Itdb-SPLRule" title="struct Itdb_SPLRule"><span class="type">Itdb_SPLRule</span></a>).
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><a name="ITDB-SPLFIELD-SONG-NAME:CAPS"></a><span class="term"><code class="literal">ITDB_SPLFIELD_SONG_NAME</code></span></p></td>
+<td>Song name (string)
+</td>
+</tr>
+<tr>
+<td><p><a name="ITDB-SPLFIELD-ALBUM:CAPS"></a><span class="term"><code class="literal">ITDB_SPLFIELD_ALBUM</code></span></p></td>
+<td>Album (string)
+</td>
+</tr>
+<tr>
+<td><p><a name="ITDB-SPLFIELD-ARTIST:CAPS"></a><span class="term"><code class="literal">ITDB_SPLFIELD_ARTIST</code></span></p></td>
+<td>Artist (string)
+</td>
+</tr>
+<tr>
+<td><p><a name="ITDB-SPLFIELD-BITRATE:CAPS"></a><span class="term"><code class="literal">ITDB_SPLFIELD_BITRATE</code></span></p></td>
+<td>Bitrate (integer, e.g. from/to = 128)
+</td>
+</tr>
+<tr>
+<td><p><a name="ITDB-SPLFIELD-SAMPLE-RATE:CAPS"></a><span class="term"><code class="literal">ITDB_SPLFIELD_SAMPLE_RATE</code></span></p></td>
+<td>Sample rate (integer, e.g. from/to = 44100)
+</td>
+</tr>
+<tr>
+<td><p><a name="ITDB-SPLFIELD-YEAR:CAPS"></a><span class="term"><code class="literal">ITDB_SPLFIELD_YEAR</code></span></p></td>
+<td>Year (integer, e.g. from/to = 2004)
+</td>
+</tr>
+<tr>
+<td><p><a name="ITDB-SPLFIELD-GENRE:CAPS"></a><span class="term"><code class="literal">ITDB_SPLFIELD_GENRE</code></span></p></td>
+<td>Genre (string)
+</td>
+</tr>
+<tr>
+<td><p><a name="ITDB-SPLFIELD-KIND:CAPS"></a><span class="term"><code class="literal">ITDB_SPLFIELD_KIND</code></span></p></td>
+<td>File type (string, e.g. MP3-File)
+</td>
+</tr>
+<tr>
+<td><p><a name="ITDB-SPLFIELD-DATE-MODIFIED:CAPS"></a><span class="term"><code class="literal">ITDB_SPLFIELD_DATE_MODIFIED</code></span></p></td>
+<td>Date modified (integer, e.g.
+                                 from/to = bcf93280 == is before 6/19/2004)
+</td>
+</tr>
+<tr>
+<td><p><a name="ITDB-SPLFIELD-TRACKNUMBER:CAPS"></a><span class="term"><code class="literal">ITDB_SPLFIELD_TRACKNUMBER</code></span></p></td>
+<td>Track number (integer, e.g. from/to = 2)
+</td>
+</tr>
+<tr>
+<td><p><a name="ITDB-SPLFIELD-SIZE:CAPS"></a><span class="term"><code class="literal">ITDB_SPLFIELD_SIZE</code></span></p></td>
+<td>Size (integer, e.g.
+                                 from/to = 0x00600000 for 6MB)
+</td>
+</tr>
+<tr>
+<td><p><a name="ITDB-SPLFIELD-TIME:CAPS"></a><span class="term"><code class="literal">ITDB_SPLFIELD_TIME</code></span></p></td>
+<td>Time (integer, e.g.
+                                 from/to = 83999 for 1:23/83 seconds)
+</td>
+</tr>
+<tr>
+<td><p><a name="ITDB-SPLFIELD-COMMENT:CAPS"></a><span class="term"><code class="literal">ITDB_SPLFIELD_COMMENT</code></span></p></td>
+<td>Comment (string)
+</td>
+</tr>
+<tr>
+<td><p><a name="ITDB-SPLFIELD-DATE-ADDED:CAPS"></a><span class="term"><code class="literal">ITDB_SPLFIELD_DATE_ADDED</code></span></p></td>
+<td>Date added (integer, e.g.
+                                 from/to = bcfa83ff == is after 6/19/2004)
+</td>
+</tr>
+<tr>
+<td><p><a name="ITDB-SPLFIELD-COMPOSER:CAPS"></a><span class="term"><code class="literal">ITDB_SPLFIELD_COMPOSER</code></span></p></td>
+<td>Composer (string)
+</td>
+</tr>
+<tr>
+<td><p><a name="ITDB-SPLFIELD-PLAYCOUNT:CAPS"></a><span class="term"><code class="literal">ITDB_SPLFIELD_PLAYCOUNT</code></span></p></td>
+<td>Playcount (integer, e.g. from/to = 1)
+</td>
+</tr>
+<tr>
+<td><p><a name="ITDB-SPLFIELD-LAST-PLAYED:CAPS"></a><span class="term"><code class="literal">ITDB_SPLFIELD_LAST_PLAYED</code></span></p></td>
+<td>Date last played (integer, e.g.
+                                 from = bcfa83ff (6/19/2004)
+                                 to = 0xbcfbd57f (6/20/2004))
+</td>
+</tr>
+<tr>
+<td><p><a name="ITDB-SPLFIELD-DISC-NUMBER:CAPS"></a><span class="term"><code class="literal">ITDB_SPLFIELD_DISC_NUMBER</code></span></p></td>
+<td>Disc number (integer, e.g. from/to = 1)
+</td>
+</tr>
+<tr>
+<td><p><a name="ITDB-SPLFIELD-RATING:CAPS"></a><span class="term"><code class="literal">ITDB_SPLFIELD_RATING</code></span></p></td>
+<td>Rating (integer, e.g.
+                                 from/to = 60 (3 stars))
+</td>
+</tr>
+<tr>
+<td><p><a name="ITDB-SPLFIELD-COMPILATION:CAPS"></a><span class="term"><code class="literal">ITDB_SPLFIELD_COMPILATION</code></span></p></td>
+<td>Compilation (integer, e.g.
+                                 is set -&gt; ITDB_SPLACTION_IS_INT/from=1,
+                                 not set -&gt; ITDB_SPLACTION_IS_NOT_INT/from=1)
+</td>
+</tr>
+<tr>
+<td><p><a name="ITDB-SPLFIELD-BPM:CAPS"></a><span class="term"><code class="literal">ITDB_SPLFIELD_BPM</code></span></p></td>
+<td>Beats per minute (integer, e.g.
+                                 from/to = 60)
+</td>
+</tr>
+<tr>
+<td><p><a name="ITDB-SPLFIELD-GROUPING:CAPS"></a><span class="term"><code class="literal">ITDB_SPLFIELD_GROUPING</code></span></p></td>
+<td>Grouping (string)
+</td>
+</tr>
+<tr>
+<td><p><a name="ITDB-SPLFIELD-PLAYLIST:CAPS"></a><span class="term"><code class="literal">ITDB_SPLFIELD_PLAYLIST</code></span></p></td>
+<td>FIXME Unknown...not parsed correctly...
+                                 from/to = 0xb6fbad5f for "Purchased Music".
+                                 Extra data after "to"...
+</td>
+</tr>
+<tr>
+<td><p><a name="ITDB-SPLFIELD-PURCHASE:CAPS"></a><span class="term"><code class="literal">ITDB_SPLFIELD_PURCHASE</code></span></p></td>
+<td>
+</td>
+</tr>
+<tr>
+<td><p><a name="ITDB-SPLFIELD-DESCRIPTION:CAPS"></a><span class="term"><code class="literal">ITDB_SPLFIELD_DESCRIPTION</code></span></p></td>
+<td>
+</td>
+</tr>
+<tr>
+<td><p><a name="ITDB-SPLFIELD-CATEGORY:CAPS"></a><span class="term"><code class="literal">ITDB_SPLFIELD_CATEGORY</code></span></p></td>
+<td>
+</td>
+</tr>
+<tr>
+<td><p><a name="ITDB-SPLFIELD-PODCAST:CAPS"></a><span class="term"><code class="literal">ITDB_SPLFIELD_PODCAST</code></span></p></td>
+<td>
+</td>
+</tr>
+<tr>
+<td><p><a name="ITDB-SPLFIELD-VIDEO-KIND:CAPS"></a><span class="term"><code class="literal">ITDB_SPLFIELD_VIDEO_KIND</code></span></p></td>
+<td>Logical integer (works on mediatype)
+</td>
+</tr>
+<tr>
+<td><p><a name="ITDB-SPLFIELD-TVSHOW:CAPS"></a><span class="term"><code class="literal">ITDB_SPLFIELD_TVSHOW</code></span></p></td>
+<td>TV Show (string)
+</td>
+</tr>
+<tr>
+<td><p><a name="ITDB-SPLFIELD-SEASON-NR:CAPS"></a><span class="term"><code class="literal">ITDB_SPLFIELD_SEASON_NR</code></span></p></td>
+<td>Season number (integer)
+</td>
+</tr>
+<tr>
+<td><p><a name="ITDB-SPLFIELD-SKIPCOUNT:CAPS"></a><span class="term"><code class="literal">ITDB_SPLFIELD_SKIPCOUNT</code></span></p></td>
+<td>Skipcount (integer)
+</td>
+</tr>
+<tr>
+<td><p><a name="ITDB-SPLFIELD-LAST-SKIPPED:CAPS"></a><span class="term"><code class="literal">ITDB_SPLFIELD_LAST_SKIPPED</code></span></p></td>
+<td>Last skipped (integer)
+</td>
+</tr>
+<tr>
+<td><p><a name="ITDB-SPLFIELD-ALBUMARTIST:CAPS"></a><span class="term"><code class="literal">ITDB_SPLFIELD_ALBUMARTIST</code></span></p></td>
+<td>Album artist (string)
+</td>
+</tr>
+<tr>
+<td><p><a name="ITDB-SPLFIELD-SORT-SONG-NAME:CAPS"></a><span class="term"><code class="literal">ITDB_SPLFIELD_SORT_SONG_NAME</code></span></p></td>
+<td>
+</td>
+</tr>
+<tr>
+<td><p><a name="ITDB-SPLFIELD-SORT-ALBUM:CAPS"></a><span class="term"><code class="literal">ITDB_SPLFIELD_SORT_ALBUM</code></span></p></td>
+<td>
+</td>
+</tr>
+<tr>
+<td><p><a name="ITDB-SPLFIELD-SORT-ARTIST:CAPS"></a><span class="term"><code class="literal">ITDB_SPLFIELD_SORT_ARTIST</code></span></p></td>
+<td>
+</td>
+</tr>
+<tr>
+<td><p><a name="ITDB-SPLFIELD-SORT-ALBUMARTIST:CAPS"></a><span class="term"><code class="literal">ITDB_SPLFIELD_SORT_ALBUMARTIST</code></span></p></td>
+<td>
+</td>
+</tr>
+<tr>
+<td><p><a name="ITDB-SPLFIELD-SORT-COMPOSER:CAPS"></a><span class="term"><code class="literal">ITDB_SPLFIELD_SORT_COMPOSER</code></span></p></td>
+<td>
+</td>
+</tr>
+<tr>
+<td><p><a name="ITDB-SPLFIELD-SORT-TVSHOW:CAPS"></a><span class="term"><code class="literal">ITDB_SPLFIELD_SORT_TVSHOW</code></span></p></td>
+<td>
+</td>
+</tr>
+<tr>
+<td><p><a name="ITDB-SPLFIELD-ALBUM-RATING:CAPS"></a><span class="term"><code class="literal">ITDB_SPLFIELD_ALBUM_RATING</code></span></p></td>
+<td>
+</td>
+</tr>
+</tbody>
+</table></div>
+<p class="since">Since 0.5.0</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ItdbSPLFieldType"></a><h3>enum ItdbSPLFieldType</h3>
+<pre class="programlisting">typedef enum {
+    ITDB_SPLFT_STRING = 1,
+    ITDB_SPLFT_INT,
+    ITDB_SPLFT_BOOLEAN,
+    ITDB_SPLFT_DATE,
+    ITDB_SPLFT_PLAYLIST,
+    ITDB_SPLFT_UNKNOWN,
+    ITDB_SPLFT_BINARY_AND
+} ItdbSPLFieldType;
+</pre>
+<p>
+Smart Playlist Field Types
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><a name="ITDB-SPLFT-STRING:CAPS"></a><span class="term"><code class="literal">ITDB_SPLFT_STRING</code></span></p></td>
+<td>string
+</td>
+</tr>
+<tr>
+<td><p><a name="ITDB-SPLFT-INT:CAPS"></a><span class="term"><code class="literal">ITDB_SPLFT_INT</code></span></p></td>
+<td>integer
+</td>
+</tr>
+<tr>
+<td><p><a name="ITDB-SPLFT-BOOLEAN:CAPS"></a><span class="term"><code class="literal">ITDB_SPLFT_BOOLEAN</code></span></p></td>
+<td>boolean
+</td>
+</tr>
+<tr>
+<td><p><a name="ITDB-SPLFT-DATE:CAPS"></a><span class="term"><code class="literal">ITDB_SPLFT_DATE</code></span></p></td>
+<td>date
+</td>
+</tr>
+<tr>
+<td><p><a name="ITDB-SPLFT-PLAYLIST:CAPS"></a><span class="term"><code class="literal">ITDB_SPLFT_PLAYLIST</code></span></p></td>
+<td>playlist
+</td>
+</tr>
+<tr>
+<td><p><a name="ITDB-SPLFT-UNKNOWN:CAPS"></a><span class="term"><code class="literal">ITDB_SPLFT_UNKNOWN</code></span></p></td>
+<td>unknown
+</td>
+</tr>
+<tr>
+<td><p><a name="ITDB-SPLFT-BINARY-AND:CAPS"></a><span class="term"><code class="literal">ITDB_SPLFT_BINARY_AND</code></span></p></td>
+<td>binary AND
+</td>
+</tr>
+</tbody>
+</table></div>
+<p class="since">Since 0.5.0</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ItdbSPLMatch"></a><h3>enum ItdbSPLMatch</h3>
+<pre class="programlisting">typedef enum {
+    ITDB_SPLMATCH_AND = 0,
+    ITDB_SPLMATCH_OR = 1
+} ItdbSPLMatch;
+</pre>
+<p>
+Types for smart playlist rules match_operator
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><a name="ITDB-SPLMATCH-AND:CAPS"></a><span class="term"><code class="literal">ITDB_SPLMATCH_AND</code></span></p></td>
+<td>Logical AND - all of the rules must be true in order for
+                    the combined rule to be applied
+</td>
+</tr>
+<tr>
+<td><p><a name="ITDB-SPLMATCH-OR:CAPS"></a><span class="term"><code class="literal">ITDB_SPLMATCH_OR</code></span></p></td>
+<td>Logical OR - any of the rules may be true
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ITDB-SPL-DATE-IDENTIFIER:CAPS"></a><h3>ITDB_SPL_DATE_IDENTIFIER</h3>
+<pre class="programlisting">#define ITDB_SPL_DATE_IDENTIFIER (G_GINT64_CONSTANT (0x2dae2dae2dae2daeU))
+</pre>
+<p>
+Identifier for smart playlist date fields
+</p>
+<p class="since">Since 0.5.0</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ITDB-SPL-STRING-MAXLEN:CAPS"></a><h3>ITDB_SPL_STRING_MAXLEN</h3>
+<pre class="programlisting">#define ITDB_SPL_STRING_MAXLEN 255
+</pre>
+<p>
+Maximum string length for smart playlists
+</p>
+<p class="since">Since 0.5.0</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="itdb-splr-get-field-type"></a><h3>itdb_splr_get_field_type ()</h3>
+<pre class="programlisting"><a class="link" href="libgpod-Smart-Playlists.html#ItdbSPLFieldType" title="enum ItdbSPLFieldType"><span class="returnvalue">ItdbSPLFieldType</span></a>    itdb_splr_get_field_type            (<em class="parameter"><code>const <a class="link" href="libgpod-Smart-Playlists.html#Itdb-SPLRule" title="struct Itdb_SPLRule"><span class="type">Itdb_SPLRule</span></a> *splr</code></em>);</pre>
+<p>
+Gets the type of the field of the <em class="parameter"><code>splr</code></em> rule
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>splr</code></em> :</span></p></td>
+<td>an <a class="link" href="libgpod-Smart-Playlists.html#Itdb-SPLRule" title="struct Itdb_SPLRule"><span class="type">Itdb_SPLRule</span></a>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>an <span class="type">Itdb_SPLFieldType</span> corresponding to <em class="parameter"><code>splr</code></em> field
+type (string, int, date, ...)</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="itdb-splr-get-action-type"></a><h3>itdb_splr_get_action_type ()</h3>
+<pre class="programlisting"><a class="link" href="libgpod-Smart-Playlists.html#ItdbSPLActionType" title="enum ItdbSPLActionType"><span class="returnvalue">ItdbSPLActionType</span></a>   itdb_splr_get_action_type           (<em class="parameter"><code>const <a class="link" href="libgpod-Smart-Playlists.html#Itdb-SPLRule" title="struct Itdb_SPLRule"><span class="type">Itdb_SPLRule</span></a> *splr</code></em>);</pre>
+<p>
+Gets the type of the action associated with <em class="parameter"><code>splr</code></em>.
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>splr</code></em> :</span></p></td>
+<td>an <a class="link" href="libgpod-Smart-Playlists.html#Itdb-SPLRule" title="struct Itdb_SPLRule"><span class="type">Itdb_SPLRule</span></a>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>type (range, date, string...) of the action field</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="itdb-splr-validate"></a><h3>itdb_splr_validate ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                itdb_splr_validate                  (<em class="parameter"><code><a class="link" href="libgpod-Smart-Playlists.html#Itdb-SPLRule" title="struct Itdb_SPLRule"><span class="type">Itdb_SPLRule</span></a> *splr</code></em>);</pre>
+<p>
+Validates a smart playlist rule
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody><tr>
+<td><p><span class="term"><em class="parameter"><code>splr</code></em> :</span></p></td>
+<td>an <a class="link" href="libgpod-Smart-Playlists.html#Itdb-SPLRule" title="struct Itdb_SPLRule"><span class="type">Itdb_SPLRule</span></a>
+</td>
+</tr></tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="itdb-splr-remove"></a><h3>itdb_splr_remove ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                itdb_splr_remove                    (<em class="parameter"><code><a class="link" href="libgpod-Playlists.html#Itdb-Playlist" title="struct Itdb_Playlist"><span class="type">Itdb_Playlist</span></a> *pl</code></em>,
+                                                         <em class="parameter"><code><a class="link" href="libgpod-Smart-Playlists.html#Itdb-SPLRule" title="struct Itdb_SPLRule"><span class="type">Itdb_SPLRule</span></a> *splr</code></em>);</pre>
+<p>
+Removes the smart playlist rule <em class="parameter"><code>splr</code></em> from playlist <em class="parameter"><code>pl</code></em>. The memory
+used by <em class="parameter"><code>splr</code></em> is freed.
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>pl</code></em> :</span></p></td>
+<td>an <a class="link" href="libgpod-Playlists.html#Itdb-Playlist" title="struct Itdb_Playlist"><span class="type">Itdb_Playlist</span></a>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>splr</code></em> :</span></p></td>
+<td>an Itdb_SPLRule</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="itdb-splr-new"></a><h3>itdb_splr_new ()</h3>
+<pre class="programlisting"><a class="link" href="libgpod-Smart-Playlists.html#Itdb-SPLRule" title="struct Itdb_SPLRule"><span class="returnvalue">Itdb_SPLRule</span></a> *      itdb_splr_new                       (<em class="parameter"><code><span class="type">void</span></code></em>);</pre>
+<p>
+Creates a new default smart rule
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody><tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>a new <a class="link" href="libgpod-Smart-Playlists.html#Itdb-SPLRule" title="struct Itdb_SPLRule"><span class="type">Itdb_SPLRule</span></a> that must be freed with <code class="function">itdb_splr_free()</code> when
+no longer needed</td>
+</tr></tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="itdb-splr-add"></a><h3>itdb_splr_add ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                itdb_splr_add                       (<em class="parameter"><code><a class="link" href="libgpod-Playlists.html#Itdb-Playlist" title="struct Itdb_Playlist"><span class="type">Itdb_Playlist</span></a> *pl</code></em>,
+                                                         <em class="parameter"><code><a class="link" href="libgpod-Smart-Playlists.html#Itdb-SPLRule" title="struct Itdb_SPLRule"><span class="type">Itdb_SPLRule</span></a> *splr</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gint"><span class="type">gint</span></a> pos</code></em>);</pre>
+<p>
+Adds the smart rule <em class="parameter"><code>splr</code></em> to <em class="parameter"><code>pl</code></em> at position <em class="parameter"><code>pos</code></em>. If <em class="parameter"><code>pos</code></em> is -1,
+<em class="parameter"><code>splr</code></em> gets appended to the end. After this call, <em class="parameter"><code>splr</code></em> memory is
+managed by <em class="parameter"><code>pl</code></em>, so you no longer need to call <code class="function">itdb_splr_free()</code>
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>pl</code></em> :</span></p></td>
+<td>an <a class="link" href="libgpod-Playlists.html#Itdb-Playlist" title="struct Itdb_Playlist"><span class="type">Itdb_Playlist</span></a>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>splr</code></em> :</span></p></td>
+<td>an <a class="link" href="libgpod-Smart-Playlists.html#Itdb-SPLRule" title="struct Itdb_SPLRule"><span class="type">Itdb_SPLRule</span></a>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>pos</code></em> :</span></p></td>
+<td>position of the rule</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="itdb-splr-add-new"></a><h3>itdb_splr_add_new ()</h3>
+<pre class="programlisting"><a class="link" href="libgpod-Smart-Playlists.html#Itdb-SPLRule" title="struct Itdb_SPLRule"><span class="returnvalue">Itdb_SPLRule</span></a> *      itdb_splr_add_new                   (<em class="parameter"><code><a class="link" href="libgpod-Playlists.html#Itdb-Playlist" title="struct Itdb_Playlist"><span class="type">Itdb_Playlist</span></a> *pl</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gint"><span class="type">gint</span></a> pos</code></em>);</pre>
+<p>
+Creates a new smart rule and inserts it at position <em class="parameter"><code>pos</code></em> in <em class="parameter"><code>pl</code></em>. If
+<em class="parameter"><code>pos</code></em> is -1, the new rule gets appended to the end.
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>pl</code></em> :</span></p></td>
+<td>an <a class="link" href="libgpod-Playlists.html#Itdb-Playlist" title="struct Itdb_Playlist"><span class="type">Itdb_Playlist</span></a>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>pos</code></em> :</span></p></td>
+<td>position to insert the rule at</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>pointer to the newly created <a class="link" href="libgpod-Smart-Playlists.html#Itdb-SPLRule" title="struct Itdb_SPLRule"><span class="type">Itdb_SPLRule</span></a>. Its
+memory is handled by <em class="parameter"><code>pl</code></em> though, so you don't need to explicitly
+call <code class="function">itdb_splr_free()</code> on it</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="itdb-spl-copy-rules"></a><h3>itdb_spl_copy_rules ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                itdb_spl_copy_rules                 (<em class="parameter"><code><a class="link" href="libgpod-Playlists.html#Itdb-Playlist" title="struct Itdb_Playlist"><span class="type">Itdb_Playlist</span></a> *dest</code></em>,
+                                                         <em class="parameter"><code><a class="link" href="libgpod-Playlists.html#Itdb-Playlist" title="struct Itdb_Playlist"><span class="type">Itdb_Playlist</span></a> *src</code></em>);</pre>
+<p>
+Copy all relevant information for smart playlist from playlist <em class="parameter"><code>src</code></em>
+to playlist <em class="parameter"><code>dest</code></em>. If <em class="parameter"><code>dest</code></em> is already a smart playlist, the
+existing data is overwritten/deleted.
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>dest</code></em> :</span></p></td>
+<td>destination <a class="link" href="libgpod-Playlists.html#Itdb-Playlist" title="struct Itdb_Playlist"><span class="type">Itdb_Playlist</span></a>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>src</code></em> :</span></p></td>
+<td>source <a class="link" href="libgpod-Playlists.html#Itdb-Playlist" title="struct Itdb_Playlist"><span class="type">Itdb_Playlist</span></a>
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="itdb-splr-eval"></a><h3>itdb_splr_eval ()</h3>
+<pre class="programlisting"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            itdb_splr_eval                      (<em class="parameter"><code><a class="link" href="libgpod-Smart-Playlists.html#Itdb-SPLRule" title="struct Itdb_SPLRule"><span class="type">Itdb_SPLRule</span></a> *splr</code></em>,
+                                                         <em class="parameter"><code><a class="link" href="libgpod-Tracks.html#Itdb-Track" title="struct Itdb_Track"><span class="type">Itdb_Track</span></a> *track</code></em>);</pre>
+<p>
+Evaluates <em class="parameter"><code>splr</code></em>'s truth against <em class="parameter"><code>track</code></em>. <em class="parameter"><code>track-&gt;itdb</code></em> must be set.
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>splr</code></em> :</span></p></td>
+<td>an <a class="link" href="libgpod-Smart-Playlists.html#Itdb-SPLRule" title="struct Itdb_SPLRule"><span class="type">Itdb_SPLRule</span></a>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>track</code></em> :</span></p></td>
+<td>an <a class="link" href="libgpod-Tracks.html#Itdb-Track" title="struct Itdb_Track"><span class="type">Itdb_Track</span></a>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>TRUE if <em class="parameter"><code>track</code></em> matches <em class="parameter"><code>splr</code></em>, FALSE otherwise.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="itdb-spl-update"></a><h3>itdb_spl_update ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                itdb_spl_update                     (<em class="parameter"><code><a class="link" href="libgpod-Playlists.html#Itdb-Playlist" title="struct Itdb_Playlist"><span class="type">Itdb_Playlist</span></a> *spl</code></em>);</pre>
+<p>
+Updates the content of the smart playlist <em class="parameter"><code>spl</code></em> (meant to be called
+if the tracks stored in the <a class="link" href="libgpod-The-Itdb-iTunesDB-structure.html#Itdb-iTunesDB" title="struct Itdb_iTunesDB"><span class="type">Itdb_iTunesDB</span></a> associated with <em class="parameter"><code>spl</code></em>
+have changed somehow and you want <em class="parameter"><code>spl-&gt;members</code></em> to be accurate
+with regards to those changes. Does nothing if <em class="parameter"><code>spl</code></em> isn't a smart
+playlist.
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody><tr>
+<td><p><span class="term"><em class="parameter"><code>spl</code></em> :</span></p></td>
+<td>an <a class="link" href="libgpod-Playlists.html#Itdb-Playlist" title="struct Itdb_Playlist"><span class="type">Itdb_Playlist</span></a>
+</td>
+</tr></tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="itdb-spl-update-all"></a><h3>itdb_spl_update_all ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                itdb_spl_update_all                 (<em class="parameter"><code><a class="link" href="libgpod-The-Itdb-iTunesDB-structure.html#Itdb-iTunesDB" title="struct Itdb_iTunesDB"><span class="type">Itdb_iTunesDB</span></a> *itdb</code></em>);</pre>
+<p>
+Updates all smart playlists contained in <em class="parameter"><code>itdb</code></em>
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody><tr>
+<td><p><span class="term"><em class="parameter"><code>itdb</code></em> :</span></p></td>
+<td>an <a class="link" href="libgpod-The-Itdb-iTunesDB-structure.html#Itdb-iTunesDB" title="struct Itdb_iTunesDB"><span class="type">Itdb_iTunesDB</span></a>
+</td>
+</tr></tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="itdb-spl-update-live"></a><h3>itdb_spl_update_live ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                itdb_spl_update_live                (<em class="parameter"><code><a class="link" href="libgpod-The-Itdb-iTunesDB-structure.html#Itdb-iTunesDB" title="struct Itdb_iTunesDB"><span class="type">Itdb_iTunesDB</span></a> *itdb</code></em>);</pre>
+<p>
+Updates all smart playlists contained in <em class="parameter"><code>itdb</code></em> which have the
+<em class="parameter"><code>liveupdate</code></em> flag set.
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody><tr>
+<td><p><span class="term"><em class="parameter"><code>itdb</code></em> :</span></p></td>
+<td>an <a class="link" href="libgpod-The-Itdb-iTunesDB-structure.html#Itdb-iTunesDB" title="struct Itdb_iTunesDB"><span class="type">Itdb_iTunesDB</span></a>
+</td>
+</tr></tbody>
+</table></div>
+<p class="since">Since 0.2.0</p>
+</div>
+</div>
+<div class="refsect1">
+<a name="libgpod-Smart-Playlists.see-also"></a><h2>See Also</h2>
+<p>
+<a class="link" href="libgpod-Playlists.html" title="Playlists">Playlists</a>
+</p>
+</div>
+</div>
+<div class="footer">
+<hr>
+          Generated by GTK-Doc V1.19</div>
+</body>
+</html>

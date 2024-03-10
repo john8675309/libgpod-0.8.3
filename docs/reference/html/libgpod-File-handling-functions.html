@@ -1,0 +1,338 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>File handling functions</title>
+<meta name="generator" content="DocBook XSL Stylesheets V1.78.1">
+<link rel="home" href="index.html" title="libgpod Reference Manual">
+<link rel="up" href="itunesdb.html" title="Part I. iPod database">
+<link rel="prev" href="libgpod-The-Itdb-iTunesDB-structure.html" title="iPod database reading/writing">
+<link rel="next" href="libgpod-Time-handling.html" title="Time handling">
+<meta name="generator" content="GTK-Doc V1.19 (XML mode)">
+<link rel="stylesheet" href="style.css" type="text/css">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<table class="navigation" id="top" width="100%" summary="Navigation header" cellpadding="2" cellspacing="2">
+<tr valign="middle">
+<td><a accesskey="p" href="libgpod-The-Itdb-iTunesDB-structure.html"><img src="left.png" width="24" height="24" border="0" alt="Prev"></a></td>
+<td><a accesskey="u" href="itunesdb.html"><img src="up.png" width="24" height="24" border="0" alt="Up"></a></td>
+<td><a accesskey="h" href="index.html"><img src="home.png" width="24" height="24" border="0" alt="Home"></a></td>
+<th width="100%" align="center">libgpod Reference Manual</th>
+<td><a accesskey="n" href="libgpod-Time-handling.html"><img src="right.png" width="24" height="24" border="0" alt="Next"></a></td>
+</tr>
+<tr><td colspan="5" class="shortcuts">
+<a href="#libgpod-File-handling-functions.synopsis" class="shortcut">Top</a>
+                   | 
+                  <a href="#libgpod-File-handling-functions.description" class="shortcut">Description</a>
+</td></tr>
+</table>
+<div class="refentry">
+<a name="libgpod-File-handling-functions"></a><div class="titlepage"></div>
+<div class="refnamediv"><table width="100%"><tr>
+<td valign="top">
+<h2><span class="refentrytitle"><a name="libgpod-File-handling-functions.top_of_page"></a>File handling functions</span></h2>
+<p>File handling functions — Managing files on the iPod</p>
+</td>
+<td valign="top" align="right"></td>
+</tr></table></div>
+<div class="refsynopsisdiv">
+<a name="libgpod-File-handling-functions.synopsis"></a><h2>Synopsis</h2>
+<pre class="synopsis"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            <a class="link" href="libgpod-File-handling-functions.html#itdb-cp-track-to-ipod" title="itdb_cp_track_to_ipod ()">itdb_cp_track_to_ipod</a>               (<em class="parameter"><code><a class="link" href="libgpod-Tracks.html#Itdb-Track" title="struct Itdb_Track"><span class="type">Itdb_Track</span></a> *track</code></em>,
+                                                         <em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *filename</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Error-Reporting.html#GError"><span class="type">GError</span></a> **error</code></em>);
+<span class="returnvalue">void</span>                <a class="link" href="libgpod-File-handling-functions.html#itdb-filename-fs2ipod" title="itdb_filename_fs2ipod ()">itdb_filename_fs2ipod</a>               (<em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *filename</code></em>);
+<span class="returnvalue">void</span>                <a class="link" href="libgpod-File-handling-functions.html#itdb-filename-ipod2fs" title="itdb_filename_ipod2fs ()">itdb_filename_ipod2fs</a>               (<em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *ipod_file</code></em>);
+<a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="returnvalue">gchar</span></a> *             <a class="link" href="libgpod-File-handling-functions.html#itdb-filename-on-ipod" title="itdb_filename_on_ipod ()">itdb_filename_on_ipod</a>               (<em class="parameter"><code><a class="link" href="libgpod-Tracks.html#Itdb-Track" title="struct Itdb_Track"><span class="type">Itdb_Track</span></a> *track</code></em>);
+<a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gint"><span class="returnvalue">gint</span></a>                <a class="link" href="libgpod-File-handling-functions.html#itdb-musicdirs-number" title="itdb_musicdirs_number ()">itdb_musicdirs_number</a>               (<em class="parameter"><code><a class="link" href="libgpod-The-Itdb-iTunesDB-structure.html#Itdb-iTunesDB" title="struct Itdb_iTunesDB"><span class="type">Itdb_iTunesDB</span></a> *itdb</code></em>);
+<a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            <a class="link" href="libgpod-File-handling-functions.html#itdb-rename-files" title="itdb_rename_files ()">itdb_rename_files</a>                   (<em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *mp</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Error-Reporting.html#GError"><span class="type">GError</span></a> **error</code></em>);
+<a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            <a class="link" href="libgpod-File-handling-functions.html#itdb-start-sync" title="itdb_start_sync ()">itdb_start_sync</a>                     (<em class="parameter"><code><a class="link" href="libgpod-The-Itdb-iTunesDB-structure.html#Itdb-iTunesDB" title="struct Itdb_iTunesDB"><span class="type">Itdb_iTunesDB</span></a> *itdb</code></em>);
+<a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            <a class="link" href="libgpod-File-handling-functions.html#itdb-stop-sync" title="itdb_stop_sync ()">itdb_stop_sync</a>                      (<em class="parameter"><code><a class="link" href="libgpod-The-Itdb-iTunesDB-structure.html#Itdb-iTunesDB" title="struct Itdb_iTunesDB"><span class="type">Itdb_iTunesDB</span></a> *itdb</code></em>);
+</pre>
+</div>
+<div class="refsect1">
+<a name="libgpod-File-handling-functions.description"></a><h2>Description</h2>
+<p>
+These functions are for copying, renaming, and retrieving information
+about the files and directories on the iPod.
+</p>
+</div>
+<div class="refsect1">
+<a name="libgpod-File-handling-functions.details"></a><h2>Details</h2>
+<div class="refsect2">
+<a name="itdb-cp-track-to-ipod"></a><h3>itdb_cp_track_to_ipod ()</h3>
+<pre class="programlisting"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            itdb_cp_track_to_ipod               (<em class="parameter"><code><a class="link" href="libgpod-Tracks.html#Itdb-Track" title="struct Itdb_Track"><span class="type">Itdb_Track</span></a> *track</code></em>,
+                                                         <em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *filename</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Error-Reporting.html#GError"><span class="type">GError</span></a> **error</code></em>);</pre>
+<p>
+Copy one track to the iPod. The PC filename is <em class="parameter"><code>filename</code></em>
+and is taken literally.
+</p>
+<p>
+The mountpoint of the iPod (in local encoding) must have been set
+with <a class="link" href="libgpod-The-Itdb-iTunesDB-structure.html#itdb-set-mountpoint" title="itdb_set_mountpoint ()"><code class="function">itdb_set_mountpoint()</code></a> (done automatically when reading an
+iTunesDB).
+</p>
+<p>
+If <em class="parameter"><code>track-&gt;transferred</code></em> is set to TRUE, nothing is done. Upon
+successful transfer <em class="parameter"><code>track-&gt;transferred</code></em> is set to TRUE.
+</p>
+<p>
+For storage, the directories "F00 ... Fnn" will be used randomly.
+</p>
+<p>
+The filename is constructed as "libgpod<em class="parameter"><code>random_number</code></em>" and copied
+to <em class="parameter"><code>track-&gt;ipod_path</code></em>. If this file already exists, <em class="parameter"><code>random_number</code></em>
+is adjusted until an unused filename is found.
+</p>
+<p>
+If <em class="parameter"><code>track-&gt;ipod_path</code></em> is already set, this one will be used
+instead. If a file with this name already exists, it will be
+overwritten.
+</p>
+<p>
+<em class="parameter"><code>track-&gt;filetype_marker</code></em> is set according to the filename extension
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>track</code></em> :</span></p></td>
+<td>the <a class="link" href="libgpod-Tracks.html#Itdb-Track" title="struct Itdb_Track"><span class="type">Itdb_Track</span></a> to copy (containing <em class="parameter"><code>filename</code></em> metadata)</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>filename</code></em> :</span></p></td>
+<td>the source file</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>error</code></em> :</span></p></td>
+<td>return location for a <a href="http://library.gnome.org/devel/glib/unstable/glib-Error-Reporting.html#GError"><span class="type">GError</span></a> or NULL</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>TRUE on success, FALSE on error, in which case <em class="parameter"><code>error</code></em> is
+set accordingly.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="itdb-filename-fs2ipod"></a><h3>itdb_filename_fs2ipod ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                itdb_filename_fs2ipod               (<em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *filename</code></em>);</pre>
+<p>
+Convert string from casual PC file name to iPod iTunesDB format
+using ':' instead of G_DIR_SEPARATOR_S (i.e. slashes on Unix-like
+systems). <em class="parameter"><code>ipod_file</code></em> is modified in place.
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody><tr>
+<td><p><span class="term"><em class="parameter"><code>filename</code></em> :</span></p></td>
+<td>a 'PC-style' filename (eg /iPod_Control/Music/f00/test.mp3)</td>
+</tr></tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="itdb-filename-ipod2fs"></a><h3>itdb_filename_ipod2fs ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                itdb_filename_ipod2fs               (<em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *ipod_file</code></em>);</pre>
+<p>
+Convert string from from iPod iTunesDB format to casual PC file
+name using G_DIR_SEPARATOR (ie slashes on Unix-like systems)
+instead of ':'.  <em class="parameter"><code>ipod_file</code></em> is modified in place.
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody><tr>
+<td><p><span class="term"><em class="parameter"><code>ipod_file</code></em> :</span></p></td>
+<td>a 'PC-style' filename (eg /iPod_Control/Music/f00/test.mp3)</td>
+</tr></tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="itdb-filename-on-ipod"></a><h3>itdb_filename_on_ipod ()</h3>
+<pre class="programlisting"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="returnvalue">gchar</span></a> *             itdb_filename_on_ipod               (<em class="parameter"><code><a class="link" href="libgpod-Tracks.html#Itdb-Track" title="struct Itdb_Track"><span class="type">Itdb_Track</span></a> *track</code></em>);</pre>
+<p>
+Get the full iPod filename as stored in <em class="parameter"><code>track</code></em>.
+</p>
+<p>
+</p>
+<div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+<h3 class="title">Note</h3>
+NULL is returned when the file does not exist.
+</div>
+<p>
+</p>
+<p>
+</p>
+<div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+<h3 class="title">Note</h3>
+This code works around a problem on some systems (see
+<a class="link" href="libgpod-Low-level-functions.html#itdb-resolve-path" title="itdb_resolve_path ()"><code class="function">itdb_resolve_path()</code></a>) and might return a filename with different
+case than the original filename. Don't copy it back to <em class="parameter"><code>track</code></em> if
+you can avoid it.
+</div>
+<p>
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>track</code></em> :</span></p></td>
+<td>an <a class="link" href="libgpod-Tracks.html#Itdb-Track" title="struct Itdb_Track"><span class="type">Itdb_Track</span></a>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>full filename to <em class="parameter"><code>track</code></em> on the iPod or NULL if no
+filename is set in <em class="parameter"><code>track</code></em>. Must be freed with <a href="http://library.gnome.org/devel/glib/unstable/glib-Memory-Allocation.html#g-free"><code class="function">g_free()</code></a> after use.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="itdb-musicdirs-number"></a><h3>itdb_musicdirs_number ()</h3>
+<pre class="programlisting"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gint"><span class="returnvalue">gint</span></a>                itdb_musicdirs_number               (<em class="parameter"><code><a class="link" href="libgpod-The-Itdb-iTunesDB-structure.html#Itdb-iTunesDB" title="struct Itdb_iTunesDB"><span class="type">Itdb_iTunesDB</span></a> *itdb</code></em>);</pre>
+<p>
+Determine the number of F.. directories in iPod_Control/Music.
+</p>
+<p>
+If <em class="parameter"><code>itdb-&gt;musicdirs</code></em> is already set, simply return the previously
+determined number. Otherwise count the directories first and set
+<em class="parameter"><code>itdb-&gt;musicdirs</code></em>.
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>itdb</code></em> :</span></p></td>
+<td>an <a class="link" href="libgpod-The-Itdb-iTunesDB-structure.html#Itdb-iTunesDB" title="struct Itdb_iTunesDB"><span class="type">Itdb_iTunesDB</span></a>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>max number of directories in iPod_Control/Music</td>
+</tr>
+</tbody>
+</table></div>
+<p class="since">Since 0.1.3</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="itdb-rename-files"></a><h3>itdb_rename_files ()</h3>
+<pre class="programlisting"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            itdb_rename_files                   (<em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *mp</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Error-Reporting.html#GError"><span class="type">GError</span></a> **error</code></em>);</pre>
+<p>
+Renames/removes some files on the iPod (Playcounts, OTG
+semaphore). May have to be called if you write the iTunesDB not
+directly to the iPod but to some other location and then manually
+copy the file from there to the iPod.
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>mp</code></em> :</span></p></td>
+<td>mount point of the iPod</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>error</code></em> :</span></p></td>
+<td>return location for a <a href="http://library.gnome.org/devel/glib/unstable/glib-Error-Reporting.html#GError"><span class="type">GError</span></a> or NULL</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>FALSE on error and sets <em class="parameter"><code>error</code></em> accordingly</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="itdb-start-sync"></a><h3>itdb_start_sync ()</h3>
+<pre class="programlisting"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            itdb_start_sync                     (<em class="parameter"><code><a class="link" href="libgpod-The-Itdb-iTunesDB-structure.html#Itdb-iTunesDB" title="struct Itdb_iTunesDB"><span class="type">Itdb_iTunesDB</span></a> *itdb</code></em>);</pre>
+<p>
+Hints libgpod that a series of file copies/database saves/... is about
+to start. On regular iPods, this does nothing (but is safe to be used),
+but on iPhones and iPod Touch this makes sure the "Sync in progress" screen
+is shown for the whole duration of the writing process.
+</p>
+<p>
+Calls to itdb_start_sync must be paired with calls to itdb_stop_sync. Nesting
+is allowed.
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>itdb</code></em> :</span></p></td>
+<td>the <a class="link" href="libgpod-The-Itdb-iTunesDB-structure.html#Itdb-iTunesDB" title="struct Itdb_iTunesDB"><span class="type">Itdb_iTunesDB</span></a> that is being sync'ed</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>TRUE on success, FALSE on error</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="itdb-stop-sync"></a><h3>itdb_stop_sync ()</h3>
+<pre class="programlisting"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            itdb_stop_sync                      (<em class="parameter"><code><a class="link" href="libgpod-The-Itdb-iTunesDB-structure.html#Itdb-iTunesDB" title="struct Itdb_iTunesDB"><span class="type">Itdb_iTunesDB</span></a> *itdb</code></em>);</pre>
+<p>
+Hints libgpod that the series of file copies/database saves/... started
+with itdb_start_sync is finished. On regular iPods, this does nothing
+(but is safe to be used). On iPhones and iPod Touch this will hide the
+"Sync in progress" screen.
+</p>
+<p>
+Calls to itdb_stop_sync must be paired with calls to itdb_start_sync. Nesting
+is allowed, and only the final itdb_stop_sync will actually stop the sync.
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>itdb</code></em> :</span></p></td>
+<td>the <a class="link" href="libgpod-The-Itdb-iTunesDB-structure.html#Itdb-iTunesDB" title="struct Itdb_iTunesDB"><span class="type">Itdb_iTunesDB</span></a> that is being sync'ed</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>TRUE on success, FALSE on error</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+</div>
+<div class="footer">
+<hr>
+          Generated by GTK-Doc V1.19</div>
+</body>
+</html>

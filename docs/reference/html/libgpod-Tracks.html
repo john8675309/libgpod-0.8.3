@@ -1,0 +1,1513 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Tracks</title>
+<meta name="generator" content="DocBook XSL Stylesheets V1.78.1">
+<link rel="home" href="index.html" title="libgpod Reference Manual">
+<link rel="up" href="ch01.html" title="iPod database components">
+<link rel="prev" href="ch01.html" title="iPod database components">
+<link rel="next" href="libgpod-Playlists.html" title="Playlists">
+<meta name="generator" content="GTK-Doc V1.19 (XML mode)">
+<link rel="stylesheet" href="style.css" type="text/css">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<table class="navigation" id="top" width="100%" summary="Navigation header" cellpadding="2" cellspacing="2">
+<tr valign="middle">
+<td><a accesskey="p" href="ch01.html"><img src="left.png" width="24" height="24" border="0" alt="Prev"></a></td>
+<td><a accesskey="u" href="ch01.html"><img src="up.png" width="24" height="24" border="0" alt="Up"></a></td>
+<td><a accesskey="h" href="index.html"><img src="home.png" width="24" height="24" border="0" alt="Home"></a></td>
+<th width="100%" align="center">libgpod Reference Manual</th>
+<td><a accesskey="n" href="libgpod-Playlists.html"><img src="right.png" width="24" height="24" border="0" alt="Next"></a></td>
+</tr>
+<tr><td colspan="5" class="shortcuts">
+<a href="#libgpod-Tracks.synopsis" class="shortcut">Top</a>
+                   | 
+                  <a href="#libgpod-Tracks.description" class="shortcut">Description</a>
+</td></tr>
+</table>
+<div class="refentry">
+<a name="libgpod-Tracks"></a><div class="titlepage"></div>
+<div class="refnamediv"><table width="100%"><tr>
+<td valign="top">
+<h2><span class="refentrytitle"><a name="libgpod-Tracks.top_of_page"></a>Tracks</span></h2>
+<p>Tracks — Data structure to store metadata about an iPod track</p>
+</td>
+<td valign="top" align="right"></td>
+</tr></table></div>
+<div class="refsynopsisdiv">
+<a name="libgpod-Tracks.synopsis"></a><h2>Synopsis</h2>
+<pre class="synopsis">struct              <a class="link" href="libgpod-Tracks.html#Itdb-Track" title="struct Itdb_Track">Itdb_Track</a>;
+                    <a class="link" href="libgpod-Tracks.html#Itdb-Track-Private" title="Itdb_Track_Private">Itdb_Track_Private</a>;
+enum                <a class="link" href="libgpod-Tracks.html#Itdb-Mediatype" title="enum Itdb_Mediatype">Itdb_Mediatype</a>;
+#define             <a class="link" href="libgpod-Tracks.html#ITDB-RATING-STEP:CAPS" title="ITDB_RATING_STEP">ITDB_RATING_STEP</a>
+<a class="link" href="libgpod-Tracks.html#Itdb-Track" title="struct Itdb_Track"><span class="returnvalue">Itdb_Track</span></a> *        <a class="link" href="libgpod-Tracks.html#itdb-track-new" title="itdb_track_new ()">itdb_track_new</a>                      (<em class="parameter"><code><span class="type">void</span></code></em>);
+<span class="returnvalue">void</span>                <a class="link" href="libgpod-Tracks.html#itdb-track-free" title="itdb_track_free ()">itdb_track_free</a>                     (<em class="parameter"><code><a class="link" href="libgpod-Tracks.html#Itdb-Track" title="struct Itdb_Track"><span class="type">Itdb_Track</span></a> *track</code></em>);
+<span class="returnvalue">void</span>                <a class="link" href="libgpod-Tracks.html#itdb-track-add" title="itdb_track_add ()">itdb_track_add</a>                      (<em class="parameter"><code><a class="link" href="libgpod-The-Itdb-iTunesDB-structure.html#Itdb-iTunesDB" title="struct Itdb_iTunesDB"><span class="type">Itdb_iTunesDB</span></a> *itdb</code></em>,
+                                                         <em class="parameter"><code><a class="link" href="libgpod-Tracks.html#Itdb-Track" title="struct Itdb_Track"><span class="type">Itdb_Track</span></a> *track</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gint32"><span class="type">gint32</span></a> pos</code></em>);
+<span class="returnvalue">void</span>                <a class="link" href="libgpod-Tracks.html#itdb-track-remove" title="itdb_track_remove ()">itdb_track_remove</a>                   (<em class="parameter"><code><a class="link" href="libgpod-Tracks.html#Itdb-Track" title="struct Itdb_Track"><span class="type">Itdb_Track</span></a> *track</code></em>);
+<span class="returnvalue">void</span>                <a class="link" href="libgpod-Tracks.html#itdb-track-unlink" title="itdb_track_unlink ()">itdb_track_unlink</a>                   (<em class="parameter"><code><a class="link" href="libgpod-Tracks.html#Itdb-Track" title="struct Itdb_Track"><span class="type">Itdb_Track</span></a> *track</code></em>);
+<a class="link" href="libgpod-Tracks.html#Itdb-Track" title="struct Itdb_Track"><span class="returnvalue">Itdb_Track</span></a> *        <a class="link" href="libgpod-Tracks.html#itdb-track-duplicate" title="itdb_track_duplicate ()">itdb_track_duplicate</a>                (<em class="parameter"><code><a class="link" href="libgpod-Tracks.html#Itdb-Track" title="struct Itdb_Track"><span class="type">Itdb_Track</span></a> *tr</code></em>);
+<a class="link" href="libgpod-Tracks.html#Itdb-Track" title="struct Itdb_Track"><span class="returnvalue">Itdb_Track</span></a> *        <a class="link" href="libgpod-Tracks.html#itdb-track-by-id" title="itdb_track_by_id ()">itdb_track_by_id</a>                    (<em class="parameter"><code><a class="link" href="libgpod-The-Itdb-iTunesDB-structure.html#Itdb-iTunesDB" title="struct Itdb_iTunesDB"><span class="type">Itdb_iTunesDB</span></a> *itdb</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint32"><span class="type">guint32</span></a> id</code></em>);
+<a href="http://library.gnome.org/devel/glib/unstable/glib-Balanced-Binary-Trees.html#GTree"><span class="returnvalue">GTree</span></a> *             <a class="link" href="libgpod-Tracks.html#itdb-track-id-tree-create" title="itdb_track_id_tree_create ()">itdb_track_id_tree_create</a>           (<em class="parameter"><code><a class="link" href="libgpod-The-Itdb-iTunesDB-structure.html#Itdb-iTunesDB" title="struct Itdb_iTunesDB"><span class="type">Itdb_iTunesDB</span></a> *itdb</code></em>);
+<span class="returnvalue">void</span>                <a class="link" href="libgpod-Tracks.html#itdb-track-id-tree-destroy" title="itdb_track_id_tree_destroy ()">itdb_track_id_tree_destroy</a>          (<em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Balanced-Binary-Trees.html#GTree"><span class="type">GTree</span></a> *idtree</code></em>);
+<a class="link" href="libgpod-Tracks.html#Itdb-Track" title="struct Itdb_Track"><span class="returnvalue">Itdb_Track</span></a> *        <a class="link" href="libgpod-Tracks.html#itdb-track-id-tree-by-id" title="itdb_track_id_tree_by_id ()">itdb_track_id_tree_by_id</a>            (<em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Balanced-Binary-Trees.html#GTree"><span class="type">GTree</span></a> *idtree</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint32"><span class="type">guint32</span></a> id</code></em>);
+<a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"><span class="returnvalue">gpointer</span></a>            <a class="link" href="libgpod-Tracks.html#itdb-track-get-thumbnail" title="itdb_track_get_thumbnail ()">itdb_track_get_thumbnail</a>            (<em class="parameter"><code><a class="link" href="libgpod-Tracks.html#Itdb-Track" title="struct Itdb_Track"><span class="type">Itdb_Track</span></a> *track</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gint"><span class="type">gint</span></a> width</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gint"><span class="type">gint</span></a> height</code></em>);
+<a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            <a class="link" href="libgpod-Tracks.html#itdb-track-has-thumbnails" title="itdb_track_has_thumbnails ()">itdb_track_has_thumbnails</a>           (<em class="parameter"><code><a class="link" href="libgpod-Tracks.html#Itdb-Track" title="struct Itdb_Track"><span class="type">Itdb_Track</span></a> *track</code></em>);
+<a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            <a class="link" href="libgpod-Tracks.html#itdb-track-set-thumbnails" title="itdb_track_set_thumbnails ()">itdb_track_set_thumbnails</a>           (<em class="parameter"><code><a class="link" href="libgpod-Tracks.html#Itdb-Track" title="struct Itdb_Track"><span class="type">Itdb_Track</span></a> *track</code></em>,
+                                                         <em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *filename</code></em>);
+<a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            <a class="link" href="libgpod-Tracks.html#itdb-track-set-thumbnails-from-data" title="itdb_track_set_thumbnails_from_data ()">itdb_track_set_thumbnails_from_data</a> (<em class="parameter"><code><a class="link" href="libgpod-Tracks.html#Itdb-Track" title="struct Itdb_Track"><span class="type">Itdb_Track</span></a> *track</code></em>,
+                                                         <em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guchar"><span class="type">guchar</span></a> *image_data</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gsize"><span class="type">gsize</span></a> image_data_len</code></em>);
+<a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            <a class="link" href="libgpod-Tracks.html#itdb-track-set-thumbnails-from-pixbuf" title="itdb_track_set_thumbnails_from_pixbuf ()">itdb_track_set_thumbnails_from_pixbuf</a>
+                                                        (<em class="parameter"><code><a class="link" href="libgpod-Tracks.html#Itdb-Track" title="struct Itdb_Track"><span class="type">Itdb_Track</span></a> *track</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a> pixbuf</code></em>);
+<span class="returnvalue">void</span>                <a class="link" href="libgpod-Tracks.html#itdb-track-remove-thumbnails" title="itdb_track_remove_thumbnails ()">itdb_track_remove_thumbnails</a>        (<em class="parameter"><code><a class="link" href="libgpod-Tracks.html#Itdb-Track" title="struct Itdb_Track"><span class="type">Itdb_Track</span></a> *track</code></em>);
+</pre>
+</div>
+<div class="refsect1">
+<a name="libgpod-Tracks.description"></a><h2>Description</h2>
+<p>
+These functions and structures are for storing and retrieving
+information about an iPod track.
+</p>
+</div>
+<div class="refsect1">
+<a name="libgpod-Tracks.details"></a><h2>Details</h2>
+<div class="refsect2">
+<a name="Itdb-Track"></a><h3>struct Itdb_Track</h3>
+<pre class="programlisting">struct Itdb_Track {
+  Itdb_iTunesDB *itdb;
+  gchar   *title;
+  gchar   *ipod_path;
+  gchar   *album;
+  gchar   *artist;
+  gchar   *genre;
+  gchar   *filetype;
+  gchar   *comment;
+  gchar   *category;
+  gchar   *composer;
+  gchar   *grouping;
+  gchar   *description;
+  gchar   *podcasturl;
+  gchar   *podcastrss;
+  Itdb_Chapterdata *chapterdata;
+  gchar   *subtitle;
+/* the following 5 are new in libgpod 0.4.2... */
+  gchar   *tvshow;
+  gchar   *tvepisode;
+  gchar   *tvnetwork;
+  gchar   *albumartist;
+  gchar   *keywords;
+/* the following 6 are new in libgpod 0.5.0... */
+  /* You can set these strings to override the standard
+     sortorder. When set they take precedence over the default
+     'artist', 'album'... fields.
+
+     For example, in the case of an artist name like "The Artist",
+     iTunes will set sort_artist to "Artist, The" followed by five
+     0x01 characters. Why five 0x01 characters are added is not
+     completely understood.
+
+     If you do not set the sort_artist field, libgpod will pre-sort
+     the lists displayed by the iPod according to "Artist, The",
+     without setting the field.
+  */
+  gchar   *sort_artist;
+  gchar   *sort_title;
+  gchar   *sort_album;
+  gchar   *sort_albumartist;
+  gchar   *sort_composer;
+  gchar   *sort_tvshow;
+/* end of new fields in libgpod 0.5.0 */
+  guint32 id;
+  guint32  size;
+  gint32  tracklen;
+  gint32  cd_nr;
+  gint32  cds;
+  gint32  track_nr;
+  gint32  tracks;
+  gint32  bitrate;
+  guint16 samplerate;
+  guint16 samplerate_low;
+  gint32  year;
+  gint32  volume;
+  guint32 soundcheck;
+  time_t  time_added;
+  time_t  time_modified;
+  time_t  time_played;
+  guint32 bookmark_time;
+  guint32 rating;
+  guint32 playcount;
+  guint32 playcount2;
+  guint32 recent_playcount;
+  gboolean transferred;
+  gint16  BPM;
+  guint8  app_rating;
+  guint8  type1;
+  guint8  type2;
+  guint8  compilation;
+  guint32 starttime;
+  guint32 stoptime;
+  guint8  checked;
+  guint64 dbid;
+  guint32 drm_userid;
+  guint32 visible;
+  guint32 filetype_marker;
+  guint16 artwork_count;
+  guint32 artwork_size;
+  float samplerate2;
+  guint16 unk126;
+  guint32 unk132;
+  time_t  time_released;
+  guint16 unk144;
+  guint16 explicit_flag;
+  guint32 unk148;
+  guint32 unk152;
+  guint32 skipcount;
+  guint32 recent_skipcount;
+  guint32 last_skipped;
+  guint8 has_artwork;
+  guint8 skip_when_shuffling;
+  guint8 remember_playback_position;
+  guint8 flag4;
+  guint64 dbid2;
+  guint8 lyrics_flag;
+  guint8 movie_flag;
+  guint8 mark_unplayed;
+  guint8 unk179;
+  guint32 unk180;
+  guint32 pregap;
+  guint64 samplecount;
+  guint32 unk196;
+  guint32 postgap;
+  guint32 unk204;
+  guint32 mediatype;
+  guint32 season_nr;
+  guint32 episode_nr;
+  guint32 unk220;
+  guint32 unk224;
+  guint32 unk228, unk232, unk236, unk240, unk244;
+  guint32 gapless_data;
+  guint32 unk252;
+  guint16 gapless_track_flag;
+  guint16 gapless_album_flag;
+  guint16 obsolete;
+
+  /* This is for Cover Art support */
+  struct _Itdb_Artwork *artwork;
+
+  /* This is for sparse artwork support, new in libgpod-0.7.0 */
+  guint32 mhii_link;
+
+  /* reserved for future use */
+  gint32 reserved_int1;
+  gint32 reserved_int2;
+  gint32 reserved_int3;
+  gint32 reserved_int4;
+  gint32 reserved_int5;
+  gint32 reserved_int6;
+  Itdb_Track_Private *priv;
+  gpointer reserved2;
+  gpointer reserved3;
+  gpointer reserved4;
+  gpointer reserved5;
+  gpointer reserved6;
+
+  /* +++***+++***+++***+++***+++***+++***+++***+++***+++***+++***
+     When adding string fields don't forget to add them in
+     itdb_track_duplicate as well
+     +++***+++***+++***+++***+++***+++***+++***+++***+++***+++*** */
+
+  /* below is for use by application */
+  guint64 usertype;
+  gpointer userdata;
+  /* functions called to duplicate/free userdata */
+  ItdbUserDataDuplicateFunc userdata_duplicate;
+  ItdbUserDataDestroyFunc userdata_destroy;
+};
+</pre>
+<p>
+Structure representing a track in an iTunesDB
+</p>
+<p>
+</p>
+<div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+<h3 class="title">Note</h3>
+<p>When adding string fields don't forget to add them in
+<a class="link" href="libgpod-Tracks.html#itdb-track-duplicate" title="itdb_track_duplicate ()"><code class="function">itdb_track_duplicate()</code></a> as well.</p>
+</div>
+<p>
+</p>
+<p>
+Many of the parameter descriptions are copied verbatim from
+http://ipodlinux.org/ITunesDB, which is the best source for information about
+the iTunesDB and related files.
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><a class="link" href="libgpod-The-Itdb-iTunesDB-structure.html#Itdb-iTunesDB" title="struct Itdb_iTunesDB"><span class="type">Itdb_iTunesDB</span></a> *<em class="structfield"><code><a name="Itdb-Track.itdb"></a>itdb</code></em>;</span></p></td>
+<td>A pointer to the <a class="link" href="libgpod-The-Itdb-iTunesDB-structure.html#Itdb-iTunesDB" title="struct Itdb_iTunesDB"><span class="type">Itdb_iTunesDB</span></a> (for convenience)</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *<em class="structfield"><code><a name="Itdb-Track.title"></a>title</code></em>;</span></p></td>
+<td>The title of the track in UTF8</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *<em class="structfield"><code><a name="Itdb-Track.ipod-path"></a>ipod_path</code></em>;</span></p></td>
+<td>The file path on the iPod.  Directories are
+separated with ":" instead of "/".  The path is
+relative to the iPod mountpoint.</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *<em class="structfield"><code><a name="Itdb-Track.album"></a>album</code></em>;</span></p></td>
+<td>The album name in UTF8</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *<em class="structfield"><code><a name="Itdb-Track.artist"></a>artist</code></em>;</span></p></td>
+<td>The artist name in UTF8</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *<em class="structfield"><code><a name="Itdb-Track.genre"></a>genre</code></em>;</span></p></td>
+<td>The genre in UTF8</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *<em class="structfield"><code><a name="Itdb-Track.filetype"></a>filetype</code></em>;</span></p></td>
+<td>A UTF8 string describing the file type.  E.g.
+"MP3-File".</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *<em class="structfield"><code><a name="Itdb-Track.comment"></a>comment</code></em>;</span></p></td>
+<td>A comment in UTF8</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *<em class="structfield"><code><a name="Itdb-Track.category"></a>category</code></em>;</span></p></td>
+<td>The category ("Technology", "Music", etc.)
+where the podcast was located.  (Added in
+dbversion 0x0d)</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *<em class="structfield"><code><a name="Itdb-Track.composer"></a>composer</code></em>;</span></p></td>
+<td>The composer name in UTF8</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *<em class="structfield"><code><a name="Itdb-Track.grouping"></a>grouping</code></em>;</span></p></td>
+<td>??? (UTF8)</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *<em class="structfield"><code><a name="Itdb-Track.description"></a>description</code></em>;</span></p></td>
+<td>Description text (such as podcast show notes).
+(Added in dbversion 0x0d)</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *<em class="structfield"><code><a name="Itdb-Track.podcasturl"></a>podcasturl</code></em>;</span></p></td>
+<td>Podcast Enclosure URL in UTF-8 or ASCII.
+(Added in dbversion 0x0d)</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *<em class="structfield"><code><a name="Itdb-Track.podcastrss"></a>podcastrss</code></em>;</span></p></td>
+<td>Podcast RSS URL in UTF-8 or ASCII.
+(Added in dbversion 0x0d)</td>
+</tr>
+<tr>
+<td><p><span class="term"><a class="link" href="libgpod-Chapter-Data.html#Itdb-Chapterdata" title="struct Itdb_Chapterdata"><span class="type">Itdb_Chapterdata</span></a> *<em class="structfield"><code><a name="Itdb-Track.chapterdata"></a>chapterdata</code></em>;</span></p></td>
+<td>This is an m4a-style entry that is used to
+display subsongs within a mhit.  (Added in
+dbversion 0x0d)</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *<em class="structfield"><code><a name="Itdb-Track.subtitle"></a>subtitle</code></em>;</span></p></td>
+<td>Subtitle (usually the same as Description).
+(Added in dbversion 0x0d)</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *<em class="structfield"><code><a name="Itdb-Track.tvshow"></a>tvshow</code></em>;</span></p></td>
+<td>Name of the TV show (only used for TV Shows).
+(Added in dbversion 0x0d?) (Since libgpod-0.4.2)</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *<em class="structfield"><code><a name="Itdb-Track.tvepisode"></a>tvepisode</code></em>;</span></p></td>
+<td>The episode number (only used for TV Shows).
+(Added in dbversion 0x0d?) (Since libgpod-0.4.2)</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *<em class="structfield"><code><a name="Itdb-Track.tvnetwork"></a>tvnetwork</code></em>;</span></p></td>
+<td>The TV network (only used for TV Shows).
+(Added in dbversion 0x0d?) (Since libgpod-0.4.2)</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *<em class="structfield"><code><a name="Itdb-Track.albumartist"></a>albumartist</code></em>;</span></p></td>
+<td>The album artist (Added in dbversion 0x13?)
+(Since libgpod-0.4.2)</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *<em class="structfield"><code><a name="Itdb-Track.keywords"></a>keywords</code></em>;</span></p></td>
+<td>List of keywords pertaining to the track.
+(Added in dbversion 0x13?) (Since libgpod-0.4.2)</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *<em class="structfield"><code><a name="Itdb-Track.sort-artist"></a>sort_artist</code></em>;</span></p></td>
+<td>The artist name used for sorting.  Artists with
+names like "The Artist" would have "Artist,
+The" here.  If you do not set this field,
+libgpod will pre-sort the lists displayed by
+the iPod according to "Artist, The", without
+setting this field.
+(Added in dbversion 0x13?) (Since libgpod-0.5.0)</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *<em class="structfield"><code><a name="Itdb-Track.sort-title"></a>sort_title</code></em>;</span></p></td>
+<td>The track title used for sorting.  See
+<em class="parameter"><code>sort_artist</code></em>. (Since libgpod-0.5.0)</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *<em class="structfield"><code><a name="Itdb-Track.sort-album"></a>sort_album</code></em>;</span></p></td>
+<td>The album name used for sorting.  See
+<em class="parameter"><code>sort_artist</code></em>. (Since libgpod-0.5.0)</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *<em class="structfield"><code><a name="Itdb-Track.sort-albumartist"></a>sort_albumartist</code></em>;</span></p></td>
+<td>The album artist used for sorting.  See
+<em class="parameter"><code>sort_artist</code></em>. (Since libgpod-0.5.0)</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *<em class="structfield"><code><a name="Itdb-Track.sort-composer"></a>sort_composer</code></em>;</span></p></td>
+<td>The composer used for sorting.  See
+<em class="parameter"><code>sort_artist</code></em>. (Since libgpod-0.5.0)</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *<em class="structfield"><code><a name="Itdb-Track.sort-tvshow"></a>sort_tvshow</code></em>;</span></p></td>
+<td>The name of the TV show used for sorting.  See
+<em class="parameter"><code>sort_artist</code></em>. (Since libgpod-0.5.0)</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint32"><span class="type">guint32</span></a> <em class="structfield"><code><a name="Itdb-Track.id"></a>id</code></em>;</span></p></td>
+<td>Unique ID of track</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint32"><span class="type">guint32</span></a> <em class="structfield"><code><a name="Itdb-Track.size"></a>size</code></em>;</span></p></td>
+<td>The size of the file in bytes</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gint32"><span class="type">gint32</span></a> <em class="structfield"><code><a name="Itdb-Track.tracklen"></a>tracklen</code></em>;</span></p></td>
+<td>The length of the track in ms</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gint32"><span class="type">gint32</span></a> <em class="structfield"><code><a name="Itdb-Track.cd-nr"></a>cd_nr</code></em>;</span></p></td>
+<td>The CD number the track comes from.</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gint32"><span class="type">gint32</span></a> <em class="structfield"><code><a name="Itdb-Track.cds"></a>cds</code></em>;</span></p></td>
+<td>The total number of CDs.</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gint32"><span class="type">gint32</span></a> <em class="structfield"><code><a name="Itdb-Track.track-nr"></a>track_nr</code></em>;</span></p></td>
+<td>The track number.</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gint32"><span class="type">gint32</span></a> <em class="structfield"><code><a name="Itdb-Track.tracks"></a>tracks</code></em>;</span></p></td>
+<td>The total number of tracks.</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gint32"><span class="type">gint32</span></a> <em class="structfield"><code><a name="Itdb-Track.bitrate"></a>bitrate</code></em>;</span></p></td>
+<td>The bitrate at which the file is encoded.</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint16"><span class="type">guint16</span></a> <em class="structfield"><code><a name="Itdb-Track.samplerate"></a>samplerate</code></em>;</span></p></td>
+<td>The samplerate of the track (e.g. CD = 44100)</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint16"><span class="type">guint16</span></a> <em class="structfield"><code><a name="Itdb-Track.samplerate-low"></a>samplerate_low</code></em>;</span></p></td>
+<td>In the iTunesDB the samplerate is
+multiplied by 0x10000 -- these are the
+lower 16 bit, which are usually 0</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gint32"><span class="type">gint32</span></a> <em class="structfield"><code><a name="Itdb-Track.year"></a>year</code></em>;</span></p></td>
+<td>The year the track was released</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gint32"><span class="type">gint32</span></a> <em class="structfield"><code><a name="Itdb-Track.volume"></a>volume</code></em>;</span></p></td>
+<td>Volume adjustment field.  This is a value from
+-255 to 255 that will be applied to the track
+on playback.</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint32"><span class="type">guint32</span></a> <em class="structfield"><code><a name="Itdb-Track.soundcheck"></a>soundcheck</code></em>;</span></p></td>
+<td>The SoundCheck value to apply to the song, when
+SoundCheck is switched on in the iPod settings.
+The value for this field can be determined by
+the equation: X = 1000 * 10 ^ (-.1 * Y) where Y
+is the adjustment value in dB and X is the
+value that goes into the SoundCheck field. The
+value 0 is special, the equation is not used
+and it is treated as "no Soundcheck" (basically
+the same as the value 1000). This equation
+works perfectly well with ReplayGain derived
+data instead of the iTunes SoundCheck derived
+information.</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="type">time_t</span> <em class="structfield"><code><a name="Itdb-Track.time-added"></a>time_added</code></em>;</span></p></td>
+<td>The time the track was added.</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="type">time_t</span> <em class="structfield"><code><a name="Itdb-Track.time-modified"></a>time_modified</code></em>;</span></p></td>
+<td>The time the track was last modified</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="type">time_t</span> <em class="structfield"><code><a name="Itdb-Track.time-played"></a>time_played</code></em>;</span></p></td>
+<td>The time the track was last played</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint32"><span class="type">guint32</span></a> <em class="structfield"><code><a name="Itdb-Track.bookmark-time"></a>bookmark_time</code></em>;</span></p></td>
+<td>The time, in milliseconds, that the track will
+start playing at. This is used for AudioBook
+filetypes (.aa and .m4b).  Note that there is
+also a bookmark value in the play counts file
+that will be set by the iPod and can be used
+instead of this value.</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint32"><span class="type">guint32</span></a> <em class="structfield"><code><a name="Itdb-Track.rating"></a>rating</code></em>;</span></p></td>
+<td>The track rating (stars * <a class="link" href="libgpod-Tracks.html#ITDB-RATING-STEP:CAPS" title="ITDB_RATING_STEP"><span class="type">ITDB_RATING_STEP</span></a>)</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint32"><span class="type">guint32</span></a> <em class="structfield"><code><a name="Itdb-Track.playcount"></a>playcount</code></em>;</span></p></td>
+<td>The number of times the track has been played</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint32"><span class="type">guint32</span></a> <em class="structfield"><code><a name="Itdb-Track.playcount2"></a>playcount2</code></em>;</span></p></td>
+<td>This also stores the play count of the
+track.  It is unclear if this ever differs
+from the above value. During sync, this is set
+to the same value as <em class="parameter"><code>playcount</code></em>.</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint32"><span class="type">guint32</span></a> <em class="structfield"><code><a name="Itdb-Track.recent-playcount"></a>recent_playcount</code></em>;</span></p></td>
+<td>The number of times the track was played since
+the last sync.</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="type">gboolean</span></a> <em class="structfield"><code><a name="Itdb-Track.transferred"></a>transferred</code></em>;</span></p></td>
+<td>Whether the file been transferred to iPod.</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gint16"><span class="type">gint16</span></a> <em class="structfield"><code><a name="Itdb-Track.BPM"></a>BPM</code></em>;</span></p></td>
+<td>BPM (beats per minute) of the track</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint8"><span class="type">guint8</span></a> <em class="structfield"><code><a name="Itdb-Track.app-rating"></a>app_rating</code></em>;</span></p></td>
+<td>The last rating set by an application (e.g.
+iTunes).  If the rating on the iPod and the
+<em class="parameter"><code>rating</code></em> field above differ, the original
+rating is copied here and the new rating is
+stored in <em class="parameter"><code>rating</code></em>.</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint8"><span class="type">guint8</span></a> <em class="structfield"><code><a name="Itdb-Track.type1"></a>type1</code></em>;</span></p></td>
+<td>CBR MP3s and AAC are 0x00, VBR MP3s are 0x01</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint8"><span class="type">guint8</span></a> <em class="structfield"><code><a name="Itdb-Track.type2"></a>type2</code></em>;</span></p></td>
+<td>MP3s are 0x01, AAC are 0x00</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint8"><span class="type">guint8</span></a> <em class="structfield"><code><a name="Itdb-Track.compilation"></a>compilation</code></em>;</span></p></td>
+<td>Flag to mark the track as a compilation.  True
+if set to 0x1, false if set to 0x0.</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint32"><span class="type">guint32</span></a> <em class="structfield"><code><a name="Itdb-Track.starttime"></a>starttime</code></em>;</span></p></td>
+<td>The offset, in milliseconds, at which the song
+will start playing.</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint32"><span class="type">guint32</span></a> <em class="structfield"><code><a name="Itdb-Track.stoptime"></a>stoptime</code></em>;</span></p></td>
+<td>The offset, in milliseconds, at which the song
+will stop playing.</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint8"><span class="type">guint8</span></a> <em class="structfield"><code><a name="Itdb-Track.checked"></a>checked</code></em>;</span></p></td>
+<td>Flag for whether the track is checked.  True if
+set to 0x0, false if set to 0x1</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint64"><span class="type">guint64</span></a> <em class="structfield"><code><a name="Itdb-Track.dbid"></a>dbid</code></em>;</span></p></td>
+<td>Unique database ID that identifies this song
+across the databases on the iPod. For example,
+this id joins an iTunesDB mhit with an
+ArtworkDB mhii.</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint32"><span class="type">guint32</span></a> <em class="structfield"><code><a name="Itdb-Track.drm-userid"></a>drm_userid</code></em>;</span></p></td>
+<td>Apple Store/Audible User ID (for DRM'ed files
+only, set to 0 otherwise).</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint32"><span class="type">guint32</span></a> <em class="structfield"><code><a name="Itdb-Track.visible"></a>visible</code></em>;</span></p></td>
+<td>If this value is 1, the song is visible on the
+iPod. All other values cause the file to be
+hidden.</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint32"><span class="type">guint32</span></a> <em class="structfield"><code><a name="Itdb-Track.filetype-marker"></a>filetype_marker</code></em>;</span></p></td>
+<td>This appears to always be 0 on hard drive based
+iPods, but for the iTunesDB that is written to
+an iPod Shuffle, iTunes 4.7.1 writes out the
+file's type as an ANSI string(!). For example,
+a MP3 file has a filetype of 0x4d503320 -&gt;
+0x4d = 'M', 0x50 = 'P', 0x33 = '3', 0x20 =
+&lt;space&gt;.  This is set to the filename
+extension by libgpod when copying the track to
+the iPod.</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint16"><span class="type">guint16</span></a> <em class="structfield"><code><a name="Itdb-Track.artwork-count"></a>artwork_count</code></em>;</span></p></td>
+<td>The number of album artwork items associated
+with this song.  libgpod updates this value
+when syncing.</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint32"><span class="type">guint32</span></a> <em class="structfield"><code><a name="Itdb-Track.artwork-size"></a>artwork_size</code></em>;</span></p></td>
+<td>The total size of artwork (in bytes) attached
+to this song, when it is converted to JPEG
+format. Observed in dbversion 0x0b and with
+an iPod Photo. libgpod updates this value when
+syncing.</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="type">float</span> <em class="structfield"><code><a name="Itdb-Track.samplerate2"></a>samplerate2</code></em>;</span></p></td>
+<td>The sample rate of the song expressed as an
+IEEE 32 bit floating point number.  It is
+uncertain why this is here.  libgpod will set
+this when adding a track.</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint16"><span class="type">guint16</span></a> <em class="structfield"><code><a name="Itdb-Track.unk126"></a>unk126</code></em>;</span></p></td>
+<td>Unknown, but always seems to be 0xffff for
+MP3/AAC songs, 0x0 for uncompressed songs
+(like WAVE format), 0x1 for Audible.  libgpod
+will try to set this when adding a new track.</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint32"><span class="type">guint32</span></a> <em class="structfield"><code><a name="Itdb-Track.unk132"></a>unk132</code></em>;</span></p></td>
+<td>Unknown</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="type">time_t</span> <em class="structfield"><code><a name="Itdb-Track.time-released"></a>time_released</code></em>;</span></p></td>
+<td>The date/time the track was added to the iTunes
+music store?  For podcasts this is the release
+date that is displayed next to the title in the
+Podcast playlist.</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint16"><span class="type">guint16</span></a> <em class="structfield"><code><a name="Itdb-Track.unk144"></a>unk144</code></em>;</span></p></td>
+<td>Unknown, but MP3 songs appear to be always
+0x000c, AAC songs are always 0x0033, Audible
+files are 0x0029, WAV files are 0x0.  libgpod
+will attempt to set this value when adding a
+track.</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint16"><span class="type">guint16</span></a> <em class="structfield"><code><a name="Itdb-Track.explicit-flag"></a>explicit_flag</code></em>;</span></p></td>
+<td>Flag to mark a track as "explicit" in iTunes.
+True if to 0x1, false if set to 0x0.</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint32"><span class="type">guint32</span></a> <em class="structfield"><code><a name="Itdb-Track.unk148"></a>unk148</code></em>;</span></p></td>
+<td>Unknown - used for Apple Store DRM songs
+(always 0x01010100?), zero otherwise</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint32"><span class="type">guint32</span></a> <em class="structfield"><code><a name="Itdb-Track.unk152"></a>unk152</code></em>;</span></p></td>
+<td>Unknown</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint32"><span class="type">guint32</span></a> <em class="structfield"><code><a name="Itdb-Track.skipcount"></a>skipcount</code></em>;</span></p></td>
+<td>The number of times the track has been skipped.
+(Added in dbversion 0x0c)</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint32"><span class="type">guint32</span></a> <em class="structfield"><code><a name="Itdb-Track.recent-skipcount"></a>recent_skipcount</code></em>;</span></p></td>
+<td>The number of times the track was skipped since
+the last sync.</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint32"><span class="type">guint32</span></a> <em class="structfield"><code><a name="Itdb-Track.last-skipped"></a>last_skipped</code></em>;</span></p></td>
+<td>The time the track was last skipped.  (Added in
+dbversion 0x0c)</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint8"><span class="type">guint8</span></a> <em class="structfield"><code><a name="Itdb-Track.has-artwork"></a>has_artwork</code></em>;</span></p></td>
+<td>Whether the track has artwork.
+True if set to 0x01, false if set to 0x02.</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint8"><span class="type">guint8</span></a> <em class="structfield"><code><a name="Itdb-Track.skip-when-shuffling"></a>skip_when_shuffling</code></em>;</span></p></td>
+<td>Flag to skip the track when shuffling.  True if
+set to 0x01, false if set to 0x00. Audiobooks
+(.aa and .m4b) always seem to be skipped when
+shuffling, regardless of this flag.</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint8"><span class="type">guint8</span></a> <em class="structfield"><code><a name="Itdb-Track.remember-playback-position"></a>remember_playback_position</code></em>;</span></p></td>
+<td>Flag to remember playback position.
+True when set to 0x01, false when set to 0x00.
+Audiobooks (.aa and .m4b) always seem to
+remember the playback position, regardless of
+this flag.</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint8"><span class="type">guint8</span></a> <em class="structfield"><code><a name="Itdb-Track.flag4"></a>flag4</code></em>;</span></p></td>
+<td>Used for podcasts, 0x00 otherwise.  If set to
+0x01 the "Now Playing" page will show
+Title/Album, when set to 0x00 it will also show
+the Artist.  When set to 0x02 a sub-page
+(middle button) with further information about
+the track will be shown.</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint64"><span class="type">guint64</span></a> <em class="structfield"><code><a name="Itdb-Track.dbid2"></a>dbid2</code></em>;</span></p></td>
+<td>The purpose of the field is unclear.  If not
+set, libgpod will set this to the same value as
+<em class="parameter"><code>dbid</code></em> when adding a track.  (With iTunes, since
+dbversion 0x12, this field value differs from
+<em class="parameter"><code>dbid</code></em>.)</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint8"><span class="type">guint8</span></a> <em class="structfield"><code><a name="Itdb-Track.lyrics-flag"></a>lyrics_flag</code></em>;</span></p></td>
+<td>Whether the track has lyrics (e.g. it has a
+USLT ID3 tag in an MP3 or a <em class="parameter"><code>lyr</code></em> atom in an
+MP4).  True if set to 0x01, false if set to
+0x00.</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint8"><span class="type">guint8</span></a> <em class="structfield"><code><a name="Itdb-Track.movie-flag"></a>movie_flag</code></em>;</span></p></td>
+<td>Whether the track is a movie.  True if set to
+0x01, false if set to 0x00.</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint8"><span class="type">guint8</span></a> <em class="structfield"><code><a name="Itdb-Track.mark-unplayed"></a>mark_unplayed</code></em>;</span></p></td>
+<td>A value of 0x02 marks a podcast as unplayed on
+the iPod, with a bullet.  Once played it is set
+to 0x01. Non-podcasts have this set to 0x01.
+(Added in dbversion 0x0c)</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint8"><span class="type">guint8</span></a> <em class="structfield"><code><a name="Itdb-Track.unk179"></a>unk179</code></em>;</span></p></td>
+<td>Unknown, always 0x00 so far.  (Added in
+dbversion 0x0c)</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint32"><span class="type">guint32</span></a> <em class="structfield"><code><a name="Itdb-Track.unk180"></a>unk180</code></em>;</span></p></td>
+<td>Unknown.  (Added in dbversion 0x0c)</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint32"><span class="type">guint32</span></a> <em class="structfield"><code><a name="Itdb-Track.pregap"></a>pregap</code></em>;</span></p></td>
+<td>The number of samples of silence before the
+track starts (for gapless playback).</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint64"><span class="type">guint64</span></a> <em class="structfield"><code><a name="Itdb-Track.samplecount"></a>samplecount</code></em>;</span></p></td>
+<td>The number of samples in the track (for gapless
+playback).</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint32"><span class="type">guint32</span></a> <em class="structfield"><code><a name="Itdb-Track.unk196"></a>unk196</code></em>;</span></p></td>
+<td>Unknown.  (Added in dbversion 0x0c)</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint32"><span class="type">guint32</span></a> <em class="structfield"><code><a name="Itdb-Track.postgap"></a>postgap</code></em>;</span></p></td>
+<td>The number of samples of silence at the end of
+the track (for gapless playback).</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint32"><span class="type">guint32</span></a> <em class="structfield"><code><a name="Itdb-Track.unk204"></a>unk204</code></em>;</span></p></td>
+<td>Unknown.  Appears to be 0x1 for files encoded
+using the MP3 encoder, 0x0 otherwise.  (Added
+in dbversion 0x0c, first values observed in
+0x0d.)</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint32"><span class="type">guint32</span></a> <em class="structfield"><code><a name="Itdb-Track.mediatype"></a>mediatype</code></em>;</span></p></td>
+<td>The type of file.  It must be set to 0x00000001
+for audio files, and set to 0x00000002 for
+video files.  If set to 0x00, the files show up
+in both, the audio menus ("Songs", "Artists",
+etc.) and the video menus ("Movies", "Music
+Videos", etc.).  It appears to be set to 0x20
+for music videos, and if set to 0x60 the file
+shows up in "TV Shows" rather than "Movies".
+<p>
+The following list summarizes all observed types:
+</p>
+<div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; ">
+<li class="listitem">0x00 00 00 00 - Audio/Video</li>
+<li class="listitem">0x00 00 00 01 - Audio</li>
+<li class="listitem">0x00 00 00 02 - Video</li>
+<li class="listitem">0x00 00 00 04 - Podcast</li>
+<li class="listitem">0x00 00 00 06 - Video Podcast</li>
+<li class="listitem">0x00 00 00 08 - Audiobook</li>
+<li class="listitem">0x00 00 00 20 - Music Video</li>
+<li class="listitem">0x00 00 00 40 - TV Show (shows up ONLY
+in TV Shows)</li>
+<li class="listitem">0x00 00 00 60 - TV Show (shows up in
+the Music lists as well)</li>
+</ul></div>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint32"><span class="type">guint32</span></a> <em class="structfield"><code><a name="Itdb-Track.season-nr"></a>season_nr</code></em>;</span></p></td>
+<td>The season number of the track (only used for
+TV Shows).</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint32"><span class="type">guint32</span></a> <em class="structfield"><code><a name="Itdb-Track.episode-nr"></a>episode_nr</code></em>;</span></p></td>
+<td>The episode number of the track (only used for
+TV Shows).  Although this is not displayed on
+the iPod, the episodes are sorted by episode
+number.</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint32"><span class="type">guint32</span></a> <em class="structfield"><code><a name="Itdb-Track.unk220"></a>unk220</code></em>;</span></p></td>
+<td>Unknown.  This has something to do with
+protected files.  It is set to 0x0 for
+non-protected files.</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint32"><span class="type">guint32</span></a> <em class="structfield"><code><a name="Itdb-Track.unk224"></a>unk224</code></em>;</span></p></td>
+<td>Unknown.  (Added in dbversion 0x0c)</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint32"><span class="type">guint32</span></a> <em class="structfield"><code><a name="Itdb-Track.unk228"></a>unk228</code></em>;</span></p></td>
+<td>Unknown.  (Added in dbversion 0x0c)</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint32"><span class="type">guint32</span></a> <em class="structfield"><code><a name="Itdb-Track.unk232"></a>unk232</code></em>;</span></p></td>
+<td>Unknown.  (Added in dbversion 0x0c)</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint32"><span class="type">guint32</span></a> <em class="structfield"><code><a name="Itdb-Track.unk236"></a>unk236</code></em>;</span></p></td>
+<td>Unknown.  (Added in dbversion 0x0c)</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint32"><span class="type">guint32</span></a> <em class="structfield"><code><a name="Itdb-Track.unk240"></a>unk240</code></em>;</span></p></td>
+<td>Unknown.  (Added in dbversion 0x0c)</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint32"><span class="type">guint32</span></a> <em class="structfield"><code><a name="Itdb-Track.unk244"></a>unk244</code></em>;</span></p></td>
+<td>Unknown.  (Added in dbversion 0x13)</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint32"><span class="type">guint32</span></a> <em class="structfield"><code><a name="Itdb-Track.gapless-data"></a>gapless_data</code></em>;</span></p></td>
+<td>The size in bytes from first Synch Frame
+(which is usually the XING frame that
+includes the LAME tag) until the 8th before
+the last frame. The gapless playback does not
+work for MP3 files if this is set to zero. For
+AAC tracks, this may be zero.  (Added in
+dbversion 0x13)</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint32"><span class="type">guint32</span></a> <em class="structfield"><code><a name="Itdb-Track.unk252"></a>unk252</code></em>;</span></p></td>
+<td>Unknown.  (Added in dbversion 0x0c)</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint16"><span class="type">guint16</span></a> <em class="structfield"><code><a name="Itdb-Track.gapless-track-flag"></a>gapless_track_flag</code></em>;</span></p></td>
+<td>If set to 1, this track has gapless playback
+data.  (Added in dbversion 0x13)</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint16"><span class="type">guint16</span></a> <em class="structfield"><code><a name="Itdb-Track.gapless-album-flag"></a>gapless_album_flag</code></em>;</span></p></td>
+<td>If set to 1, this track does not use
+crossfading in iTunes.  (Added in dbversion
+0x13)</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint16"><span class="type">guint16</span></a> <em class="structfield"><code><a name="Itdb-Track.obsolete"></a>obsolete</code></em>;</span></p></td>
+<td></td>
+</tr>
+<tr>
+<td><p><span class="term">struct <a class="link" href="libgpod-Artwork.html#Itdb-Artwork" title="struct Itdb_Artwork"><span class="type">_Itdb_Artwork</span></a> *<em class="structfield"><code><a name="Itdb-Track.artwork"></a>artwork</code></em>;</span></p></td>
+<td>An <a class="link" href="libgpod-Artwork.html#Itdb-Artwork" title="struct Itdb_Artwork"><span class="type">Itdb_Artwork</span></a> for cover art</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint32"><span class="type">guint32</span></a> <em class="structfield"><code><a name="Itdb-Track.mhii-link"></a>mhii_link</code></em>;</span></p></td>
+<td>This is set to the id of the corresponding
+ArtworkDB mhii, used for sparse artwork
+support.  (Since libgpod-0.7.0)</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gint32"><span class="type">gint32</span></a> <em class="structfield"><code><a name="Itdb-Track.reserved-int1"></a>reserved_int1</code></em>;</span></p></td>
+<td>Reserved for future use</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gint32"><span class="type">gint32</span></a> <em class="structfield"><code><a name="Itdb-Track.reserved-int2"></a>reserved_int2</code></em>;</span></p></td>
+<td>Reserved for future use</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gint32"><span class="type">gint32</span></a> <em class="structfield"><code><a name="Itdb-Track.reserved-int3"></a>reserved_int3</code></em>;</span></p></td>
+<td>Reserved for future use</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gint32"><span class="type">gint32</span></a> <em class="structfield"><code><a name="Itdb-Track.reserved-int4"></a>reserved_int4</code></em>;</span></p></td>
+<td>Reserved for future use</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gint32"><span class="type">gint32</span></a> <em class="structfield"><code><a name="Itdb-Track.reserved-int5"></a>reserved_int5</code></em>;</span></p></td>
+<td>Reserved for future use</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gint32"><span class="type">gint32</span></a> <em class="structfield"><code><a name="Itdb-Track.reserved-int6"></a>reserved_int6</code></em>;</span></p></td>
+<td>Reserved for future use</td>
+</tr>
+<tr>
+<td><p><span class="term"><a class="link" href="libgpod-Tracks.html#Itdb-Track-Private" title="Itdb_Track_Private"><span class="type">Itdb_Track_Private</span></a> *<em class="structfield"><code><a name="Itdb-Track.priv"></a>priv</code></em>;</span></p></td>
+<td>Private data</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a> <em class="structfield"><code><a name="Itdb-Track.reserved2"></a>reserved2</code></em>;</span></p></td>
+<td>Reserved for future use</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a> <em class="structfield"><code><a name="Itdb-Track.reserved3"></a>reserved3</code></em>;</span></p></td>
+<td>Reserved for future use</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a> <em class="structfield"><code><a name="Itdb-Track.reserved4"></a>reserved4</code></em>;</span></p></td>
+<td>Reserved for future use</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a> <em class="structfield"><code><a name="Itdb-Track.reserved5"></a>reserved5</code></em>;</span></p></td>
+<td>Reserved for future use</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a> <em class="structfield"><code><a name="Itdb-Track.reserved6"></a>reserved6</code></em>;</span></p></td>
+<td>Reserved for future use</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint64"><span class="type">guint64</span></a> <em class="structfield"><code><a name="Itdb-Track.usertype"></a>usertype</code></em>;</span></p></td>
+<td>For use by application</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a> <em class="structfield"><code><a name="Itdb-Track.userdata"></a>userdata</code></em>;</span></p></td>
+<td>For use by application</td>
+</tr>
+<tr>
+<td><p><span class="term"><a class="link" href="libgpod-The-Itdb-iTunesDB-structure.html#ItdbUserDataDuplicateFunc" title="ItdbUserDataDuplicateFunc ()"><span class="type">ItdbUserDataDuplicateFunc</span></a> <em class="structfield"><code><a name="Itdb-Track.userdata-duplicate"></a>userdata_duplicate</code></em>;</span></p></td>
+<td>A function to duplicate <span class="type">userdata</span>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><a class="link" href="libgpod-The-Itdb-iTunesDB-structure.html#ItdbUserDataDestroyFunc" title="ItdbUserDataDestroyFunc ()"><span class="type">ItdbUserDataDestroyFunc</span></a> <em class="structfield"><code><a name="Itdb-Track.userdata-destroy"></a>userdata_destroy</code></em>;</span></p></td>
+<td>A function to free <span class="type">userdata</span>
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="Itdb-Track-Private"></a><h3>Itdb_Track_Private</h3>
+<pre class="programlisting">typedef struct {
+	guint32 album_id;
+	guint32 artist_id;
+	guint32 composer_id;
+} Itdb_Track_Private;
+</pre>
+<p>
+</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="Itdb-Mediatype"></a><h3>enum Itdb_Mediatype</h3>
+<pre class="programlisting">typedef enum {
+    ITDB_MEDIATYPE_AUDIO        = (1 &lt;&lt; 0),
+    ITDB_MEDIATYPE_MOVIE        = (1 &lt;&lt; 1),
+    ITDB_MEDIATYPE_PODCAST      = (1 &lt;&lt; 2),
+    ITDB_MEDIATYPE_AUDIOBOOK    = (1 &lt;&lt; 3),
+    ITDB_MEDIATYPE_MUSICVIDEO   = (1 &lt;&lt; 5),
+    ITDB_MEDIATYPE_TVSHOW       = (1 &lt;&lt; 6),
+    ITDB_MEDIATYPE_RINGTONE     = (1 &lt;&lt; 14),
+    ITDB_MEDIATYPE_RENTAL       = (1 &lt;&lt; 15),
+    ITDB_MEDIATYPE_ITUNES_EXTRA = (1 &lt;&lt; 16),
+    ITDB_MEDIATYPE_MEMO         = (1 &lt;&lt; 20),
+    ITDB_MEDIATYPE_ITUNES_U     = (1 &lt;&lt; 21),
+    ITDB_MEDIATYPE_EPUB_BOOK    = (1 &lt;&lt; 22),
+    ITDB_MEDIATYPE_PDF_BOOK     = (1 &lt;&lt; 23)
+} Itdb_Mediatype;
+</pre>
+<p>
+Mediatype definitions
+</p>
+<p>
+The mediatype is used to determine what menu a track appears under.  For
+example, setting the mediatype to <a class="link" href="libgpod-Tracks.html#ITDB-MEDIATYPE-PODCAST:CAPS"><span class="type">ITDB_MEDIATYPE_PODCAST</span></a> makes the track
+appear on the Podcast menu. Media type is a bitfield, so it can be a
+binary combination of these constants, make sure to use binary operators
+when you want to operate on media types (eg use a binary AND in
+preference over a straight == when you want to test if a track has a
+given media type).
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><a name="ITDB-MEDIATYPE-AUDIO:CAPS"></a><span class="term"><code class="literal">ITDB_MEDIATYPE_AUDIO</code></span></p></td>
+<td>Audio files
+</td>
+</tr>
+<tr>
+<td><p><a name="ITDB-MEDIATYPE-MOVIE:CAPS"></a><span class="term"><code class="literal">ITDB_MEDIATYPE_MOVIE</code></span></p></td>
+<td>Movies
+</td>
+</tr>
+<tr>
+<td><p><a name="ITDB-MEDIATYPE-PODCAST:CAPS"></a><span class="term"><code class="literal">ITDB_MEDIATYPE_PODCAST</code></span></p></td>
+<td>Podcasts
+</td>
+</tr>
+<tr>
+<td><p><a name="ITDB-MEDIATYPE-AUDIOBOOK:CAPS"></a><span class="term"><code class="literal">ITDB_MEDIATYPE_AUDIOBOOK</code></span></p></td>
+<td>Audio books
+</td>
+</tr>
+<tr>
+<td><p><a name="ITDB-MEDIATYPE-MUSICVIDEO:CAPS"></a><span class="term"><code class="literal">ITDB_MEDIATYPE_MUSICVIDEO</code></span></p></td>
+<td>Music videos
+</td>
+</tr>
+<tr>
+<td><p><a name="ITDB-MEDIATYPE-TVSHOW:CAPS"></a><span class="term"><code class="literal">ITDB_MEDIATYPE_TVSHOW</code></span></p></td>
+<td>TV Shows
+</td>
+</tr>
+<tr>
+<td><p><a name="ITDB-MEDIATYPE-RINGTONE:CAPS"></a><span class="term"><code class="literal">ITDB_MEDIATYPE_RINGTONE</code></span></p></td>
+<td>Ringtone
+</td>
+</tr>
+<tr>
+<td><p><a name="ITDB-MEDIATYPE-RENTAL:CAPS"></a><span class="term"><code class="literal">ITDB_MEDIATYPE_RENTAL</code></span></p></td>
+<td>Rental
+</td>
+</tr>
+<tr>
+<td><p><a name="ITDB-MEDIATYPE-ITUNES-EXTRA:CAPS"></a><span class="term"><code class="literal">ITDB_MEDIATYPE_ITUNES_EXTRA</code></span></p></td>
+<td>?
+</td>
+</tr>
+<tr>
+<td><p><a name="ITDB-MEDIATYPE-MEMO:CAPS"></a><span class="term"><code class="literal">ITDB_MEDIATYPE_MEMO</code></span></p></td>
+<td>Memo
+</td>
+</tr>
+<tr>
+<td><p><a name="ITDB-MEDIATYPE-ITUNES-U:CAPS"></a><span class="term"><code class="literal">ITDB_MEDIATYPE_ITUNES_U</code></span></p></td>
+<td>iTunes U
+</td>
+</tr>
+<tr>
+<td><p><a name="ITDB-MEDIATYPE-EPUB-BOOK:CAPS"></a><span class="term"><code class="literal">ITDB_MEDIATYPE_EPUB_BOOK</code></span></p></td>
+<td>
+</td>
+</tr>
+<tr>
+<td><p><a name="ITDB-MEDIATYPE-PDF-BOOK:CAPS"></a><span class="term"><code class="literal">ITDB_MEDIATYPE_PDF_BOOK</code></span></p></td>
+<td>
+</td>
+</tr>
+</tbody>
+</table></div>
+<p class="since">Since 0.5.0</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ITDB-RATING-STEP:CAPS"></a><h3>ITDB_RATING_STEP</h3>
+<pre class="programlisting">#define ITDB_RATING_STEP 20
+</pre>
+<p>
+The multiplier for each star in <span class="type">track</span>-&gt;rating
+</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="itdb-track-new"></a><h3>itdb_track_new ()</h3>
+<pre class="programlisting"><a class="link" href="libgpod-Tracks.html#Itdb-Track" title="struct Itdb_Track"><span class="returnvalue">Itdb_Track</span></a> *        itdb_track_new                      (<em class="parameter"><code><span class="type">void</span></code></em>);</pre>
+<p>
+Creates an empty <a class="link" href="libgpod-Tracks.html#Itdb-Track" title="struct Itdb_Track"><span class="type">Itdb_Track</span></a>
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody><tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>the new <a class="link" href="libgpod-Tracks.html#Itdb-Track" title="struct Itdb_Track"><span class="type">Itdb_Track</span></a>, free it with <a class="link" href="libgpod-Tracks.html#itdb-track-free" title="itdb_track_free ()"><code class="function">itdb_track_free()</code></a> when no
+longer needed</td>
+</tr></tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="itdb-track-free"></a><h3>itdb_track_free ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                itdb_track_free                     (<em class="parameter"><code><a class="link" href="libgpod-Tracks.html#Itdb-Track" title="struct Itdb_Track"><span class="type">Itdb_Track</span></a> *track</code></em>);</pre>
+<p>
+Frees the memory used by <em class="parameter"><code>track</code></em>
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody><tr>
+<td><p><span class="term"><em class="parameter"><code>track</code></em> :</span></p></td>
+<td>an <a class="link" href="libgpod-Tracks.html#Itdb-Track" title="struct Itdb_Track"><span class="type">Itdb_Track</span></a>
+</td>
+</tr></tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="itdb-track-add"></a><h3>itdb_track_add ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                itdb_track_add                      (<em class="parameter"><code><a class="link" href="libgpod-The-Itdb-iTunesDB-structure.html#Itdb-iTunesDB" title="struct Itdb_iTunesDB"><span class="type">Itdb_iTunesDB</span></a> *itdb</code></em>,
+                                                         <em class="parameter"><code><a class="link" href="libgpod-Tracks.html#Itdb-Track" title="struct Itdb_Track"><span class="type">Itdb_Track</span></a> *track</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gint32"><span class="type">gint32</span></a> pos</code></em>);</pre>
+<p>
+Adds <em class="parameter"><code>track</code></em> to <em class="parameter"><code>itdb-&gt;tracks</code></em> at position <em class="parameter"><code>pos</code></em> (or at the end if pos
+is -1). The application is responsible to also add it to the master
+playlist. The <em class="parameter"><code>itdb</code></em> gets ownership of the <em class="parameter"><code>track</code></em> and will take care of
+freeing the memory it uses when it's no longer necessary.
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>itdb</code></em> :</span></p></td>
+<td>an <a class="link" href="libgpod-The-Itdb-iTunesDB-structure.html#Itdb-iTunesDB" title="struct Itdb_iTunesDB"><span class="type">Itdb_iTunesDB</span></a>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>track</code></em> :</span></p></td>
+<td>an <a class="link" href="libgpod-Tracks.html#Itdb-Track" title="struct Itdb_Track"><span class="type">Itdb_Track</span></a>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>pos</code></em> :</span></p></td>
+<td>position of the track to add</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="itdb-track-remove"></a><h3>itdb_track_remove ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                itdb_track_remove                   (<em class="parameter"><code><a class="link" href="libgpod-Tracks.html#Itdb-Track" title="struct Itdb_Track"><span class="type">Itdb_Track</span></a> *track</code></em>);</pre>
+<p>
+Removes <em class="parameter"><code>track</code></em> from the <a class="link" href="libgpod-The-Itdb-iTunesDB-structure.html#Itdb-iTunesDB" title="struct Itdb_iTunesDB"><span class="type">Itdb_iTunesDB</span></a> it's associated with, and frees the
+memory it uses. It doesn't remove the track from the playlists it may have
+been added to, in particular it won't be removed from the master playlist.
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody><tr>
+<td><p><span class="term"><em class="parameter"><code>track</code></em> :</span></p></td>
+<td>an <a class="link" href="libgpod-Tracks.html#Itdb-Track" title="struct Itdb_Track"><span class="type">Itdb_Track</span></a>
+</td>
+</tr></tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="itdb-track-unlink"></a><h3>itdb_track_unlink ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                itdb_track_unlink                   (<em class="parameter"><code><a class="link" href="libgpod-Tracks.html#Itdb-Track" title="struct Itdb_Track"><span class="type">Itdb_Track</span></a> *track</code></em>);</pre>
+<p>
+Removes <em class="parameter"><code>track</code></em> from the <a class="link" href="libgpod-The-Itdb-iTunesDB-structure.html#Itdb-iTunesDB" title="struct Itdb_iTunesDB"><span class="type">Itdb_iTunesDB</span></a> it's associated with, but do not free
+memory. It doesn't remove the track from the playlists it may have been
+added to, in particular it won't be removed from the master playlist.
+<em class="parameter"><code>track-&gt;itdb</code></em> is set to NULL.
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody><tr>
+<td><p><span class="term"><em class="parameter"><code>track</code></em> :</span></p></td>
+<td>an <a class="link" href="libgpod-Tracks.html#Itdb-Track" title="struct Itdb_Track"><span class="type">Itdb_Track</span></a>
+</td>
+</tr></tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="itdb-track-duplicate"></a><h3>itdb_track_duplicate ()</h3>
+<pre class="programlisting"><a class="link" href="libgpod-Tracks.html#Itdb-Track" title="struct Itdb_Track"><span class="returnvalue">Itdb_Track</span></a> *        itdb_track_duplicate                (<em class="parameter"><code><a class="link" href="libgpod-Tracks.html#Itdb-Track" title="struct Itdb_Track"><span class="type">Itdb_Track</span></a> *tr</code></em>);</pre>
+<p>
+Duplicates an existing track
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>tr</code></em> :</span></p></td>
+<td>an <a class="link" href="libgpod-Tracks.html#Itdb-Track" title="struct Itdb_Track"><span class="type">Itdb_Track</span></a>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>a newly allocated <a class="link" href="libgpod-Tracks.html#Itdb-Track" title="struct Itdb_Track"><span class="type">Itdb_Track</span></a>
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="itdb-track-by-id"></a><h3>itdb_track_by_id ()</h3>
+<pre class="programlisting"><a class="link" href="libgpod-Tracks.html#Itdb-Track" title="struct Itdb_Track"><span class="returnvalue">Itdb_Track</span></a> *        itdb_track_by_id                    (<em class="parameter"><code><a class="link" href="libgpod-The-Itdb-iTunesDB-structure.html#Itdb-iTunesDB" title="struct Itdb_iTunesDB"><span class="type">Itdb_iTunesDB</span></a> *itdb</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint32"><span class="type">guint32</span></a> id</code></em>);</pre>
+<p>
+Looks up a track using its ID in <em class="parameter"><code>itdb</code></em>.
+</p>
+<p>
+Looking up tracks by ID is not really a good idea because the IDs
+are created by itdb just before export. The functions are here
+because they are needed during import of the iTunesDB which is
+referencing tracks by IDs.
+</p>
+<p>
+This function is very slow (linear in the number of tracks
+contained in the database). If you need to lookup many IDs use
+<a class="link" href="libgpod-Tracks.html#itdb-track-id-tree-create" title="itdb_track_id_tree_create ()"><code class="function">itdb_track_id_tree_create()</code></a>, <a class="link" href="libgpod-Tracks.html#itdb-track-id-tree-destroy" title="itdb_track_id_tree_destroy ()"><code class="function">itdb_track_id_tree_destroy()</code></a>, and
+<a class="link" href="libgpod-Tracks.html#itdb-track-id-tree-by-id" title="itdb_track_id_tree_by_id ()"><code class="function">itdb_track_id_tree_by_id()</code></a>.
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>itdb</code></em> :</span></p></td>
+<td>an <a class="link" href="libgpod-The-Itdb-iTunesDB-structure.html#Itdb-iTunesDB" title="struct Itdb_iTunesDB"><span class="type">Itdb_iTunesDB</span></a>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>id</code></em> :</span></p></td>
+<td>ID of the track to look for</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>
+<a class="link" href="libgpod-Tracks.html#Itdb-Track" title="struct Itdb_Track"><span class="type">Itdb_Track</span></a> with the ID <em class="parameter"><code>id</code></em> or NULL if the ID cannot be
+found.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="itdb-track-id-tree-create"></a><h3>itdb_track_id_tree_create ()</h3>
+<pre class="programlisting"><a href="http://library.gnome.org/devel/glib/unstable/glib-Balanced-Binary-Trees.html#GTree"><span class="returnvalue">GTree</span></a> *             itdb_track_id_tree_create           (<em class="parameter"><code><a class="link" href="libgpod-The-Itdb-iTunesDB-structure.html#Itdb-iTunesDB" title="struct Itdb_iTunesDB"><span class="type">Itdb_iTunesDB</span></a> *itdb</code></em>);</pre>
+<p>
+Creates a balanced-binary tree for quick ID lookup that is used in
+<code class="function">itdb_track_by_id_tree()</code>
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>itdb</code></em> :</span></p></td>
+<td>an <a class="link" href="libgpod-The-Itdb-iTunesDB-structure.html#Itdb-iTunesDB" title="struct Itdb_iTunesDB"><span class="type">Itdb_iTunesDB</span></a>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>a <a href="http://library.gnome.org/devel/glib/unstable/glib-Balanced-Binary-Trees.html#GTree"><span class="type">GTree</span></a> indexed by track IDs to be freed with
+<a class="link" href="libgpod-Tracks.html#itdb-track-id-tree-destroy" title="itdb_track_id_tree_destroy ()"><code class="function">itdb_track_id_tree_destroy()</code></a> when no longer used</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="itdb-track-id-tree-destroy"></a><h3>itdb_track_id_tree_destroy ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                itdb_track_id_tree_destroy          (<em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Balanced-Binary-Trees.html#GTree"><span class="type">GTree</span></a> *idtree</code></em>);</pre>
+<p>
+Frees the memory used by <em class="parameter"><code>idtree</code></em>
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody><tr>
+<td><p><span class="term"><em class="parameter"><code>idtree</code></em> :</span></p></td>
+<td>a <a href="http://library.gnome.org/devel/glib/unstable/glib-Balanced-Binary-Trees.html#GTree"><span class="type">GTree</span></a>
+</td>
+</tr></tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="itdb-track-id-tree-by-id"></a><h3>itdb_track_id_tree_by_id ()</h3>
+<pre class="programlisting"><a class="link" href="libgpod-Tracks.html#Itdb-Track" title="struct Itdb_Track"><span class="returnvalue">Itdb_Track</span></a> *        itdb_track_id_tree_by_id            (<em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Balanced-Binary-Trees.html#GTree"><span class="type">GTree</span></a> *idtree</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint32"><span class="type">guint32</span></a> id</code></em>);</pre>
+<p>
+Lookup an <a class="link" href="libgpod-Tracks.html#Itdb-Track" title="struct Itdb_Track"><span class="type">Itdb_Track</span></a> by <em class="parameter"><code>id</code></em> using <em class="parameter"><code>idtree</code></em> for faster lookup
+(compared to <a class="link" href="libgpod-Tracks.html#itdb-track-by-id" title="itdb_track_by_id ()"><code class="function">itdb_track_by_id()</code></a>)
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>idtree</code></em> :</span></p></td>
+<td>a <a href="http://library.gnome.org/devel/glib/unstable/glib-Balanced-Binary-Trees.html#GTree"><span class="type">GTree</span></a> created using <a class="link" href="libgpod-Tracks.html#itdb-track-id-tree-create" title="itdb_track_id_tree_create ()"><code class="function">itdb_track_id_tree_create()</code></a>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>id</code></em> :</span></p></td>
+<td>the ID of the track to search for</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>the <a class="link" href="libgpod-Tracks.html#Itdb-Track" title="struct Itdb_Track"><span class="type">Itdb_Track</span></a> whose ID is <em class="parameter"><code>id</code></em>, or NULL if such a track
+couldn't be found</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="itdb-track-get-thumbnail"></a><h3>itdb_track_get_thumbnail ()</h3>
+<pre class="programlisting"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"><span class="returnvalue">gpointer</span></a>            itdb_track_get_thumbnail            (<em class="parameter"><code><a class="link" href="libgpod-Tracks.html#Itdb-Track" title="struct Itdb_Track"><span class="type">Itdb_Track</span></a> *track</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gint"><span class="type">gint</span></a> width</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gint"><span class="type">gint</span></a> height</code></em>);</pre>
+<p>
+Get a thumbnail representing the cover associated with the current track,
+scaling it if appropriate. If either height or width is -1, then the biggest
+unscaled thumbnail available will be returned.
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>track</code></em> :</span></p></td>
+<td>an <a class="link" href="libgpod-Tracks.html#Itdb-Track" title="struct Itdb_Track"><span class="type">Itdb_Track</span></a>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>width</code></em> :</span></p></td>
+<td>width of the pixbuf to retrieve, -1 for the biggest possible size
+(with no scaling)</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>height</code></em> :</span></p></td>
+<td>height of the pixbuf to retrieve, -1 for the biggest possible size
+(with no scaling)</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>a <a href="http://library.gnome.org/devel/gdk-pixbuf/unstable/gdk-pixbuf-The-GdkPixbuf-Structure.html#GdkPixbuf"><span class="type">GdkPixbuf</span></a> that must be unreffed when no longer used, NULL
+if no artwork could be found or if libgpod is compiled without GdkPixbuf
+support</td>
+</tr>
+</tbody>
+</table></div>
+<p class="since">Since 0.7.0</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="itdb-track-has-thumbnails"></a><h3>itdb_track_has_thumbnails ()</h3>
+<pre class="programlisting"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            itdb_track_has_thumbnails           (<em class="parameter"><code><a class="link" href="libgpod-Tracks.html#Itdb-Track" title="struct Itdb_Track"><span class="type">Itdb_Track</span></a> *track</code></em>);</pre>
+<p>
+Determine if a <em class="parameter"><code>track</code></em> has thumbnails
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>track</code></em> :</span></p></td>
+<td>an <a class="link" href="libgpod-Tracks.html#Itdb-Track" title="struct Itdb_Track"><span class="type">Itdb_Track</span></a>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>TRUE if <em class="parameter"><code>track</code></em> has artwork available, FALSE otherwise</td>
+</tr>
+</tbody>
+</table></div>
+<p class="since">Since 0.7.0</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="itdb-track-set-thumbnails"></a><h3>itdb_track_set_thumbnails ()</h3>
+<pre class="programlisting"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            itdb_track_set_thumbnails           (<em class="parameter"><code><a class="link" href="libgpod-Tracks.html#Itdb-Track" title="struct Itdb_Track"><span class="type">Itdb_Track</span></a> *track</code></em>,
+                                                         <em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *filename</code></em>);</pre>
+<p>
+Uses the image contained in <em class="parameter"><code>filename</code></em> to generate iPod thumbnails. The image
+can be in any format supported by gdk-pixbuf. To save memory, the thumbnails
+will only be generated when necessary, i.e. when <code class="function">itdb_save()</code> or a similar
+function is called.
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>track</code></em> :</span></p></td>
+<td>an <a class="link" href="libgpod-Tracks.html#Itdb-Track" title="struct Itdb_Track"><span class="type">Itdb_Track</span></a>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>filename</code></em> :</span></p></td>
+<td>image file to use as a thumbnail</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>TRUE if the thumbnail could be added, FALSE otherwise.</td>
+</tr>
+</tbody>
+</table></div>
+<p class="since">Since 0.3.0</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="itdb-track-set-thumbnails-from-data"></a><h3>itdb_track_set_thumbnails_from_data ()</h3>
+<pre class="programlisting"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            itdb_track_set_thumbnails_from_data (<em class="parameter"><code><a class="link" href="libgpod-Tracks.html#Itdb-Track" title="struct Itdb_Track"><span class="type">Itdb_Track</span></a> *track</code></em>,
+                                                         <em class="parameter"><code>const <a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guchar"><span class="type">guchar</span></a> *image_data</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gsize"><span class="type">gsize</span></a> image_data_len</code></em>);</pre>
+<p>
+Uses <em class="parameter"><code>image_data</code></em> to generate iPod thumbnails. The image can be in
+any format supported by gdk-pixbuf. To save memory, the thumbnails
+will only be generated when necessary, i.e. when <code class="function">itdb_save()</code> or a
+similar function is called.
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>track</code></em> :</span></p></td>
+<td>an <a class="link" href="libgpod-Tracks.html#Itdb-Track" title="struct Itdb_Track"><span class="type">Itdb_Track</span></a>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>image_data</code></em> :</span></p></td>
+<td>data used to create the thumbnail (the raw contents of
+an image file)</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>image_data_len</code></em> :</span></p></td>
+<td>length of above data block</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>TRUE if the thumbnail could be added, FALSE otherwise.</td>
+</tr>
+</tbody>
+</table></div>
+<p class="since">Since 0.4.0</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="itdb-track-set-thumbnails-from-pixbuf"></a><h3>itdb_track_set_thumbnails_from_pixbuf ()</h3>
+<pre class="programlisting"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            itdb_track_set_thumbnails_from_pixbuf
+                                                        (<em class="parameter"><code><a class="link" href="libgpod-Tracks.html#Itdb-Track" title="struct Itdb_Track"><span class="type">Itdb_Track</span></a> *track</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a> pixbuf</code></em>);</pre>
+<p>
+Uses <em class="parameter"><code>pixbuf</code></em> to generate iPod thumbnails. To save memory, the thumbnails
+will only be generated when necessary, i.e. when <code class="function">itdb_save()</code> or a
+similar function is called.
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>track</code></em> :</span></p></td>
+<td>an <a class="link" href="libgpod-Tracks.html#Itdb-Track" title="struct Itdb_Track"><span class="type">Itdb_Track</span></a>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>pixbuf</code></em> :</span></p></td>
+<td>a <a href="http://library.gnome.org/devel/gdk-pixbuf/unstable/gdk-pixbuf-The-GdkPixbuf-Structure.html#GdkPixbuf"><span class="type">GdkPixbuf</span></a> used to generate the thumbnail</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>TRUE if the thumbnail could be added, FALSE otherwise.</td>
+</tr>
+</tbody>
+</table></div>
+<p class="since">Since 0.5.0</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="itdb-track-remove-thumbnails"></a><h3>itdb_track_remove_thumbnails ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                itdb_track_remove_thumbnails        (<em class="parameter"><code><a class="link" href="libgpod-Tracks.html#Itdb-Track" title="struct Itdb_Track"><span class="type">Itdb_Track</span></a> *track</code></em>);</pre>
+<p>
+Removes the thumbnails associated with <em class="parameter"><code>track</code></em>
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody><tr>
+<td><p><span class="term"><em class="parameter"><code>track</code></em> :</span></p></td>
+<td>an <a class="link" href="libgpod-Tracks.html#Itdb-Track" title="struct Itdb_Track"><span class="type">Itdb_Track</span></a>
+</td>
+</tr></tbody>
+</table></div>
+<p class="since">Since 0.3.0</p>
+</div>
+</div>
+</div>
+<div class="footer">
+<hr>
+          Generated by GTK-Doc V1.19</div>
+</body>
+</html>

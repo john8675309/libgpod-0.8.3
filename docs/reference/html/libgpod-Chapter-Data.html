@@ -1,0 +1,410 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Chapter Data</title>
+<meta name="generator" content="DocBook XSL Stylesheets V1.78.1">
+<link rel="home" href="index.html" title="libgpod Reference Manual">
+<link rel="up" href="ch01.html" title="iPod database components">
+<link rel="prev" href="libgpod-Artwork.html" title="Artwork">
+<link rel="next" href="libgpod-Device.html" title="Device">
+<meta name="generator" content="GTK-Doc V1.19 (XML mode)">
+<link rel="stylesheet" href="style.css" type="text/css">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<table class="navigation" id="top" width="100%" summary="Navigation header" cellpadding="2" cellspacing="2">
+<tr valign="middle">
+<td><a accesskey="p" href="libgpod-Artwork.html"><img src="left.png" width="24" height="24" border="0" alt="Prev"></a></td>
+<td><a accesskey="u" href="ch01.html"><img src="up.png" width="24" height="24" border="0" alt="Up"></a></td>
+<td><a accesskey="h" href="index.html"><img src="home.png" width="24" height="24" border="0" alt="Home"></a></td>
+<th width="100%" align="center">libgpod Reference Manual</th>
+<td><a accesskey="n" href="libgpod-Device.html"><img src="right.png" width="24" height="24" border="0" alt="Next"></a></td>
+</tr>
+<tr><td colspan="5" class="shortcuts">
+<a href="#libgpod-Chapter-Data.synopsis" class="shortcut">Top</a>
+                   | 
+                  <a href="#libgpod-Chapter-Data.description" class="shortcut">Description</a>
+</td></tr>
+</table>
+<div class="refentry">
+<a name="libgpod-Chapter-Data"></a><div class="titlepage"></div>
+<div class="refnamediv"><table width="100%"><tr>
+<td valign="top">
+<h2><span class="refentrytitle"><a name="libgpod-Chapter-Data.top_of_page"></a>Chapter Data</span></h2>
+<p>Chapter Data — Data structure to store chapter data for tracks</p>
+</td>
+<td valign="top" align="right"></td>
+</tr></table></div>
+<div class="refsynopsisdiv">
+<a name="libgpod-Chapter-Data.synopsis"></a><h2>Synopsis</h2>
+<pre class="synopsis">struct              <a class="link" href="libgpod-Chapter-Data.html#Itdb-Chapter" title="struct Itdb_Chapter">Itdb_Chapter</a>;
+struct              <a class="link" href="libgpod-Chapter-Data.html#Itdb-Chapterdata" title="struct Itdb_Chapterdata">Itdb_Chapterdata</a>;
+<a class="link" href="libgpod-Chapter-Data.html#Itdb-Chapter" title="struct Itdb_Chapter"><span class="returnvalue">Itdb_Chapter</span></a> *      <a class="link" href="libgpod-Chapter-Data.html#itdb-chapter-new" title="itdb_chapter_new ()">itdb_chapter_new</a>                    (<em class="parameter"><code><span class="type">void</span></code></em>);
+<a class="link" href="libgpod-Chapter-Data.html#Itdb-Chapter" title="struct Itdb_Chapter"><span class="returnvalue">Itdb_Chapter</span></a> *      <a class="link" href="libgpod-Chapter-Data.html#itdb-chapter-duplicate" title="itdb_chapter_duplicate ()">itdb_chapter_duplicate</a>              (<em class="parameter"><code><a class="link" href="libgpod-Chapter-Data.html#Itdb-Chapter" title="struct Itdb_Chapter"><span class="type">Itdb_Chapter</span></a> *chapter</code></em>);
+<span class="returnvalue">void</span>                <a class="link" href="libgpod-Chapter-Data.html#itdb-chapter-free" title="itdb_chapter_free ()">itdb_chapter_free</a>                   (<em class="parameter"><code><a class="link" href="libgpod-Chapter-Data.html#Itdb-Chapter" title="struct Itdb_Chapter"><span class="type">Itdb_Chapter</span></a> *chapter</code></em>);
+<a class="link" href="libgpod-Chapter-Data.html#Itdb-Chapterdata" title="struct Itdb_Chapterdata"><span class="returnvalue">Itdb_Chapterdata</span></a> *  <a class="link" href="libgpod-Chapter-Data.html#itdb-chapterdata-new" title="itdb_chapterdata_new ()">itdb_chapterdata_new</a>                (<em class="parameter"><code><span class="type">void</span></code></em>);
+<a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            <a class="link" href="libgpod-Chapter-Data.html#itdb-chapterdata-add-chapter" title="itdb_chapterdata_add_chapter ()">itdb_chapterdata_add_chapter</a>        (<em class="parameter"><code><a class="link" href="libgpod-Chapter-Data.html#Itdb-Chapterdata" title="struct Itdb_Chapterdata"><span class="type">Itdb_Chapterdata</span></a> *chapterdata</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint32"><span class="type">guint32</span></a> startpos</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *chaptertitle</code></em>);
+<a class="link" href="libgpod-Chapter-Data.html#Itdb-Chapterdata" title="struct Itdb_Chapterdata"><span class="returnvalue">Itdb_Chapterdata</span></a> *  <a class="link" href="libgpod-Chapter-Data.html#itdb-chapterdata-duplicate" title="itdb_chapterdata_duplicate ()">itdb_chapterdata_duplicate</a>          (<em class="parameter"><code><a class="link" href="libgpod-Chapter-Data.html#Itdb-Chapterdata" title="struct Itdb_Chapterdata"><span class="type">Itdb_Chapterdata</span></a> *chapterdata</code></em>);
+<span class="returnvalue">void</span>                <a class="link" href="libgpod-Chapter-Data.html#itdb-chapterdata-remove-chapter" title="itdb_chapterdata_remove_chapter ()">itdb_chapterdata_remove_chapter</a>     (<em class="parameter"><code><a class="link" href="libgpod-Chapter-Data.html#Itdb-Chapterdata" title="struct Itdb_Chapterdata"><span class="type">Itdb_Chapterdata</span></a> *chapterdata</code></em>,
+                                                         <em class="parameter"><code><a class="link" href="libgpod-Chapter-Data.html#Itdb-Chapter" title="struct Itdb_Chapter"><span class="type">Itdb_Chapter</span></a> *chapter</code></em>);
+<span class="returnvalue">void</span>                <a class="link" href="libgpod-Chapter-Data.html#itdb-chapterdata-remove-chapters" title="itdb_chapterdata_remove_chapters ()">itdb_chapterdata_remove_chapters</a>    (<em class="parameter"><code><a class="link" href="libgpod-Chapter-Data.html#Itdb-Chapterdata" title="struct Itdb_Chapterdata"><span class="type">Itdb_Chapterdata</span></a> *chapterdata</code></em>);
+<span class="returnvalue">void</span>                <a class="link" href="libgpod-Chapter-Data.html#itdb-chapterdata-unlink-chapter" title="itdb_chapterdata_unlink_chapter ()">itdb_chapterdata_unlink_chapter</a>     (<em class="parameter"><code><a class="link" href="libgpod-Chapter-Data.html#Itdb-Chapterdata" title="struct Itdb_Chapterdata"><span class="type">Itdb_Chapterdata</span></a> *chapterdata</code></em>,
+                                                         <em class="parameter"><code><a class="link" href="libgpod-Chapter-Data.html#Itdb-Chapter" title="struct Itdb_Chapter"><span class="type">Itdb_Chapter</span></a> *chapter</code></em>);
+<span class="returnvalue">void</span>                <a class="link" href="libgpod-Chapter-Data.html#itdb-chapterdata-free" title="itdb_chapterdata_free ()">itdb_chapterdata_free</a>               (<em class="parameter"><code><a class="link" href="libgpod-Chapter-Data.html#Itdb-Chapterdata" title="struct Itdb_Chapterdata"><span class="type">Itdb_Chapterdata</span></a> *chapterdata</code></em>);
+</pre>
+</div>
+<div class="refsect1">
+<a name="libgpod-Chapter-Data.description"></a><h2>Description</h2>
+<p>
+Chapters allow for a large file to be divided into sections.  The start and stop
+points in the track are defined here, as well as the title for each chapter.
+</p>
+</div>
+<div class="refsect1">
+<a name="libgpod-Chapter-Data.details"></a><h2>Details</h2>
+<div class="refsect2">
+<a name="Itdb-Chapter"></a><h3>struct Itdb_Chapter</h3>
+<pre class="programlisting">struct Itdb_Chapter {
+    guint32 startpos;
+    gchar *chaptertitle;
+    /* reserved for future use */
+    gint32 reserved_int1;
+    gint32 reserved_int2;
+    gpointer reserved1;
+    gpointer reserved2;
+};
+</pre>
+<p>
+Structure representing an iTunesDB Chapter
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint32"><span class="type">guint32</span></a> <em class="structfield"><code><a name="Itdb-Chapter.startpos"></a>startpos</code></em>;</span></p></td>
+<td>The start position of the chapter in ms. The first chapter
+begins at 1.</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *<em class="structfield"><code><a name="Itdb-Chapter.chaptertitle"></a>chaptertitle</code></em>;</span></p></td>
+<td>The chapter title in UTF8</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gint32"><span class="type">gint32</span></a> <em class="structfield"><code><a name="Itdb-Chapter.reserved-int1"></a>reserved_int1</code></em>;</span></p></td>
+<td>Reserved for future use</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gint32"><span class="type">gint32</span></a> <em class="structfield"><code><a name="Itdb-Chapter.reserved-int2"></a>reserved_int2</code></em>;</span></p></td>
+<td>Reserved for future use</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a> <em class="structfield"><code><a name="Itdb-Chapter.reserved1"></a>reserved1</code></em>;</span></p></td>
+<td>Reserved for future use</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a> <em class="structfield"><code><a name="Itdb-Chapter.reserved2"></a>reserved2</code></em>;</span></p></td>
+<td>Reserved for future use</td>
+</tr>
+</tbody>
+</table></div>
+<p class="since">Since 0.7.0</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="Itdb-Chapterdata"></a><h3>struct Itdb_Chapterdata</h3>
+<pre class="programlisting">struct Itdb_Chapterdata {
+    GList *chapters;
+    guint32 unk024;
+    guint32 unk028;
+    guint32 unk032;
+    /* reserved for future use */
+    gint32 reserved_int1;
+    gint32 reserved_int2;
+    gpointer reserved1;
+    gpointer reserved2;
+};
+</pre>
+<p>
+Structure representing iTunesDB Chapter data
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Doubly-Linked-Lists.html#GList"><span class="type">GList</span></a> *<em class="structfield"><code><a name="Itdb-Chapterdata.chapters"></a>chapters</code></em>;</span></p></td>
+<td>A list of chapters (<a class="link" href="libgpod-Chapter-Data.html#Itdb-Chapter" title="struct Itdb_Chapter"><span class="type">Itdb_Chapter</span></a>)</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint32"><span class="type">guint32</span></a> <em class="structfield"><code><a name="Itdb-Chapterdata.unk024"></a>unk024</code></em>;</span></p></td>
+<td>Unknown</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint32"><span class="type">guint32</span></a> <em class="structfield"><code><a name="Itdb-Chapterdata.unk028"></a>unk028</code></em>;</span></p></td>
+<td>Unknown</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint32"><span class="type">guint32</span></a> <em class="structfield"><code><a name="Itdb-Chapterdata.unk032"></a>unk032</code></em>;</span></p></td>
+<td>Unknown</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gint32"><span class="type">gint32</span></a> <em class="structfield"><code><a name="Itdb-Chapterdata.reserved-int1"></a>reserved_int1</code></em>;</span></p></td>
+<td>Reserved for future use</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gint32"><span class="type">gint32</span></a> <em class="structfield"><code><a name="Itdb-Chapterdata.reserved-int2"></a>reserved_int2</code></em>;</span></p></td>
+<td>Reserved for future use</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a> <em class="structfield"><code><a name="Itdb-Chapterdata.reserved1"></a>reserved1</code></em>;</span></p></td>
+<td>Reserved for future use</td>
+</tr>
+<tr>
+<td><p><span class="term"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a> <em class="structfield"><code><a name="Itdb-Chapterdata.reserved2"></a>reserved2</code></em>;</span></p></td>
+<td>Reserved for future use</td>
+</tr>
+</tbody>
+</table></div>
+<p class="since">Since 0.7.0</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="itdb-chapter-new"></a><h3>itdb_chapter_new ()</h3>
+<pre class="programlisting"><a class="link" href="libgpod-Chapter-Data.html#Itdb-Chapter" title="struct Itdb_Chapter"><span class="returnvalue">Itdb_Chapter</span></a> *      itdb_chapter_new                    (<em class="parameter"><code><span class="type">void</span></code></em>);</pre>
+<p>
+Creates a new <a class="link" href="libgpod-Chapter-Data.html#Itdb-Chapter" title="struct Itdb_Chapter"><span class="type">Itdb_Chapter</span></a>
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody><tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>newly allocated <a class="link" href="libgpod-Chapter-Data.html#Itdb-Chapter" title="struct Itdb_Chapter"><span class="type">Itdb_Chapter</span></a> to be freed with <a class="link" href="libgpod-Chapter-Data.html#itdb-chapter-free" title="itdb_chapter_free ()"><code class="function">itdb_chapter_free()</code></a>
+after use</td>
+</tr></tbody>
+</table></div>
+<p class="since">Since 0.7.0</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="itdb-chapter-duplicate"></a><h3>itdb_chapter_duplicate ()</h3>
+<pre class="programlisting"><a class="link" href="libgpod-Chapter-Data.html#Itdb-Chapter" title="struct Itdb_Chapter"><span class="returnvalue">Itdb_Chapter</span></a> *      itdb_chapter_duplicate              (<em class="parameter"><code><a class="link" href="libgpod-Chapter-Data.html#Itdb-Chapter" title="struct Itdb_Chapter"><span class="type">Itdb_Chapter</span></a> *chapter</code></em>);</pre>
+<p>
+Duplicates the data contained in <em class="parameter"><code>chapter</code></em>
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>chapter</code></em> :</span></p></td>
+<td>an <a class="link" href="libgpod-Chapter-Data.html#Itdb-Chapter" title="struct Itdb_Chapter"><span class="type">Itdb_Chapter</span></a>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>a newly allocated copy of <em class="parameter"><code>chapter</code></em> to be freed with
+<a class="link" href="libgpod-Chapter-Data.html#itdb-chapter-free" title="itdb_chapter_free ()"><code class="function">itdb_chapter_free()</code></a> after use</td>
+</tr>
+</tbody>
+</table></div>
+<p class="since">Since 0.7.0</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="itdb-chapter-free"></a><h3>itdb_chapter_free ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                itdb_chapter_free                   (<em class="parameter"><code><a class="link" href="libgpod-Chapter-Data.html#Itdb-Chapter" title="struct Itdb_Chapter"><span class="type">Itdb_Chapter</span></a> *chapter</code></em>);</pre>
+<p>
+Frees the memory used by <em class="parameter"><code>chapter</code></em>
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody><tr>
+<td><p><span class="term"><em class="parameter"><code>chapter</code></em> :</span></p></td>
+<td>an <a class="link" href="libgpod-Chapter-Data.html#Itdb-Chapter" title="struct Itdb_Chapter"><span class="type">Itdb_Chapter</span></a>
+</td>
+</tr></tbody>
+</table></div>
+<p class="since">Since 0.7.0</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="itdb-chapterdata-new"></a><h3>itdb_chapterdata_new ()</h3>
+<pre class="programlisting"><a class="link" href="libgpod-Chapter-Data.html#Itdb-Chapterdata" title="struct Itdb_Chapterdata"><span class="returnvalue">Itdb_Chapterdata</span></a> *  itdb_chapterdata_new                (<em class="parameter"><code><span class="type">void</span></code></em>);</pre>
+<p>
+Creates a new <a class="link" href="libgpod-Chapter-Data.html#Itdb-Chapterdata" title="struct Itdb_Chapterdata"><span class="type">Itdb_Chapterdata</span></a>
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody><tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>a new <a class="link" href="libgpod-Chapter-Data.html#Itdb-Chapterdata" title="struct Itdb_Chapterdata"><span class="type">Itdb_Chapterdata</span></a> to be freed with
+<a class="link" href="libgpod-Chapter-Data.html#itdb-chapterdata-free" title="itdb_chapterdata_free ()"><code class="function">itdb_chapterdata_free()</code></a> when no longer needed</td>
+</tr></tbody>
+</table></div>
+<p class="since">Since 0.7.0</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="itdb-chapterdata-add-chapter"></a><h3>itdb_chapterdata_add_chapter ()</h3>
+<pre class="programlisting"><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>            itdb_chapterdata_add_chapter        (<em class="parameter"><code><a class="link" href="libgpod-Chapter-Data.html#Itdb-Chapterdata" title="struct Itdb_Chapterdata"><span class="type">Itdb_Chapterdata</span></a> *chapterdata</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint32"><span class="type">guint32</span></a> startpos</code></em>,
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *chaptertitle</code></em>);</pre>
+<p>
+Appends a chapter to existing chapters in <em class="parameter"><code>chapterdata</code></em>.
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>chapterdata</code></em> :</span></p></td>
+<td>an <a class="link" href="libgpod-Chapter-Data.html#Itdb-Chapterdata" title="struct Itdb_Chapterdata"><span class="type">Itdb_Chapterdata</span></a>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>startpos</code></em> :</span></p></td>
+<td>chapter start time in milliseconds</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>chaptertitle</code></em> :</span></p></td>
+<td>chapter title</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>TRUE if the chapter could be successfully added, FALSE
+otherwise.</td>
+</tr>
+</tbody>
+</table></div>
+<p class="since">Since 0.7.0</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="itdb-chapterdata-duplicate"></a><h3>itdb_chapterdata_duplicate ()</h3>
+<pre class="programlisting"><a class="link" href="libgpod-Chapter-Data.html#Itdb-Chapterdata" title="struct Itdb_Chapterdata"><span class="returnvalue">Itdb_Chapterdata</span></a> *  itdb_chapterdata_duplicate          (<em class="parameter"><code><a class="link" href="libgpod-Chapter-Data.html#Itdb-Chapterdata" title="struct Itdb_Chapterdata"><span class="type">Itdb_Chapterdata</span></a> *chapterdata</code></em>);</pre>
+<p>
+Duplicates <em class="parameter"><code>chapterdata</code></em>
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>chapterdata</code></em> :</span></p></td>
+<td>an <a class="link" href="libgpod-Chapter-Data.html#Itdb-Chapterdata" title="struct Itdb_Chapterdata"><span class="type">Itdb_Chapterdata</span></a>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>a new copy of <em class="parameter"><code>chapterdata</code></em>
+</td>
+</tr>
+</tbody>
+</table></div>
+<p class="since">Since 0.7.0</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="itdb-chapterdata-remove-chapter"></a><h3>itdb_chapterdata_remove_chapter ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                itdb_chapterdata_remove_chapter     (<em class="parameter"><code><a class="link" href="libgpod-Chapter-Data.html#Itdb-Chapterdata" title="struct Itdb_Chapterdata"><span class="type">Itdb_Chapterdata</span></a> *chapterdata</code></em>,
+                                                         <em class="parameter"><code><a class="link" href="libgpod-Chapter-Data.html#Itdb-Chapter" title="struct Itdb_Chapter"><span class="type">Itdb_Chapter</span></a> *chapter</code></em>);</pre>
+<p>
+Removes <em class="parameter"><code>chapter</code></em> from <em class="parameter"><code>chapterdata</code></em>. The memory used by <em class="parameter"><code>chapter</code></em> is freed.
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>chapterdata</code></em> :</span></p></td>
+<td>an <a class="link" href="libgpod-Chapter-Data.html#Itdb-Chapterdata" title="struct Itdb_Chapterdata"><span class="type">Itdb_Chapterdata</span></a>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>chapter</code></em> :</span></p></td>
+<td>an <a class="link" href="libgpod-Chapter-Data.html#Itdb-Chapter" title="struct Itdb_Chapter"><span class="type">Itdb_Chapter</span></a>
+</td>
+</tr>
+</tbody>
+</table></div>
+<p class="since">Since 0.7.0</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="itdb-chapterdata-remove-chapters"></a><h3>itdb_chapterdata_remove_chapters ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                itdb_chapterdata_remove_chapters    (<em class="parameter"><code><a class="link" href="libgpod-Chapter-Data.html#Itdb-Chapterdata" title="struct Itdb_Chapterdata"><span class="type">Itdb_Chapterdata</span></a> *chapterdata</code></em>);</pre>
+<p>
+Removes all chapters from <em class="parameter"><code>chapterdata</code></em>
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody><tr>
+<td><p><span class="term"><em class="parameter"><code>chapterdata</code></em> :</span></p></td>
+<td>an <a class="link" href="libgpod-Chapter-Data.html#Itdb-Chapterdata" title="struct Itdb_Chapterdata"><span class="type">Itdb_Chapterdata</span></a>
+</td>
+</tr></tbody>
+</table></div>
+<p class="since">Since 0.7.0</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="itdb-chapterdata-unlink-chapter"></a><h3>itdb_chapterdata_unlink_chapter ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                itdb_chapterdata_unlink_chapter     (<em class="parameter"><code><a class="link" href="libgpod-Chapter-Data.html#Itdb-Chapterdata" title="struct Itdb_Chapterdata"><span class="type">Itdb_Chapterdata</span></a> *chapterdata</code></em>,
+                                                         <em class="parameter"><code><a class="link" href="libgpod-Chapter-Data.html#Itdb-Chapter" title="struct Itdb_Chapter"><span class="type">Itdb_Chapter</span></a> *chapter</code></em>);</pre>
+<p>
+</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="itdb-chapterdata-free"></a><h3>itdb_chapterdata_free ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                itdb_chapterdata_free               (<em class="parameter"><code><a class="link" href="libgpod-Chapter-Data.html#Itdb-Chapterdata" title="struct Itdb_Chapterdata"><span class="type">Itdb_Chapterdata</span></a> *chapterdata</code></em>);</pre>
+<p>
+Frees memory used by <em class="parameter"><code>chapterdata</code></em>
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody><tr>
+<td><p><span class="term"><em class="parameter"><code>chapterdata</code></em> :</span></p></td>
+<td>an <a class="link" href="libgpod-Chapter-Data.html#Itdb-Chapterdata" title="struct Itdb_Chapterdata"><span class="type">Itdb_Chapterdata</span></a>
+</td>
+</tr></tbody>
+</table></div>
+<p class="since">Since 0.7.0</p>
+</div>
+</div>
+</div>
+<div class="footer">
+<hr>
+          Generated by GTK-Doc V1.19</div>
+</body>
+</html>

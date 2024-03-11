@@ -3,7 +3,7 @@ import gpod
 # Replace '/mnt/ipod' with the actual mount point of your iPod
 ipod_mount = '/media/john/iPod'
 # Specify the title of the track you want to remove
-track_to_remove_title = 'ep-1391-did-the-pope-bless-same-sex-couples--member-exclusive.mp3'
+track_to_remove_title = ''
 
 # Initialize the iPod database
 itdb = gpod.Database(ipod_mount)
@@ -19,8 +19,6 @@ if itdb:
             break  # Exit after removing the first matching track
 
     if found:
-        # Write the changes back to the iPod
-        itdb.write()  # Commit the changes
         print("Database updated. Track removed.")
     else:
         print("Track not found.")

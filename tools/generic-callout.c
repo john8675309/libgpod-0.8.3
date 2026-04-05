@@ -664,7 +664,7 @@ static gboolean write_sysinfo_extended (const char *mountpoint,
 }
 
 
-static char *get_info_from_usb (usb_bus_number, usb_device_number)
+static char *get_info_from_usb (int usb_bus_number, int usb_device_number)
 {
 #ifdef HAVE_LIBUSB
         return read_sysinfo_extended_from_usb (usb_bus_number,

@@ -728,7 +728,7 @@ ithumb_writer_handle_rotation (GdkPixbuf *pixbuf, guint *rotation)
   {
       return gdk_pixbuf_rotate_simple (pixbuf, *rotation);
   }
-  return g_object_ref (G_OBJECT (pixbuf));
+  return g_object_ref (pixbuf);
 }
 
 /* On the iPhone, thumbnails are presented as squares in a grid.
@@ -968,14 +968,16 @@ ithumb_writer_write_thumbnail (iThumbWriter *writer,
     else if (thumb->data_type == ITDB_THUMB_TYPE_PIXBUF)
     {
         Itdb_Thumb_Pixbuf *thumb_pixbuf = (Itdb_Thumb_Pixbuf *)thumb;
-        pixbuf = g_object_ref (G_OBJECT (thumb_pixbuf->pixbuf));
+        pixbuf = g_object_ref (thumb_pixbuf->pixbuf);
     }
 
     if (pixbuf == NULL)
     {
 	/* This is quite bad... if we just return FALSE the ArtworkDB
 	   gets messed up. */
+	G_GNUC_BEGIN_IGNORE_DEPRECATIONS
 	pixbuf = gdk_pixbuf_from_pixdata (&questionmark_pixdata, FALSE, NULL);
+	G_GNUC_END_IGNORE_DEPRECATIONS
 
 	if (!pixbuf)
 	{

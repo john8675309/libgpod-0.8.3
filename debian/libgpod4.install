@@ -1,0 +1,6 @@
+usr/lib/*/libgpod.so.*
+usr/share/locale/
+lib/udev/rules.d/
+lib/udev/iphone-set-info
+lib/udev/ipod-set-info
+usr/bin/ipod-read-sysinfo-extended

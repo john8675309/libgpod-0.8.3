@@ -1,0 +1,5 @@
+usr/include/gpod-1.0/
+usr/lib/*/libgpod.so
+usr/lib/*/libgpod.a
+usr/lib/*/pkgconfig/libgpod-1.0.pc
+usr/lib/*/pkgconfig/libgpod-sharp.pc

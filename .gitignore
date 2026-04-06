@@ -1,0 +1,87 @@
+# Autotools build artifacts
+Makefile
+Makefile.in
+aclocal.m4
+autom4te.cache/
+compile
+config.guess
+config.h
+config.h.in
+config.h.in~
+config.log
+config.status
+config.sub
+configure
+configure~
+depcomp
+install-sh
+libtool
+ltmain.sh
+missing
+py-compile
+stamp-h1
+gtk-doc.make
+m4/libtool.m4
+m4/ltoptions.m4
+m4/ltsugar.m4
+m4/ltversion.m4
+m4/lt~obsolete.m4
+
+# Compiled objects and libraries
+*.o
+*.lo
+*.la
+*.a
+*.so
+*.so.*
+.libs/
+.deps/
+_libs/
+
+# Generated Python binding files
+bindings/python/gpod.py
+bindings/python/gpod_doc.i
+bindings/python/gpod_wrap.c
+bindings/python/_gpod_la-gpod_wrap.lo
+bindings/python/_gpod_la-gpod_wrap.o
+bindings/python/_gpod.la
+
+# Built test/tool binaries
+tests/get-timezone
+tests/test-firewire-id
+tests/test-init-ipod
+tests/test-itdb
+tests/test-ls
+tests/test-photos
+tests/test-sysinfo-extended-parsing
+tests/test-thumbnails
+tests/test-write-thumbnails
+tools/iphone-set-info
+tools/ipod-read-sysinfo-extended
+tools/ipod-set-info
+
+# pkg-config
+libgpod-1.0.pc
+
+# Mono
+bindings/mono/libgpod-sharp/libgpod-sharp.pc
+bindings/mono/libgpod-sharp-test/libgpod-sharp-test
+
+# Locale
+po/libgpod.pot
+po/*.gmo
+
+# Debian build output (keep debian/ packaging source, not built artifacts)
+debian/tmp/
+debian/*.debhelper*
+debian/*.substvars
+debian/files
+debian/.debhelper/
+debian/debhelper-build-stamp
+debian/autoreconf.after
+debian/autoreconf.before
+debian/libgpod4/
+debian/libgpod4-dbgsym/
+debian/libgpod-dev/
+debian/python3-gpod/
+debian/python3-gpod-dbgsym/

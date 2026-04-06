@@ -1,0 +1,28 @@
+#!/usr/bin/make -f
+
+export DH_VERBOSE = 1
+
+%:
+	dh $@
+
+override_dh_auto_configure:
+	dh_auto_configure -- \
+		--enable-python \
+		--with-gdk-pixbuf \
+		--with-libimobiledevice \
+		--without-hal \
+		--disable-gtk-doc
+
+override_dh_auto_install:
+	dh_auto_install
+	# Remove libtool archive files
+	find debian/tmp -name '*.la' -delete
+
+override_dh_install:
+	dh_install
+
+override_dh_shlibdeps:
+	dh_shlibdeps -- --ignore-missing-info
+
+override_dh_missing:
+	dh_missing --fail-missing

@@ -1,0 +1,55 @@
+Source: libgpod
+Section: libs
+Priority: optional
+Maintainer: John Hass <john8675309@gmail.com>
+Build-Depends:
+ debhelper-compat (= 13),
+ autoconf,
+ automake,
+ libtool,
+ pkg-config,
+ libglib2.0-dev,
+ libsqlite3-dev,
+ libplist-dev,
+ libxml2-dev,
+ libgdk-pixbuf-2.0-dev,
+ libimobiledevice-dev,
+ libusb-1.0-0-dev,
+ zlib1g-dev,
+ python3-dev,
+ swig,
+ python3-gi,
+ gtk-doc-tools,
+ intltool
+Standards-Version: 4.6.2
+Homepage: https://github.com/libgpod/libgpod
+Rules-Requires-Root: no
+
+Package: libgpod4
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, libimobiledevice-1.0-6 (>= 1.3.0), libplist-2.0-4 (>= 2.3.0), libusb-1.0-0 (>= 2:1.0.21), libusbmuxd-2.0-7 (>= 2.1.0)
+Description: library to read and write songs and artwork to an iPod
+ libgpod is a library to read and write songs, playlists, artwork and
+ other content to Apple iPod devices. It supports iPod Classic, Nano,
+ Shuffle, Mini, Touch, and iPhone via the iTunesDB, iTunesCDB, and
+ SQLite database formats.
+
+Package: libgpod-dev
+Architecture: any
+Section: libdevel
+Depends: libgpod4 (= ${binary:Version}), ${misc:Depends}
+Description: development files for libgpod
+ libgpod is a library to read and write songs, playlists, artwork and
+ other content to Apple iPod devices.
+ .
+ This package contains the development headers and pkg-config file.
+
+Package: python3-gpod
+Architecture: any
+Section: python
+Depends: libgpod4 (= ${binary:Version}), python3, ${shlibs:Depends}, ${misc:Depends}
+Description: Python 3 bindings for libgpod
+ libgpod is a library to read and write songs, playlists, artwork and
+ other content to Apple iPod devices.
+ .
+ This package contains Python 3 bindings.
